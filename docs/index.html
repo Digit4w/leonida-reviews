@@ -636,7 +636,7 @@ footer p { margin: 0; max-width: 80ch; }
   function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
 
   function loadMonitorStatus() {
-    return fetch("monitor-status.json?t=" + Date.now(), { cache: "no-store" }).then(function (res) {
+    return fetch("https://raw.githubusercontent.com/Etoile-Bleu/leonida-reviews/monitor-status/monitor-status.json?t=" + Date.now(), { cache: "no-store" }).then(function (res) {
       if (res.status === 404) return null;
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
