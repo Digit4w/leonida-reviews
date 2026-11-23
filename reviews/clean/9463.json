@@ -1,0 +1,11 @@
+{
+  "pr": 9463,
+  "head_sha": "dcc82e6836aee357d14d0a676f77fc64d8787db8",
+  "reviewer": "TripleA26/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed (528 changed lines, 0 files)",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
