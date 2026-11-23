@@ -1,0 +1,14 @@
+{
+  "pr": 4353,
+  "head_sha": "332b2abf51215d7d5bde12290e07b3f3355cc1f3",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "the AGENTS.md change only adds world_grid_atlas.py to the list of tools that need numpy/Pillow; no instruction to agents",
+    "tools/world_grid_atlas.py reads the local export and writes --json through a temp file + os.replace; it refuses an output inside the assets or carve folders; no network or process code (subprocess only in tests)"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

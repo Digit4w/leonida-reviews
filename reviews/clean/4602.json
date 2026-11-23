@@ -1,0 +1,13 @@
+{
+  "pr": 4602,
+  "head_sha": "2421e5d362c3634dbdb906e0f16748a362d3ef5f",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "scripts/carve_all.ps1: adds consistency checks on the cached summary counters (compressed/unread bytes within span, bink2_files <= files); validation only"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
