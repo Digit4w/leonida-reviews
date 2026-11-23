@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1314,
+  "head_sha": "675e35b2d41e602b1fb3d167cbddfe98e0256982",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "d3d12_predicated_copy: no Vulkan device returns 77, so ctest skips instead of failing every run",
+  "author": "bobcatchris",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1314",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:45:12.424043+00:00"
+}

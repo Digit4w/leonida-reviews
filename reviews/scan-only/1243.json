@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1243,
+  "head_sha": "c4d75847006e2eb9f17ba8f9f3bcc602751d7d97",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "navmesh_index: reject colliding JSON and CSV output paths",
+  "author": "FubukiHanasaki",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1243",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:57.178725+00:00"
+}

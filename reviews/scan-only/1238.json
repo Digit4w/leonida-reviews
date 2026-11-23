@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1238,
+  "head_sha": "f4ee34996810d7eaad10e71d32246e84d60c36a6",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "build_runtime.ps1: the cl.exe fallback builds the GPU test harnesses the tools need",
+  "author": "etcetera-yt",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1238",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:52.200661+00:00"
+}

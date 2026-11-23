@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1313,
+  "head_sha": "51c402027ca111c2375a5f06a6860ee9cca536b6",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "ASSET-44: Bump rpf9-explorer to e293917 for C# BCPack BC1/BC3/BC4/BC5 decode",
+  "author": "sombraSoft",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1313",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:45:11.406128+00:00"
+}

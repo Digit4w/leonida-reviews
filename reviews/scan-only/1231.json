@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1231,
+  "head_sha": "d296e3466167e826967a569b9437d270bc716101",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 1
+  },
+  "pr_title": "crosslane_fuzz: a program the GPU harness hangs or crashes on no long\u2026",
+  "author": "Urban225",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1231",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:45.436073+00:00"
+}

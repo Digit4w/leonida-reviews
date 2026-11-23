@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1273,
+  "head_sha": "a65a039cfdaf9311b215d836710b93d3f13d3cdf",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 1
+  },
+  "pr_title": "make_game.py: accept versioned LLVM tools for the Linux cross-build",
+  "author": "kmorales13",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1273",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:44:28.892914+00:00"
+}

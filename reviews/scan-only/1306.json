@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1306,
+  "head_sha": "e6f8478e9b66e23f79657fe77bb230ff41a48fd5",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Runtime: 96-bit R32G32B32 textures on the Vulkan layer (D3D-62)",
+  "author": "zneel",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1306",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:45:03.702432+00:00"
+}
