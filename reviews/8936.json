@@ -1,0 +1,15 @@
+{
+  "pr": 8936,
+  "head_sha": "df9b563dabac9dff45222e8be170d8af13997524",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "notes",
+  "findings": [
+    "adds an optional Rust crate (no dependencies; CI runs cargo --locked --offline) that tools/glb_writer.py loads by default with ctypes.PyDLL from tools/glb_native/target/release (LEONIDA_GLB_NATIVE=0 turns it off); no network, file or process code in the crate",
+    "the Rust side reads CPython objects in place at fixed offsets (ob_size 16, list items 24, float value 16) through raw pointers; the binding checks the layout at load time and falls back, but a wrong layout would be memory-unsafe rather than an error",
+    "same pattern as the author's other optional native-kernel PRs (#8751 and others): each one adds native code that the Python tools load automatically when it has been built"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

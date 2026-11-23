@@ -1,0 +1,13 @@
+{
+  "pr": 9211,
+  "head_sha": "e7af236bfe5040e28e0ae1363d2a3f9a29205661",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "scripts/carve_all.ps1: one line, ConvertTo-Json -InputObject @($rows) so coverage.json is always an array; the rest is tests"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

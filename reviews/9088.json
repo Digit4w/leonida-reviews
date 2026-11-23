@@ -1,0 +1,13 @@
+{
+  "pr": 9088,
+  "head_sha": "ff3599630aee8477a11c725d31cf3f1b1005c713",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "AGENTS.md: rewords the list of tools that need numpy/Pillow; no instruction to agents is added"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

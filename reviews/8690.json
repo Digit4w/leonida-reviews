@@ -1,0 +1,14 @@
+{
+  "pr": 8690,
+  "head_sha": "b6e5e285698b9b642557632b874ae639bdcca886",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "notes",
+  "findings": [
+    "edits the vendored third_party/xtaskqueue/Source/Task/AsyncLib.cpp (microsoft/libHttpClient, MIT): adds an identity field, a non-upstream export LeonidaAsyncHasIdentity and changes the cancel path; third_party/xtaskqueue/README.md still says the files are taken unmodified at c5007fd, so a later update from upstream would drop these changes silently; worth listing the local changes there",
+    "AsyncBlockInternal grows to 32 bytes, still within XAsyncBlock::internal (the existing static_assert covers it); no network, file or process code added"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
