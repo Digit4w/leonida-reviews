@@ -1,0 +1,14 @@
+{
+  "pr": 7928,
+  "head_sha": "da75b63c51c54c0ed8838097f5f1f3194d1d8e49",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "analyze_4240_full: bounded zlib inflation (64 MiB cap), --limit validation, a bounds check, and an atomic JSON writer (temp file, chmod, replace)",
+    "imports two sibling repo modules, file_mode and replace_retry; no network or process code"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

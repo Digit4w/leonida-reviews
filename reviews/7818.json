@@ -1,0 +1,14 @@
+{
+  "pr": 7818,
+  "head_sha": "6b10cec9868e812c30f6bd0c2728fcfaf1fa8ce3",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds a regex scan test over scripts/*.ps1, one -Encoding utf8 in first_look.ps1, and a rule line in AGENTS.md and CONTRIBUTING.md",
+    "AGENTS.md is read by AI agents; the added lines are a plain PowerShell style rule"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

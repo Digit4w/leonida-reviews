@@ -1,0 +1,13 @@
+{
+  "pr": 8098,
+  "head_sha": "a845de06af12b9f104e3afba35a2dd7f6c112736",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds zlib-stream detection to the game-data guard; inflate_zlib reads in chunks under a budget, so a deflate bomb cannot expand to full size; the change only makes the guard catch more; tests use synthetic streams"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}
