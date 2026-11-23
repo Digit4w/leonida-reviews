@@ -1,0 +1,11 @@
+{
+  "pr": 8390,
+  "head_sha": "263ca8d29fdaf4c700f2bbf7bb4c17b67f44c332",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; CMake change read line by line; the new 313-line CPU test (stdlib and Threads only) pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

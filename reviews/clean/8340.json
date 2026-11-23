@@ -1,0 +1,11 @@
+{
+  "pr": 8340,
+  "head_sha": "8edefc1b70df8a141fc45509c7fb4e51347eecb5",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of pe_loader.cpp/.h, lazy.h and CMakeLists; the 611-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

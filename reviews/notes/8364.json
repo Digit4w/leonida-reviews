@@ -1,0 +1,13 @@
+{
+  "pr": 8364,
+  "head_sha": "9fe1e2e60106bba500d67cf6dd8cd5b9fbf4657a",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the shim, queue_holds.h, shader_library.h and CMake changes; the 366-line test pattern-scanned",
+  "verdict": "notes",
+  "findings": [
+    "Not new in this PR but kept by it: load_vulkan_library() calls LoadLibraryA(\"vulkan-1.dll\") by bare name, so the normal DLL search order (application folder first) applies; vulkan-1.dll is not a KnownDLL. LoadLibraryExA with LOAD_LIBRARY_SEARCH_SYSTEM32 would pin the system loader."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

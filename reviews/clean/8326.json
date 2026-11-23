@@ -1,0 +1,11 @@
+{
+  "pr": 8326,
+  "head_sha": "0f20d3cb8879f10af7ecd7d276d01296f684f659",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of queue_holds.h and CMake changes, shader_library.h in part; the 408-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

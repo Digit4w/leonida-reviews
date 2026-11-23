@@ -1,0 +1,11 @@
+{
+  "pr": 8137,
+  "head_sha": "7d52622f557e2c64729a65be7ffe18fe844a5315",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of file_system.cpp/.h and xgameruntime.cpp changes (PLS: path parsing, reparse-point refusal); the test additions pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

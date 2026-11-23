@@ -1,0 +1,11 @@
+{
+  "pr": 8289,
+  "head_sha": "a581d6333557310b342f276fc0f914faaf573aca",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of xmem.cpp; the test file pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

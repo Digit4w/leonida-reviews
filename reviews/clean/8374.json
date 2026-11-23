@@ -1,0 +1,11 @@
+{
+  "pr": 8374,
+  "head_sha": "19ef3bf56fb30dbe18b75afc4bc26cc4dfca5a1e",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of depth24_fragment.h and CMake changes; the 340-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
