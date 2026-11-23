@@ -1,0 +1,14 @@
+{
+  "pr": 7825,
+  "head_sha": "1225ef080870dd2714f8c7ec250c2d71f532bffd",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "makes ResourceMinLODClamp apply to depth and stencil views (removes the colour-aspect condition in d3d12_vulkan_device.cpp), adds a 471-line Vulkan test and its CMake registration",
+    "no network or process code; the C++ memory handling in the new test was not audited in depth"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

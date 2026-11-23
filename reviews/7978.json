@@ -1,0 +1,14 @@
+{
+  "pr": 7978,
+  "head_sha": "d4b0d2ffc52cac32223cfe471b5cfd8d934f821b",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "mostly docs (design.md rows, shader_validation.md); some design.md rows contain duplicated sentences (a docs quality issue)",
+    "code changes are the dev.py guard and the meshlet loop guard, same as #7943; test subprocess calls use sys.executable -I on repo tools"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

@@ -1,0 +1,13 @@
+{
+  "pr": 8190,
+  "head_sha": "15391c281384d1a639b099b7dd4c33729e671504",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds an argparse type that rejects NaN, infinity and values outside float32 for --center in two tools; tests check nothing is written when refused; no network or process code"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}
