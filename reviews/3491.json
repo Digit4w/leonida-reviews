@@ -1,0 +1,13 @@
+{
+  "pr": 3491,
+  "head_sha": "cee5cbaa7f08f3c90eca333d4809d8b5cd125689",
+  "reviewer": "Urban225/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; diff read by the AI (some test files searched for risky APIs rather than read)",
+  "verdict": "notes",
+  "findings": [
+    "parser code clean; docs/textures.md adds a link to the author's own external web tool (wxrrry.github.io/leonida-asset-pipeline), unrelated to the PR's topic"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

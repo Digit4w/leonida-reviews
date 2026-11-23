@@ -1,0 +1,11 @@
+{
+  "pr": 157,
+  "head_sha": "44e152f450b9dc39e8b2e9227d4901046b1d8e21",
+  "reviewer": "Urban225/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; scripts, workflows, build files and process/network/delete paths read in full, bulk C++/shader/test code searched for risky APIs, not read line by line",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
