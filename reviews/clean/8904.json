@@ -1,0 +1,14 @@
+{
+  "pr": 8904,
+  "head_sha": "4df314f8b296791848141e611d0a13450c39c5f9",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "root_signature: removes the 'needs at least 1 dword' refusal for 32-bit-constants parameters with Num32BitValues == 0 in both pack() and pack_stage(), matching host D3D12; header comment and tests updated.",
+    "Read the removed checks and tests; zero-size constants only reduce the cost accounting, no new indexing. Spill/cost limits still enforced. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

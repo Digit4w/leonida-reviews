@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1304,
+  "head_sha": "b565407a67d74f5797ebf5af6ec2a4e8827c3248",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "GPU fixture for the integer clamp rule (cs_int_clamp); drop the duplicate design.md row",
+  "author": "quackottu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1304",
+  "pr_state": "open",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:45:01.430752+00:00"
+}

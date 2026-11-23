@@ -1,0 +1,14 @@
+{
+  "pr": 8867,
+  "head_sha": "ce8abad8b4b9fbbe6066654c6f1e1e4f31202437",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "leonida_tui pump_process uses rstrip() instead of strip() so leading indentation of child output (tracebacks) is kept in stage panes and logs; test added.",
+    "One-line change read; PR notes nearby PRs #7156, #8287, #7819 touch adjacent code without conflicting. No overlap flagged, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

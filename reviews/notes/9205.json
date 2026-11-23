@@ -1,0 +1,14 @@
+{
+  "pr": 9205,
+  "head_sha": "df3e32ca26b6b81399f92ffc5ca0be1cf1aa3ab1",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: adds validate_salu32 for 10 SOP1/SOP2 ops (arity, no modifiers, 32-bit sgpr/special/imm operands). Validation only; 302 test lines.",
+    "Same-author series of validation PRs with near-identical titles: #9454, #9337, #9096, #9095 (and #9204); different ops, no line overlap, likely merge conflicts in rdna2spirv.py. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

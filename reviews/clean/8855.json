@@ -1,0 +1,14 @@
+{
+  "pr": 8855,
+  "head_sha": "dd0f342051ff00de17ec2bfcea8a0aef03b73bc9",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Fixes uint64 quota underflow in gamesave commit() when case-colliding blobs are counted twice; dedups via fs::equivalent and saturates add/subtract.",
+    "Read the C++ diff; bounded arithmetic only, no pointers or parsing of guest data added. Applies cleanly on main, no overlaps, includes a unit test."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

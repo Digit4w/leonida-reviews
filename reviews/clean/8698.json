@@ -1,0 +1,14 @@
+{
+  "pr": 8698,
+  "head_sha": "fc056a5bae2d2e279d20ee444a2ff99cae3ba6ae",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rbf0_index.py parse_rbf0: text and value records outside an open element raise RbfError like rbf0_tree does, instead of reporting a complete ok result; stack is checked before indexing.",
+    "Parser hardening with 64 test lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

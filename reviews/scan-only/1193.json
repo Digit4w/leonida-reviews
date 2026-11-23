@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1193,
+  "head_sha": "5781898ca95c353fa136651b6f64c4bc07fcb929",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "audio_wav: reject same-serial chained Ogg Opus streams when computing end trim",
+  "author": "InduwaraSMPN",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1193",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:52.591933+00:00"
+}

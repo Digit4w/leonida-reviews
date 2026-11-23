@@ -1,0 +1,15 @@
+{
+  "pr": 9221,
+  "head_sha": "6ac562f90cc20b0a492fd13c519ccbb31bf1c3a1",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; tripwires checked, vulkan_replay.h partly read (diff truncated), large tests skimmed",
+  "verdict": "notes",
+  "findings": [
+    "Stacked on #5259 (body: Depends on #5259; 99% of #5259's added lines are in this PR, different author), so it contains the whole draw-state cache change plus a replay test for IA state after a mesh draw. 1453 lines, 4 commits incl. two merges of main.",
+    "Tripwire LoadLibraryExA(d3dcompiler_47.dll) is in a test and uses LOAD_LIBRARY_SEARCH_SYSTEM32, so it is not a DLL-hijack risk; the OMSetRenderTargets nullptr hit is a normal D3D call. Applies cleanly.",
+    "Replay change adds BoundDrawState caching with fixed 32-slot arrays; guest slot indices were not verified against bounds in the visible part of the diff."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

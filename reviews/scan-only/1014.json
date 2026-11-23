@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1014,
+  "head_sha": "9874e9d2ba75f7430feeb7f3b9279c7a6db6e742",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "world_census: invalidate pre-fix warm-up shard totals",
+  "author": "whattheflop",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1014",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:29:52.589418+00:00"
+}

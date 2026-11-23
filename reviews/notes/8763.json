@@ -1,0 +1,15 @@
+{
+  "pr": 8763,
+  "head_sha": "32fb9d2e942e95f25752faeb1b4cea7f5a8c9509",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "Static, AI-assisted, nothing executed; read the shim diff in runtime/shims/xg_xs.cpp (the last hunk of XGCreateTextureComputer body was not visible in the viewer) and skimmed the test; tripwire/overlap/apply triage used.",
+  "verdict": "notes",
+  "findings": [
+    "xg_xs shim: texture computer now keeps the description given to XGCreateTextureComputer and answers slot 10 (GetResourceTiling) from it; adds a format-size table and a tiling computation using existing leonida::resource_tiling.",
+    "Robustness notes only: it memcpy's sizeof(D3D12_RESOURCE_DESC) from the guest pointer without validating it, and caches one Computer per distinct description in a map that is never freed (unbounded growth if a title makes many distinct descs). Output copy is bounded by the guest count and the tiling array size.",
+    "No overlap, applies cleanly, has a test."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 9045,
+  "head_sha": "76d9b4b938adeb63c43f0842bb75f1cee42bf374",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production C++ read: title_page_watch.h, xs proxy, file_system and xmem shims fully; the 810-line d3d12_vulkan_device.cpp only partly; tests not read",
+  "verdict": "notes",
+  "findings": [
+    "Large (+1938) d3d12 change: copies only dirty pages of slot-133 shadow buffers, adds ReadFile/ReadFileEx/ReadFileScatter shims that pin and re-open pages, widens the Xbox proxy table to 192 slots. No downloads, persistence, workflow or binary changes found.",
+    "Stacked: body says Depends on #8225 (and #7218); 94% of #8225's lines are in this PR. Also shares 53% of its lines with #9137 (same author, 41% of that PR), likely another stacked variant. 20 commits include a merge of pr-6953.",
+    "Robustness notes only: __try/__except guarded copies of guest pages, ReadFile shims use guest buffer pointers and sizes unvalidated (begin+bytes could wrap); guest is the game. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

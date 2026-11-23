@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1008,
+  "head_sha": "da3461826abefefb3a2aad99fac033fd9da3de9f",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "test_pe_loader_bounds: a temp folder per process, so parallel runs don't break each other",
+  "author": "quackottu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1008",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:29:46.575116+00:00"
+}

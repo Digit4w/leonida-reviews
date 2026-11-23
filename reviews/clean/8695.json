@@ -1,0 +1,14 @@
+{
+  "pr": 8695,
+  "head_sha": "328ea1a441fc7ddd8473ac8ec99bb520940430e9",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "d3d12_vulkan_device.cpp: DXR prebuild maps all six triangle vertex formats to exact VkFormats (previously 16-bit ones fell back to float3), sets ALLOW_COMPACTION and NO_DUPLICATE_ANYHIT flags; replay flag passthrough; new 396-line test with CMake registration.",
+    "Unsupported formats return early (VK_FORMAT_UNDEFINED). PR body starts with a UTF-8 byte-order mark character only; no other hidden text seen. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

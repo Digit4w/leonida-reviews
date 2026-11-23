@@ -1,0 +1,14 @@
+{
+  "pr": 8828,
+  "head_sha": "e556bee4bdeee607b435cf2f717508e0c8b2b4d1",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test-only: runtime/test/d3d12_depth_resolve_test.cpp reads the destination back in a valid list after a refused call so the test passes where the layer refuses the batch.",
+    "No production code; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

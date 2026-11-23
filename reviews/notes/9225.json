@@ -1,0 +1,14 @@
+{
+  "pr": 9225,
+  "head_sha": "025dffc2ac4a80cd41e2668972daf48aec3a9c57",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "One-line comment fix in runtime/test/d3d12_clear_formats_test.cpp pointing to d3d12_clear_test.cpp. Comment-only.",
+    "Same file, same stale-comment fix as #9217 (the two PRs by different authors target line 4 of this test). Duplicate pair: #9217 and #9225, effectively 100% overlap in intent; wording of the replacement differs slightly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

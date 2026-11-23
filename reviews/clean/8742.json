@@ -1,0 +1,15 @@
+{
+  "pr": 8742,
+  "head_sha": "b940a6f28d42ad43a1e9d67ae3c824965e923d75",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "pe_shader_containers --json now written via a temp file in the destination dir and replaced via the repo's replace_retry; falls back to direct write for non-regular destinations.",
+    "Reviewed the staging code: temp file is cleaned up in finally, no shell, no network. Imports file_mode and replace_retry are existing repo helpers. Body notes AI assistance. Applies cleanly, no overlap.",
+    "Same stage-then-replace pattern as the other recent report-writer PRs; not a duplicate."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8637,
+  "head_sha": "7e2465704fa2f107011ab13a7e7cce61ee4f6051",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Accepts unmasked D3D12 view instancing on vertex PSOs via Vulkan multiview: enables the multiview feature, carries view_mask into pipelines and dynamic rendering, and checks layer count and max instance index before draws; 116 test lines. Tripwire 'unsafe-c' is a test OMSetRenderTargets call: false positive.",
+    "Hardening note: the loop that scans stage.words for Layer/ViewportIndex decorations does 'i += count' with no check for count == 0 or i+count past the end; it would spin or read past the buffer on malformed SPIR-V. Input is the project's own translated shader, so robustness only, not a privilege boundary.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

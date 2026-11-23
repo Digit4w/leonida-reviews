@@ -1,0 +1,15 @@
+{
+  "pr": 8882,
+  "head_sha": "54145656e7bf453c2433465a4c05b069c2b715fa",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "spirv_metal_set0 now assembles into a private temp dir on the destination volume and os.replace()s the result, preserving permission bits, symlink targets, stdout and special-file behavior; also fixes UTF-8/newline handling.",
+    "Read the Python; subprocess calls pass argument lists (no shell), tempdir created beside destination. Adds sys.path.insert(0, TOOLS) of the repo's own tools dir, normal for this repo.",
+    "Stacked: body says Depends on #8730 and the first commit (UTF-8 literals) is likely that PR's content. Applies cleanly on current main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

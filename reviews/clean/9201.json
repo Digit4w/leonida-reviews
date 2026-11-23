@@ -1,0 +1,14 @@
+{
+  "pr": 9201,
+  "head_sha": "02a6a0ced353f2859b595c825ff9823cd344170d",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test-only: two lines in tests/test_psin_names.py change the mocked helper names to the private _resolved_key/_same_resolved_name that same_report_path actually calls, fixing a test the body says is red on main.",
+    "No production code touched. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

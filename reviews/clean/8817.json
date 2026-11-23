@@ -1,0 +1,14 @@
+{
+  "pr": 8817,
+  "head_sha": "eafb227ac4f953bfcedccb277f39df61c8327436",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/rdna2spirv.py: --max-shared-memory now uses an argparse type that rejects negative and non-integer values.",
+    "10 production lines plus CLI tests; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

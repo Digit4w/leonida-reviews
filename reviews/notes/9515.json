@@ -1,0 +1,14 @@
+{
+  "pr": 9515,
+  "head_sha": "ccd36246f7f50dc6a5f1f30ff76418d570f12fa2",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of acphal.cpp logic, registry.cpp, CMakeLists, build_runtime.ps1 and the Python test; the C++ test file pattern-scanned",
+  "verdict": "notes",
+  "findings": [
+    "build_runtime.ps1 change only drops the UTF-8 BOM and adds xg_xs.cpp and acphal.cpp to the cl.exe file list; no download or execution added.",
+    "Shim hardening: the fake APU addresses given to SHAPE context arrays (0x40000000 + n*0x1000) overlap the range ApuMapApuAddress maps into the APU heap, so translating them back yields heap memory, not the context array; AcpHalReleaseShapeContexts frees every array, not only ctx's."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

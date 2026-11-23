@@ -1,0 +1,15 @@
+{
+  "pr": 8909,
+  "head_sha": "b62feb5398a5fb5ef25b6f8a6a19cb7df165f28d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages save_keys --out through a temp file plus replace_retry so a failed write keeps the previous report; adds 39 lines of tests.",
+    "Read the Python; same helper pattern, temp file cleaned in finally, no shell. Adds sys.path.insert of the tools dir (normal in this repo). Applies cleanly.",
+    "Same 'stage --out' pattern as a large series by another author (#9219, #9172, #9131, #9123, #9080 and others) for other tools; not a duplicate of this tool. PR body has stray tab characters where backslash-t escapes were pasted, cosmetic only."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

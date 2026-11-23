@@ -1,0 +1,15 @@
+{
+  "pr": 8595,
+  "head_sha": "5d0e91416512cbb7b9e2ff3e08e8ee59253559f2",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stacked on #8032 (body says 'Depends on #8032'; 97% of #8032's added lines are contained here, same author), so it legitimately carries that diff plus a UTF-8 code page manifest for tests and a merge of main.",
+    "Read CMake and glslang_short_paths.cmake: cmd /c 'for %I in (.)' is a fixed command to get 8.3 names, the wrapper just re-runs glslangValidator with path substitution; manifest only sets activeCodePage UTF-8 for tests. Build-time only, no exploit pattern.",
+    "Applies cleanly on main; merge order matters (#8032 first)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

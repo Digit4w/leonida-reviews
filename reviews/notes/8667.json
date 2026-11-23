@@ -1,0 +1,14 @@
+{
+  "pr": 8667,
+  "head_sha": "bc2746c17c51289f7c35010d2eb1803a19c54bc9",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "heap_index_census.py: --json is written via a staged temp file in the destination folder and replaced atomically (replace_retry, published_mode), with direct write for non-regular destinations; test added. Code read, no exploit pattern.",
+    "Same author and same change applied tool by tool: near-identical sibling PRs #8789 (gamedata_index), #9080 (vertex_types), #9098 (sampler_source_census), #9104 (rootsig_census), #9203 (psin_psch). Not duplicates of the same lines, but a series of parallel micro-PRs that could be reviewed together. Body discloses AI assistance (Cursor)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

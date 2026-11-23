@@ -1,0 +1,15 @@
+{
+  "pr": 9039,
+  "head_sha": "5a1da3035f577528066a329f13b6e043b2bf6b4a",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used; production C++ diff read, large test files skimmed",
+  "verdict": "notes",
+  "findings": [
+    "Makes d3d12 shim register transfer-only COPY family with the replay on every GPU and adds an OffGraphicsCopies table (max 8 formats, bounds-checked add) so depth/stencil buffer copies are refused on families that cannot do them. Adds two test executables.",
+    "Stacked on #8871 (same author, body says Depends on #8871); 100% of #8871's added lines are in this PR, so merge #8871 first.",
+    "Robustness note: the new check indexes p.image_copies[0] in vulkan_replay.h; the diff does not show whether an emptiness guard exists upstream (the buffer_image_copies line does have one). Guest-driven, not a privilege boundary. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

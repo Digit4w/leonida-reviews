@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1149,
+  "head_sha": "89277cdac04ecbc4d66910b597d8a6934829519e",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "saves import, anim_index --rigs: a missing value or unwritable path is an error line, not a traceback",
+  "author": "quackottu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1149",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:11.086494+00:00"
+}

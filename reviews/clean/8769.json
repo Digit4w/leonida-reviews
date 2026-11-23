@@ -1,0 +1,14 @@
+{
+  "pr": 8769,
+  "head_sha": "7a8692540286e7fac48f11e793f5365d70ec8292",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/navmesh_links.py passes scan_end instead of size to the shared walker so streams cannot run past the requested window; net -2 lines and a test.",
+    "No overlap, applies cleanly; tightens a bound, adds none."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

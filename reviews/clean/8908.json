@@ -1,0 +1,14 @@
+{
+  "pr": 8908,
+  "head_sha": "ec6fd636483805f1f2c06e7feb2ae65e6aa34b2d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "shader_link_check and wave64_pipeline_audit: ensure_report_is_separate now returns the resolved report path and the writer uses it, so a symlinked report destination is updated instead of replaced; test added.",
+    "Read the full diff; path handling only. Notes #6503 as a separate change. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

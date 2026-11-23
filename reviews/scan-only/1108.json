@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1108,
+  "head_sha": "1465675b16e5e2f3ce57f4a7505ca87d0f6b163a",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "AGENTS.md refresh: stdlib exceptions, missing smoke tests, repo map; design.md: dedupe contract rows",
+  "author": "ken00H",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1108",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:31:20.071896+00:00"
+}

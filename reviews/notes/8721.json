@@ -1,0 +1,14 @@
+{
+  "pr": 8721,
+  "head_sha": "2470e684bae6c40a0b66863428749f2af63302e5",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "bvh_groups.py: --json guard uses shared report_paths.same_report_path instead of exists+samefile, and 'bvh_groups' is added to SHARED in test_report_paths; 2 production lines.",
+    "Duplicate: #9119 (different author, same title) makes the same change to tools/bvh_groups.py with identical added lines (import plus the same_report_path condition). This PR has the lower number, so it is the earlier one. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

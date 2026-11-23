@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1237,
+  "head_sha": "8241eab0416d077d51735fb82e76f2f7a4b2bfb1",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Docs: timecycle sample hours (time_data) and STS cloud layers, missed by #1173/#1198",
+  "author": "Amzi-01",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1237",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:51.199141+00:00"
+}

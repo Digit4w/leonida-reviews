@@ -1,0 +1,15 @@
+{
+  "pr": 8834,
+  "head_sha": "90bd2dd879be549d68c5fc6b46cd0221494d7aa3",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "DRAFT PR. tools/rdna2spirv.py lowers s_bfe_u64/s_bfe_i64 with 32-bit SPIR-V operations so register-only shaders do not need shaderInt64; text generation only, test file adjusted.",
+    "Marked draft, so not ready to merge. Applies cleanly on main; no overlap.",
+    "I read the visible half of the lowering; correctness of the bit math rests on the updated semantic test, which I did not run."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

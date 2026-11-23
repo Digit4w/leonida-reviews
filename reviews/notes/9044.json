@@ -1,0 +1,14 @@
+{
+  "pr": 9044,
+  "head_sha": "9475179892b2ceb0fbe8086449ad719dc17429e2",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "One-line docs edit removing a stray (XXTESTING) placeholder from the SHADER-995 row of docs/testing.md. Harmless but trivial (flagged as tiny docs-only).",
+    "Body states the docs tests are red on main with and without the change. No overlaps, applies cleanly. AI-assisted disclosed."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

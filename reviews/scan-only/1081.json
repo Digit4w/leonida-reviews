@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1081,
+  "head_sha": "81fc5425bdfc771bce72c993c5f2fb61f03c7403",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "test(d3d12): add post-vkDestroyDevice leak check, shared-texture handoff, and TIMEOUT 120 (#1081 follow-up)",
+  "author": "totonicpu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1081",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:30:55.896366+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9025,
+  "head_sha": "ee6ccc070044021d65ac1ce965d62ea7ffec870b",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "spirv_opt no longer treats Volatile-decorated Input variables (including via OpMemberDecorate and group decorations) as read-only, so their loads are neither reused nor deleted; 72 test lines added.",
+    "Read the full Python diff; optimizer-side set bookkeeping only. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

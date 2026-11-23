@@ -1,0 +1,14 @@
+{
+  "pr": 9234,
+  "head_sha": "17937be71179c8a6272401616a31b3fa64644f20",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "tex_headers.py --out JSON now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Same staged-write pattern as the Grimkeh series of near-identical PRs (e.g. #9214, #9210, #9203); different tool file, no shared lines. AI-assisted disclosed; body is terse but accurate. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

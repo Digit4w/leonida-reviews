@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1232,
+  "head_sha": "2e33dc681a4b009413fc04cdf4d8a438ef5c1600",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "salu_diff: SCC consumers in control flow (--branches, FUZZ-4 follow-up)",
+  "author": "evilclanker9000",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1232",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:46.274146+00:00"
+}

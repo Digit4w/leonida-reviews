@@ -1,0 +1,15 @@
+{
+  "pr": 8876,
+  "head_sha": "33ad1064b229d4ac1f4ba21f8929df8570aa27ad",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages character_textures --json through a temp file plus replace_retry so a failed write keeps the previous report; adds a test; --csv path unchanged.",
+    "Read the Python; temp file next to destination, unlinked in finally, no shell. Applies cleanly.",
+    "Same boilerplate as a series of near-identical 'stage the output' PRs by the same author: #8757, #9080 (flagged title-similar here), and #8856, #8865, #8967, #9063, #9131, #9172. Different tools, so not duplicates, but repeated copy-pasted helper."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

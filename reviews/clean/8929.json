@@ -1,0 +1,14 @@
+{
+  "pr": 8929,
+  "head_sha": "13d8cdab4337dd711bb7d23a16357b572a4f084e",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "dxgi: CreateSwapChain/ForHwnd now return E_ACCESSDENIED for an invalid or destroyed HWND or one already owned by a live swap chain, tracked in a mutex-guarded static set released in the destructor; 140-line test.",
+    "Read the C++ diff; small RAII class, no guest-buffer parsing. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8657,
+  "head_sha": "33ceab6e4007a61e4fb1a5fec84884daa927897f",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "process.cpp: adds at_quick_exit/_crt_at_quick_exit shims that keep handlers in a mutex-guarded vector and run them newest first on quick_exit; _exit/_Exit now skip them; vector cleared per run.",
+    "Handlers are popped under lock and called outside it (re-entrancy safe); a null handler is rejected. README note and 77 test lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

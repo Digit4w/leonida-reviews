@@ -1,0 +1,14 @@
+{
+  "pr": 8787,
+  "head_sha": "d3a6e00c205e0ba08aed94d1587db2d1ea1a8afb",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/turing_atlas.py: negative-control spirv-as/spirv-val runs that fail to start or crash are reported as tool_failure and make the atlas exit 2 instead of counting as rejected; fixed-argument subprocess.run, no shell.",
+    "Test added; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

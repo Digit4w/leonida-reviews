@@ -1,0 +1,14 @@
+{
+  "pr": 8866,
+  "head_sha": "f72e8883b7310cb16c69c04b2dad2cc758623b92",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "image_bvh_census now uses the shared report_paths.same_report_path to guard --out against overwriting scanned listings; test SHARED list updated.",
+    "Read the 2-line production change; no overlap, applies cleanly, no exploit pattern."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

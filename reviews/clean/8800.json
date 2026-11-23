@@ -1,0 +1,14 @@
+{
+  "pr": 8800,
+  "head_sha": "22e195aa97c60a983458600e51bf03efd54cc0db",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/progress_dashboard.py: records each test file digest before the batch and flags tests changed during the run so a cached pass is revalidated; hashing only, 7 production lines plus a test.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9318,
+  "head_sha": "88cc473d3eac182b9e5478e78fe579d533d12cde",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "shader_disasm.py: pruning of stale .s listings now keeps a reused listing when the planned spelling resolves to the same file (case-only rename), and refuses to follow symlinks (islink checks) for that comparison. 22 prod lines, 52 test lines.",
+    "Stacked or related: body lists Depends on #4447, #6190, #8334 (overlapping test imports and pruning comments); 5 commits include test import accommodation. Overlap tool found no shared added lines. Applies cleanly now."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

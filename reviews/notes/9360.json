@@ -1,0 +1,14 @@
+{
+  "pr": 9360,
+  "head_sha": "fe647ecf34cb9c330a9bfbcdc53d0b13e3738ff0",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; test file not read line by line, grepped for exec/subprocess/eval (none, only stdlib imports and project support module)",
+  "verdict": "notes",
+  "findings": [
+    "Test-only: 683-line tests/semantic/test_image_gather4_l_lz.py covering four image_gather4 variants (offset extraction, LOD handling) in rdna2spirv. No production code; large single test file flagged by the slop heuristic.",
+    "Body is detailed and cites line ranges; I did not verify that the assertions are meaningful rather than mirroring the current output. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

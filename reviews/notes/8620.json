@@ -1,0 +1,14 @@
+{
+  "pr": 8620,
+  "head_sha": "da32a0b6c82b550214f6892541892b081e5e6b67",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stacked on #7020 (body 'Depends on: #7020'; 86% of this PR's added lines are #7020's, 90% of #7020's are here), so it legitimately contains that diff; the new part resolves monitor ownership via D3DKMTOpenAdapterFromGdiDisplayName instead of creating a DXGI factory per lookup.",
+    "Tripwire is a test-only LoadLibraryExW(L\"d3d12.dll\", LOAD_LIBRARY_SEARCH_SYSTEM32): safe flag, false positive. The shim resolves gdi32 exports via GetModuleHandleW/GetProcAddress, closes each adapter handle, keeps the old fallback. Applies cleanly; merge #7020 first."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

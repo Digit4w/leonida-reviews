@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1258,
+  "head_sha": "f7040676800753ffabf77e611ed481311db4715a",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "TEST: register d3d12_indirect_rt_test with ctest (new TEST item, claim in #1218)",
+  "author": "ray3242",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1258",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:44:12.057468+00:00"
+}

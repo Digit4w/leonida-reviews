@@ -1,0 +1,14 @@
+{
+  "pr": 8938,
+  "head_sha": "e2411a754fd46ebe5eef83dd5bce0b5061fe7c64",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "FramePacer commit_present_token: re-presenting a token now clears stale displayed/display_us/percent_scanned and detaches the token from pending entries; 54-line test added.",
+    "Read the header diff; simple state bookkeeping, no pointer arithmetic. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

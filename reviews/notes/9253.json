@@ -1,0 +1,14 @@
+{
+  "pr": 9253,
+  "head_sha": "a8794fad4eaf69ab84156191f43e168c8366a82d",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "anim_rigs.py out.json now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Near-identical sibling of #9248 (anim_clips), same author and the same staged-write boilerplate as many other PRs in the series; separate files, no shared lines. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9315,
+  "head_sha": "5400850081c7da98433c3ed69d60555e4ea0879b",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test-only: test_image_cube_store_glc.py llvm_mc_cmd now uses mc_command.split_command instead of POSIX shlex.split, fixing Windows backslash paths in LLVM_MC. Two changed lines.",
+    "No production code. No overlaps, applies cleanly. Tests-only counterpart of the same issue handled in #9043's mc_command.find helper."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8487,
+  "head_sha": "2aa0b824160f2534edc971c130848ee9be68ca63",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests and docs skimmed; tripwire scan of every added line (workflows, downloads, DLL loads, obfuscation, hidden Unicode, binaries, submodules, agent-directed text); duplicate check against ~4,400 open PRs (shared added lines and titles) and `git apply --check` against current main",
+  "verdict": "notes",
+  "findings": [
+    "declared 'Depends on #8483' (contains its diff); #8653 contains this PR; does not apply cleanly on current main",
+    "no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

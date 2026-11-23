@@ -1,0 +1,14 @@
+{
+  "pr": 8669,
+  "head_sha": "2123748565fc9f5b523e6ee57e34c49320a0876e",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "file_system.cpp: shims GetVolumeInformationA/W and GetVolumePathNameA/W for GAME:, G: and T:, resolving the overlay volume through its nearest existing ancestor without creating directories (parse_console gets a create_scratch flag); host paths pass through.",
+    "Read the helper: MAX_PATH-bounded buffers, attributes checked before use, ANSI wrappers convert only returned strings. 96 test lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

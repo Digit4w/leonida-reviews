@@ -1,0 +1,14 @@
+{
+  "pr": 8662,
+  "head_sha": "7d85f13f1826342247971df5a92fa62d86a4612a",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs-only README diff skimmed; links and text searched for agent-directed instructions; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "README.md: updates project status, fallback flags and pipeline-cache notes to match main and open boot-chain work; all added links point to this repository's own issues and issue searches.",
+    "No instructions aimed at reviewers or agents found. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

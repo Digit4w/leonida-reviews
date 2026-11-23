@@ -1,0 +1,14 @@
+{
+  "pr": 9358,
+  "head_sha": "8221cc74014ae9f40b240d8c43ee3aec80b00e45",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "d3d12_com.cpp: UpdateTileMappings/CopyTileMappings validation now allows null heap range offsets for NONE and REUSE_SINGLE_TILE, rejects unknown range flags, and requires Width*Height*Depth == NumTiles (64-bit multiply, no overflow). 13 prod lines, 309-line test.",
+    "Read the C++ diff: adds checks and a default offset of 0; existing overflow guard (used > UINT64_MAX - offset) preserved. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

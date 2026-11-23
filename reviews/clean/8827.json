@@ -1,0 +1,14 @@
+{
+  "pr": 8827,
+  "head_sha": "bf1b868a029b560fac22131fd696bfead7ee1f5a",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/buffer_store_probe.py and tools/mode_round_probe.py: oracle is closed in a finally block, oracle result lengths and None entries are checked, and harness errors exit 2; hardware-probe tooling only.",
+    "Mostly a re-indent into try/finally plus extra validation, with two new tests. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

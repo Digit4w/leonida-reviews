@@ -1,0 +1,14 @@
+{
+  "pr": 8912,
+  "head_sha": "5abc79bcf33730d478bebc9c089afa8b8a23c342",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "heap_index_census collects descriptor roles keyed by load pc so backward-branch consumers are no longer reported as unused; test added.",
+    "Read the 5-line production change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8586,
+  "head_sha": "ba1e428c48590fe49854b2bb64435c2bf54e9a0c",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production C++ diff read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Store consumable, purchase-id and license-token calls complete their async block offline with E_FAIL instead of failing synchronously.",
+    "Read the new handlers: null/count checks on arguments, results go through XAsyncGetResult with identity check; docs updated.",
+    "No tripwires, no overlaps, applies cleanly; tests included. Body mentions being AI-assisted and an issue claim."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

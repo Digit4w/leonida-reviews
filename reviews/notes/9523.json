@@ -1,0 +1,13 @@
+{
+  "pr": 9523,
+  "head_sha": "f967225be861557c8e032e4203a7ef123f62f0aa",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "notes",
+  "findings": [
+    "bcrypt shim: LoadLibraryExW of bcrypt.dll and advapi32.dll is restricted to System32 (good). Hardening: when both host BCryptGenRandom and RtlGenRandom fail, gen_random silently falls back to the splitmix64 stream (state 0 if unseeded) and returns success; better to return an error than predictable bytes. LEONIDA_RNG_SEED env var also makes all RNG output deterministic."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

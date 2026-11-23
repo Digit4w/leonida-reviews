@@ -6,7 +6,7 @@
 <title>Leonida PR review ledger</title>
 <meta name="robots" content="noindex">
 <style>
-/* The summary is the hero: live sentences that say how many PRs need attention, each one a filter.
+/* The summary is the hero: one box per verdict with a live count and what it means, each one a filter.
    Below it, one search bar and the reviews grouped from most to least serious.
    Self-contained on purpose: no script, font or image from another host, and review text is only ever set as text. */
 :root {
@@ -17,6 +17,7 @@
   --line: #e2dfee;
   --accent: #b81f66;
   --glow: rgba(255, 122, 92, 0.16);
+  --sunset-ink: linear-gradient(90deg, #d92b63 0%, #d9601a 50%, #7a52e0 100%);
   --sunset: linear-gradient(90deg, #ff5f8f 0%, #ff9a3d 45%, #ffd166 70%, #8f6bff 100%);
   --stop: #b3261e;   --stop-bg: #fde9e6;
   --note: #8a5a00;   --note-bg: #fbf0d2;
@@ -32,6 +33,7 @@
     color-scheme: dark;
     --bg: #120f1f; --panel: #1b172e; --ink: #f3f0fc; --ink-soft: #a59ec2; --line: #2c2745; --accent: #ff7db4;
     --glow: rgba(255, 95, 143, 0.20);
+    --sunset-ink: linear-gradient(90deg, #ff6b98 0%, #ffa24d 50%, #a98bff 100%);
     --stop: #ff9b91; --stop-bg: #46201c;
     --note: #f2c66b; --note-bg: #3e3114;
     --clean: #8ed6a6; --clean-bg: #163620;
@@ -43,6 +45,7 @@
   color-scheme: dark;
   --bg: #120f1f; --panel: #1b172e; --ink: #f3f0fc; --ink-soft: #a59ec2; --line: #2c2745; --accent: #ff7db4;
   --glow: rgba(255, 95, 143, 0.20);
+  --sunset-ink: linear-gradient(90deg, #ff6b98 0%, #ffa24d 50%, #a98bff 100%);
   --stop: #ff9b91; --stop-bg: #46201c;
   --note: #f2c66b; --note-bg: #3e3114;
   --clean: #8ed6a6; --clean-bg: #163620;
@@ -61,28 +64,92 @@ a { color: var(--accent); }
 
 /* header */
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
-.theme { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; }
-.theme:hover { border-color: var(--accent); }
+.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+.repo:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tabs { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+.tabs a { padding: 5px 13px; border-radius: 999px; font-size: 13px; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.live { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--clean); flex: none; }
+.live.off i { background: var(--none); }
+@media (prefers-reduced-motion: no-preference) { .live:not(.off) i { animation: pulse 2.4s ease-in-out infinite; } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--clean) 55%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
+.view { display: flex; flex-direction: column; gap: 22px; }
+.view[hidden] { display: none; }
+.mission { margin: 2px 0 0; font-size: 16.5px; max-width: 62ch; color: var(--ink); }
+.sub { margin: 0; color: var(--ink-soft); max-width: 70ch; }
+.theme, .gh { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.theme:hover, .gh:hover { border-color: var(--accent); }
+.gh.main { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+.gh.main:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.stats h1, .helpview h1 { font-size: clamp(26px, 4vw, 38px); }
+/* the effort so far */
+.stats { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 16px; }
+.stats h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.fact { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.fact .big { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(34px, 5vw, 50px); font-variant-numeric: tabular-nums; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
+.fact .what { font-weight: 600; }
+.fact .more-info { color: var(--ink-soft); font-size: 13.5px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.box h3 { margin: 0; font-size: 15.5px; }
+.box p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+.board { display: flex; flex-direction: column; gap: 9px; }
+.who { display: grid; grid-template-columns: minmax(96px, 150px) 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+.who .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.who .track { height: 10px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+.who .fill { height: 100%; border-radius: 999px; background: var(--sunset); min-width: 4px; }
+.who .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 13px; }
+.cover { display: grid; grid-template-columns: repeat(auto-fill, minmax(18px, 1fr)); gap: 4px; }
+.cell { aspect-ratio: 1; border-radius: 5px; background: var(--bg); border: 1px solid var(--line); position: relative; overflow: hidden; }
+.cell i { position: absolute; inset: 0; background: var(--clean); }
+.cell.hot { border-color: var(--stop); box-shadow: 0 0 0 1px var(--stop); }
+.axis { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-soft); align-items: center; }
+.key .cell { width: 14px; aspect-ratio: 1; display: inline-block; vertical-align: -2px; margin-right: 5px; }
+
+/* how to help */
+.help { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 16px;
+  background-image: radial-gradient(520px 200px at 100% 0%, var(--glow), transparent 70%); }
+.help h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
+.help > p { margin: 0; color: var(--ink-soft); max-width: 70ch; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; counter-reset: step; }
+.steps li { counter-increment: step; border: 1px solid var(--line); border-radius: 14px; padding: 14px 15px; background: var(--bg); display: flex; flex-direction: column; gap: 5px; }
+.steps li::before { content: counter(step); font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1; color: var(--accent); }
+.steps b { font-size: 15.5px; }
+.steps span { color: var(--ink-soft); font-size: 14px; }
+.help .rule { color: var(--ink); font-weight: 600; }
+.help .links { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* hero: the summary in sentences */
-.hero { display: flex; flex-direction: column; gap: 12px; padding-top: 6px; }
-.kicker { margin: 0; color: var(--ink-soft); font-size: 15px; }
+.hero { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+.headline { display: flex; flex-direction: column; gap: 4px; }
+h1 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; font-size: clamp(28px, 4.6vw, 44px); text-wrap: balance; }
+h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kicker { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
 .kicker b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.say { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; }
-.say button { background: none; border: 0; padding: 2px 0; margin: 0; cursor: pointer; text-align: left;
-  font-family: var(--display); font-weight: 750; letter-spacing: -0.022em; line-height: 1.12; font-size: clamp(22px, 3.7vw, 35px); color: var(--ink); text-wrap: balance; }
-.say button.lead { font-size: clamp(30px, 5.6vw, 54px); font-weight: 800; line-height: 1.04; margin-bottom: 6px; }
-.say button .n { font-variant-numeric: tabular-nums; }
-.say button.v-do-not-merge .n { color: var(--stop); }
-.say button.v-notes .n { color: var(--note); }
-.say button.v-clean .n { color: var(--clean); }
-.say button.v-scan-only .n { color: var(--scan); }
-.say button.v-not-reviewed .n, .say button.v-in-progress .n { color: var(--none); }
-.say button .t { opacity: 0.78; }
-.say button.lead .t, .say button:hover .t, .say button[aria-pressed="true"] .t { opacity: 1; }
-.say button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--accent); }
-.say.filtered button[aria-pressed="false"] { opacity: 0.4; }
+.monitor-status { margin: 7px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+.monitor-status[hidden] { display: none; }
+.say { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .say { grid-template-columns: 1fr 1fr; } .say button:first-child { grid-column: 1 / -1; } }
+.say button { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; padding: 15px 16px 14px; margin: 0; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 4px; color: var(--ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tone) 11%, var(--panel)) 0%, var(--panel) 62%); box-shadow: 0 10px 24px -22px rgba(10, 5, 40, 0.9); }
+.say button::before { content: ""; position: absolute; left: 14px; right: 14px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--tone); }
+.say button .n { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(30px, 4.4vw, 42px); font-variant-numeric: tabular-nums; color: var(--tone); }
+.say button .t { font-size: 13.5px; line-height: 1.3; color: var(--ink-soft); }
+.say button.v-do-not-merge { --tone: var(--stop); --tint: var(--stop-bg); }
+.say button.v-notes { --tone: var(--note); --tint: var(--note-bg); }
+.say button.v-clean { --tone: var(--clean); --tint: var(--clean-bg); }
+.say button.v-scan-only { --tone: var(--scan); --tint: var(--scan-bg); }
+.say button.v-not-reviewed, .say button.v-in-progress { --tone: var(--none); --tint: var(--none-bg); }
+@media (hover: hover) { .say button:hover { border-color: var(--tone); } .say button:hover .t { color: var(--ink); } }
+.say button[aria-pressed="true"] { background: var(--tint); border-color: var(--tone); box-shadow: 0 0 0 1px var(--tone); }
+.say button[aria-pressed="true"] .t { color: var(--ink); }
+.say.filtered button[aria-pressed="false"] { opacity: 0.55; }
 .hint { margin: 0; color: var(--ink-soft); font-size: 13.5px; max-width: 70ch; }
 .hint b { color: var(--ink); }
 
@@ -93,10 +160,24 @@ a { color: var(--accent); }
 .search input { flex: 1 1 auto; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 10px 14px; font-size: 15.5px; }
 .search input::placeholder { color: var(--ink-soft); }
 .opts { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 13.5px; color: var(--ink-soft); padding: 0 2px; }
-.opts label { display: flex; align-items: center; gap: 6px; }
-.opts select { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; color: var(--ink); max-width: 100%; }
+.opts { gap: 8px 10px; }
+.opts label.pick { display: flex; align-items: center; gap: 7px; }
+.opts select { -webkit-appearance: none; appearance: none; background-color: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 30px 6px 13px; color: var(--ink); max-width: 100%; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.opts select:hover { border-color: var(--accent); }
+/* toggles: the checkbox stays in the page for keyboards and screen readers, the pill is what you see */
+.chip { position: relative; display: inline-flex; cursor: pointer; }
+.chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px 6px 10px; background: var(--bg); color: var(--ink-soft); white-space: nowrap; }
+.chip span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink-soft); flex: none; }
+.chip:hover span { border-color: var(--accent); color: var(--ink); }
+.chip input:checked + span { background: color-mix(in srgb, var(--accent) 16%, var(--panel)); border-color: var(--accent); color: var(--ink); }
+.chip input:checked + span::before { background: var(--accent); border-color: var(--accent); }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip[hidden] { display: none; }
 .opts .count { margin-left: auto; font-family: var(--mono); font-size: 13px; }
-.opts .clear { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px; color: var(--accent); cursor: pointer; }
+.opts .clear { background: none; border: 0; border-radius: 999px; padding: 6px 8px; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .opts .clear[hidden] { display: none; }
 
 /* list */
@@ -162,7 +243,8 @@ footer p { margin: 0; max-width: 80ch; }
   .tools { position: static; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .say button, .theme, .more { transition: color 0.15s, border-color 0.15s, opacity 0.15s; }
+  .say button, .theme, .gh, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
+  @media (hover: hover) { .say button:hover { transform: translateY(-2px); } }
 }
 </style>
 </head>
@@ -171,14 +253,29 @@ footer p { margin: 0; max-width: 80ch; }
 <div class="sky">
 <div class="wrap">
   <div class="top">
-    <span class="repo">ItsNotRexed/Leonida · security reviews</span>
-    <button type="button" class="theme" id="theme">Switch to dark</button>
+    <span class="nav"><a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
+      <span class="live off" id="live" title="This page checks for new reviews by itself every minute"><i></i><span id="live-text">connecting</span></span></span>
+    <span class="nav">
+      <nav class="tabs" aria-label="Sections">
+        <a href="#reviews" data-view="reviews">Reviews</a>
+        <a href="#stats" data-view="stats">Stats</a>
+        <a href="#help" data-view="help">How to help</a>
+      </nav>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews" rel="noopener">Repository ↗</a>
+      <button type="button" class="theme" id="theme">Switch to dark</button>
+    </span>
   </div>
 
+  <div class="view" id="view-reviews">
   <section class="hero" aria-label="Summary">
-    <p class="kicker" id="kicker">Loading the reviews.</p>
+    <div class="headline">
+      <h1>Leonida <em>security reviews</em></h1>
+      <p class="mission">Volunteers read Leonida's pull requests for malicious code, so the maintainers can merge with less risk.</p>
+      <p class="kicker" id="kicker">Loading the reviews.</p>
+    <p class="monitor-status" id="monitor-status" role="status" aria-live="polite" hidden></p>
+    </div>
     <div class="say" id="say"></div>
-    <p class="hint">Tap a line to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
+    <p class="hint">Tap a box to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
   </section>
 
   <section class="tools" aria-label="Find and filter">
@@ -187,17 +284,17 @@ footer p { margin: 0; max-width: 80ch; }
       <input type="search" id="q" placeholder="Find a PR: number, title, author or keyword" autocomplete="off">
     </div>
     <div class="opts">
-      <label for="reviewer">Checked by
+      <label class="pick" for="reviewer">Checked by
         <select id="reviewer"><option value="">anyone</option></select>
       </label>
-      <label for="sort">Order
+      <label class="pick" for="sort">Order
         <select id="sort">
           <option value="serious">most serious first</option>
           <option value="newest">newest PR first</option>
         </select>
       </label>
-      <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> Only reviews with remarks</label>
-      <label for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"> Hide automated scans</label>
+      <label class="chip" for="onlyFindings"><input type="checkbox" id="onlyFindings"><span>With remarks only</span></label>
+      <label class="chip" for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"><span>Hide automated scans</span></label>
       <button type="button" class="clear" id="clear" hidden>Clear filters</button>
       <span class="count" id="count"></span>
     </div>
@@ -214,6 +311,53 @@ footer p { margin: 0; max-width: 80ch; }
       <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
     </dl>
     <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
+  </footer>
+  </div>
+
+  <div class="view stats" id="view-stats" hidden>
+    <div class="headline">
+      <h1>The <em>effort</em> so far</h1>
+      <p class="sub">What the review group has done, counted from the review files. Nothing here is fetched from GitHub.</p>
+    </div>
+    <div class="trio" id="trio"></div>
+    <div class="two">
+      <div class="box">
+        <h3>Who checked the most</h3>
+        <div class="board" id="board"></div>
+        <p>Review files added to the table, per GitHub account. A count is not a measure of effort or quality.</p>
+      </div>
+      <div class="box">
+        <h3>Where we have looked</h3>
+        <div class="cover" id="cover"></div>
+        <div class="axis"><span id="axis-from"></span><span id="axis-to"></span></div>
+        <div class="key"><span><span class="cell"><i style="opacity:.15"></i></span>few checked</span><span><span class="cell"><i style="opacity:.9"></i></span>many checked</span><span><span class="cell hot"></span>holds a "do not merge"</span></div>
+        <p id="cover-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="view helpview" id="view-help" hidden>
+    <div class="headline">
+      <h1>Want to <em>help</em>?</h1>
+    </div>
+  <section class="help" aria-label="How to help">
+    <p>Anyone can add reviews. You need a GitHub account and an AI agent that can read a pull request's diff.</p>
+    <ol class="steps">
+      <li><b>Pick a PR nobody checked</b><span>Search for its number on this page. If it is not here, it is free to take.</span></li>
+      <li><b>Give your agent the group's prompt</b><span>It says what to look for and how to write the review file, so everyone's reviews line up.</span></li>
+      <li><b>Send your review files</b><span>Open a pull request on the repository with one small file per PR you checked.</span></li>
+    </ol>
+    <p class="rule">One rule above all: read the diff, never run a PR's code.</p>
+    <div class="links">
+      <a class="gh main" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AGENT_PROMPT.md" rel="noopener">The agent prompt ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews#readme" rel="noopener">How the review files work ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md" rel="noopener">Who is helping ↗</a>
+    </div>
+  </section>
+  </div>
+
+
+  <footer>
     <p id="stamp"></p>
     <p>Data: the review files of <a href="https://github.com/Etoile-Bleu/leonida-reviews">Etoile-Bleu/leonida-reviews</a>. Reviews by the people listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
   </footer>
@@ -228,7 +372,7 @@ footer p { margin: 0; max-width: 80ch; }
     "notes":        { label: "Needs a look", mark: "!", one: " needs a second look.", many: " need a second look.", help: "No malicious code found, but there is a remark a maintainer should read." },
     "scan-only":    { label: "Quick scan only", mark: "~", one: " only got a quick scan.", many: " only got a quick scan.", help: "A pattern scan ran on these. Nobody read the change." },
     "not-reviewed": { label: "Not reviewed", mark: "–", one: " could not be reviewed.", many: " could not be reviewed.", help: "The review could not be done, for the reason given on the row." },
-    "in-progress":  { label: "In progress", mark: "…", one: " is being reviewed.", many: " are being reviewed.", help: "Someone has claimed these and is working on them." },
+    "in-progress":  { label: "In progress", mark: "…", one: " is being reviewed.", many: " are being reviewed.", help: "A reviewer or the automated historical scanner has claimed or queued these; completed pattern scans move to Quick scan only." },
     "clean":        { label: "Clean", mark: "✓", one: " came back clean.", many: " came back clean.", help: "Nothing malicious found in what was checked. Not a guarantee." }
   };
   var PAGE = 100;
@@ -275,8 +419,9 @@ footer p { margin: 0; max-width: 80ch; }
     var counts = {}, total = 0;
     all.forEach(function (r) { if (inScope(r)) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; total++; } });
     var k = $("kicker"); k.textContent = "";
-    k.appendChild(el("b", null, fmt(total)));
-    k.appendChild(document.createTextNode(" Leonida pull request" + (total === 1 ? " has" : "s have") + " been security-checked so far."));
+    var pending = counts["in-progress"] || 0, checked = total - pending;
+    k.appendChild(el("b", null, fmt(checked)));
+    k.appendChild(document.createTextNode(" Leonida pull request" + (checked === 1 ? " has" : "s have") + " been security-checked so far" + (pending ? ", and " + fmt(pending) + " more " + (pending === 1 ? "is" : "are") + " being reviewed." : ".")));
     var box = $("say"); box.textContent = "";
     box.className = "say" + (state.verdict ? " filtered" : "");
     var keys = ORDER.filter(function (v) { return counts[v]; });
@@ -285,9 +430,8 @@ footer p { margin: 0; max-width: 80ch; }
       var b = el("button", "v-" + v);
       b.type = "button";
       b.setAttribute("aria-pressed", String(state.verdict === v));
-      if (v === keys[0] && rank(v) < rank("clean")) b.className += " lead";
       b.appendChild(el("span", "n", fmt(counts[v])));
-      b.appendChild(el("span", "t", counts[v] === 1 ? info(v).one : info(v).many));
+      b.appendChild(el("span", "t", (counts[v] === 1 ? info(v).one : info(v).many).replace(/^\s+|\.$/g, "")));
       b.addEventListener("click", function () { state.verdict = (state.verdict === v ? "" : v); reset(); });
       box.appendChild(b);
     });
@@ -387,13 +531,94 @@ footer p { margin: 0; max-width: 80ch; }
     }
   }
 
-  function wire() {
-    var by = {};
-    all.forEach(function (r) { by[r.reviewer] = (by[r.reviewer] || 0) + 1; });
-    Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).forEach(function (name) {
-      var o = el("option", null, name + " (" + fmt(by[name]) + ")"); o.value = name; $("reviewer").appendChild(o);
+  function drawStats() {
+    var done = all.filter(function (r) { return r.verdict !== "in-progress"; });
+    if (!done.length) return;
+    var stopped = done.filter(function (r) { return r.verdict === "do-not-merge"; }).length;
+    var people = {}, human = 0, posted = 0;
+    done.forEach(function (r) {
+      if (!r.automated) { var h = r.reviewer.split("/")[0]; people[h] = (people[h] || 0) + 1; }
+      if (r.human) human++;
+      if (r.commented) posted++;
     });
+    var names = Object.keys(people).sort(function (a, b) { return people[b] - people[a]; });
+    var trio = $("trio"); trio.textContent = "";
+    function fact(n, what, more) {
+      var f = el("div", "fact");
+      f.appendChild(el("span", "big", fmt(n)));
+      f.appendChild(el("span", "what", what));
+      f.appendChild(el("span", "more-info", more));
+      trio.appendChild(f);
+    }
+    fact(done.length, "pull requests checked", fmt(human) + " of them also read by a human");
+    fact(stopped, stopped === 1 ? "stopped before merge" : "stopped before merge", fmt(posted) + (posted === 1 ? " remark" : " remarks") + " posted on the PRs themselves");
+    fact(names.length, names.length === 1 ? "person reviewing" : "people reviewing", "each with an AI agent, on their own time");
+
+    var board = $("board"); board.textContent = "";
+    var top = names.slice(0, 8), max = people[top[0]] || 1;
+    top.forEach(function (h) {
+      var row = el("div", "who");
+      row.appendChild(el("span", "name", h));
+      var track = el("span", "track"), fill = el("span", "fill");
+      fill.style.width = (people[h] / max * 100).toFixed(1) + "%";
+      fill.style.display = "block";
+      track.appendChild(fill); row.appendChild(track);
+      row.appendChild(el("span", "num", fmt(people[h])));
+      board.appendChild(row);
+    });
+
+    var STEP = 250, lo = Infinity, hi = 0, buckets = {};
+    done.forEach(function (r) {
+      if (!(r.pr > 0)) return;
+      lo = Math.min(lo, r.pr); hi = Math.max(hi, r.pr);
+      var k = Math.floor(r.pr / STEP);
+      buckets[k] = buckets[k] || { n: 0, hot: false };
+      buckets[k].n++; if (r.verdict === "do-not-merge") buckets[k].hot = true;
+    });
+    var cover = $("cover"); cover.textContent = "";
+    var first = Math.floor(lo / STEP), last = Math.floor(hi / STEP), peak = 1;
+    for (var k = first; k <= last; k++) if (buckets[k]) peak = Math.max(peak, buckets[k].n);
+    for (k = first; k <= last; k++) {
+      var b = buckets[k] || { n: 0, hot: false };
+      var cell = el("span", "cell" + (b.hot ? " hot" : ""));
+      cell.title = "#" + (k * STEP) + " to #" + (k * STEP + STEP - 1) + ": " + b.n + " checked" + (b.hot ? ", holds a do-not-merge" : "");
+      if (b.n) { var i = el("i"); i.style.opacity = (0.15 + 0.75 * b.n / peak).toFixed(2); cell.appendChild(i); }
+      cover.appendChild(cell);
+    }
+    $("axis-from").textContent = "#" + (first * STEP);
+    $("axis-to").textContent = "#" + (last * STEP + STEP - 1);
+    $("cover-note").textContent = "One square is " + STEP + " PR numbers in a row. The fullest square holds " + fmt(peak) + " checked PRs. Hover a square for its range.";
+  }
+
+  var VIEWS = ["reviews", "stats", "help"];
+  function showView() {
+    var want = (location.hash || "").replace("#", "");
+    if (VIEWS.indexOf(want) < 0) want = "reviews";
+    VIEWS.forEach(function (v) { $("view-" + v).hidden = (v !== want); });
+    var links = document.querySelectorAll(".tabs a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute("data-view") === want) links[i].setAttribute("aria-current", "page");
+      else links[i].removeAttribute("aria-current");
+    }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", showView);
+  showView();
+
+  function fillReviewers() {
+    var sel = $("reviewer"), by = {};
+    all.forEach(function (r) { by[r.reviewer] = (by[r.reviewer] || 0) + 1; });
+    while (sel.options.length > 1) sel.remove(1);
+    Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).forEach(function (name) {
+      var o = el("option", null, name + " (" + fmt(by[name]) + ")"); o.value = name; sel.appendChild(o);
+    });
+    if (state.reviewer && !by[state.reviewer]) state.reviewer = "";
+    sel.value = state.reviewer;
     $("hideAutoWrap").hidden = !all.some(function (r) { return r.automated; });
+  }
+
+  function wire() {
+    fillReviewers();
     $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); reset(); });
     $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; reset(); });
     $("sort").addEventListener("change", function (e) { state.sort = e.target.value; reset(); });
@@ -406,21 +631,120 @@ footer p { margin: 0; max-width: 80ch; }
     });
   }
 
-  fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    var when = new Date(res.headers.get("last-modified") || "");
-    $("stamp").textContent = (isNaN(when) ? "" : "Table last published " + when.toLocaleString() + ". ") + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
-    return res.json();
-  }).then(function (rows) {
-    all = rows.map(function (r) {
-      return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
-               findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
-               automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
+  var EVERY = 60000, wired = false, lastSeen = "", lastLiveQueueSignature = "";
+  function clock(d) { return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
+  function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
+
+  function loadMonitorStatus() {
+    return fetch("monitor-status.json?t=" + Date.now(), { cache: "no-store" }).then(function (res) {
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    }).then(function (data) {
+      var node = $("monitor-status");
+      if (!data || !data.status) { node.hidden = true; return; }
+
+      if (Array.isArray(data.in_progress_prs)) {
+        var activeRows = data.in_progress_prs;
+        var activeIds = {};
+        activeRows.forEach(function (item) { activeIds[Number(item.pr)] = true; });
+        var signature = String(data.run_id || "") + ":" + JSON.stringify(activeRows);
+        if (signature !== lastLiveQueueSignature) {
+          all = all.filter(function (r) {
+            if (!r.automated) return true;
+            if (r.verdict === "in-progress") return false;
+            if (r.verdict === "scan-only" && activeIds[r.pr]) return false;
+            return true;
+          });
+          activeRows.forEach(function (item) {
+            all.push({
+              pr: Number(item.pr), verdict: "in-progress",
+              reviewer: "leonida-security-monitor/automated",
+              date: String(data.updated_at || "").slice(0, 10),
+              scope: "Queued for the current automated historical scan window (" + String(item.range || "") + ").",
+              findings: [], head: String(item.head || ""), human: false, commented: false,
+              automated: true, title: String(item.title || ""), author: String(item.author || "")
+            });
+          });
+          lastLiveQueueSignature = signature;
+          if (wired) { fillReviewers(); draw(); drawStats(); }
+        }
+      }
+
+      var updated = new Date(data.updated_at || "");
+      var ageSeconds = isNaN(updated) ? Infinity : Math.max(0, (Date.now() - updated.getTime()) / 1000);
+      var completed = fmt(Number(data.completed || 0));
+      var total = fmt(Number(data.total || 0));
+      var remaining = fmt(Number(data.remaining || 0));
+      var active = Number(data.current_pr || 0);
+      var range = data.current_range ? " · range " + data.current_range : "";
+      var text;
+
+      if (data.status === "running") {
+        text = "Automated monitor is scanning" + (active ? " PR #" + active : " the queued PRs") +
+          range + " · " + completed + "/" + total + " processed (" + remaining + " remaining).";
+      } else if (data.status === "queued") {
+        text = "Automated historical scan queued · " + total + " PRs across the requested ranges.";
+      } else if (data.status === "waiting_for_next_batch") {
+        text = "Automated scan paused between batches · " + completed + "/" + total +
+          " processed · " + remaining + " remaining.";
+      } else if (data.status === "completed") {
+        text = "Automated historical scan complete · " + completed + "/" + total + " PRs processed.";
+      } else {
+        text = "Automated scan status: " + String(data.status) + " · " + completed + "/" + total + " processed.";
+      }
+
+      if (Number(data.in_progress_window || 0) > 0 && data.status !== "completed") {
+        text += " " + fmt(Number(data.in_progress_window)) + " PRs are currently listed as in progress.";
+      }
+      if (ageSeconds > 180 && data.status === "running") {
+        text += " Last progress update is " + Math.round(ageSeconds / 60) + " minutes old; the run may be delayed.";
+      }
+      if (!isNaN(updated)) text += " Updated " + clock(updated) + ".";
+      node.textContent = text;
+      node.hidden = false;
     });
-    wire(); draw();
-  }).catch(function (err) {
+  }
+
+  function load() {
+    return fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var when = new Date(res.headers.get("last-modified") || "");
+      return res.text().then(function (text) { return { text: text, when: when }; });
+    }).then(function (got) {
+      setLive(true, "live · checked " + clock(new Date()));
+      if (got.text === lastSeen) return;          // nothing new: leave the page as it is
+      var rows = JSON.parse(got.text);
+      lastSeen = got.text;
+      all = rows.map(function (r) {
+        return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
+                 findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
+                 automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
+      });
+      $("stamp").textContent = (isNaN(got.when) ? "" : "Table last published " + got.when.toLocaleString() + ". ") + "This page looks for new reviews every minute while it is open.";
+      if (!wired) { wire(); wired = true; } else { fillReviewers(); }
+      draw(); drawStats();
+    });
+  }
+
+  load().catch(function (err) {
+    setLive(false, "offline");
     $("kicker").textContent = "The reviews could not be loaded.";
     $("list").appendChild(el("div", "state", "The review data did not load (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
+  });
+  setInterval(function () {
+    if (document.hidden) return;                  // do not poll from a background tab
+    load().catch(function () { setLive(false, "offline, retrying"); });
+  }, EVERY);
+  loadMonitorStatus().catch(function () {});
+  setInterval(function () {
+    if (!document.hidden) loadMonitorStatus().catch(function () {});
+  }, 15000);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) {
+      if (wired) load().catch(function () { setLive(false, "offline, retrying"); });
+      loadMonitorStatus().catch(function () {});
+    }
   });
 })();
 </script>

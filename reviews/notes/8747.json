@@ -1,0 +1,14 @@
+{
+  "pr": 8747,
+  "head_sha": "cf695ee3cb415b460329e32634ef5c1ee2ce009b",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "Static, AI-assisted, nothing executed; read the first ~half of the rdna2spirv.py diff, run_gpu_tests.py and check.py changes closely; the rest of the 315-line translator change and the 329-line test skimmed; tripwire/overlap/apply triage used.",
+  "verdict": "notes",
+  "findings": [
+    "Large (+864) translator change in tools/rdna2spirv.py tracking never-launched lane bits for partial-wave SALU masks, plus 2 asm fixtures, GPU test registration and a semantic test; Python text generation for SPIR-V only, no subprocess/network/file writes seen.",
+    "Part not read in full (second half of the translator diff), so verdict is notes rather than clean. Applies cleanly, no overlap, has tests."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

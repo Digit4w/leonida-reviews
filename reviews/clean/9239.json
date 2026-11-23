@@ -1,0 +1,14 @@
+{
+  "pr": 9239,
+  "head_sha": "105f0ff663a26b9983d87a043f8f86be2458def8",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rpf9dump (C#): Util.MoveReplace now also retries on UnauthorizedAccessException for an existing, non-readonly destination on Windows, and the manifest write uses MoveReplace instead of File.Move. Small robustness change with a diagnostics test.",
+    "Read the diff: bounded retry on a local rename; no new paths or external calls. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

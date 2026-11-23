@@ -1,0 +1,14 @@
+{
+  "pr": 8796,
+  "head_sha": "394fccb4db9cffd67287bccefbbd2d61918b1bad",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds a bvh_nan scene to runtime/test/vk_compute_test.cpp and runs it from scripts/run_gpu_tests.py and check.py so the canonical NaN word is pinned; test tooling only, fixed-argument run_cmd, no shell.",
+    "Body says it depends on #7377 and that both edit vk_compute_test.cpp, run_gpu_tests.py and check.py, so expect a rebase conflict on whichever lands second. Applies cleanly on main today. Body discloses AI assistance."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

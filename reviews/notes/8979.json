@@ -1,0 +1,14 @@
+{
+  "pr": 8979,
+  "head_sha": "8c1bde707e02d26a2339260ca05385dbf1e88510",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "progress_dashboard: new --ctest-junit FILE selects the local CTest JUnit report in place of LastTest.log so skipped tests are not counted twice; --junit reports equal to it are skipped; tests added.",
+    "Read the Python diff; ElementTree parsing as before, OSError now handled. PR is marked draft, so wait for it to be ready. No overlap, applies cleanly. Touches the same file as #8906 (nested JUnit suites), possible rebase."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9215,
+  "head_sha": "b20f6900cb0b605e361887cba4fa7df417248dc2",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used; the diff only shows lock acquisition lines without surrounding code, so lock nesting was not fully verifiable",
+  "verdict": "notes",
+  "findings": [
+    "file_system.cpp: adds 64 striped mutexes keyed by a hash of the upper-cased folder path so RemoveDirectoryW and a create inside the folder are ordered like the host. 38 prod lines plus a 2000-round race test and doc lines.",
+    "Hardening note: with striped locks, two different folders can share a mutex; if any path locks the parent folder and then the folder itself (or a second folder) in the same thread, a std::mutex would self-deadlock. The diff does not show such nesting; maintainers should confirm. Applies cleanly, no overlaps."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

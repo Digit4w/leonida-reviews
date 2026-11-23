@@ -1,0 +1,14 @@
+{
+  "pr": 9419,
+  "head_sha": "014d99f37c61f521d9190180c07b9fad033421bf",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "opt-in LEONIDA_PRESENT_DUMP writes presented frames as PNG to a directory the user names; each file is created exclusively as a .tmp and renamed, so an existing link at the target is not written through",
+    "also adds shims\\xg_xs.cpp to the cl.exe fallback in scripts/build_runtime.ps1, as #9197 and #8393 do (they will conflict on that line)"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

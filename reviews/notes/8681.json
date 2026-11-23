@@ -1,0 +1,15 @@
+{
+  "pr": 8681,
+  "head_sha": "6bafff528ea25a88abdfcd55a60206fd2d314e8e",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "make_game.py: on Windows, probes several dotnet.exe candidates (PATH entries, ProgramW6432, ProgramFiles, DOTNET_ROOT, LOCALAPPDATA and USERPROFILE locations) with --list-sdks and uses the first with an 8+ SDK to build rpf9dump; subprocess uses argument lists.",
+    "Hardening note: it executes dotnet.exe from user-writable folders (DOTNET_ROOT, %LOCALAPPDATA%\\Microsoft\\dotnet, ~\\.dotnet), which are normal dotnet locations but are a trust decision; the build already runs dotnet from PATH.",
+    "Slop: the PR description is the unfilled template (claim, Depends on, What and why, Tested are all still placeholder comments); the title references #8434 only. 137 test lines. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

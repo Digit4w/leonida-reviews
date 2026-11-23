@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1144,
+  "head_sha": "4d9894822c3ca7549add6c4ef02683dcd50af8e8",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "run_gpu_tests: vk_store_test's exit 77 is a SKIP for cs_imgload and cs_imgstore",
+  "author": "kapitche",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1144",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:05.956602+00:00"
+}

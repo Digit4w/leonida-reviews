@@ -1,0 +1,14 @@
+{
+  "pr": 8691,
+  "head_sha": "c7ce8a3ab5d62dfad629df1859e212c0237ad7dd",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "xgameruntime_offline.cpp: game streaming client queries (register properties, dimensions, server location, session id) answer documented no-client / no-datacenter / not-initialized HRESULTs, tracked with an atomic initialized flag; outputs zeroed on failure.",
+    "Null-checked out-parameters. Tests added. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

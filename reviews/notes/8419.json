@@ -1,0 +1,13 @@
+{
+  "pr": 8419,
+  "head_sha": "52e2dfd4ce8a2427b5b6b5d7fd378ae78c09dc8d",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "notes",
+  "findings": [
+    "test only: dxgi_swapchain_test calls LoadLibraryW(L\"dxgi.dll\") by bare name to compare with the host; dxgi.dll is a KnownDLL so the risk is low, but LoadLibraryExW with LOAD_LIBRARY_SEARCH_SYSTEM32 would make the System32 source explicit. Shim change itself only alters a return code."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

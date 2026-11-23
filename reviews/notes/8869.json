@@ -1,0 +1,15 @@
+{
+  "pr": 8869,
+  "head_sha": "d0c38a541c71de4bf2c805b7e9e4f2a3ff134316",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds Xbox D3D12 device slot 81 (GetFrameEventsX) route in d3d12_xs_device with a 0x38-byte XboxFrameEvent layout (static_assert checked), env override LEONIDA_XS_FRAME_EVENTS_SLOT, and a unit test.",
+    "Robustness note: proxy reinterpret_casts guest pointers and query_frame_events_empty reads *num_events without validating the pointer beyond null; it never writes a zero count back. Guest is the user's own game, so not a privilege issue.",
+    "Read the C++ diff; no overlap, applies cleanly. Body says slot 55 is owned by #7759 (no overlap)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

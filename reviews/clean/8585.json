@@ -1,0 +1,15 @@
+{
+  "pr": 8585,
+  "head_sha": "d3dcad88aeb102b58fb473173025c388de81d766",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production C++ diff read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Offline invite, profile card, achievements and player picker calls now complete their async block with E_ABORT and report zero players.",
+    "Read the provider and getter code: null checks present, no sizes or pointers from guest data used unchecked.",
+    "No tripwires, no overlaps, applies cleanly; tests included."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

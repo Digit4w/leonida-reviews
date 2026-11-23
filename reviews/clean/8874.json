@@ -1,0 +1,14 @@
+{
+  "pr": 8874,
+  "head_sha": "9f8b0c4e1a90a1dc404df2346f758518e87429df",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "pe_shader_containers: module_name() returns None for a bare .pdb basename (operator-precedence fix) and safe_stem() falls back to container_NN for Windows reserved device stems; tests added.",
+    "Read both production hunks; filename sanitization only (hardening, not a vulnerability). The visible reserved-name set lists CON/PRN/AUX/NUL/CONIN$/CONOUT$; COM/LPT handling is asserted by tests and appears to come from existing code. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

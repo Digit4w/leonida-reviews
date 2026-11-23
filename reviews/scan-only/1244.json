@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1244,
+  "head_sha": "a8dd36df99daf1dc4aab1e116947cb94adbcf924",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "d3d12_xs_root_signature_test: skip 1.2 when the runtime doesn't know it",
+  "author": "Ryongen",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1244",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:58.195494+00:00"
+}

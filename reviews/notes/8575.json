@@ -1,0 +1,14 @@
+{
+  "pr": 8575,
+  "head_sha": "464fbbbe4323b8d6f0cc35f5757bd1af35ad76fd",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests and docs skimmed; tripwire scan of every added line (workflows, downloads, DLL loads, obfuscation, hidden Unicode, binaries, submodules, agent-directed text); duplicate check against ~4,400 open PRs (shared added lines and titles) and `git apply --check` against current main",
+  "verdict": "notes",
+  "findings": [
+    "minidump parser (struct.unpack_from over a dump file): bounds handling not verified line by line",
+    "no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

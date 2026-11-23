@@ -1,0 +1,14 @@
+{
+  "pr": 8704,
+  "head_sha": "cb0d782e04e2a4399fd9d0849a3850c0858bcfc1",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "one-line test diff read; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "tests/test_bink_names.py: the assertion also accepts the backslash-escaped form of the blocked path so the PermissionError test passes on Windows; one changed line, no production code.",
+    "Same author opened near-identical one-line PRs for other test files: #8738 (test_world_names), #8785 (test_opus_tags), #8887 (test_awc_manifest), #8897 (test_awc_markers). Not the same lines, but a series of micro-PRs with the same fix that could be one change. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

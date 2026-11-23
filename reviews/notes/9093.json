@@ -1,0 +1,15 @@
+{
+  "pr": 9093,
+  "head_sha": "45c50b37b87125b8650418ce4760655b1fbf38a5",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "library_loader.cpp: replaces function-local statics (which pull in _Init_thread_header guards that crash under Wine per the body) with one namespace-scope heap-allocated Immortal struct holding the mutex, pseudo deque, host name map and not-served set. Behavior-preserving restructure.",
+    "Shares 13 lines (100% of this PR's added lines, 41% of that PR) with #9158 by the same author (same bug class in the Trace code), so related or overlapping. Body also says it may conflict textually with #8859. Applies cleanly.",
+    "Hardening note: a namespace-scope dynamic initializer could in theory run after another translation unit's static init that calls the loader; not shown to be an issue in the diff."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

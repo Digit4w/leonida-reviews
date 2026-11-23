@@ -1,0 +1,14 @@
+{
+  "pr": 8775,
+  "head_sha": "6e6ba4794705f340784f5022c19950b0db4abff1",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Docs/comment fixes only: docs/testing.md Linux ICD globs, a gs_tri.asm comment, and a docstring name in tools/pe_shader_containers.py.",
+    "No code behavior changed; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

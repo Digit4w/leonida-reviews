@@ -1,0 +1,15 @@
+{
+  "pr": 8743,
+  "head_sha": "f014f44c9ce539a6c24984c3380f8f3c6b6ece8f",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Test fix: patches the renamed _resolved_key/_same_resolved_name helpers in tests/test_psin_names.py (2 lines); production code untouched.",
+    "The PR also carries a docs/page_directory.md rewrite (u32@0x20 re-described as root-block index) from a second commit that is not in the title; docs only, plain text, no instructions to reviewers. Consider whether the two changes should be separate PRs.",
+    "Applies cleanly, no overlap."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

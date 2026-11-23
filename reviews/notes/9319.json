@@ -1,0 +1,14 @@
+{
+  "pr": 9319,
+  "head_sha": "56941c34fb32d23ea7a1a1a4a3a1a73bde474223",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "f64_omod_probe.py --json now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Near-identical same-author staged-write PR in a large series (#9343, #9312, #9301, #9293, #9286 flagged); different probe files, no shared lines. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

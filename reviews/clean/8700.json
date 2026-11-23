@@ -1,0 +1,14 @@
+{
+  "pr": 8700,
+  "head_sha": "7771d9b9b7ed002eb02c894268d3d18d6ef9d7c5",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "viewer/studio.html: formatBytes returns '0 B' for non-finite or non-positive values and clamps the unit index, adding a TB unit; no DOM or innerHTML changes; JS test added.",
+    "3 changed lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

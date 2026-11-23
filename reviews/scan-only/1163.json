@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1163,
+  "head_sha": "2bbfbc11ac106b0ef0634dd3bc2291b0a8778cd3",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "anim_index: reject colliding index and rig reports",
+  "author": "lucastayaralvarenga-ui",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1163",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:25.797169+00:00"
+}

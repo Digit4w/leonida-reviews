@@ -1,0 +1,14 @@
+{
+  "pr": 8853,
+  "head_sha": "a7beea0910f4842c91e4650c0efedb7cb7084f8f",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/import_call_sites.py: DLL part of an --import filter stays case-insensitive but the symbol name is now matched case-sensitively; pure string handling with tests.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

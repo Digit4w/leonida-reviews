@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1276,
+  "head_sha": "c69c6f76c6538d915e5db788d1b7bfcbdea6ed57",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Fetch explicit 2D mips with the image view's numeric type",
+  "author": "evilclanker9000",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1276",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:44:31.832723+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8783,
+  "head_sha": "58f7d1ca6d92a9461339e479cce7a486679ccdcd",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "Static, AI-assisted, nothing executed; read runtime/src/cpu_emulation.h and main.cpp hook line by line; cpu_feature_scan.py, its tests, the C++ test and docs only skimmed; tripwire/overlap/apply triage used.",
+  "verdict": "notes",
+  "findings": [
+    "Stacked: body says it depends on #7111 and to review only the last commit; overlap confirms 87% of its lines are in #7111 (100% of #7111), and shares 793 lines with #8831, 791 with #8537, 472 with #7013 (stack ancestors). Merge in order or after #7111.",
+    "cpu_emulation.h installs a vectored exception handler that decodes #UD instructions (INSERTQ/EXTRQ/CLZERO/MONITORX/CLWB) and emulates them; CLZERO checks page protection with VirtualQuery before memset and the decoder bounds-checks against the readable span. No malicious pattern; guest-pointer handling is checked.",
+    "The in-process exception handler and its CLZERO loop fast-path (writes up to a region end for guest register values) are sensitive native code; worth a human read. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

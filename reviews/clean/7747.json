@@ -1,0 +1,13 @@
+{
+  "pr": 7747,
+  "head_sha": "91c7496f0b99c75821c79cecca662970a6d9753e",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read runtime/CMakeLists.txt change: Windows Kits SDK lib hint now read via cmake_host_system_information from both registry views (read-only HKLM query), kept only if the Lib dir exists. No download, FetchContent, execute_process or writes; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8738,
+  "head_sha": "536a3da0a93e1d4e86fbffbd17e1895b10c3591b",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "One-line test change in tests/test_world_names.py to also match the backslash-escaped Windows path in a PermissionError message; no production code.",
+    "Same author has near-identical titled PRs #8897, #8887, #8785 (in this slice) and #8704; likely duplicate submissions of the same change. Applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

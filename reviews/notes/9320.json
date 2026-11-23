@@ -1,0 +1,15 @@
+{
+  "pr": 9320,
+  "head_sha": "f4273fa7b41e91e6479b35862e18fbc075eba333",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read the xs proxy and the visible start of create_host_buffer in d3d12_vulkan_device.cpp; the remaining ~300 lines of that file and the tests not read",
+  "verdict": "notes",
+  "findings": [
+    "Large (+764) d3d12 change for slot-133 CreatePlacedResourceX: buffers placed on the title's pages are imported as Vulkan host-pointer memory (VirtualQuery region checks, alignment math with an overflow guard); title says it preserves placement VA for fallback textures.",
+    "Stacked: body says Depends on #7218; this PR contains 99% of #7218's added lines, 84% of #8455's, 79% of #8225's and 34% of #9137's, so it is a slice of the same slot-133 chain as #9045. Body starts with a stray BOM character; 20 commits including a merge of pr-6953. Applies cleanly now.",
+    "Robustness only: it imports and reads guest-supplied addresses (VirtualQuery checked before use); the guest is the game itself."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

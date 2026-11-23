@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1130,
+  "head_sha": "851eb563b62c821ac2f7ee9aa375b21cb58b60f3",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "do-not-merge",
+  "heuristic_signal_counts": {
+    "high": 1,
+    "medium": 0
+  },
+  "pr_title": "gameinput: keyboard pad moves and aims: WASD left stick, mouse right stick, mouse buttons LT/RT",
+  "author": "quackottu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1130",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:41:53.694406+00:00"
+}

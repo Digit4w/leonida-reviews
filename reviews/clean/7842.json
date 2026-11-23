@@ -1,0 +1,13 @@
+{
+  "pr": 7842,
+  "head_sha": "3b0e3d35c5448806e9528b53e53265c6de9df90c",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read docs/runtime_imports.md text, a comment in xgameruntime_user.cpp and one added test check of the Classic gamertag into a 21-byte buffer. No shim behaviour change, no network, scripts or binaries; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

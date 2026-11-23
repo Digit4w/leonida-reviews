@@ -1,0 +1,15 @@
+{
+  "pr": 8980,
+  "head_sha": "21016cf7aeefad9ed96b9bb8c4e76069b7eb0bb5",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "merge_check duplicate detection now tracks added line numbers with --inter-hunk-context=0 and compares windows across retained blank lines; test added.",
+    "Read the Python diff; git is invoked with argument lists (no shell), same as before. Applies cleanly.",
+    "Body lists Depends on #8291, #7291, #8634 for overlapping edits in the duplicate-check parser, but says the branch is based on main and mergeable alone; expect rebases."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

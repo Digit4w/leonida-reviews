@@ -1,0 +1,14 @@
+{
+  "pr": 8648,
+  "head_sha": "dc722ad24a9e7e05c5a3fb48879a2feb0cc9010c",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "fspx_prologue_probe.py: wraps oracle.run in the same try/finally so an Unavailable raised during run() prints one-line 'hardware oracle unavailable' to stderr, closes the oracle once and exits 77; tests updated.",
+    "No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

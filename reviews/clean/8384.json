@@ -1,0 +1,11 @@
+{
+  "pr": 8384,
+  "head_sha": "443a179bc01cdd949728cb7e129c0ca2ac2ed305",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of d3d12_xs_device.cpp; the mock test additions pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

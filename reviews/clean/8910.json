@@ -1,0 +1,14 @@
+{
+  "pr": 8910,
+  "head_sha": "17e3d023fe7a444f6d2cafd1905269bebbb9e156",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "gallery.py: model and texture listings now prune os.walk subfolders whose realpath is outside the base directory or already visited (Windows junctions), aligning listings with safe_subpath; tests added.",
+    "Read the helper; uses realpath and commonpath, a path-confinement hardening. Notes #4529 touches adjacent lines. No overlap flagged, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

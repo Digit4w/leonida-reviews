@@ -1,0 +1,15 @@
+{
+  "pr": 8890,
+  "head_sha": "f1ab75acaa0014c62c1acfcf1f2a92bcf1baa784",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds Xbox device slot 57 (DeserializeGraphicsPipelineStateX), fspx_gfx/index.json shader loading and pipeline-blob input-layout parsing (+653 lines, mostly measured-layout tables, docs and tests). Read the new d3d12_xs_device.cpp parser and slot handler, and the shader_library.h changes; tests/docs skimmed.",
+    "Native blob parsing is bounds-checked (read_u32 range check, memchr within size, 0x54 minimum, element cap, blob sizes capped by kFspxPartLimit); the descriptor itself is a raw guest pointer, a robustness note only.",
+    "Minor remarks: g_fspx_stage_dir is never updated after load_fspx_only so the library reloads on every lookup; spv_file from index.json is appended to the shader dir without a traversal check (local config, hardening only). Log text is partly Spanish. Applies cleanly, no overlap."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

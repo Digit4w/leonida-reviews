@@ -1,0 +1,14 @@
+{
+  "pr": 9256,
+  "head_sha": "53e3a571326ba0322c701a1ae7e342767480852c",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "gallery.py: the printed and opened address now uses the literal loopback IP 127.0.0.1 with the port, the address the server binds, instead of the name localhost (which can resolve to IPv6). One-line change plus tests.",
+    "Body says PR 4058 rewrites the same url line and keeps localhost, so the two conflict textually on that line (rebases trivially). No shared added lines reported. Applies cleanly now."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

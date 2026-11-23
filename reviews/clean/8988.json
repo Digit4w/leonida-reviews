@@ -1,0 +1,14 @@
+{
+  "pr": 8988,
+  "head_sha": "6d9e4ac6698b3e124701715838367a553646f438",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds tools/wave_trace.py and wave_trace.html: an offline HTML report comparing reference and translated SPIR-V at each prefix of a seeded wave32 case; wave_diff.py refactored (generate_case, differences) with tests and docs.",
+    "Read the Python and the viewer script: data is embedded as JSON with the less-than sign escaped to a unicode escape (a test covers a script-closing payload), the page renders only through textContent, and --out opens with mode x so it will not overwrite. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9051,
+  "head_sha": "c334a6b4396f6c0907e8ad7e34e1f7967c61e11a",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "shaders/build.py: malformed LEONIDA_USER_DATA_SHIFT, register past s105, SGPR count over 31 or bad fssm-data word now exit with one error line instead of a traceback. 16 prod lines, 42 test lines.",
+    "Read the diff: error handling only, no I/O or subprocess change. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

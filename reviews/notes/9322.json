@@ -1,0 +1,14 @@
+{
+  "pr": 9322,
+  "head_sha": "399d36f84e8640d80eea4fe331f95fd1a0b95e00",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; C++ and GLSL sources read, the embedded SPIR-V word arrays (debug_probe_spirv.h, about 80 lines of hex) not disassembled; test files skimmed",
+  "verdict": "notes",
+  "findings": [
+    "Adds two opt-in debug switches: LEONIDA_PROBE (replaces matching pipelines' vertex/pixel stages with built-in solid-green shaders; extra MODE and POS env options) and LEONIDA_DEBUG_CLEAR (all-zero RT clears become magenta). Off unless env vars set; env parsing uses getenv_s/_dupenv_s with bounds and range checks.",
+    "Risky-but-opt-in note: precompiled SPIR-V is checked in as hex arrays; the PR also adds the .vert/.frag sources and a 95-line Python test that seems intended to keep them in sync, but I did not rebuild or verify it. Tripwire hit is a normal D3D call in a test. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8843,
+  "head_sha": "e6e6c35ae4270370faffdea8c351730458916d41",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/spirv_asm.py: refuses an -o that names the input source via the shared report_paths.same_report_path (3 lines); prevents overwriting the source; tests cover hard and symlink aliases.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

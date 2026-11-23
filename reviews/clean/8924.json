@@ -1,0 +1,14 @@
+{
+  "pr": 8924,
+  "head_sha": "2612cdc077c1ef12fc40ad3c279ec41b0a97f3e4",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "shader_meta now bounds DXBC chunk-table and chunk reads by the header's declared total size (validated to be within the file) instead of the file length; test added.",
+    "Read the full production diff; this tightens existing struct.unpack_from bounds checks. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

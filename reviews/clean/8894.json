@@ -1,0 +1,14 @@
+{
+  "pr": 8894,
+  "head_sha": "9510fb00ff66ffbb9d215a40d8530807390a8b60",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "inline_scan read_lines() now detects UTF-16 by BOM and otherwise reads utf-8-sig, so PowerShell-saved dumpbin listings work; test added.",
+    "Read the 5-line production change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

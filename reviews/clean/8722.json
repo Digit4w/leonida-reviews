@@ -1,0 +1,14 @@
+{
+  "pr": 8722,
+  "head_sha": "6e1a740878cf03e340a7cd6c939bfa487bc5edc8",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "vs_input_survey.py and vs_layout_census.py: read the carve index.json with utf-8-sig so a BOM no longer raises JSONDecodeError; same approach as the merged/open #6555 and #6521; tests rewrite the index with a BOM.",
+    "Two one-line production changes. Note #8645 also edits vs_layout_census.py (different lines). No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

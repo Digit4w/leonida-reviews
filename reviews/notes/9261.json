@@ -1,0 +1,14 @@
+{
+  "pr": 9261,
+  "head_sha": "bdcbd764d854242957e15de6fe5e54b057b570bf",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py export: any partial export (component None) now preserves earlier components for all targets, not just PS mrt, and an all-off export returns without storing. 6 prod lines and a 58-line test.",
+    "Functional duplicate of #9216 (emirtugra-dag): same change to the same lines in Gen.export (partial-export preservation beyond PS mrt for VS param/pos0). The overlap tool did not flag it because the added lines differ textually; these two will conflict. #9261 additionally skips the store when every component is off."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9089,
+  "head_sha": "a7fb0ef1f24322f429475545a781ff0f7edd97ae",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "pe_shader_containers.py: one-line bounds fix; PSV0 stage is left unknown when the declared info_size exceeds the part (25 <= info_size <= len-4). Tightens validation of parsed file data, with test fixtures.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

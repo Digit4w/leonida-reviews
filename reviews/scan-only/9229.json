@@ -1,0 +1,15 @@
+{
+  "pr": 9229,
+  "head_sha": "73a4ff6ed64137e02189f6f6ae6f242e99ef22d3",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read the PR body, commit list, overlap table and the visible parts of the C++ (command-list IID table, present window, frame token source); the 741-line d3d12_xs_device.cpp and 38-file diff were not read line by line",
+  "verdict": "scan-only",
+  "findings": [
+    "Large (+1611, 38 files, 9 commits) d3d12_xs change that bundles several other PRs: 100% of #2490's added lines, 65% of #8372's, 56% of #7880's and 13% of #8831's. The actual new change per the title is small (share the device frame-token source with the PresentX presenter).",
+    "Visible code: console-to-PC command list IID mapping, a hidden 'LeonidaPresentX' window created via DefWindowProcW, LEONIDA_D3D12_LISTS env switch, FrameTokenSource atomic counter. No downloads, persistence, workflows or binaries seen. Tripwire hit is a comment (SOSetTargets), false positive.",
+    "Recommend reviewing #2490 and the stacked PRs first and treating this as a stack; applies cleanly on main today but will conflict as the others land."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

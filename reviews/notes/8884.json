@@ -1,0 +1,15 @@
+{
+  "pr": 8884,
+  "head_sha": "37c12b4171d7feaac87c19aeb0e261b0b1380d1d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages navmesh_nodes --out through a temp file plus replace_retry so a failed write keeps the previous report; adds a test.",
+    "Read the Python; same helper pattern as the other staged-write PRs, no shell, temp file cleaned in finally. Applies cleanly.",
+    "One of a series of near-identical 'stage --out' PRs by the same author for different tools: #8954, #8967, #9063, #9131, #9172 (flagged), plus #8856, #8865, #8876, #8757. Not duplicates of this tool; same boilerplate copied per tool."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

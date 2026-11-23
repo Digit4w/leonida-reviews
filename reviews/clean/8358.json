@@ -1,0 +1,11 @@
+{
+  "pr": 8358,
+  "head_sha": "8bfd48feb8de46b2d4031518fe32ec059cbfea34",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the shader_library.h SHA-256 changes and CMakeLists; the 251-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

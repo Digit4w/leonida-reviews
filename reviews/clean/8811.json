@@ -1,0 +1,14 @@
+{
+  "pr": 8811,
+  "head_sha": "e705edca5aca1d5199d3f19d42f6c700eac581ca",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/rdna2spirv.py: stricter operand and modifier validation (vgpr single destination, no neg/abs/sext, one op_sel, one clamp, no dpp/sdwa) for 16-bit int min3/max3/med3; raises Unsupported rather than miscompiling.",
+    "217-line test added; no overlap, applies cleanly. Body has a few stripped characters from escape mishaps (cosmetic)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

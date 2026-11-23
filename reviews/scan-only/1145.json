@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1145,
+  "head_sha": "b036c3fd778af493fc1b93eae40db88f0ed51ef8",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "fssm_unpack: skip non-file DXBC entries",
+  "author": "lucastayaralvarenga-ui",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1145",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:07.160882+00:00"
+}

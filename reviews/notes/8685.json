@@ -1,0 +1,15 @@
+{
+  "pr": 8685,
+  "head_sha": "f5287499f47056184ebe603fac9014fa85afbc75",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read C++ host code (color resolve pass, shim, replay changes) and extracted the embedded SPIR-V arrays and validated and disassembled them with spirv-val and spirv-dis; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds D3D12 color MIN/MAX resolve via a Vulkan fragment pass: new GLSL sources, precompiled SPIR-V arrays in color_resolve_spv.h, a ColorResolvePass in vulkan_color_resolve.h, shim and replay wiring, docs and tests.",
+    "The four embedded SPIR-V binaries pass spirv-val and use only Shader capability and GLSL.std.450 (texelFetch, min/max, one output store); same pattern as the repo's other *_spv.h files. I did not rebuild them from the .frag/.vert sources to confirm they match.",
+    "Vulkan host code checks every create call and frees resources in a destructor. Large PR (+730 lines, 12 files) touching vulkan_replay.h; no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

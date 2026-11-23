@@ -1,0 +1,13 @@
+{
+  "pr": 8597,
+  "head_sha": "2aa21dea3d6e1230540226bb126e479e3634d0af",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs-only change read in full; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "Adds 3 lines to docs/testing.md saying tier C pixel fixtures run where the fragment stage is listed in requiredSubgroupSizeStages (RX 9070 XT example, dated). Small but factual docs addition; no code, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8615,
+  "head_sha": "4b1b71913112b7ed29c54938057c8a9c0f012f5a",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read the rdna2spirv.py diff (SPIR-V text generator refactor) at skim level for exploit patterns, tests listed only; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: moves the inlined image_bvh(_64)_intersect_ray traversal and f32 sub/mul RTZ math into shared OpFunction helpers (about 3,500 SPIR-V lines per use down to a call); adds a 222-line semantic test.",
+    "Generator code only (Python emitting SPIR-V text); no subprocess, file, network or obfuscation patterns. Large change (+619/-241): I did not verify the helper is bit-for-bit equivalent to the old inline code, maintainer should rely on the tests/GPU run. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

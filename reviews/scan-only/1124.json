@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1124,
+  "head_sha": "91c5eeedefdaf59d1c2b44c8447577d4dd35991d",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "manifest_verifier: reject an extra positional path",
+  "author": "lucastayaralvarenga-ui",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1124",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:41:48.356562+00:00"
+}

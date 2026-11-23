@@ -1,0 +1,14 @@
+{
+  "pr": 9096,
+  "head_sha": "feabbff4654c9880cb6c3e900f724c93a36b919c",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: adds _validate_bit_misc_valu enforcing arity, encoding suffix, SDWA/DPP modifiers and single-dword operands for 8 bit/misc VALU ops (not_b32, bfrev, ffbh, swap, bfm, lerp_u8). Validation only, 361 test lines.",
+    "Same-author series with near-identical titles: #9095, #9205, #9454; different ops, no shared added lines reported. Likely to conflict in rdna2spirv.py handlers. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

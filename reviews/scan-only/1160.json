@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1160,
+  "head_sha": "0767aea96f2ffeffd8e396a0768c7ee3705c4522",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 6
+  },
+  "pr_title": "Tools: hardware oracle for salu_diff \u2014 run the fuzz programs natively on an AMD GPU; first finding fixes the s_bfe reference",
+  "author": "AlxcBTW",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1160",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:21.156245+00:00"
+}

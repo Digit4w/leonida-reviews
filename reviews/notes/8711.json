@@ -1,0 +1,14 @@
+{
+  "pr": 8711,
+  "head_sha": "5ff5ca5841108bb6c590c176d172fb922d6b2051",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "dxgi_com.cpp: display mode matching now keeps explicitly requested scaling and uses the exact rational refresh and scan order for ties; physical mode list uses D3DKMTGetDisplayModeList with an RAII adapter close guard.",
+    "Body says 'Depends on: #8482' (same author) and the diff carries that PR's commits (68% of this PR's added lines overlap #8482). It also overlaps #8530 (70% of this PR, same author, 'wait for vertical blank'), so these three dxgi PRs form a stack/conflict group; merge #8482 first and expect a rebase. No exploit pattern; applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

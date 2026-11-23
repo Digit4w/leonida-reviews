@@ -1,0 +1,15 @@
+{
+  "pr": 8856,
+  "head_sha": "697fa860d9242c0e140cb12b7c506889e676c8cf",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages world_archetypes --out through a temp file plus replace_retry so a failed write keeps the previous report; adds a test.",
+    "Read the Python; temp file created next to destination and unlinked in finally, no shell or network use. Applies cleanly.",
+    "Same author and same pattern as #8967 (awc_names), listed as title-similar; different tool, so a sibling micro-PR in a series rather than a duplicate."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

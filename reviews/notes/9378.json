@@ -1,0 +1,36 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9378,
+  "head_sha": "8c6f9cb30ca9133a0e4d4c45f15752a76b125d06",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:57:16.524811+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#:0 - Repeated PR by same author - Similar to PR #9386 (83% title similarity)"
+  ],
+  "detailed_findings": [
+    {
+      "file": "",
+      "line": 0,
+      "pattern": "Repeated PR by same author",
+      "match": "Similar to PR #9386 (83% title similarity)",
+      "severity": "low",
+      "related_pr": 9386
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": true,
+  "review_submitted": true,
+  "publication_status": "published",
+  "pr_title": "gdk_runtime_calls: stage --out reports so write failure keeps old files",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9378",
+  "author": "suleymansarilar",
+  "base_branch": "main",
+  "head_branch": "gdk-runtime-calls-stage-reports",
+  "additions": 121,
+  "patch_fingerprint": "97a9e8db137dcc28f4796eaacdc3fa9f90b39e2266a25a3b1e93832fdf74e914",
+  "github_review_event": "COMMENT",
+  "public_disclosure_reviewed": true
+}

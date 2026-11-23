@@ -1,0 +1,14 @@
+{
+  "pr": 8916,
+  "head_sha": "5e67de9703cdea48812197c96727b4b55e861c3b",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "shader_disasm.disasm() feeds llvm-mc one 4-byte dword per line rather than one huge line, to avoid gigabyte error echoes on invalid input.",
+    "Read the 8-line change; llvm-mc treats the newlines as whitespace between bytes (my understanding, not executed), so multi-dword instructions should still decode. No shell or new process use. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9040,
+  "head_sha": "e069b2c9733c91d12ce3bd94086ffea73ac1d272",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages fog_volumes --out through NamedTemporaryFile, fsync and replace_retry so a failed write keeps the previous report; adds a test. Python only, no shell, no network.",
+    "Same preserve-on-write-fail pattern as a run of same-author PRs (#9036, #9029, #9021 named in body; others touch different tools); a series of near-identical micro-PRs, each in a different file, not a duplicate of any single PR. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

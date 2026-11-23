@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1094,
+  "head_sha": "6678bab00d2e678349081ce1585091c2413ccfba",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "cpu_ref.py: a malformed --sgpr or --vgpr is a usage error, not a traceback",
+  "author": "BBareth",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1094",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:31:08.857025+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9250,
+  "head_sha": "1d02e658dbcc354c7cc4f4fb066123b738a6d194",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "d3d12_vulkan_device.cpp: new off-by-default diagnostic env LEONIDA_STUB_COMPUTE_WORDS=n makes compute pipelines larger than n SPIR-V words no-op stubs (returns S_OK, no pipeline); also logs slow compiles with a SHA-256 of the program. Env parsing is bounded to 19 digits.",
+    "Risky-but-opt-in note: the stub returns success without creating a pipeline, so a user who sets the variable gets silently skipped compute work (documented in docs/boot.md as a diagnostic). Reads only an env var. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

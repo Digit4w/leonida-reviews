@@ -1,0 +1,14 @@
+{
+  "pr": 8641,
+  "head_sha": "2f482aeb45569bf79b529ada680eed6992e12594",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "one-line docs diff read in full; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "docs/design.md: rewrites one contract row for v_cvt_flr/rpi_i32_f32 so it states only the measured rule the code implements instead of also keeping the dropped one (resolves a self-contradiction). Body discloses AI assistance.",
+    "Tiny docs-only edit, flagged by the size heuristic but it fixes a real inconsistency; no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

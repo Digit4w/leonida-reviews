@@ -1,0 +1,14 @@
+{
+  "pr": 8635,
+  "head_sha": "019c1343aa694d6080f28d850c79acfb2552330e",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "spirv_interface.py: resolves OpSpecConstantOp IAdd/ISub/IMul and OpConstantNull when computing varying array lengths, with a recursion depth cap (MAX_TYPE_DEPTH) against cyclic expressions; docs and tests updated.",
+    "Python SPIR-V reflector, errors become InterfaceError. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

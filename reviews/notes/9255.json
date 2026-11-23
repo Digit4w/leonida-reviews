@@ -1,0 +1,15 @@
+{
+  "pr": 9255,
+  "head_sha": "97d0b15b1a0321688ec022a06ff5531af9d0cf0d",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "d3d12_xs.cpp: D3D12ConfigureVirtualMemoryX shim now returns E_INVALIDARG for null, logs the 8-word descriptor once, writes a startup-trace event, and is classified as an HRESULT import in registry.cpp. New 118-line test.",
+    "Robustness note: it memcpy's a fixed 32 bytes from the guest-supplied descriptor pointer without knowing the real struct size, so a short guest buffer could be over-read; guest is the game itself, not a privilege boundary. Buffer sizing in the hex line formatting is correct.",
+    "Builds on merged #6792 per body, no stack. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

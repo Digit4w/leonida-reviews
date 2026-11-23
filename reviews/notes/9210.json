@@ -1,0 +1,14 @@
+{
+  "pr": 9210,
+  "head_sha": "963164b749ebc7533b49dd3e5c13aa804c517ce5",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "veh_spawn_intensities.py --json now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Same-author series of near-identical staged-JSON PRs (#9203, #9196 and others); different files, not duplicates. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

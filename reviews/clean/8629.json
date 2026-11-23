@@ -1,0 +1,14 @@
+{
+  "pr": 8629,
+  "head_sha": "84360e9ceb772f0208ecbdb94c3e9ee9a3c3949f",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "semantic_mutants.py: adds sys.stdout.reconfigure(errors='replace') in the __main__ block, wrapped in try/except, to satisfy test_tool_stdout_encoding.",
+    "Body explains it is the only remaining entry not covered by other open PRs (#7589/#7650, #8094) and thus is not a duplicate. No tripwires, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

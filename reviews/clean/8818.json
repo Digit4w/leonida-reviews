@@ -1,0 +1,14 @@
+{
+  "pr": 8818,
+  "head_sha": "349211d2db217c92b0c675c13519fb28bba96e3c",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/rdna2spirv.py: SAD/MSAD/QSAD/MQSAD ops now require a vgpr destination of the exact width, 4 operands and no modifiers/dpp/sdwa, raising Unsupported instead of silently miscompiling; 352-line semantic test.",
+    "The PR body starts with a U+FEFF byte-order mark character (invisible, harmless, likely editor artifact). No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

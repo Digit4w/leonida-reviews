@@ -1,0 +1,14 @@
+{
+  "pr": 8797,
+  "head_sha": "11dc3e52f6af874a5affa7c1b1845ffb7eaf2b9a",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/dds_png.py: BC4/BC5 SNORM palette mode now chosen from raw signed endpoints before the -128 to -127 mapping; matches DirectXTex behavior as described.",
+    "Pure decode arithmetic with a regression test; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

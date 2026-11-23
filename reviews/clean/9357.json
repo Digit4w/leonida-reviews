@@ -1,0 +1,14 @@
+{
+  "pr": 9357,
+  "head_sha": "9209e9d057a7224ea2f049554f004b2776152a6a",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Docs fix: bcpack_tool.py module docstring and docs/textures.md usage now say --codec {1,3,4,5,6,7} (matching argparse choices) instead of <1..7>; adds an 8-line test. No behavior change.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

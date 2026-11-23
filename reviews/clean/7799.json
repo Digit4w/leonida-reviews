@@ -1,0 +1,13 @@
+{
+  "pr": 7799,
+  "head_sha": "a0f6610f0fee8160107fcdb9f1b43e5367ea4059",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read docs/xmem_exe_calls.md and xmem.cpp: comment and documentation text only (measured 64 KiB page unit, VirtualAlloc call-site notes). No code behaviour change, no network, scripts or binaries; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

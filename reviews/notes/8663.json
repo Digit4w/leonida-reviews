@@ -1,0 +1,14 @@
+{
+  "pr": 8663,
+  "head_sha": "3b62057e7329e0bd148f422290bec5f398b118f8",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stacked on #4540 (body 'Depends on: #4540'; 98% of #4540's added lines are inside this PR), so it legitimately contains that diff; the new part implements GetSharedResourceAdapterLuid through D3DKMTGetSharedResourceAdapterLuid (NT and legacy global handles).",
+    "Read the shim: null/INVALID_HANDLE checks, gdi32 export resolved with GetProcAddress, global-share handle truncated only after a > UINT32_MAX check; 208 test lines creating D3D11 textures. No exploit pattern. Merge #4540 first; applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

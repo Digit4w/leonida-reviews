@@ -1,0 +1,14 @@
+{
+  "pr": 8634,
+  "head_sha": "bf257b253bcbe9ee3ba2e92a28a064aecc6a2cc3",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "merge_check.py: on non-Windows, builds the 'git show rev:path' argument as bytes (os.fsencode + surrogateescape) so non-UTF-8 locales do not corrupt diff paths.",
+    "git is invoked with an argument list (no shell); path text comes from git diff of the repo. Test added. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

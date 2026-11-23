@@ -1,0 +1,14 @@
+{
+  "pr": 8875,
+  "head_sha": "aab2ee38c5e222ec557f15baf82b2a41083385b3",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "vulkan_scratch collect(): reserves the 4-entry spare_ cache before moving handles so an allocation failure cannot leave the same Vulkan handles in both retired_ and spare_ (double free); one-line fix plus a failure-injection test.",
+    "Read the one-line production change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

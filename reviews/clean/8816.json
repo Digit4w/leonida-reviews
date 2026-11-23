@@ -1,0 +1,14 @@
+{
+  "pr": 8816,
+  "head_sha": "796aa3d2938a4f8e9b284fd46133e6f427c1578e",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/gamedata_blobs.py decodes with utf-8-sig and tools/gamedata_index.py samples printable bytes after a leading UTF-8 BOM (3 production lines plus test).",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

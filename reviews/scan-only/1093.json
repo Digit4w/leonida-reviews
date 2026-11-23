@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1093,
+  "head_sha": "483da108fdf6300befe9a0d2cf1cfac46050190d",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "hashdict.py: --lookup with a dictionary that isn't a JSON object is one line",
+  "author": "BBareth",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1093",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:31:07.899738+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8830,
+  "head_sha": "f135530d9709140d4486615e7a46e369650653ad",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "runtime/shims/d3d12_vulkan_device.cpp: CreateRootSignature returns the existing live object (AddRef) for identical blob hashes, via a mutex-guarded map shared with each RootSignature through a shared_ptr; Release erases the map entry under the same lock before delete.",
+    "Read the refcount/lock logic: AddRef on lookup and decrement-to-zero are serialized by the same mutex, no use-after-free found. Tripwire LoadLibraryExA(d3d12.dll) is in test code and uses a system-dir flag: false positive. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8896,
+  "head_sha": "399f1a2d583b214e1e6c2d47841150a6384e33a9",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "restofworld_index now validates the 9FPR (RPF9) signature and 8-byte header before mapping the archive, with tests for bad headers.",
+    "Read the production diff; header read is length-checked before unpack_from. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

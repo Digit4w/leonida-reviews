@@ -1,0 +1,14 @@
+{
+  "pr": 8684,
+  "head_sha": "e101b8380c1b531a11867d8bfc187096bb66331b",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read the cfg_structure.py rewrite of _order/_dominators and skimmed the loop-nesting part and the 277-line parity tests; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "cfg_structure.py: RPO-indexed dominators and single-pass loop nesting to speed up translate()/wave64 planning; pure Python algorithm code, no I/O, subprocess or network.",
+    "Larger rewrite (+503/-103); claims identical output, backed by a 277-line test file with 5000-random-graph parity checks that I did not run. I could not independently verify equivalence of the loop-nesting rewrite. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

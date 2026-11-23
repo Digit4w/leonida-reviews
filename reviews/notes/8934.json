@@ -1,0 +1,15 @@
+{
+  "pr": 8934,
+  "head_sha": "561a8fa978834ed928295aca62934fe5106d8143",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "mad_denorm_probe and pknorm_probe: run_hw() and check_mode_denorm_effect() now report a wrong result count or empty result word instead of silently truncating; --oracle rejects empty tokens; tests added.",
+    "Read the Python diff; offline probes, no exploit pattern. Applies cleanly.",
+    "Same guard pattern by the same author as #8888 and #8921 (other probes); a series of similar PRs, not duplicates."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

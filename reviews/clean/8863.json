@@ -1,0 +1,14 @@
+{
+  "pr": 8863,
+  "head_sha": "0198ca1e9d3789ac6dac98ebebc3dd0022a74ba7",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds normalize_shader_path_text() to strip a UTF-8 BOM and trailing CR/LF from shader_path.txt before it becomes a filesystem path, with a unit test and CMake test target.",
+    "Read the header and call site; bounds-checked (size>=3 before BOM check), no path traversal change since file is user-local config. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

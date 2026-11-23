@@ -1,0 +1,14 @@
+{
+  "pr": 8973,
+  "head_sha": "0ca859bec0aed8a7f8a278b4bb18f91df9aae340",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "spirv_gs_to_compute splits assembly only at physical line endings (io.StringIO newline=None) instead of str.splitlines(), so Unicode separators inside quoted names are preserved; test added.",
+    "Read the full diff (6 lines); no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,11 @@
+{
+  "pr": 8160,
+  "head_sha": "d3b4e41f703ca6ed101cfcff24da29a5481f27bc",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; CMake and host_adapter.h read line by line; the two test files read in part (CreateProcessW only re-runs the test executable itself) and pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

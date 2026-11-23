@@ -1,0 +1,14 @@
+{
+  "pr": 8779,
+  "head_sha": "ab756401964c796be55cd0436d48979e6d53cc20",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Test-only fix in tests/test_tex_export.py: uses BC6H_UF16 as the undecodable representative after #6758; no production code.",
+    "Overlap tool reports 10 shared lines with #8976 (CI pytest-on-Windows PR); small and likely incidental. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

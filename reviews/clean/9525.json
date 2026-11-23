@@ -1,0 +1,11 @@
+{
+  "pr": 9525,
+  "head_sha": "d90903a631901ab6cc5d8197eb6fcdd04997f820",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the shim and header changes; the mock test file pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8658,
+  "head_sha": "0ec2c473978b3ccef705d071fd132fd5bd03d940",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "pe_loader.cpp: captures GetLastError right after LoadLibraryExW of the TLS helper fails and reports the Win32 error number and system message instead of a generic missing-helper message; adds a CTest that copies the loader to an isolated folder.",
+    "The helper load call itself is unchanged by this PR; test is CMake script only. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

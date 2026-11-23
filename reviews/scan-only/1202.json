@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1202,
+  "head_sha": "5636ae83138b2dd9625c026e41e98b0602917f8b",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 7
+  },
+  "pr_title": "Tools: hardware oracle for crosslane_fuzz \u2014 24,000 cross-lane programs on real AMD hardware, wave32 and native wave64, 0 mismatches",
+  "author": "AlxcBTW",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1202",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:00.487503+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8589,
+  "head_sha": "c1566a94df418810a2eb82ab790015d4f1c39981",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds D3D12ZeroMemoryX and D3D10CreateBlob exports with a local ref-counted COM blob; read the full class incl. lines the viewer hides.",
+    "malloc/new with nothrow and free on failure, refcount atomic, QueryInterface clears output on E_NOINTERFACE; size 0 handled. No tripwires, no overlaps, applies cleanly, tests added."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

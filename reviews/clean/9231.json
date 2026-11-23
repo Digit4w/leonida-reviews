@@ -1,0 +1,14 @@
+{
+  "pr": 9231,
+  "head_sha": "7177f77e773b60e557a7d82f8ae21f2c04efd16d",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bvh_index.py: root XML element is now taken from the first StartElement event of the stdlib expat parser over the already-bounded head bytes, skipping leading comments and processing instructions; name still capped at 64 chars; parse errors suppressed.",
+    "Read the diff: parser only sees the first HEAD bytes with Parse(..., False), so entity-expansion cost is bounded; no network or file writes. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

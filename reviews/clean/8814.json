@@ -1,0 +1,14 @@
+{
+  "pr": 8814,
+  "head_sha": "182ec232b11ff1a0315cf13f5b47274fcc56ebed",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "runtime/shims/d3d12_xs.cpp: exports D3D12CreateVersionedRootSignatureDeserializer (name and ordinal 7), clears Xbox RTS0 flags on a copy, validates the DXBC checksum, then forwards to the host deserializer loaded by the existing host() helper.",
+    "Checked the helper in main: copy_rts0_blob_clear_xbox_flags requires size >= 36 and returns true only for DXBC blobs, so the memcmp on bytes+4 and the checksum read are in bounds. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

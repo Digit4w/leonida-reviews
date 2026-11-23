@@ -1,0 +1,14 @@
+{
+  "pr": 9222,
+  "head_sha": "07f6da074c923bbeb3c49dc385a90791f5efcfdd",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "d3d12_xs_device.cpp slot 41: new CreateCommandSignature proxy that rewrites Xbox indirect argument type 105 to DISPATCH and retries DISPATCH_MESH as DISPATCH when the PC device returns E_NOTIMPL. Uses nothrow allocation, memcpy of the type field, null checks present before desc is dereferenced.",
+    "Stacked on #7163 (body: Depends on #7163; 90% of its lines included). Also shares 65% of its lines with #8831 and 60% with #8977 (other authors, large boot-emulation PRs), so expect merge conflicts in d3d12_xs_device.cpp. Applies cleanly now."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

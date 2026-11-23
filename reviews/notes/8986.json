@@ -1,0 +1,15 @@
+{
+  "pr": 8986,
+  "head_sha": "0121666d83a552ae312419f31cd94c0e84718aa3",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "check_no_game_data.py: adds magic-byte checks for the player's saves (JSAV, ASAV, SLAYER1) and world_build LPK1 staging packs so they cannot be committed; docstring and 6 test lines.",
+    "Read the full diff; data-only list entries, no exploit pattern. Applies cleanly.",
+    "Body lists Depends on #5788, #7366, #7367, #7387, #7491 as merge-conflict coordination only (each adds to the same magic list); expect rebases."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

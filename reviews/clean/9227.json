@@ -1,0 +1,14 @@
+{
+  "pr": 9227,
+  "head_sha": "18fae29742bbdf1837bdaca94a3036695bfd5d4b",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "image_fuzz.py run_hw: validates that the hardware runner returned one result per kernel (list or str) and raises RuntimeError, which main turns into a 'harness error' exit 2, instead of silently truncating via zip. 16 prod lines, 34 test lines.",
+    "Read the diff: in-process validation only. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

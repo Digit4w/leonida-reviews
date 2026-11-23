@@ -1,0 +1,14 @@
+{
+  "pr": 8911,
+  "head_sha": "28ee7c438443c6d572699293db537c5feeaf02a5",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bc_feature smoothness no longer returns NaN for block images with a single row or column; each axis contributes zero when it has one block; test added.",
+    "Read the full 6-line change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

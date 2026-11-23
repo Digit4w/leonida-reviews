@@ -1,0 +1,14 @@
+{
+  "pr": 8730,
+  "head_sha": "0d3af4a2b4eef66e4e360f297e620d3ed2624f91",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "spirv_metal_set0.py: reads and sends SPIR-V assembly as UTF-8 bytes and splits on source line endings so Unicode literals survive a GBK pipe; subprocess diagnostics decoded with the locale encoding. Code read, no exploit pattern.",
+    "Same author has #9034 and #8882 on the same file; both contain this PR's change (the UTF-8 bytes edits, 97% of this PR's added lines) plus a further fix each, so they are stacked on or supersets of this PR. Merge this one first and the others will need a rebase. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

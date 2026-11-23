@@ -1,0 +1,14 @@
+{
+  "pr": 8611,
+  "head_sha": "cc5f6813d92bfb1ad398ec1746a07af8c2fff904",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "fssm_unpack.py: rejects non-DXBC magic in parts() and a header shorter than 24 bytes in the XBCH path with ValueError; 4 production lines plus tests.",
+    "Input validation only; no tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
