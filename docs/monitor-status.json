@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-23T21:43:07.739170+00:00",
-  "status": "running",
+  "updated_at": "2026-11-23T21:43:10.584726+00:00",
+  "status": "waiting_for_next_batch",
   "run_id": "45272214287",
   "run_url": "https://github.com/rideinstead/leonida-monitor/actions/runs/45272214287",
-  "current_pr": 1212,
+  "current_pr": null,
   "current_range": "1000-3000",
-  "completed": 198,
+  "completed": 200,
   "total": 6770,
-  "remaining": 6572,
+  "remaining": 6570,
   "in_progress_window": 100,
-  "scanned": 198,
+  "scanned": 200,
   "high_alert_prs": 1,
   "medium_signal_prs": 5,
   "ranges": [
@@ -21,7 +21,7 @@
       "active_claims": 0,
       "queued": 1926,
       "missing_head": 0,
-      "scanned": 198,
+      "scanned": 200,
       "high_alerts": 1,
       "medium_signal_prs": 5
     },
@@ -49,20 +49,6 @@
     }
   ],
   "in_progress_prs": [
-    {
-      "pr": 1212,
-      "head": "be0e227d",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1213,
-      "head": "1f3ef1bf",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
     {
       "pr": 1214,
       "head": "98f485f4",
@@ -745,6 +731,20 @@
     {
       "pr": 1313,
       "head": "51c40202",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1314,
+      "head": "675e35b2",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1315,
+      "head": "b9893db9",
       "range": "1000-3000",
       "title": "",
       "author": ""
