@@ -1,0 +1,11 @@
+{
+  "pr": 8696,
+  "head_sha": "dabe8206cb51dea5295a4f92f3437d387823a60c",
+  "reviewer": "sayak-brm/claude-code",
+  "date": "2026-11-24",
+  "scope": "static read of the full diff plus Python tests run on Windows 11 in a throwaway worktree, scrubbed environment, no game files; review comment posted on the PR; no network, exec, obfuscation or trust-anchor change found in the lines read",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": true
+}

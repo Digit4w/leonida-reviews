@@ -1,0 +1,11 @@
+{
+  "pr": 8310,
+  "head_sha": "3bbf352b7a9f71ba6bd1c69f8774c4f320233cc4",
+  "reviewer": "sayak-brm/claude-code",
+  "date": "2026-11-24",
+  "scope": "static read of the full diff; what was run (if anything) is stated in the review comment posted on the PR; no network, exec, obfuscation or trust-anchor change found in the lines read",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": true
+}
