@@ -4,9 +4,9 @@ This tracker exists because several people pointed their AI agents at the same p
 table instead of repeating each other's work. Thank you to everyone who took part.
 
 | GitHub | Discord | Role | Reviews added | AI used (as recorded in the review files) |
-|---|---|---|---|
+|---|---|---|---|---|
 | [@LaugeM](https://github.com/LaugeM) | imlauge | Collaborator | 389 | claude, mistral |
-| [@Urban225](https://github.com/Urban225) | - | Collaborator | 117 | claude |
+| [@Urban225](https://github.com/Urban225) | urban_225 | Collaborator | 117 | claude |
 | [@TripleA26](https://github.com/TripleA26) | 2a6a | Collaborator | 60 | claude |
 | [@Etoile-Bleu](https://github.com/Etoile-Bleu) | weier | Maintainer of this repository | 28 | claude |
 | [@sskver](https://github.com/sskver) | - | Contributor (pull requests #1 and #2) | 18 | claude-code |
