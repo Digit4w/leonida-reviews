@@ -1,0 +1,13 @@
+{
+  "pr": 9591,
+  "head_sha": "2e15bb5ed547b5e281da704d7be512b9e93deefd",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs (none)",
+  "verdict": "clean",
+  "findings": [
+    "Test-only change (tests/test_gamedata_blobs.py): assert_one_error gains code and prefix parameters; missing-input test expects exit 2 and ERROR:. No new execution beyond the existing subprocess call of the repo's own tool."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
