@@ -1,0 +1,11 @@
+{
+  "pr": 8744,
+  "head_sha": "f586a1f3839a8e0fd45f601f69ee0a00c23deb97",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines, check_pr_security.py (#8319 at e91c039d) and checks for deleted top-level docs and agent prompt files over the open PRs without a current review; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

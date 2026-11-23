@@ -1,9 +1,9 @@
 {
   "pr": 8068,
-  "head_sha": "cfd2d70f73a45b833df66f5060f96d73936127f3",
+  "head_sha": "301f11c8ee4ba6b8e63a315c96d5405f4ea89267",
   "reviewer": "LaugeM/claude+mistral",
   "date": "2026-11-23",
-  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319 at e91c039d) flagged nothing",
   "verdict": "clean",
   "findings": [],
   "read_by_human": false,

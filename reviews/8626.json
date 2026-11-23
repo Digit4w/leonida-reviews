@@ -1,0 +1,14 @@
+{
+  "pr": 8626,
+  "head_sha": "69d641712c9088408a362a1a0bb0c46c693dd4cb",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines, check_pr_security.py (#8319 at e91c039d) and checks for deleted top-level docs and agent prompt files over the open PRs without a current review; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "one commit, a source snapshot of main a910490 plus #7110, #7403 and #7755 (630 files from the merge base); against a910490 only 21 files differ: the A8 slot 25 runtime code, tests and docs and five MoltenVK expected failures in runtime.yml",
+    "conflicts with main in 12 files (aslan2142 on the PR); .github/workflows/xma2-decoder.yml is missing against a910490 but also absent at the merge base, so a merge keeps main's copy"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

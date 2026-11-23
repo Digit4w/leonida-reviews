@@ -8,7 +8,8 @@
   "findings": [
     "pull_request_target workflow follows its own safe rules",
     "annotation output escaped",
-    "CODEOWNERS only useful with branch rule"
+    "CODEOWNERS only useful with branch rule",
+    "added by LaugeM/claude+mistral (2026-11-23): head e91c039d re-scanned, static, nothing executed: workflow on pull_request_target with contents: read and no secrets runs only the base branch's scanner; Semgrep and Gitleaks run in digest-pinned containers with --network none; without flags the scanner only calls local git (git ls-remote only with --check-action-tags)"
   ],
   "read_by_human": false,
   "commented_on_github": true

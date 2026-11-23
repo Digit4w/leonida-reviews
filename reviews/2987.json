@@ -1,11 +1,13 @@
 {
   "pr": 2987,
-  "head_sha": "0bdeb8bad50fba2bda9c2261130c295693928884",
+  "head_sha": "3aefad0843ed0c5ff94ec4ec79e92fcb14ba4ff7",
   "reviewer": "LaugeM/claude+mistral",
   "date": "2026-11-23",
-  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
-  "verdict": "clean",
-  "findings": [],
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines, check_pr_security.py (#8319 at e91c039d) and checks for deleted top-level docs and agent prompt files over the open PRs without a current review; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "dashboard loads Google Fonts (fonts.googleapis.com, fonts.gstatic.com); an optional GitHub token is kept in localStorage and sent only to api.github.com, as dashboard/README.md says"
+  ],
   "read_by_human": false,
   "commented_on_github": false
 }
