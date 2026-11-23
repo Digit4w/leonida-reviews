@@ -38,12 +38,18 @@ def load():
             errors.append("%s: not readable JSON (%s)" % (path.name, e))
             continue
         # Automated scanner rows are visible only after a GitHub COMMENT has been confirmed.
-        if data.get("source") == "leonida-security-monitor" and (
-            data.get("commented_on_github") is not True
-            or data.get("publication_status") != "published"
-            or data.get("github_review_event") != "COMMENT"
-        ):
-            continue
+        if data.get("source") == "leonida-security-monitor":
+            auto_in_progress = (
+                data.get("verdict") == "in-progress"
+                and data.get("automatic_in_progress") is True
+            )
+            published_comment = (
+                data.get("commented_on_github") is True
+                and data.get("publication_status") == "published"
+                and data.get("github_review_event") == "COMMENT"
+            )
+            if not (auto_in_progress or published_comment):
+                continue
         missing = [k for k in REQUIRED if k not in data]
         if missing:
             errors.append("%s: missing %s" % (path.name, ", ".join(missing)))
