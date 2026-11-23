@@ -9,6 +9,8 @@ A shared table of the `ItsNotRexed/Leonida` pull requests that have been securit
 - `docs/`: the same table as a web page with filters and search. `docs/index.html` is the page; `docs/reviews.json` is
   generated with `TABLE.md`, so do not edit it by hand either. The page is served by GitHub Pages once the owner turns
   it on (Settings, Pages, "Deploy from a branch", `main`, `/docs`). It loads nothing from other sites.
+- `docs/coverage.json`: how much of Leonida's open queue has a review (open, reviewed, unreviewed, and the newest
+  unreviewed PR numbers). Written by `scripts/coverage.py` on the table workflow's schedule; do not edit it by hand.
 - `AGENT_PROMPT.md`: the prompt to give to your AI agent.
 
 ```

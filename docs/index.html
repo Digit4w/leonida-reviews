@@ -131,6 +131,14 @@ h1 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -
 h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .kicker { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
 .kicker b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.coverage { margin: 6px 0 0; color: var(--ink-soft); font-size: 14.5px; display: flex; flex-direction: column; gap: 6px; max-width: 560px; }
+.coverage[hidden] { display: none; }
+.coverage b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.coverage .meter { height: 8px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); overflow: hidden; }
+.coverage .meter i { display: block; height: 100%; background: var(--sunset); border-radius: 999px; }
+.free { display: flex; flex-wrap: wrap; gap: 6px; }
+.free a { font-family: var(--mono); font-size: 13px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; }
+.free a:hover { border-color: var(--accent); }
 .monitor-status { margin: 7px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
 .monitor-status[hidden] { display: none; }
 .say { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 10px; }
@@ -272,6 +280,7 @@ footer p { margin: 0; max-width: 80ch; }
       <h1>Leonida <em>security reviews</em></h1>
       <p class="mission">Volunteers read Leonida's pull requests for malicious code, so the maintainers can merge with less risk.</p>
       <p class="kicker" id="kicker">Loading the reviews.</p>
+      <div class="coverage" id="coverage" hidden><span id="coverage-text"></span><span class="meter" aria-hidden="true"><i id="coverage-bar"></i></span></div>
     <p class="monitor-status" id="monitor-status" role="status" aria-live="polite" hidden></p>
     </div>
     <div class="say" id="say"></div>
@@ -317,9 +326,14 @@ footer p { margin: 0; max-width: 80ch; }
   <div class="view stats" id="view-stats" hidden>
     <div class="headline">
       <h1>The <em>effort</em> so far</h1>
-      <p class="sub">What the review group has done, counted from the review files. Nothing here is fetched from GitHub.</p>
+      <p class="sub">What the review group has done, counted from the review files. The page itself fetches nothing from GitHub.</p>
     </div>
     <div class="trio" id="trio"></div>
+    <div class="box" id="free-box" hidden>
+      <h3>Open pull requests nobody has checked yet</h3>
+      <p id="free-text"></p>
+      <div class="free" id="free"></div>
+    </div>
     <div class="two">
       <div class="box">
         <h3>Who checked the most</h3>
@@ -635,6 +649,32 @@ footer p { margin: 0; max-width: 80ch; }
   function clock(d) { return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
   function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
 
+  function loadCoverage() {
+    return fetch("coverage.json", { cache: "no-cache" }).then(function (res) {
+      if (!res.ok) return null;                   // not generated yet: the page simply shows no coverage
+      return res.json();
+    }).then(function (c) {
+      if (!c || !(c.open_total > 0)) return;
+      var open = Number(c.open_total), done = Number(c.reviewed_open) || 0, left = Number(c.unreviewed_total) || 0;
+      var pct = Math.round(done / open * 100), when = new Date(c.as_of || "");
+      var t = $("coverage-text"); t.textContent = "";
+      t.appendChild(el("b", null, fmt(done) + " of " + fmt(open)));
+      t.appendChild(document.createTextNode(" pull requests open right now have a review (" + pct + "%). "));
+      t.appendChild(el("b", null, fmt(left)));
+      t.appendChild(document.createTextNode(" have none yet" + (isNaN(when) ? "." : ", as of " + clock(when) + ".")));
+      $("coverage-bar").style.width = Math.max(1, Math.min(100, done / open * 100)).toFixed(1) + "%";
+      $("coverage").hidden = false;
+      var list = Array.isArray(c.newest_unreviewed) ? c.newest_unreviewed : [];
+      var box = $("free"); box.textContent = "";
+      list.forEach(function (n) {
+        n = Number(n); if (!(n > 0)) return;
+        var a = el("a", null, "#" + n); a.href = "https://github.com/ItsNotRexed/Leonida/pull/" + n; a.rel = "noopener"; box.appendChild(a);
+      });
+      $("free-text").textContent = fmt(left) + " open pull requests have no review on record. These are the newest ones, free to take. Claim one before you read it.";
+      $("free-box").hidden = !list.length;
+    });
+  }
+
   function loadMonitorStatus() {
     return fetch("monitor-status.json?t=" + Date.now(), { cache: "no-store" }).then(function (res) {
       if (res.status === 404) return null;
@@ -737,9 +777,13 @@ footer p { margin: 0; max-width: 80ch; }
     load().catch(function () { setLive(false, "offline, retrying"); });
   }, EVERY);
   loadMonitorStatus().catch(function () {});
+  loadCoverage().catch(function () {});
   setInterval(function () {
     if (!document.hidden) loadMonitorStatus().catch(function () {});
   }, 15000);
+  setInterval(function () {
+    if (!document.hidden) loadCoverage().catch(function () {});
+  }, 300000);
   document.addEventListener("visibilitychange", function () {
     if (!document.hidden) {
       if (wired) load().catch(function () { setLive(false, "offline, retrying"); });
