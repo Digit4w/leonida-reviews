@@ -136,6 +136,9 @@ h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-cl
 .coverage b { color: var(--ink); font-variant-numeric: tabular-nums; }
 .coverage .meter { height: 8px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); overflow: hidden; }
 .coverage .meter i { display: block; height: 100%; background: var(--sunset); border-radius: 999px; }
+.tag.old { color: var(--note); background: var(--note-bg); }
+.card.is-stale { border-style: dashed; border-left-style: solid; }
+.coverage .warn { color: var(--note); }
 .free { display: flex; flex-wrap: wrap; gap: 6px; }
 .free a { font-family: var(--mono); font-size: 13px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; }
 .free a:hover { border-color: var(--accent); }
@@ -304,6 +307,7 @@ footer p { margin: 0; max-width: 80ch; }
       </label>
       <label class="chip" for="onlyFindings"><input type="checkbox" id="onlyFindings"><span>With remarks only</span></label>
       <label class="chip" for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"><span>Hide automated scans</span></label>
+      <label class="chip" for="onlyStale" id="onlyStaleWrap" hidden><input type="checkbox" id="onlyStale"><span>Changed since review</span></label>
       <button type="button" class="clear" id="clear" hidden>Clear filters</button>
       <span class="count" id="count"></span>
     </div>
@@ -319,6 +323,7 @@ footer p { margin: 0; max-width: 80ch; }
       <div><span class="mark v-scan-only">~</span><span><dt>Quick scan only</dt><dd>A pattern scan ran. Nobody read the change.</dd></span></div>
       <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
     </dl>
+    <p>A row tagged "Changed since review" means the pull request got a new commit after it was read: its verdict is about the earlier code, and it needs another look.</p>
     <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
   </footer>
   </div>
@@ -391,7 +396,8 @@ footer p { margin: 0; max-width: 80ch; }
   };
   var PAGE = 100;
   var all = [];
-  var state = { verdict: "", reviewer: "", q: "", onlyFindings: false, hideAuto: false, sort: "serious", shown: PAGE };
+  var state = { verdict: "", reviewer: "", q: "", onlyFindings: false, hideAuto: false, onlyStale: false, sort: "serious", shown: PAGE };
+  var stale = {};          // PR number -> true when the PR got a new commit after its review (from coverage.json)
   var $ = function (id) { return document.getElementById(id); };
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function info(v) { return V[v] || { label: v, mark: "?", one: " other.", many: " other.", help: "" }; }
@@ -420,6 +426,7 @@ footer p { margin: 0; max-width: 80ch; }
     if (!inScope(r)) return false;
     if (state.verdict && r.verdict !== state.verdict) return false;
     if (state.onlyFindings && !r.findings.length) return false;
+    if (state.onlyStale && !stale[r.pr]) return false;
     if (state.q) {
       var hay = ("#" + r.pr + " " + r.title + " " + r.author + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + info(r.verdict).label).toLowerCase();
       var parts = state.q.toLowerCase().split(/\s+/);
@@ -479,6 +486,11 @@ footer p { margin: 0; max-width: 80ch; }
     var pills = el("span", "pills");
     pills.appendChild(pill(r.verdict));
     if (r.automated) pills.appendChild(el("span", "tag", "Automated scan"));
+    if (stale[r.pr]) {
+      var old = el("span", "tag old", "Changed since review");
+      old.title = "This pull request got a new commit after it was reviewed. The verdict is about the earlier code.";
+      pills.appendChild(old); c.className += " is-stale";
+    }
     head.appendChild(pills);
     c.appendChild(head);
 
@@ -524,7 +536,7 @@ footer p { margin: 0; max-width: 80ch; }
     if (state.sort === "newest") list.sort(function (x, y) { return y.pr - x.pr; });
     else list.sort(function (x, y) { return rank(x.verdict) - rank(y.verdict) || y.pr - x.pr; });
 
-    var filtered = !!(state.verdict || state.reviewer || state.q || state.onlyFindings || state.hideAuto);
+    var filtered = !!(state.verdict || state.reviewer || state.q || state.onlyFindings || state.hideAuto || state.onlyStale);
     $("clear").hidden = !filtered;
     $("count").textContent = filtered ? fmt(list.length) + " of " + fmt(all.length) + " shown" : fmt(all.length) + " reviews";
 
@@ -649,9 +661,10 @@ footer p { margin: 0; max-width: 80ch; }
     $("sort").addEventListener("change", function (e) { state.sort = e.target.value; reset(); });
     $("onlyFindings").addEventListener("change", function (e) { state.onlyFindings = e.target.checked; reset(); });
     $("hideAuto").addEventListener("change", function (e) { state.hideAuto = e.target.checked; reset(); });
+    $("onlyStale").addEventListener("change", function (e) { state.onlyStale = e.target.checked; reset(); });
     $("clear").addEventListener("click", function () {
-      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.hideAuto = false;
-      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; $("hideAuto").checked = false;
+      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.hideAuto = false; state.onlyStale = false;
+      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; $("hideAuto").checked = false; $("onlyStale").checked = false;
       reset();
     });
   }
@@ -675,6 +688,17 @@ footer p { margin: 0; max-width: 80ch; }
       t.appendChild(document.createTextNode(" have none yet" + (isNaN(when) ? "." : ", as of " + clock(when) + ".")));
       $("coverage-bar").style.width = Math.max(1, Math.min(100, done / open * 100)).toFixed(1) + "%";
       $("coverage").hidden = false;
+      var olds = Array.isArray(c.stale) ? c.stale : [], next = {};
+      olds.forEach(function (n) { n = Number(n); if (n > 0) next[n] = true; });
+      var changed = Object.keys(next).length !== Object.keys(stale).length || Object.keys(next).some(function (n) { return !stale[n]; });
+      stale = next;
+      $("onlyStaleWrap").hidden = !olds.length;
+      if (!olds.length && state.onlyStale) { state.onlyStale = false; $("onlyStale").checked = false; changed = true; }
+      if (olds.length) {
+        t.appendChild(document.createTextNode(" "));
+        t.appendChild(el("span", "warn", fmt(olds.length) + (olds.length === 1 ? " review is" : " reviews are") + " out of date: the pull request changed after it was checked."));
+      }
+      if (changed && wired) draw();
       var list = Array.isArray(c.newest_unreviewed) ? c.newest_unreviewed : [];
       var box = $("free"); box.textContent = "";
       list.forEach(function (n) {
