@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1388,
+  "head_sha": "495910e15e540b49238ef9a56835c59eac4ab39c",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "d3d12: R9G9B9E5_SHAREDEXP never reports render-target, blend or MSAA support",
+  "author": "Dom-in",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1388",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:26.343662+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1331,
+  "head_sha": "8a79601b74aeabeab9cd6c8b38db1263cb5d92e2",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "tools: spirv_gs_to_compute.py runs a translated GS as a compute capture pass (SHADER-159)",
+  "author": "undeadhuman37",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1331",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:34.231863+00:00"
+}

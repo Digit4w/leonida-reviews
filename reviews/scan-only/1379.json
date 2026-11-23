@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1379,
+  "head_sha": "1968dcdfa26e548dd85404eca320e3f81105b154",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "bary_fallback_gs: a missing spirv dir is an error, not an empty success",
+  "author": "pratikphophaliya",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1379",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:19.460818+00:00"
+}

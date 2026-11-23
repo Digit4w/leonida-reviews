@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1318,
+  "head_sha": "5f9ed5f458f223f8f225f9488b45417f4123080f",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Tests: skip ps_bitmask_perm when fragment shaders run narrower than 32 lanes",
+  "author": "freemanovec",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1318",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:21.724489+00:00"
+}

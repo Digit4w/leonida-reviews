@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1343,
+  "head_sha": "806ee523c4d2e99644fc544f88c1bf95fb9c2206",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "tests: D3D12 host comparisons skip under Wine (TEST-105 follow-up)",
+  "author": "LloydNicholson",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1343",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:45.175154+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1385,
+  "head_sha": "e9e02e7e2383e170e02f89b11befb99c067b1b77",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "vertex_types, instance_lists: --json can't overwrite an input archive",
+  "author": "XFlawless1",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1385",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:23.657303+00:00"
+}

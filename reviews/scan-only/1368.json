@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1368,
+  "head_sha": "478c4a18e4a4b9414336764de29396d08ac7c791",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "d3d12_r9g9b9e5_uav_test: skip the WARP comparison where WARP has no typed R9G9B9E5 UAVs",
+  "author": "etcetera-yt",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1368",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:09.764727+00:00"
+}

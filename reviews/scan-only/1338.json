@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1338,
+  "head_sha": "1c3524a078141246b4c7f01fc970db7408536553",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Docs: testing.md ??run the GPU tests from a CI-built runtime",
+  "author": "liang-kai-shui",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1338",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:40.711794+00:00"
+}

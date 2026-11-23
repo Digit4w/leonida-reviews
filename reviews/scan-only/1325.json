@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1325,
+  "head_sha": "703799194ea4c520615957ea3195695f65d29df6",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Runtime: console-order command-list proxy at device slots 12/51 (D3D-136, Depends on #1270)",
+  "author": "quackottu",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1325",
+  "pr_state": "open",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:28.576458+00:00"
+}

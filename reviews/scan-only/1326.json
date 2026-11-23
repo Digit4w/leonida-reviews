@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1326,
+  "head_sha": "1b88414e61e8843c268c690254dfb1cf3dd8b5a3",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Tests: s_andn2_saveexec_b64 and s_andn2_wrexec_b64 on wave64, GPU and CPU",
+  "author": "zneel",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1326",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:29.408610+00:00"
+}

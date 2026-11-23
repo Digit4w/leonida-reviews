@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1350,
+  "head_sha": "fa4d54f22d8f20a4fd9ef9fc1880e36bbe0a3957",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "process shim: keep the game's command line wide so a non-ASCII argument can't crash --run (RT-84)",
+  "author": "EmreO33",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1350",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:51.968266+00:00"
+}

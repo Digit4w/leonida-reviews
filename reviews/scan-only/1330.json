@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1330,
+  "head_sha": "c4e8c34b6347511f1eefee939f97a6d697d15d92",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 2
+  },
+  "pr_title": "tools: spirv_metal_set0.py gives set 0 fixed Metal argument-buffer IDs (SHADER-161)",
+  "author": "undeadhuman37",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1330",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:33.212994+00:00"
+}

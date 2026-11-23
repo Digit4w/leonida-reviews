@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1418,
+  "head_sha": "6be134987c6d7a0fde8193dae8b04b81e376b781",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "test_spirv_gs_to_compute: skip without llvm-mc and the SPIR-V tools, as the other translator tests do",
+  "author": "etcetera-yt",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1418",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:50.522978+00:00"
+}

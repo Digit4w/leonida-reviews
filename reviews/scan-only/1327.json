@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1327,
+  "head_sha": "5be5b4fe573dd04536fcb09b2dd8777aee4ab2e2",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "make_game.py: --pick chooses the game folder in a folder dialog",
+  "author": "LloydNicholson",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1327",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:30.329719+00:00"
+}

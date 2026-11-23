@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1402,
+  "head_sha": "90e1f5efa05850437145d0fa39e529e292d8298d",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "GPU tests for untested MIMG ops: image_atomic_*, image_get_lod, image_get_resinfo, image_bvh_intersect_ray (TEST-184)",
+  "author": "henriquevinagre",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1402",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:47:36.960051+00:00"
+}

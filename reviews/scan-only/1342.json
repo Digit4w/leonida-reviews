@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1342,
+  "head_sha": "4b63e03b4709b9f3bf1cf8a6c1bb589e4381153d",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "notes",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 9
+  },
+  "pr_title": "make_game: search the real Downloads, Desktop and Documents (OneDrive Known Folder Move)",
+  "author": "ICUMADETHIS",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1342",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:44.303705+00:00"
+}

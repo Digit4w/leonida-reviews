@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1336,
+  "head_sha": "be4620e9cf9d40dc258946f9242d0dbc1163801e",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Shader: preserve the trailing VGPR high half on odd-component d16 image loads",
+  "author": "freemanovec",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1336",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:39.081728+00:00"
+}

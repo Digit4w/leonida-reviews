@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1346,
+  "head_sha": "c491cf097c7b9f4711625d903527cb2e4a26ef11",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Tests: d3d12_sampler2 compares non-normalized cases only with a host that has them (TEST-191)",
+  "author": "ezwinxdlmao",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1346",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:48.004375+00:00"
+}

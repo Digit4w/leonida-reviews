@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1328,
+  "head_sha": "c9fd097b344653fc971a075345de9fbb009871c2",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: v_frexp_mant_f32, v_frexp_exp_i32_f32, v_ldexp_f32 (SHADER-89)",
+  "author": "dev-ewann",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1328",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:31.319077+00:00"
+}

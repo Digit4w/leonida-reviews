@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1351,
+  "head_sha": "204989e9e7a8f40e29f122e10841272f0e0046f0",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "make_game: --jobs reaches the Ogg Opus step; --runtime-build may be the output folder",
+  "author": "jakeefr",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1351",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:52.856769+00:00"
+}

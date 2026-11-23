@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1320,
+  "head_sha": "944961c5861783b7970a69c3702149123e5866c1",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "awc_opus: reject music descriptors whose blocks or subblocks overrun the data tag",
+  "author": "qerdavo-dot",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1320",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:46:23.587010+00:00"
+}
