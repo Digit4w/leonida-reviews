@@ -1,0 +1,13 @@
+{
+  "pr": 9541,
+  "head_sha": "27cf14b43c2ae25f48cedd2a751f1d2d3a61fe16",
+  "reviewer": "Digit4w/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed: full diff read line by line; scanned for non-ASCII/bidi/control characters (none)",
+  "verdict": "clean",
+  "findings": [
+    "adds tools/replace_retry.py to the push and pull_request path filters of runtime.yml; no change to triggers, permissions, actions or steps"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

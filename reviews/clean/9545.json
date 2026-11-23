@@ -1,0 +1,13 @@
+{
+  "pr": 9545,
+  "head_sha": "a68ce91741eb26e9da380d44825b4d4cc07e52ae",
+  "reviewer": "Digit4w/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed: full diff read line by line; scanned for non-ASCII/bidi/control characters (none)",
+  "verdict": "clean",
+  "findings": [
+    "test fixture copies one more repository file (tools/report_paths.py) into its temporary tree; no new process, network or file access outside the test root"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

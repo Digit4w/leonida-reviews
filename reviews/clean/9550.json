@@ -1,0 +1,13 @@
+{
+  "pr": 9550,
+  "head_sha": "fdc026a35e0b352deb2fdc545879584d6b85ba2a",
+  "reviewer": "Digit4w/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed: full diff read line by line; scanned for non-ASCII/bidi/control characters (none)",
+  "verdict": "clean",
+  "findings": [
+    "make_game.py reads spirv/index.json as utf-8-sig (a leading BOM is accepted) in two places; plus a unit test; no new I/O or execution"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
