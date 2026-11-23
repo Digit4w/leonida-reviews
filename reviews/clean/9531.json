@@ -1,0 +1,11 @@
+{
+  "pr": 9531,
+  "head_sha": "57d08d2fd67441632fb83967df74033fed0224cc",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the CMake, shim and header changes; the two new GPU test files and docs pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
