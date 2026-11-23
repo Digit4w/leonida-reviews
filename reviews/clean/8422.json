@@ -1,0 +1,11 @@
+{
+  "pr": 8422,
+  "head_sha": "dcf6cff46bc6c2e64d22fceb671cab2e000f1f8a",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of xgameruntime_user.cpp; the test additions pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

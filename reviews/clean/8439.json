@@ -1,0 +1,11 @@
+{
+  "pr": 8439,
+  "head_sha": "27f00d120c21f479d42c4edb04d9be076ac1b99f",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of registry.cpp, unimplemented_import.h and CMakeLists; the 326-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

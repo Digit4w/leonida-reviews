@@ -1,0 +1,11 @@
+{
+  "pr": 8371,
+  "head_sha": "f6e3c80363cc191848e3b71bd37e06247a0d9260",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of process_memory_cap.h, the cmake test script and vk_pipeline_check.cpp changes; process_memory_cap_test.cpp and docs pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

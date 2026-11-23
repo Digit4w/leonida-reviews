@@ -1,0 +1,11 @@
+{
+  "pr": 8171,
+  "head_sha": "4131eb75f1fe24b8998481fd5db4f400ca89af79",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of dxgi_com.cpp; the two test files pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

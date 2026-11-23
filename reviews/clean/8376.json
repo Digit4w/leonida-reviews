@@ -1,0 +1,11 @@
+{
+  "pr": 8376,
+  "head_sha": "dd251e45e4ced1ddadac0f6461515eb8ef623155",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the shim and CMake changes; the 402-line test pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
