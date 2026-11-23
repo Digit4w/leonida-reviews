@@ -64,9 +64,60 @@ a { color: var(--accent); }
 
 /* header */
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
-.theme { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; }
-.theme:hover { border-color: var(--accent); }
+.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+.repo:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tabs { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+.tabs a { padding: 5px 13px; border-radius: 999px; font-size: 13px; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.view { display: flex; flex-direction: column; gap: 22px; }
+.view[hidden] { display: none; }
+.mission { margin: 2px 0 0; font-size: 16.5px; max-width: 62ch; color: var(--ink); }
+.sub { margin: 0; color: var(--ink-soft); max-width: 70ch; }
+.theme, .gh { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.theme:hover, .gh:hover { border-color: var(--accent); }
+.gh.main { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+.gh.main:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.stats h1, .helpview h1 { font-size: clamp(26px, 4vw, 38px); }
+/* the effort so far */
+.stats { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 16px; }
+.stats h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.fact { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.fact .big { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(34px, 5vw, 50px); font-variant-numeric: tabular-nums; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
+.fact .what { font-weight: 600; }
+.fact .more-info { color: var(--ink-soft); font-size: 13.5px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.box h3 { margin: 0; font-size: 15.5px; }
+.box p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+.board { display: flex; flex-direction: column; gap: 9px; }
+.who { display: grid; grid-template-columns: minmax(96px, 150px) 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+.who .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.who .track { height: 10px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+.who .fill { height: 100%; border-radius: 999px; background: var(--sunset); min-width: 4px; }
+.who .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 13px; }
+.cover { display: grid; grid-template-columns: repeat(auto-fill, minmax(18px, 1fr)); gap: 4px; }
+.cell { aspect-ratio: 1; border-radius: 5px; background: var(--bg); border: 1px solid var(--line); position: relative; overflow: hidden; }
+.cell i { position: absolute; inset: 0; background: var(--clean); }
+.cell.hot { border-color: var(--stop); box-shadow: 0 0 0 1px var(--stop); }
+.axis { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-soft); align-items: center; }
+.key .cell { width: 14px; aspect-ratio: 1; display: inline-block; vertical-align: -2px; margin-right: 5px; }
+
+/* how to help */
+.help { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 16px;
+  background-image: radial-gradient(520px 200px at 100% 0%, var(--glow), transparent 70%); }
+.help h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
+.help > p { margin: 0; color: var(--ink-soft); max-width: 70ch; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; counter-reset: step; }
+.steps li { counter-increment: step; border: 1px solid var(--line); border-radius: 14px; padding: 14px 15px; background: var(--bg); display: flex; flex-direction: column; gap: 5px; }
+.steps li::before { content: counter(step); font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1; color: var(--accent); }
+.steps b { font-size: 15.5px; }
+.steps span { color: var(--ink-soft); font-size: 14px; }
+.help .rule { color: var(--ink); font-weight: 600; }
+.help .links { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* hero: the summary in sentences */
 .hero { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
@@ -185,7 +236,7 @@ footer p { margin: 0; max-width: 80ch; }
   .tools { position: static; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .say button, .theme, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
+  .say button, .theme, .gh, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
   @media (hover: hover) { .say button:hover { transform: translateY(-2px); } }
 }
 </style>
@@ -195,13 +246,23 @@ footer p { margin: 0; max-width: 80ch; }
 <div class="sky">
 <div class="wrap">
   <div class="top">
-    <span class="repo">ItsNotRexed/Leonida · pull requests</span>
-    <button type="button" class="theme" id="theme">Switch to dark</button>
+    <a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
+    <span class="nav">
+      <nav class="tabs" aria-label="Sections">
+        <a href="#reviews" data-view="reviews">Reviews</a>
+        <a href="#stats" data-view="stats">Stats</a>
+        <a href="#help" data-view="help">How to help</a>
+      </nav>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews" rel="noopener">Repository ↗</a>
+      <button type="button" class="theme" id="theme">Switch to dark</button>
+    </span>
   </div>
 
+  <div class="view" id="view-reviews">
   <section class="hero" aria-label="Summary">
     <div class="headline">
       <h1>Leonida <em>security reviews</em></h1>
+      <p class="mission">Volunteers read Leonida's pull requests for malicious code, so the maintainers can merge with less risk.</p>
       <p class="kicker" id="kicker">Loading the reviews.</p>
     </div>
     <div class="say" id="say"></div>
@@ -241,6 +302,53 @@ footer p { margin: 0; max-width: 80ch; }
       <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
     </dl>
     <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
+  </footer>
+  </div>
+
+  <div class="view stats" id="view-stats" hidden>
+    <div class="headline">
+      <h1>The <em>effort</em> so far</h1>
+      <p class="sub">What the review group has done, counted from the review files. Nothing here is fetched from GitHub.</p>
+    </div>
+    <div class="trio" id="trio"></div>
+    <div class="two">
+      <div class="box">
+        <h3>Who checked the most</h3>
+        <div class="board" id="board"></div>
+        <p>Review files added to the table, per GitHub account. A count is not a measure of effort or quality.</p>
+      </div>
+      <div class="box">
+        <h3>Where we have looked</h3>
+        <div class="cover" id="cover"></div>
+        <div class="axis"><span id="axis-from"></span><span id="axis-to"></span></div>
+        <div class="key"><span><span class="cell"><i style="opacity:.15"></i></span>few checked</span><span><span class="cell"><i style="opacity:.9"></i></span>many checked</span><span><span class="cell hot"></span>holds a "do not merge"</span></div>
+        <p id="cover-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="view helpview" id="view-help" hidden>
+    <div class="headline">
+      <h1>Want to <em>help</em>?</h1>
+    </div>
+  <section class="help" aria-label="How to help">
+    <p>Anyone can add reviews. You need a GitHub account and an AI agent that can read a pull request's diff.</p>
+    <ol class="steps">
+      <li><b>Pick a PR nobody checked</b><span>Search for its number on this page. If it is not here, it is free to take.</span></li>
+      <li><b>Give your agent the group's prompt</b><span>It says what to look for and how to write the review file, so everyone's reviews line up.</span></li>
+      <li><b>Send your review files</b><span>Open a pull request on the repository with one small file per PR you checked.</span></li>
+    </ol>
+    <p class="rule">One rule above all: read the diff, never run a PR's code.</p>
+    <div class="links">
+      <a class="gh main" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AGENT_PROMPT.md" rel="noopener">The agent prompt ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews#readme" rel="noopener">How the review files work ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md" rel="noopener">Who is helping ↗</a>
+    </div>
+  </section>
+  </div>
+
+
+  <footer>
     <p id="stamp"></p>
     <p>Data: the review files of <a href="https://github.com/Etoile-Bleu/leonida-reviews">Etoile-Bleu/leonida-reviews</a>. Reviews by the people listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
   </footer>
@@ -302,8 +410,9 @@ footer p { margin: 0; max-width: 80ch; }
     var counts = {}, total = 0;
     all.forEach(function (r) { if (inScope(r)) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; total++; } });
     var k = $("kicker"); k.textContent = "";
-    k.appendChild(el("b", null, fmt(total)));
-    k.appendChild(document.createTextNode(" Leonida pull request" + (total === 1 ? " has" : "s have") + " been security-checked so far."));
+    var pending = counts["in-progress"] || 0, checked = total - pending;
+    k.appendChild(el("b", null, fmt(checked)));
+    k.appendChild(document.createTextNode(" Leonida pull request" + (checked === 1 ? " has" : "s have") + " been security-checked so far" + (pending ? ", and " + fmt(pending) + " more " + (pending === 1 ? "is" : "are") + " being reviewed." : ".")));
     var box = $("say"); box.textContent = "";
     box.className = "say" + (state.verdict ? " filtered" : "");
     var keys = ORDER.filter(function (v) { return counts[v]; });
@@ -413,6 +522,80 @@ footer p { margin: 0; max-width: 80ch; }
     }
   }
 
+  function drawStats() {
+    var done = all.filter(function (r) { return r.verdict !== "in-progress"; });
+    if (!done.length) return;
+    var stopped = done.filter(function (r) { return r.verdict === "do-not-merge"; }).length;
+    var people = {}, human = 0, posted = 0;
+    done.forEach(function (r) {
+      if (!r.automated) { var h = r.reviewer.split("/")[0]; people[h] = (people[h] || 0) + 1; }
+      if (r.human) human++;
+      if (r.commented) posted++;
+    });
+    var names = Object.keys(people).sort(function (a, b) { return people[b] - people[a]; });
+    var trio = $("trio"); trio.textContent = "";
+    function fact(n, what, more) {
+      var f = el("div", "fact");
+      f.appendChild(el("span", "big", fmt(n)));
+      f.appendChild(el("span", "what", what));
+      f.appendChild(el("span", "more-info", more));
+      trio.appendChild(f);
+    }
+    fact(done.length, "pull requests checked", fmt(human) + " of them also read by a human");
+    fact(stopped, stopped === 1 ? "stopped before merge" : "stopped before merge", fmt(posted) + (posted === 1 ? " remark" : " remarks") + " posted on the PRs themselves");
+    fact(names.length, names.length === 1 ? "person reviewing" : "people reviewing", "each with an AI agent, on their own time");
+
+    var board = $("board"); board.textContent = "";
+    var top = names.slice(0, 8), max = people[top[0]] || 1;
+    top.forEach(function (h) {
+      var row = el("div", "who");
+      row.appendChild(el("span", "name", h));
+      var track = el("span", "track"), fill = el("span", "fill");
+      fill.style.width = (people[h] / max * 100).toFixed(1) + "%";
+      fill.style.display = "block";
+      track.appendChild(fill); row.appendChild(track);
+      row.appendChild(el("span", "num", fmt(people[h])));
+      board.appendChild(row);
+    });
+
+    var STEP = 250, lo = Infinity, hi = 0, buckets = {};
+    done.forEach(function (r) {
+      if (!(r.pr > 0)) return;
+      lo = Math.min(lo, r.pr); hi = Math.max(hi, r.pr);
+      var k = Math.floor(r.pr / STEP);
+      buckets[k] = buckets[k] || { n: 0, hot: false };
+      buckets[k].n++; if (r.verdict === "do-not-merge") buckets[k].hot = true;
+    });
+    var cover = $("cover"); cover.textContent = "";
+    var first = Math.floor(lo / STEP), last = Math.floor(hi / STEP), peak = 1;
+    for (var k = first; k <= last; k++) if (buckets[k]) peak = Math.max(peak, buckets[k].n);
+    for (k = first; k <= last; k++) {
+      var b = buckets[k] || { n: 0, hot: false };
+      var cell = el("span", "cell" + (b.hot ? " hot" : ""));
+      cell.title = "#" + (k * STEP) + " to #" + (k * STEP + STEP - 1) + ": " + b.n + " checked" + (b.hot ? ", holds a do-not-merge" : "");
+      if (b.n) { var i = el("i"); i.style.opacity = (0.15 + 0.75 * b.n / peak).toFixed(2); cell.appendChild(i); }
+      cover.appendChild(cell);
+    }
+    $("axis-from").textContent = "#" + (first * STEP);
+    $("axis-to").textContent = "#" + (last * STEP + STEP - 1);
+    $("cover-note").textContent = "One square is " + STEP + " PR numbers in a row. The fullest square holds " + fmt(peak) + " checked PRs. Hover a square for its range.";
+  }
+
+  var VIEWS = ["reviews", "stats", "help"];
+  function showView() {
+    var want = (location.hash || "").replace("#", "");
+    if (VIEWS.indexOf(want) < 0) want = "reviews";
+    VIEWS.forEach(function (v) { $("view-" + v).hidden = (v !== want); });
+    var links = document.querySelectorAll(".tabs a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute("data-view") === want) links[i].setAttribute("aria-current", "page");
+      else links[i].removeAttribute("aria-current");
+    }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", showView);
+  showView();
+
   function wire() {
     var by = {};
     all.forEach(function (r) { by[r.reviewer] = (by[r.reviewer] || 0) + 1; });
@@ -443,7 +626,7 @@ footer p { margin: 0; max-width: 80ch; }
                findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
                automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
     });
-    wire(); draw();
+    wire(); draw(); drawStats();
   }).catch(function (err) {
     $("kicker").textContent = "The reviews could not be loaded.";
     $("list").appendChild(el("div", "state", "The review data did not load (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
