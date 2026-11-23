@@ -1,0 +1,13 @@
+{
+  "pr": 7827,
+  "head_sha": "ce4e8c980d996673765fe69c02887822b943f1e8",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read scripts/ci_expected_failures.py and its test: the abnormal-exit check now treats any status above 128 (incl. Windows crash codes) as abnormal, which is stricter. No workflow, network, subprocess or file-write change; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

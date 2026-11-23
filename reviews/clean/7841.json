@@ -1,0 +1,13 @@
+{
+  "pr": 7841,
+  "head_sha": "a64d21f353801e422592f67191016288fc9bd172",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read d3d12_xs.cpp (in the non-Vulkan build, logs once to stderr when LEONIDA_D3D12=vulkan via getenv_s into a fixed 16-byte buffer) and a docs/testing.md table row. No network, file writes, process or DLL loading; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
