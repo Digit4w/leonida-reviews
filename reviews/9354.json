@@ -1,0 +1,36 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9354,
+  "head_sha": "90e94f4c983469f564a0e0fe95f6c6d4858c52c1",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:54:54.615343+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#:0 - Possible duplicate PR - Similar to PR #9365: bcpack_history_calib: stage JSON outputs (preserve previous on write fail) (70% title similarity)"
+  ],
+  "detailed_findings": [
+    {
+      "file": "",
+      "line": 0,
+      "pattern": "Possible duplicate PR",
+      "match": "Similar to PR #9365: bcpack_history_calib: stage JSON outputs (preserve previous on write fail) (70% title similarity)",
+      "severity": "medium",
+      "related_pr": 9365
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": true,
+  "review_submitted": true,
+  "publication_status": "published",
+  "pr_title": "analyze_4240_full: stage --json (preserve previous on write fail)",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9354",
+  "author": "Grimkeh",
+  "base_branch": "main",
+  "head_branch": "fix/analyze-4240-full-preserve-json",
+  "additions": 55,
+  "patch_fingerprint": "7bb38aa0d61cc1342a4812e5fe034d79cbc5039cf903f6ae24df6b99192e1b6e",
+  "github_review_event": "COMMENT",
+  "public_disclosure_reviewed": true
+}
