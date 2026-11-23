@@ -27,6 +27,32 @@ actually done), `verdict`, `findings`, `read_by_human` (a human read the diff, n
 
 This repository is public. Do not put anything here that has not already been posted on the PR, or that you would not post there: a finding that describes a real weakness in an open PR should go to the maintainer first.
 
+## Review Statistics
+
+**Total reviews:** 1005 (as of 2026-11-23)
+
+### By Verdict
+| Verdict | Count | Meaning |
+|---------|-------|---------|
+| `clean` | 865 | No malicious pattern found in stated scope (not a safety guarantee) |
+| `notes` | 26 | Hardening remarks, no malicious code |
+| `do-not-merge` | 7 | Real problem found — do not merge |
+| `scan-only` | 6 | Pattern scan only, not line-by-line read |
+| `not-reviewed` | 1 | Could not review (empty diff, too large, etc.) |
+| `in-progress` | 100 | Claimed but not yet finished |
+
+### By Reviewer
+| Reviewer | Reviews | Notes |
+|----------|---------|-------|
+| LaugeM/claude+mistral | 419 | Automated batch reviews |
+| TripleA26/claude | 293 | This monitor's reviews (static, AI-assisted, diff-only) |
+| Etoile-Bleu/claude | 128 | Original automated monitor |
+| Urban225/claude | 117 | Urban225's agent |
+| sskver/claude-code | 18 | Manual + AI-assisted |
+| sayak-brm/claude-code | 17 | Manual + AI-assisted |
+| Placebola/claude | 8 | Manual + AI-assisted |
+| leonida-security-monitor/automated | 5 | Heuristic scanner (commented on GitHub) |
+
 ## Credits
 
 Thanks to everyone who reviews pull requests here and shares the table. See [AUTHORS.md](AUTHORS.md).
