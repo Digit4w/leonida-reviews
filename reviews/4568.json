@@ -1,0 +1,11 @@
+{
+  "pr": 4568,
+  "head_sha": "e31c3fc5200d868cfa2d280964343066d48e13cd",
+  "reviewer": "Urban225/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; diff read by the AI (some test files searched for risky APIs rather than read)",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
