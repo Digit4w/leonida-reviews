@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-23T21:43:10.584726+00:00",
-  "status": "waiting_for_next_batch",
-  "run_id": "45272214287",
-  "run_url": "https://github.com/rideinstead/leonida-monitor/actions/runs/45272214287",
+  "updated_at": "2026-11-23T21:43:26.501575+00:00",
+  "status": "running",
+  "run_id": "45272420969",
+  "run_url": "https://github.com/rideinstead/leonida-monitor/actions/runs/45272420969",
   "current_pr": null,
   "current_range": "1000-3000",
   "completed": 200,
