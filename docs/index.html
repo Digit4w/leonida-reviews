@@ -67,10 +67,19 @@ a { color: var(--accent); }
 .repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); text-decoration: none; }
 .repo:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tabs { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+.tabs a { padding: 5px 13px; border-radius: 999px; font-size: 13px; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.view { display: flex; flex-direction: column; gap: 22px; }
+.view[hidden] { display: none; }
+.mission { margin: 2px 0 0; font-size: 16.5px; max-width: 62ch; color: var(--ink); }
+.sub { margin: 0; color: var(--ink-soft); max-width: 70ch; }
 .theme, .gh { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
 .theme:hover, .gh:hover { border-color: var(--accent); }
 .gh.main { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
 .gh.main:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.stats h1, .helpview h1 { font-size: clamp(26px, 4vw, 38px); }
 /* the effort so far */
 .stats { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 16px; }
 .stats h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
@@ -239,16 +248,21 @@ footer p { margin: 0; max-width: 80ch; }
   <div class="top">
     <a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
     <span class="nav">
-      <a class="gh" href="#stats">Stats</a>
-      <a class="gh" href="#help">How to help</a>
-      <a class="gh main" href="https://github.com/Etoile-Bleu/leonida-reviews" rel="noopener">Repository ↗</a>
+      <nav class="tabs" aria-label="Sections">
+        <a href="#reviews" data-view="reviews">Reviews</a>
+        <a href="#stats" data-view="stats">Stats</a>
+        <a href="#help" data-view="help">How to help</a>
+      </nav>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews" rel="noopener">Repository ↗</a>
       <button type="button" class="theme" id="theme">Switch to dark</button>
     </span>
   </div>
 
+  <div class="view" id="view-reviews">
   <section class="hero" aria-label="Summary">
     <div class="headline">
       <h1>Leonida <em>security reviews</em></h1>
+      <p class="mission">Volunteers read Leonida's pull requests for malicious code, so the maintainers can merge with less risk.</p>
       <p class="kicker" id="kicker">Loading the reviews.</p>
     </div>
     <div class="say" id="say"></div>
@@ -279,8 +293,23 @@ footer p { margin: 0; max-width: 80ch; }
 
   <section class="list" id="list" aria-live="polite"></section>
 
-  <section class="stats" id="stats" aria-labelledby="stats-title" hidden>
-    <h2 id="stats-title">The effort so far</h2>
+  <footer>
+    <h2>What the labels mean</h2>
+    <dl class="legend">
+      <div><span class="mark v-do-not-merge">✕</span><span><dt>Do not merge</dt><dd>A real problem was found. The row says what.</dd></span></div>
+      <div><span class="mark v-notes">!</span><span><dt>Needs a look</dt><dd>No malicious code found, but a maintainer should read the remark.</dd></span></div>
+      <div><span class="mark v-scan-only">~</span><span><dt>Quick scan only</dt><dd>A pattern scan ran. Nobody read the change.</dd></span></div>
+      <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
+    </dl>
+    <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
+  </footer>
+  </div>
+
+  <div class="view stats" id="view-stats" hidden>
+    <div class="headline">
+      <h1>The <em>effort</em> so far</h1>
+      <p class="sub">What the review group has done, counted from the review files. Nothing here is fetched from GitHub.</p>
+    </div>
     <div class="trio" id="trio"></div>
     <div class="two">
       <div class="box">
@@ -296,10 +325,13 @@ footer p { margin: 0; max-width: 80ch; }
         <p id="cover-note"></p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="help" id="help" aria-labelledby="help-title">
-    <h2 id="help-title">Want to help?</h2>
+  <div class="view helpview" id="view-help" hidden>
+    <div class="headline">
+      <h1>Want to <em>help</em>?</h1>
+    </div>
+  <section class="help" aria-label="How to help">
     <p>Anyone can add reviews. You need a GitHub account and an AI agent that can read a pull request's diff.</p>
     <ol class="steps">
       <li><b>Pick a PR nobody checked</b><span>Search for its number on this page. If it is not here, it is free to take.</span></li>
@@ -313,16 +345,10 @@ footer p { margin: 0; max-width: 80ch; }
       <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md" rel="noopener">Who is helping ↗</a>
     </div>
   </section>
+  </div>
+
 
   <footer>
-    <h2>What the labels mean</h2>
-    <dl class="legend">
-      <div><span class="mark v-do-not-merge">✕</span><span><dt>Do not merge</dt><dd>A real problem was found. The row says what.</dd></span></div>
-      <div><span class="mark v-notes">!</span><span><dt>Needs a look</dt><dd>No malicious code found, but a maintainer should read the remark.</dd></span></div>
-      <div><span class="mark v-scan-only">~</span><span><dt>Quick scan only</dt><dd>A pattern scan ran. Nobody read the change.</dd></span></div>
-      <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
-    </dl>
-    <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
     <p id="stamp"></p>
     <p>Data: the review files of <a href="https://github.com/Etoile-Bleu/leonida-reviews">Etoile-Bleu/leonida-reviews</a>. Reviews by the people listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
   </footer>
@@ -499,7 +525,6 @@ footer p { margin: 0; max-width: 80ch; }
   function drawStats() {
     var done = all.filter(function (r) { return r.verdict !== "in-progress"; });
     if (!done.length) return;
-    $("stats").hidden = false;
     var stopped = done.filter(function (r) { return r.verdict === "do-not-merge"; }).length;
     var people = {}, human = 0, posted = 0;
     done.forEach(function (r) {
@@ -555,6 +580,21 @@ footer p { margin: 0; max-width: 80ch; }
     $("axis-to").textContent = "#" + (last * STEP + STEP - 1);
     $("cover-note").textContent = "One square is " + STEP + " PR numbers in a row. The fullest square holds " + fmt(peak) + " checked PRs. Hover a square for its range.";
   }
+
+  var VIEWS = ["reviews", "stats", "help"];
+  function showView() {
+    var want = (location.hash || "").replace("#", "");
+    if (VIEWS.indexOf(want) < 0) want = "reviews";
+    VIEWS.forEach(function (v) { $("view-" + v).hidden = (v !== want); });
+    var links = document.querySelectorAll(".tabs a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute("data-view") === want) links[i].setAttribute("aria-current", "page");
+      else links[i].removeAttribute("aria-current");
+    }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", showView);
+  showView();
 
   function wire() {
     var by = {};
