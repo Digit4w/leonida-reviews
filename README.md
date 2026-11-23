@@ -21,4 +21,4 @@ Fields in each review file: `pr`, `head_sha` (the PR head commit that was review
 actually done), `verdict`, `findings`, `read_by_human` (a human read the diff, not only the AI summary) and
 `commented_on_github`.
 
-Keep this repository private: the reviews can describe weaknesses in open PRs.
+This repository is public. Do not put anything here that has not already been posted on the PR, or that you would not post there: a finding that describes a real weakness in an open PR should go to the maintainer first.
