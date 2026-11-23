@@ -1,0 +1,11 @@
+{
+  "pr": 7921,
+  "head_sha": "c250a2677cfba9ba8cb81f387b92d6814c4fa9b3",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
