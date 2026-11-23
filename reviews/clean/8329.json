@@ -1,6 +1,6 @@
 {
   "pr": 8329,
-  "head_sha": "23609f46b6b338c3c8e187d43cbcf55fc4d7ad90",
+  "head_sha": "bcee6c494d7be2efca3cbf19047668c1261eb017",
   "reviewer": "pr-sorter/claude-code",
   "date": "2026-11-23",
   "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
