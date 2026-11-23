@@ -1,0 +1,13 @@
+{
+  "pr": 9733,
+  "head_sha": "a7d26f28ff5490f360125cc30a3fe6e51d64394a",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; documentation text read for malicious content, factual claims not verified; diff scanned for invisible/bidi characters (none)",
+  "verdict": "notes",
+  "findings": [
+    "Adds an unrelated joke banner to the top of README.md: an HTML h3/i block with text and an emoji. No scripts, links or images, so nothing malicious, but it is off-topic noise a maintainer may prefer to reject."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
