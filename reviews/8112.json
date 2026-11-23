@@ -1,0 +1,11 @@
+{
+  "pr": 8112,
+  "head_sha": "2ebeff1d323d9ea80c79807bf3b4485e384ac4f9",
+  "reviewer": "sayak-brm/claude-code",
+  "date": "2026-11-24",
+  "scope": "static read of the full diff plus runtime build and ctest run on Windows 11 (RTX 3090), no game files; review comment posted on the PR; no network, exec, obfuscation or trust-anchor change found in the lines read",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": true
+}
