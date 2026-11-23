@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1033,
+  "head_sha": "c171a0fa2f882e2161709ad9a260bd14ee139815",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Docs: add the D3D-56 descriptor-lookup numbers for NVIDIA RTX 4070 SUPER (Ada)",
+  "author": "undeadhuman37",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1033",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:30:09.794706+00:00"
+}

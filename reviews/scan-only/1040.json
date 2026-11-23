@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1040,
+  "head_sha": "7f656f9a25cca490327296e8e014a607a1103cf0",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "BUILD: validate the hashdict --lookup dictionary shape",
+  "author": "ray3242",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1040",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:30:16.290965+00:00"
+}

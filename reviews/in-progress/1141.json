@@ -1,0 +1,16 @@
+{
+  "source": "leonida-security-monitor",
+  "automatic_in_progress": true,
+  "pr": 1141,
+  "head_sha": "0e6bc2a491c6d30a7482b149f5d9295c2ef2cd3b",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "queued for automatic historical diff scan (1000-3000); scan not yet complete",
+  "verdict": "in-progress",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "pr_state": "closed",
+  "merged": true,
+  "historical_batch": "1000-3000"
+}

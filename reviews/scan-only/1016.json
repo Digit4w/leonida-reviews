@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1016,
+  "head_sha": "d4d8e7d7f2572f69c52d11d0668086c9d6303803",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "swizzle_search: bad numeric options are usage errors, not tracebacks",
+  "author": "bobcatchris",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1016",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:29:54.694771+00:00"
+}

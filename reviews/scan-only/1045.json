@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1045,
+  "head_sha": "a4728898adcae7d48adb23c60f22497c5d9e056e",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: clamp run-time gather LOD with FMax/FMin",
+  "author": "bobcatchris",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1045",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:30:20.187412+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1109,
+  "head_sha": "e98250411eb6519cddea59d3d2d70e5b1152d481",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "rdna2spirv: mask carry/sign-out lane masks by EXEC",
+  "author": "InduwaraSMPN",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1109",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:31:21.049056+00:00"
+}

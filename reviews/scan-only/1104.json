@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1104,
+  "head_sha": "2b7621997a0cfadc345ebee2b9a76771c5f6a534",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: honour V# OOB_SELECT in buffer bounds checks; per-dword multi-dword stores (SHADER-110)",
+  "author": "AlxcBTW",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1104",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:31:17.197278+00:00"
+}
