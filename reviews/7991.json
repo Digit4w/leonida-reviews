@@ -1,0 +1,13 @@
+{
+  "pr": 7991,
+  "head_sha": "7b870e6eae99265144e41dd2a7491d5b461ce04c",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds one workflow-level env line, CTEST_NO_TESTS_ACTION: error, so an empty CTest suite fails the job; nothing else changed"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 7961,
+  "head_sha": "1e5a03b0a3b844a20e6cea0a243ab6fb547729ed",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "changes only the Windows 'CPU runtime tests' step: a pwsh block reads runtime/build/ctest.json and fails the job unless exactly one test named gameinput exists, is not DISABLED, and its executable file exists, then runs ctest as before",
+    "no network, download, secret or environment use; a missing ctest.json would fail CI, not hide anything"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

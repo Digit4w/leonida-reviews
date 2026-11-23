@@ -1,0 +1,13 @@
+{
+  "pr": 8106,
+  "head_sha": "38bd5777f7457d8db68ea8662ea76e12e21ebc77",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds tools/replace_retry.py to the two path-filter lists (push and pull_request) of runtime.yml, in sorted position; no other change"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}
