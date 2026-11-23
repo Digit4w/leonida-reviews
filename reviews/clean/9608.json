@@ -1,0 +1,13 @@
+{
+  "pr": 9608,
+  "head_sha": "119252a45e0a7a74a1b2e081733816640ba254f9",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Docs-only (docs/README.md): merges duplicate table rows for strand_grooms.md and ped_catalogues.md into one each. Only visible non-ASCII (en dash), no URLs or code."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
