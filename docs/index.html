@@ -93,6 +93,7 @@ h1 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4vw, 
 .pill.v-clean { color: var(--clean); background: var(--clean-bg); }
 .pill.v-scan-only { color: var(--scan); background: var(--scan-bg); }
 .pill.v-not-reviewed, .pill.v-in-progress { color: var(--none); background: var(--none-bg); }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 5px; color: var(--none); background: var(--none-bg); margin-top: 5px; white-space: nowrap; }
 .main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .title { font-weight: 500; overflow-wrap: anywhere; }
 .title .by { font-weight: 400; color: var(--ink-soft); }
@@ -127,11 +128,12 @@ footer p { margin: 0; }
   <section class="tiles" id="tiles" aria-label="Reviews by verdict"></section>
 
   <section class="bar" aria-label="Filters">
-    <input type="search" id="q" placeholder="Search PR number, finding, reviewer or head SHA" aria-label="Search">
+    <input type="search" id="q" placeholder="Search PR number, title, author, finding or head SHA" aria-label="Search">
     <label for="reviewer">Reviewer
       <select id="reviewer"><option value="">Everyone</option></select>
     </label>
     <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> With findings only</label>
+    <label for="hideAuto"><input type="checkbox" id="hideAuto"> Hide automated scans</label>
     <button type="button" class="reset" id="reset">Clear filters</button>
     <span class="count" id="count"></span>
   </section>
@@ -141,6 +143,7 @@ footer p { margin: 0; }
   <footer>
     <p><b>How to read a verdict.</b> "clean" means no malicious pattern was found within the scope written on the row. It is not a guarantee that a PR is safe. "scan-only" means a pattern scan, not a read. "notes" means no malicious code but something a maintainer should look at. "do-not-merge" means a real problem.</p>
     <p>Every review is a static, AI-assisted reading of a diff. Nothing was executed. Open "How it was checked" on a row to see what was actually done.</p>
+    <p>Rows tagged "Automated" come from a monitor that matches patterns in added lines. Its findings are leads to look at, not conclusions. "Hide automated scans" leaves only the reviews an agent wrote up.</p>
     <p>Reviews by the contributors listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
   </footer>
 </div>
@@ -150,18 +153,24 @@ footer p { margin: 0; }
   var ORDER = ["do-not-merge", "notes", "scan-only", "not-reviewed", "in-progress", "clean"];
   var LABEL = { "do-not-merge": "Do not merge", "notes": "Notes", "clean": "Clean", "scan-only": "Scan only", "not-reviewed": "Not reviewed", "in-progress": "In progress" };
   var PAGE = 150;
-  var all = [], state = { verdict: "", reviewer: "", q: "", onlyFindings: false, shown: PAGE };
+  var all = [], state = { verdict: "", reviewer: "", q: "", onlyFindings: false, hideAuto: false, shown: PAGE };
   var $ = function (id) { return document.getElementById(id); };
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 
   function rank(v) { var i = ORDER.indexOf(v); return i < 0 ? 99 : i; }
 
-  function matches(r) {
-    if (state.verdict && r.verdict !== state.verdict) return false;
+  function inScope(r) {   // the filters the verdict counts follow
     if (state.reviewer && r.reviewer !== state.reviewer) return false;
+    if (state.hideAuto && r.automated) return false;
+    return true;
+  }
+
+  function matches(r) {
+    if (!inScope(r)) return false;
+    if (state.verdict && r.verdict !== state.verdict) return false;
     if (state.onlyFindings && !r.findings.length) return false;
     if (state.q) {
-      var hay = ("#" + r.pr + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + r.verdict).toLowerCase();
+      var hay = ("#" + r.pr + " " + r.title + " " + r.author + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + r.verdict).toLowerCase();
       var parts = state.q.toLowerCase().split(/\s+/);
       for (var i = 0; i < parts.length; i++) if (parts[i] && hay.indexOf(parts[i]) < 0) return false;
     }
@@ -170,8 +179,8 @@ footer p { margin: 0; }
 
   function drawTiles() {
     var box = $("tiles"); box.textContent = "";
-    var counts = {};
-    all.forEach(function (r) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; });
+    var counts = {}, total = 0;
+    all.forEach(function (r) { if (inScope(r)) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; total++; } });
     var mk = function (key, n, label) {
       var b = el("button", "tile v-" + (key || "all"));
       b.type = "button";
@@ -181,7 +190,7 @@ footer p { margin: 0; }
       b.addEventListener("click", function () { state.verdict = (state.verdict === key ? "" : key); state.shown = PAGE; draw(); });
       box.appendChild(b);
     };
-    mk("", all.length, "All reviews");
+    mk("", total, "All reviews");
     ORDER.forEach(function (v) { if (counts[v]) mk(v, counts[v], LABEL[v] || v); });
   }
 
@@ -191,14 +200,21 @@ footer p { margin: 0; }
     a.href = "https://github.com/ItsNotRexed/Leonida/pull/" + r.pr;
     a.rel = "noopener";
     row.appendChild(a);
-    var pv = el("div"); pv.appendChild(el("span", "pill v-" + r.verdict, LABEL[r.verdict] || r.verdict)); row.appendChild(pv);
+    var pv = el("div"); pv.appendChild(el("span", "pill v-" + r.verdict, LABEL[r.verdict] || r.verdict));
+    if (r.automated) { pv.appendChild(el("br")); pv.appendChild(el("span", "tag", "Automated")); }
+    row.appendChild(pv);
 
     var main = el("div", "main");
+    if (r.title) {
+      var t = el("div", "title", r.title);
+      if (r.author) t.appendChild(el("span", "by", "  by " + r.author));
+      main.appendChild(t);
+    }
     if (r.findings.length) {
       var ul = el("ul", "findings");
       r.findings.forEach(function (f) { ul.appendChild(el("li", null, f)); });
       main.appendChild(ul);
-    } else {
+    } else if (!r.title) {
       main.appendChild(el("div", "title untitled", "No finding recorded"));
     }
     var d = el("details", "scope");
@@ -223,6 +239,7 @@ footer p { margin: 0; }
     list.sort(function (x, y) { return rank(x.verdict) - rank(y.verdict) || y.pr - x.pr; });
     var box = $("ledger"); box.textContent = "";
     $("count").textContent = list.length + " of " + all.length + " reviews";
+    $("hideAuto").parentNode.hidden = !all.some(function (r) { return r.automated; });
     if (!list.length) { box.appendChild(el("div", "empty", "No review matches these filters. Clear a filter to see more.")); return; }
     var frag = document.createDocumentFragment();
     list.slice(0, state.shown).forEach(function (r) { frag.appendChild(drawRow(r)); });
@@ -244,9 +261,10 @@ footer p { margin: 0; }
     $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); state.shown = PAGE; draw(); });
     $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; state.shown = PAGE; draw(); });
     $("onlyFindings").addEventListener("change", function (e) { state.onlyFindings = e.target.checked; state.shown = PAGE; draw(); });
+    $("hideAuto").addEventListener("change", function (e) { state.hideAuto = e.target.checked; state.shown = PAGE; draw(); });
     $("reset").addEventListener("click", function () {
-      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.shown = PAGE;
-      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; draw();
+      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.hideAuto = false; state.shown = PAGE;
+      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; $("hideAuto").checked = false; draw();
     });
   }
 
@@ -260,7 +278,8 @@ footer p { margin: 0; }
     $("snap").textContent = stamp + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
     all = rows.map(function (r) {
       return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
-               findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented };
+               findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
+               automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
     });
     wire(); draw();
   }).catch(function (err) {

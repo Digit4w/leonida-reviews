@@ -90,10 +90,17 @@ def site_data(rows):
     """The same reviews as one JSON array for docs/index.html, newest PR first, one review per line.
     No timestamp, so the file only changes when a review does."""
     rows = sorted(rows, key=lambda r: -r["pr"])
-    lines = [json.dumps({"pr": r["pr"], "verdict": r["verdict"], "reviewer": str(r["reviewer"]), "date": str(r["date"]),
-                         "scope": str(r["scope"]), "findings": [str(f) for f in r["findings"]],
-                         "head": str(r["head_sha"])[:8], "human": r["read_by_human"],
-                         "commented": r["commented_on_github"]}, ensure_ascii=False, sort_keys=True) for r in rows]
+    lines = []
+    for r in rows:
+        item = {"pr": r["pr"], "verdict": r["verdict"], "reviewer": str(r["reviewer"]), "date": str(r["date"]),
+                "scope": str(r["scope"]), "findings": [str(f) for f in r["findings"]],
+                "head": str(r["head_sha"])[:8], "human": r["read_by_human"], "commented": r["commented_on_github"],
+                # A monitor that only matches patterns signs "<name>/automated": the page can set those apart.
+                "automated": str(r["reviewer"]).endswith("/automated")}
+        for key, field in (("title", "pr_title"), ("author", "author")):   # optional, written by some agents
+            if isinstance(r.get(field), str) and r[field].strip():
+                item[key] = r[field].strip()[:200]
+        lines.append(json.dumps(item, ensure_ascii=False, sort_keys=True))
     return "[\n" + ",\n".join(lines) + "\n]\n"
 
 
