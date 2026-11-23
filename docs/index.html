@@ -499,6 +499,17 @@ footer p { margin: 0; max-width: 80ch; }
     if (r.head) meta.appendChild(el("span", "sha", "commit " + r.head));
     meta.appendChild(el("span", null, r.human ? "A human read the diff" : "Read by AI only"));
     if (r.commented) meta.appendChild(el("span", null, "Remark posted on the PR"));
+    if (r.checks && r.checks.length) {
+      // Second opinions on the same PR: shown as text only, after the main review.
+      var dc = el("details");
+      dc.appendChild(el("summary", null, "Double checked " + r.checks.length + (r.checks.length === 1 ? " time" : " times") + " (already reviewed, confirmed again)"));
+      r.checks.forEach(function (d) {
+        var line = el("p", null, d.reviewer + " (" + (info(d.verdict).label || d.verdict) + (d.date ? ", " + d.date : "") + (d.head ? ", commit " + d.head : "") + "): " + (d.scope || "scope not stated"));
+        dc.appendChild(line);
+        if (d.findings.length) dc.appendChild(whyList(d.findings));
+      });
+      meta.appendChild(dc);
+    }
     var how = el("details");
     how.appendChild(el("summary", null, "How it was checked"));
     how.appendChild(el("p", null, r.scope || "Not stated."));
@@ -759,7 +770,11 @@ footer p { margin: 0; max-width: 80ch; }
       all = rows.map(function (r) {
         return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
                  findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
-                 automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
+                 automated: !!r.automated, title: String(r.title || ""), author: String(r.author || ""),
+                 checks: Array.isArray(r.double_checks) ? r.double_checks.map(function (d) {
+                   return { reviewer: String(d.reviewer || ""), verdict: String(d.verdict || ""), date: String(d.date || ""), head: String(d.head || ""),
+                            scope: String(d.scope || ""), findings: Array.isArray(d.findings) ? d.findings.map(String) : [], human: !!d.human };
+                 }) : [] };
       });
       $("stamp").textContent = (isNaN(got.when) ? "" : "Table last published " + got.when.toLocaleString() + ". ") + "This page looks for new reviews every minute while it is open.";
       if (!wired) { wire(); wired = true; } else { fillReviewers(); }

@@ -70,3 +70,10 @@ left for a human. The workflow reads the PR through the API and never runs its c
 `python -I -m unittest discover -s tests`.
 
 Merges made by the bot do not trigger the table workflow, so the scheduled run (every 15 minutes) rebuilds `TABLE.md`.
+
+## Double checks
+
+One file per PR means one main review. When a second reviewer checks a PR that is already reviewed, their result goes into
+the existing file as an entry of `double_checks` (`reviewer`, `verdict`, `date`, `head_sha`, `scope`, `findings`, optional
+`read_by_human`), so it is kept and shown ("already reviewed, confirmed again") without overwriting the first review. The
+main verdict is not changed by a double check.
