@@ -1,0 +1,16 @@
+{
+  "pr": 9500,
+  "head_sha": "234d657349b66c6375e4b72946b43b2eebac2fd3",
+  "reviewer": "tigre437/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing from the PR executed; tools/leonida_mods.py read in full; Python stdlib junction behaviour checked on CPython 3.12.10",
+  "verdict": "notes",
+  "findings": [
+    "No malicious pattern: Mods.bat only finds Python 3.12+ and starts the GUI under -I; no network; gta6rt started from an argument list without a shell; extract_zip rejects dot-dot, absolute names, backslashes, NUL, colons, reserved names and symlink members and checks each target with is_within.",
+    "Hardening: reject_symlinks uses os.path.islink, which is false for Windows directory junctions, and shutil.copytree recurses into them, so installing a mod folder that holds a junction copies the target's files into mods and pack ships them. ZIP packages cannot carry junctions.",
+    "Hardening: extract_zip has no cap on total uncompressed size or member count, so a crafted package can fill the disk.",
+    "Not security: the new joaat (UTF-8, ASCII lower-case, like runtime/src/mods.h) differs from hashdict.joaat (Latin-1) on non-ASCII names, so tests/test_joaat_agreement.py will fail on it."
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}
