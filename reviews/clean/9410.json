@@ -1,0 +1,11 @@
+{
+  "pr": 9410,
+  "head_sha": "9640c84848ebccfd39583bfaddc9fa05b390418e",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of CMakeLists, pe_loader.cpp and the fixture; loader_tls_test.cpp read in part and pattern-scanned",
+  "verdict": "clean",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}
