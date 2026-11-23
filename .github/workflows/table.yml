@@ -8,11 +8,15 @@ on:
     paths:
       - "reviews/**"
       - "build_table.py"
+      - "scripts/**"
+      - "tests/**"
   push:
     branches: [main]
     paths:
       - "reviews/**"
       - "build_table.py"
+      - "scripts/**"
+      - "tests/**"
   # A push whose message has [skip ci] never starts this workflow, so reviews pushed that way would stay out of
   # TABLE.md and the web page. The schedule catches them up; it commits nothing when nothing changed.
   schedule:
@@ -36,6 +40,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 -I build_table.py --check
+      - run: python3 -I -m unittest discover -s tests
 
   render:
     if: github.event_name != 'pull_request'

@@ -1,0 +1,38 @@
+name: automerge
+
+# Merges a pull request that only adds or updates reviews/<number>.json files and passes every rule in
+# scripts/auto_merge_check.py. Anything else is left for a human.
+#
+# This runs on pull_request_target, so it has a write token. It is safe only while it never runs the pull request:
+#   * the checkout is the BASE branch (no `ref:`), so the script that decides is the reviewed copy on main;
+#   * the pull request is read through the GitHub API as data (file list and file content), never checked out,
+#     imported, built or executed;
+#   * the merge is pinned to the head commit that was checked (--match-head-commit), so a later push is not merged
+#     unseen.
+# Keep it that way: no `ref:` on the checkout, no `run:` that calls a file from the pull request, no secrets.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions: {}
+
+concurrency:
+  group: automerge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  decide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check the rules and merge when every one holds
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python3 -I scripts/auto_merge_check.py "$PR_NUMBER"

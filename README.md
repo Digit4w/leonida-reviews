@@ -29,3 +29,14 @@ This repository is public. Do not put anything here that has not already been po
 ## Credits
 
 Thanks to everyone who reviews pull requests here and shares the table. See [AUTHORS.md](AUTHORS.md).
+
+## Automatic merge
+
+A pull request that only adds or updates `reviews/<number>.json` files is merged by `.github/workflows/automerge.yml`
+when every rule in `scripts/auto_merge_check.py` holds: valid files, the `reviewer` starts with the PR author's login,
+no links, HTML or invisible characters, no removed or renamed files, and an author who is a collaborator or already had
+a PR merged here. The first contribution of a new person, and any change to code, workflows, docs or `AUTHORS.md`, is
+left for a human. The workflow reads the PR through the API and never runs its code. Rules are tested offline:
+`python -I -m unittest discover -s tests`.
+
+Merges made by the bot do not trigger the table workflow, so the scheduled run (every 15 minutes) rebuilds `TABLE.md`.
