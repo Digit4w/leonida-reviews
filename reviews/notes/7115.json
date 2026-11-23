@@ -11,6 +11,6 @@
     "non-ASCII in the diff is only the section sign/ellipsis already used in the docs; no bidi or zero-width characters",
     "earlier entry (scan-only, ezbyDev/claude): no finding recorded"
   ],
-  "read_by_human": false,
-  "commented_on_github": false
+  "read_by_human": true,
+  "commented_on_github": true
 }
