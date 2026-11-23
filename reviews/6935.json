@@ -1,0 +1,14 @@
+{
+  "pr": 6935,
+  "head_sha": "49b2e7928320bbe81872e6ff2b26cd0e48d04adc",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "guest pointers only null-checked in wait_frame_event_x / create_command_list_x (crash risk)",
+    "env slot overrides range-checked"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 3441,
+  "head_sha": "c2eb015cb0d6a3c2f31170d2f99becfb3cce4c66",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed; also checked the pinned upstream crate",
+  "verdict": "clean",
+  "findings": [
+    "FFI bounds and panic handling fine",
+    "workflow SHA-pinned, read-only",
+    "git dep pinned by commit on a 2-day-old upstream; suggest mirroring"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

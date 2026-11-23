@@ -1,0 +1,13 @@
+{
+  "pr": 3175,
+  "head_sha": "77816d9db148591cdc3b290d2b6ceb94d5092e27",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "pattern scan of the diff",
+  "verdict": "scan-only",
+  "findings": [
+    "ExecutionPolicy Bypass only in tests"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,16 @@
+{
+  "pr": 3558,
+  "head_sha": "859f6c31c9820c80430ef60cbc9d6d492860202c",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "Authenticode + exact signer check, ffmpeg SHA pinned",
+    "Vulkan SDK has no signer and uses latest",
+    "check-then-run window before elevation",
+    "extractall without path check"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

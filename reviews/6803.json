@@ -1,0 +1,13 @@
+{
+  "pr": 6803,
+  "head_sha": "0fce09a5915fb8b3e03da47ed737be839c577f70",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "_aligned_free on a foreign pointer is UB, same as existing XMemFree"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 7782,
+  "head_sha": "55aa0061cb261d0e975bd3a4c668073afb11f6d6",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "do-not-merge",
+  "findings": [
+    "commits f7cab493/66be6f31 add fork automation workflows: hourly force-push to main and repo DELETE with secrets",
+    "unpinned actions; not exploitable here (secrets do not exist) but dangerous if merged"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

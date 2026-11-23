@@ -1,0 +1,13 @@
+{
+  "pr": 6792,
+  "head_sha": "a877d3bd8d9b50c44a17cdb6e17086d7f91f5c04",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "stub returns S_OK, argument ignored"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

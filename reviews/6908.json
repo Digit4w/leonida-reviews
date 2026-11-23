@@ -1,0 +1,13 @@
+{
+  "pr": 6908,
+  "head_sha": "4d5b387b1203f6f3a83b1a944a01673734af97d8",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "graphics protection bits masked, falls back to PAGE_NOACCESS"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

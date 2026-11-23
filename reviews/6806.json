@@ -1,0 +1,15 @@
+{
+  "pr": 6806,
+  "head_sha": "328f6c556d0df7166e1eb441b7ee823f33a94adf",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "third-party VC++ AIO run as admin (hash matches GitHub digest)",
+    "unpinned PySide6/pyinstaller in release build",
+    "unsigned release binaries"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

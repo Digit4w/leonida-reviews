@@ -1,0 +1,11 @@
+{
+  "pr": 6832,
+  "head_sha": "136b66f0c4ad8e935ac027524ad900ad0564d606",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "pattern scan for unsafe memory patterns",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

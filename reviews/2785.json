@@ -1,0 +1,14 @@
+{
+  "pr": 2785,
+  "head_sha": "2efa4977c91543a894fe28be8991920d61a3e420",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "Python installer URL pinned with SHA-256",
+    "minor: predictable %TEMP% name between hash check and run; SHA not independently verified"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

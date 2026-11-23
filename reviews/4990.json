@@ -1,0 +1,14 @@
+{
+  "pr": 4990,
+  "head_sha": "a5d208d373aa8cd8fab459de9d37b39e4a053a62",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "contents: write on whole workflow, push to main every 20 min",
+    "actions pinned by tag not SHA"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

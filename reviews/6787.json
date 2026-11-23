@@ -1,0 +1,13 @@
+{
+  "pr": 6787,
+  "head_sha": "03300e167ddf7188a739c3f0cb9eeb026358c08b",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "quoting fix for caret paths, tests added"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

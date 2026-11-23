@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""Claim a PR before reviewing it, or finish a review.
+
+    python -I claim.py start 7782 --reviewer "name/agent"
+    python -I claim.py done  7782 --verdict notes --scope "static, diff only" \
+        --finding "first finding" --finding "second finding" [--commented] [--human-read]
+
+`start` fails if reviews/<pr>.json already exists: someone has it or has done it. `git pull` first, and push
+right after `start`, so the others see the claim. Needs gh for the PR head SHA. Standard library only.
+"""
+import argparse
+import datetime
+import json
+import pathlib
+import subprocess
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parent
+REPO = "ItsNotRexed/Leonida"
+VERDICTS = ("do-not-merge", "notes", "clean", "scan-only", "not-reviewed")
+
+
+def head_sha(pr):
+    out = subprocess.run(["gh", "pr", "view", str(pr), "-R", REPO, "--json", "headRefOid", "-q", ".headRefOid"],
+                         capture_output=True, text=True, timeout=30)
+    if out.returncode != 0 or not out.stdout.strip():
+        sys.exit("could not read the head SHA of PR #%d: %s" % (pr, out.stderr.strip()))
+    return out.stdout.strip()
+
+
+def write(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("action", choices=("start", "done"))
+    ap.add_argument("pr", type=int)
+    ap.add_argument("--reviewer", default="")
+    ap.add_argument("--verdict", choices=VERDICTS)
+    ap.add_argument("--scope", default="")
+    ap.add_argument("--finding", action="append", default=[])
+    ap.add_argument("--commented", action="store_true", help="a comment was posted on the PR")
+    ap.add_argument("--human-read", action="store_true", help="a human read the diff, not only the AI's summary")
+    args = ap.parse_args()
+    path = ROOT / "reviews" / ("%d.json" % args.pr)
+    today = datetime.date.today().isoformat()
+
+    if args.action == "start":
+        if path.exists():
+            sys.exit("reviews/%d.json already exists: already claimed or reviewed. Pick another PR." % args.pr)
+        if not args.reviewer:
+            sys.exit("--reviewer is required")
+        write(path, {"pr": args.pr, "head_sha": head_sha(args.pr), "reviewer": args.reviewer, "date": today,
+                     "scope": "in progress", "verdict": "in-progress", "findings": [],
+                     "read_by_human": False, "commented_on_github": False})
+        print("claimed #%d. Now: git add reviews && git commit && git push" % args.pr)
+        return 0
+
+    if not path.exists():
+        sys.exit("no claim for #%d: run `start` first" % args.pr)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if args.reviewer and args.reviewer != data["reviewer"]:
+        sys.exit("#%d is claimed by %s, not %s" % (args.pr, data["reviewer"], args.reviewer))
+    if not args.verdict or not args.scope:
+        sys.exit("--verdict and --scope are required for `done`")
+    data.update({"verdict": args.verdict, "scope": args.scope, "findings": args.finding, "date": today,
+                 "head_sha": head_sha(args.pr), "commented_on_github": args.commented,
+                 "read_by_human": args.human_read})
+    write(path, data)
+    print("finished #%d as %s. Now: python -I build_table.py --check, then commit and push." % (args.pr, args.verdict))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

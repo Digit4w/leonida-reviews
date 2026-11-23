@@ -1,0 +1,15 @@
+{
+  "pr": 8319,
+  "head_sha": "585db2b3d7b19e9e2c9247ea780972f4ca239b08",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed; checker script read",
+  "verdict": "clean",
+  "findings": [
+    "pull_request_target workflow follows its own safe rules",
+    "annotation output escaped",
+    "CODEOWNERS only useful with branch rule"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

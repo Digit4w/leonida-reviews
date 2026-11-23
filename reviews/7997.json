@@ -1,0 +1,13 @@
+{
+  "pr": 7997,
+  "head_sha": "a28a470867bb6c272623dbd81ee72dd2422694a7",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed; compared old/new submodule pins upstream",
+  "verdict": "clean",
+  "findings": [
+    "9 fast-forward commits, no risky APIs"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

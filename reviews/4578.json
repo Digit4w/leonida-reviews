@@ -1,0 +1,11 @@
+{
+  "pr": 4578,
+  "head_sha": "450f139f30cbebc901059e6277f75131910edb0e",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "gh returned an empty diff",
+  "verdict": "not-reviewed",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

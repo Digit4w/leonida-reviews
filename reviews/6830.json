@@ -1,0 +1,13 @@
+{
+  "pr": 6830,
+  "head_sha": "2294cfc7cac24696a52b5ad68cf085b5ac506252",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "bounds math in UINT64, zero count guarded"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

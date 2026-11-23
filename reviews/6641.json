@@ -1,0 +1,14 @@
+{
+  "pr": 6641,
+  "head_sha": "ad805fe7fe25c17f106047e06389be2d91c28c70",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "only network call is api.github.com contributors",
+    "ShellExecute on README links limited to http(s)/mailto"
+  ],
+  "read_by_human": false,
+  "commented_on_github": true
+}

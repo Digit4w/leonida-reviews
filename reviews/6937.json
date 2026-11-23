@@ -1,0 +1,13 @@
+{
+  "pr": 6937,
+  "head_sha": "729baef0703ab5a6e902ea48ba5fe2e3baf25824",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "trace of failed file opens is off by default, capped at 256 events"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

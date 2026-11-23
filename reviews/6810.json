@@ -1,0 +1,13 @@
+{
+  "pr": 6810,
+  "head_sha": "548ac1032586f4bcf71fe14e3ccc8f0208f01148",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, diff only, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "null-checked outputs; XLaunchUri fails offline, nothing is launched"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

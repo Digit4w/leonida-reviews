@@ -1,0 +1,13 @@
+{
+  "pr": 1797,
+  "head_sha": "4e75556e60ba42a9184ef331e14cab9e2f536025",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "pattern scan; ~3000 lines not read line by line",
+  "verdict": "scan-only",
+  "findings": [
+    "Popen with list args, no shell=True"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
