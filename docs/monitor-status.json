@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "updated_at": "2026-11-23T21:35:54.730411+00:00",
+  "status": "running",
+  "run_id": "45271272045",
+  "run_url": "https://github.com/rideinstead/leonida-monitor/actions/runs/45271272045",
+  "current_pr": null,
+  "current_range": "1000-3000",
+  "completed": 100,
+  "total": 6770,
+  "remaining": 6670,
+  "in_progress_window": 100,
+  "scanned": 100,
+  "high_alert_prs": 0,
+  "medium_signal_prs": 2,
+  "ranges": [
+    {
+      "range": "1000-3000",
+      "total_prs": 1946,
+      "already_checked": 20,
+      "active_claims": 0,
+      "queued": 1926,
+      "missing_head": 0,
+      "scanned": 100,
+      "high_alerts": 0,
+      "medium_signal_prs": 2
+    },
+    {
+      "range": "3001-6999",
+      "total_prs": 3863,
+      "already_checked": 282,
+      "active_claims": 0,
+      "queued": 3581,
+      "missing_head": 0,
+      "scanned": 0,
+      "high_alerts": 0,
+      "medium_signal_prs": 0
+    },
+    {
+      "range": "7000-9000",
+      "total_prs": 1937,
+      "already_checked": 384,
+      "active_claims": 290,
+      "queued": 1263,
+      "missing_head": 0,
+      "scanned": 0,
+      "high_alerts": 0,
+      "medium_signal_prs": 0
+    }
+  ]
+}
