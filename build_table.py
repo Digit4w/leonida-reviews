@@ -33,6 +33,13 @@ def load():
         except (OSError, ValueError) as e:
             errors.append("%s: not readable JSON (%s)" % (path.name, e))
             continue
+        # Automated scanner rows are visible only after a GitHub COMMENT has been confirmed.
+        if data.get("source") == "leonida-security-monitor" and (
+            data.get("commented_on_github") is not True
+            or data.get("publication_status") != "published"
+            or data.get("github_review_event") != "COMMENT"
+        ):
+            continue
         missing = [k for k in REQUIRED if k not in data]
         if missing:
             errors.append("%s: missing %s" % (path.name, ", ".join(missing)))
@@ -41,7 +48,7 @@ def load():
             errors.append("%s: file name must be <pr>.json and match the pr field" % path.name)
         if data["verdict"] not in VERDICTS:
             errors.append("%s: verdict must be one of %s" % (path.name, ", ".join(VERDICTS)))
-        if not isinstance(data["findings"], list):
+        if not isinstance(data["findings"], list) or not all(isinstance(x, str) for x in data["findings"]):
             errors.append("%s: findings must be a list of strings" % path.name)
         if not isinstance(data["read_by_human"], bool) or not isinstance(data["commented_on_github"], bool):
             errors.append("%s: read_by_human and commented_on_github must be true or false" % path.name)
