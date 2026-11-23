@@ -71,6 +71,11 @@ a { color: var(--accent); }
 .tabs a { padding: 5px 13px; border-radius: 999px; font-size: 13px; color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
 .tabs a:hover { color: var(--ink); }
 .tabs a[aria-current="page"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.live { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--clean); flex: none; }
+.live.off i { background: var(--none); }
+@media (prefers-reduced-motion: no-preference) { .live:not(.off) i { animation: pulse 2.4s ease-in-out infinite; } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--clean) 55%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
 .view { display: flex; flex-direction: column; gap: 22px; }
 .view[hidden] { display: none; }
 .mission { margin: 2px 0 0; font-size: 16.5px; max-width: 62ch; color: var(--ink); }
@@ -246,7 +251,8 @@ footer p { margin: 0; max-width: 80ch; }
 <div class="sky">
 <div class="wrap">
   <div class="top">
-    <a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
+    <span class="nav"><a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
+      <span class="live off" id="live" title="This page checks for new reviews by itself every minute"><i></i><span id="live-text">connecting</span></span></span>
     <span class="nav">
       <nav class="tabs" aria-label="Sections">
         <a href="#reviews" data-view="reviews">Reviews</a>
@@ -596,13 +602,20 @@ footer p { margin: 0; max-width: 80ch; }
   window.addEventListener("hashchange", showView);
   showView();
 
-  function wire() {
-    var by = {};
+  function fillReviewers() {
+    var sel = $("reviewer"), by = {};
     all.forEach(function (r) { by[r.reviewer] = (by[r.reviewer] || 0) + 1; });
+    while (sel.options.length > 1) sel.remove(1);
     Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).forEach(function (name) {
-      var o = el("option", null, name + " (" + fmt(by[name]) + ")"); o.value = name; $("reviewer").appendChild(o);
+      var o = el("option", null, name + " (" + fmt(by[name]) + ")"); o.value = name; sel.appendChild(o);
     });
+    if (state.reviewer && !by[state.reviewer]) state.reviewer = "";
+    sel.value = state.reviewer;
     $("hideAutoWrap").hidden = !all.some(function (r) { return r.automated; });
+  }
+
+  function wire() {
+    fillReviewers();
     $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); reset(); });
     $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; reset(); });
     $("sort").addEventListener("change", function (e) { state.sort = e.target.value; reset(); });
@@ -615,22 +628,41 @@ footer p { margin: 0; max-width: 80ch; }
     });
   }
 
-  fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    var when = new Date(res.headers.get("last-modified") || "");
-    $("stamp").textContent = (isNaN(when) ? "" : "Table last published " + when.toLocaleString() + ". ") + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
-    return res.json();
-  }).then(function (rows) {
-    all = rows.map(function (r) {
-      return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
-               findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
-               automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
+  var EVERY = 60000, wired = false, lastSeen = "";
+  function clock(d) { return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
+  function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
+
+  function load() {
+    return fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var when = new Date(res.headers.get("last-modified") || "");
+      return res.text().then(function (text) { return { text: text, when: when }; });
+    }).then(function (got) {
+      setLive(true, "live · checked " + clock(new Date()));
+      if (got.text === lastSeen) return;          // nothing new: leave the page as it is
+      var rows = JSON.parse(got.text);
+      lastSeen = got.text;
+      all = rows.map(function (r) {
+        return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
+                 findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
+                 automated: !!r.automated, title: String(r.title || ""), author: String(r.author || "") };
+      });
+      $("stamp").textContent = (isNaN(got.when) ? "" : "Table last published " + got.when.toLocaleString() + ". ") + "This page looks for new reviews every minute while it is open.";
+      if (!wired) { wire(); wired = true; } else { fillReviewers(); }
+      draw(); drawStats();
     });
-    wire(); draw(); drawStats();
-  }).catch(function (err) {
+  }
+
+  load().catch(function (err) {
+    setLive(false, "offline");
     $("kicker").textContent = "The reviews could not be loaded.";
     $("list").appendChild(el("div", "state", "The review data did not load (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
   });
+  setInterval(function () {
+    if (document.hidden) return;                  // do not poll from a background tab
+    load().catch(function () { setLive(false, "offline, retrying"); });
+  }, EVERY);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && wired) load().catch(function () { setLive(false, "offline, retrying"); }); });
 })();
 </script>
 </body>
