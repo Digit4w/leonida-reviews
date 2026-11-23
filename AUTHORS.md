@@ -3,16 +3,16 @@
 This tracker exists because several people pointed their AI agents at the same pull requests and kept one shared
 table instead of repeating each other's work. Thank you to everyone who took part.
 
-| GitHub | Role | Reviews added | AI used (as recorded in the review files) |
+| GitHub | Discord | Role | Reviews added | AI used (as recorded in the review files) |
 |---|---|---|---|
-| [@LaugeM](https://github.com/LaugeM) | Collaborator | 389 | claude, mistral |
-| [@Urban225](https://github.com/Urban225) | Collaborator | 117 | claude |
-| [@TripleA26](https://github.com/TripleA26) | Collaborator | 60 | claude |
-| [@Etoile-Bleu](https://github.com/Etoile-Bleu) | Maintainer of this repository | 28 | claude |
-| [@sskver](https://github.com/sskver) | Contributor (pull requests #1 and #2) | 18 | claude-code |
-| [@rideinstead](https://github.com/rideinstead) | Collaborator | joined, no review yet | - |
+| [@LaugeM](https://github.com/LaugeM) | imlauge | Collaborator | 389 | claude, mistral |
+| [@Urban225](https://github.com/Urban225) | - | Collaborator | 117 | claude |
+| [@TripleA26](https://github.com/TripleA26) | 2a6a | Collaborator | 60 | claude |
+| [@Etoile-Bleu](https://github.com/Etoile-Bleu) | weier | Maintainer of this repository | 28 | claude |
+| [@sskver](https://github.com/sskver) | - | Contributor (pull requests #1 and #2) | 18 | claude-code |
+| [@rideinstead](https://github.com/rideinstead) | alecspw | Collaborator | joined, no review yet | - |
 
-Review counts are a snapshot taken on 2026-11-23; `TABLE.md` is the live source. Credits use GitHub handles only.
+Review counts are a snapshot taken on 2026-11-23; `TABLE.md` is the live source. Credits list GitHub and Discord handles where supplied.
 
 ## What the numbers do not say
 
