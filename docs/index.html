@@ -64,9 +64,25 @@ a { color: var(--accent); }
 
 /* header */
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
-.theme { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; }
-.theme:hover { border-color: var(--accent); }
+.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+.repo:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.theme, .gh { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.theme:hover, .gh:hover { border-color: var(--accent); }
+.gh.main { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+.gh.main:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+/* how to help */
+.help { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 16px;
+  background-image: radial-gradient(520px 200px at 100% 0%, var(--glow), transparent 70%); }
+.help h2 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(21px, 3vw, 27px); }
+.help > p { margin: 0; color: var(--ink-soft); max-width: 70ch; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; counter-reset: step; }
+.steps li { counter-increment: step; border: 1px solid var(--line); border-radius: 14px; padding: 14px 15px; background: var(--bg); display: flex; flex-direction: column; gap: 5px; }
+.steps li::before { content: counter(step); font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1; color: var(--accent); }
+.steps b { font-size: 15.5px; }
+.steps span { color: var(--ink-soft); font-size: 14px; }
+.help .rule { color: var(--ink); font-weight: 600; }
+.help .links { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* hero: the summary in sentences */
 .hero { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
@@ -185,7 +201,7 @@ footer p { margin: 0; max-width: 80ch; }
   .tools { position: static; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .say button, .theme, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
+  .say button, .theme, .gh, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
   @media (hover: hover) { .say button:hover { transform: translateY(-2px); } }
 }
 </style>
@@ -195,8 +211,12 @@ footer p { margin: 0; max-width: 80ch; }
 <div class="sky">
 <div class="wrap">
   <div class="top">
-    <span class="repo">ItsNotRexed/Leonida · pull requests</span>
-    <button type="button" class="theme" id="theme">Switch to dark</button>
+    <a class="repo" href="https://github.com/ItsNotRexed/Leonida/pulls" rel="noopener" title="Open the Leonida pull requests on GitHub">ItsNotRexed/Leonida · pull requests</a>
+    <span class="nav">
+      <a class="gh" href="#help">How to help</a>
+      <a class="gh main" href="https://github.com/Etoile-Bleu/leonida-reviews" rel="noopener">Repository ↗</a>
+      <button type="button" class="theme" id="theme">Switch to dark</button>
+    </span>
   </div>
 
   <section class="hero" aria-label="Summary">
@@ -231,6 +251,22 @@ footer p { margin: 0; max-width: 80ch; }
   </section>
 
   <section class="list" id="list" aria-live="polite"></section>
+
+  <section class="help" id="help" aria-labelledby="help-title">
+    <h2 id="help-title">Want to help?</h2>
+    <p>Anyone can add reviews. You need a GitHub account and an AI agent that can read a pull request's diff.</p>
+    <ol class="steps">
+      <li><b>Pick a PR nobody checked</b><span>Search for its number on this page. If it is not here, it is free to take.</span></li>
+      <li><b>Give your agent the group's prompt</b><span>It says what to look for and how to write the review file, so everyone's reviews line up.</span></li>
+      <li><b>Send your review files</b><span>Open a pull request on the repository with one small file per PR you checked.</span></li>
+    </ol>
+    <p class="rule">One rule above all: read the diff, never run a PR's code.</p>
+    <div class="links">
+      <a class="gh main" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AGENT_PROMPT.md" rel="noopener">The agent prompt ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews#readme" rel="noopener">How the review files work ↗</a>
+      <a class="gh" href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md" rel="noopener">Who is helping ↗</a>
+    </div>
+  </section>
 
   <footer>
     <h2>What the labels mean</h2>
