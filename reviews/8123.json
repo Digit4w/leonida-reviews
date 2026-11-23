@@ -1,0 +1,13 @@
+{
+  "pr": 8123,
+  "head_sha": "2172234966e73ca81963f255321b50b92a5eb04c",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line by the AI and read by the account owner (not marked line by line); nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "macOS job: replaces status=${PIPESTATUS[0]} with read -r status log_status <<< \"${PIPESTATUS[*]}\" in two steps and fails the step if the tee stage failed; the idiom is correct for two-stage pipelines; no network, download or secret use"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

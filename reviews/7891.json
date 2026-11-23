@@ -1,0 +1,15 @@
+{
+  "pr": 7891,
+  "head_sha": "0fd4447418f7b33f10e6b19c8d87db8058d81b71",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line (workflow file); every pinned action SHA checked against the upstream tag; nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "workflow runs the PR's own test file inside a tightly sandboxed container: --network none, --read-only, non-root user, --cap-drop ALL, no-new-privileges, pids limit, tmpfs only, checkout mounted read-only",
+    "image pinned by digest python:3.13-slim@sha256:e48f59cd...; the digest was not independently verified, but it only resolves inside the official python repository",
+    "pull_request trigger, contents: read, checkout action pinned by verified SHA"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 7882,
+  "head_sha": "7fa84c44b5f45364f484ddb6eabeb64c5ae18096",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line (workflow file and its changed lines); every pinned action SHA checked against the upstream tag; nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "adds an SDL3 cache to the Windows job of the existing runtime.yml (+32 lines, no deletions)",
+    "SDL3_TARBALL_SHA256 f3bb06f5...8581f is identical to URL_HASH in runtime/CMakeLists.txt on main",
+    "the new PowerShell step only runs cl, cmake --version and ninja --version to build a cache key; the cache action is pinned by the SHA the project already uses; a PR's cache is scoped to the PR and cannot poison main"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}

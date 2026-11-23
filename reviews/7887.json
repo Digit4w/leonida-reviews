@@ -1,0 +1,16 @@
+{
+  "pr": 7887,
+  "head_sha": "05597d34860965fc892087cdada9e9fd3981652a",
+  "reviewer": "sskver/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted; the whole diff read line by line (workflow file); every pinned action SHA checked against the upstream tag; nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "new CodeQL workflow: pull_request and push to main; permissions contents: read plus security-events: write (the normal permission for uploading CodeQL results)",
+    "build-mode: none, so the repository's code is never built or run; persist-credentials: false",
+    "actions pinned by full SHA; github/codeql-action 1bd86f2f... and actions/checkout 3d3c42e5... verified against the official tags v4.39.4 and v7.0.1",
+    "matrix lists languages (csharp, rust) the repository may not contain: wasted runs, not a security issue"
+  ],
+  "read_by_human": true,
+  "commented_on_github": false
+}
