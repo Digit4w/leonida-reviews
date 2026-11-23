@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1127,
+  "head_sha": "a0a6d2f07cfcca1007e5898a4795d1d59a16a274",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: --texel-offset-fallback for image_sample*_o without VK_KHR_maintenance8",
+  "author": "Jess-Doit",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1127",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:41:51.077905+00:00"
+}

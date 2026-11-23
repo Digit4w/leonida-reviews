@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1207,
+  "head_sha": "8e4b3e82ed1177e31240022a1b8e2f701316c158",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: preserve both dwords and 64-bit SCC for non-mask 64-bit scalar bitwise ops",
+  "author": "InduwaraSMPN",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1207",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:43:04.096373+00:00"
+}

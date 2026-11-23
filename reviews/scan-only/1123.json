@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1123,
+  "head_sha": "6d0be586e1b7850bb9212c41aa402307a0d2171f",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "carve_all.ps1: archive names from Get-ChildItem -Name, so an 8.3 short -Game works (fixes main's red check)",
+  "author": "NathansDomainSolutions",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1123",
+  "pr_state": "closed",
+  "merged": false,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:41:47.549544+00:00"
+}

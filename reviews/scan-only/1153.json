@@ -1,0 +1,24 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 1153,
+  "head_sha": "fd17f11a5c6e67fca1b8ff9e1e784f90c404197f",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "scope": "historical 1000-3000 static scan; no code executed; heuristic only, not a full review",
+  "verdict": "scan-only",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "provisional_verdict": "clean",
+  "heuristic_signal_counts": {
+    "high": 0,
+    "medium": 0
+  },
+  "pr_title": "Translator: typed image_load fetches UINT/SINT formats from the sampled arrays (SHADER-151)",
+  "author": "ICUMADETHIS",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/1153",
+  "pr_state": "merged",
+  "merged": true,
+  "historical_batch": "1000-3000",
+  "historical_scan_at": "2026-11-23T21:42:14.874005+00:00"
+}
