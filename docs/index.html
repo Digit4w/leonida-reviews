@@ -631,7 +631,7 @@ footer p { margin: 0; max-width: 80ch; }
     });
   }
 
-  var EVERY = 60000, wired = false, lastSeen = "";
+  var EVERY = 60000, wired = false, lastSeen = "", lastLiveQueueSignature = "";
   function clock(d) { return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
   function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
 
@@ -643,6 +643,33 @@ footer p { margin: 0; max-width: 80ch; }
     }).then(function (data) {
       var node = $("monitor-status");
       if (!data || !data.status) { node.hidden = true; return; }
+
+      if (Array.isArray(data.in_progress_prs)) {
+        var activeRows = data.in_progress_prs;
+        var activeIds = {};
+        activeRows.forEach(function (item) { activeIds[Number(item.pr)] = true; });
+        var signature = String(data.run_id || "") + ":" + JSON.stringify(activeRows);
+        if (signature !== lastLiveQueueSignature) {
+          all = all.filter(function (r) {
+            if (!r.automated) return true;
+            if (r.verdict === "in-progress") return false;
+            if (r.verdict === "scan-only" && activeIds[r.pr]) return false;
+            return true;
+          });
+          activeRows.forEach(function (item) {
+            all.push({
+              pr: Number(item.pr), verdict: "in-progress",
+              reviewer: "leonida-security-monitor/automated",
+              date: String(data.updated_at || "").slice(0, 10),
+              scope: "Queued for the current automated historical scan window (" + String(item.range || "") + ").",
+              findings: [], head: String(item.head || ""), human: false, commented: false,
+              automated: true, title: String(item.title || ""), author: String(item.author || "")
+            });
+          });
+          lastLiveQueueSignature = signature;
+          if (wired) { fillReviewers(); draw(); drawStats(); }
+        }
+      }
 
       var updated = new Date(data.updated_at || "");
       var ageSeconds = isNaN(updated) ? Infinity : Math.max(0, (Date.now() - updated.getTime()) / 1000);
