@@ -164,5 +164,46 @@
   },
   "malicious_signatures": {},
   "last_check": "2026-11-23T20:35:30.464316+00:00",
-  "pending": []
+  "pending": [],
+  "historical_batch": {
+    "ranges": [
+      {
+        "range": "1000-3000",
+        "total_prs": 1946,
+        "already_checked": 20,
+        "active_claims": 0,
+        "queued": 1926,
+        "missing_head": 0,
+        "scanned": 0,
+        "high_alerts": 0,
+        "medium_signal_prs": 0
+      },
+      {
+        "range": "3001-6999",
+        "total_prs": 3863,
+        "already_checked": 282,
+        "active_claims": 0,
+        "queued": 3581,
+        "missing_head": 0,
+        "scanned": 0,
+        "high_alerts": 0,
+        "medium_signal_prs": 0
+      },
+      {
+        "range": "7000-9000",
+        "total_prs": 1937,
+        "already_checked": 384,
+        "active_claims": 290,
+        "queued": 1263,
+        "missing_head": 0,
+        "scanned": 0,
+        "high_alerts": 0,
+        "medium_signal_prs": 0
+      }
+    ],
+    "total_tasks": 6770,
+    "seeded_at": "2026-11-23T21:25:57.608865+00:00",
+    "queue_file": "/home/runner/work/leonida-monitor/leonida-monitor/leonida-reviews/historical_pr_batches.json"
+  },
+  "batch_queue_cursor": 0
 }
