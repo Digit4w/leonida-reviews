@@ -1,0 +1,13 @@
+{
+  "pr": 802,
+  "head_sha": "ed1020e512ab21e41ca0478973287074ecef6961",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "CI pipes the apt.llvm.org key into gpg --dearmor without a fingerprint check (official LLVM key)"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

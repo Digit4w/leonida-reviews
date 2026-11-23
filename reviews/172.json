@@ -1,0 +1,13 @@
+{
+  "pr": 172,
+  "head_sha": "354738c9475303a35d176ac96cf34494cef0b47b",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "clean",
+  "findings": [
+    "rpf9-explorer pin 374f9a74 is an ancestor of the submodule repo's main"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

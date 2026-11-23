@@ -1,0 +1,14 @@
+{
+  "pr": 5859,
+  "head_sha": "ce615e78435c98ae22030745634ec7fa54eec4d1",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "Can-I-Run view loads assttro.github.io in an off-screen WebView2 and fills in this PC's CPU, GPU and RAM (CanIRunView.xaml.cs); described in its README",
+    "committed binaries are PNG screenshots and an .ico"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

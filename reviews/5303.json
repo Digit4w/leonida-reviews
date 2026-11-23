@@ -1,0 +1,13 @@
+{
+  "pr": 5303,
+  "head_sha": "86ca164c257f78ab5de586539d01dce214dc924f",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "clean",
+  "findings": [
+    "new Rust crate pulls flate2, serde, serde_json, sha2, tempfile from crates.io with a Cargo.lock"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

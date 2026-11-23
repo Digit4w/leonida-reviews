@@ -1,0 +1,13 @@
+{
+  "pr": 7944,
+  "head_sha": "18f8dce23c70d039a8a510d29e3e5b1af3f7b2de",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "do-not-merge",
+  "findings": [
+    "single upload commit reverts about 37 main commits and drops 12 runtime tests (noted on the PR by kamilolejnik and moistman7); a stale copy, not hidden code"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

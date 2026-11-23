@@ -1,0 +1,13 @@
+{
+  "pr": 6961,
+  "head_sha": "5e44283363c83b7cef8afb053ba1046b6e9aba54",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "README badge links to and loads images from recomplauncher.com; described in the PR"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

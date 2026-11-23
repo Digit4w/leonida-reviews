@@ -1,0 +1,13 @@
+{
+  "pr": 1412,
+  "head_sha": "66ca7221d25ed65109c7c3612018aee767a527b4",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "installer fetches dotnet-install.sh and apt signing keys unpinned; the curl | bash hit in docs/install.md is a sentence explaining why it is not used"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

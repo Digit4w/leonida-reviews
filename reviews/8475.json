@@ -1,0 +1,13 @@
+{
+  "pr": 8475,
+  "head_sha": "33232b9b27da3b7978714ab1666e5a9329d28766",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; diff read from git objects by Claude Code",
+  "verdict": "do-not-merge",
+  "findings": [
+    "README notice that Leonida is moving to another domain and asks readers to create an account there; reported by adonizm in #8504"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

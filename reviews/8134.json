@@ -1,0 +1,15 @@
+{
+  "pr": 8134,
+  "head_sha": "c77a4fa275e70d24de70f8adac9b5272a27f1c25",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "notes",
+  "findings": [
+    "draft integration branch, 402 files, only partly read",
+    "Build.bat Python installer is SHA-256 pinned (from #2785); new workflow actions SHA-pinned",
+    "rpf9-explorer gitlink 917e9b9c is an older ancestor of the submodule repo's main (stale merge, not a foreign commit)"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

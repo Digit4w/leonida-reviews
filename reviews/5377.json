@@ -1,0 +1,13 @@
+{
+  "pr": 5377,
+  "head_sha": "14d6acdb515f0561e4e9fe30b7736fe527ea78c9",
+  "reviewer": "LaugeM/claude+mistral",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: regex pass of added lines and check_pr_security.py (#8319) over all open PRs; Mistral Vibe read this PR's flagged files' diff (cut at 450 lines); flags checked by Claude Code",
+  "verdict": "do-not-merge",
+  "findings": [
+    "adds tests/semantic/MASTER_PROMPT.md, an agent instruction file not mentioned in the PR: commit, push and gh pr create in one turn (lines 43-55), keep wording that shows automation out of commits and PRs (37-39); reported in #8504"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
