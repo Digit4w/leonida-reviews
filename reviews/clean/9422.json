@@ -1,0 +1,13 @@
+{
+  "pr": 9422,
+  "head_sha": "138a77f402706e30a987b09aa34a6c9541e7a26f",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs (none)",
+  "verdict": "clean",
+  "findings": [
+    "Two files (tools/dds_png.py and its test): header parser now also reads and validates the DDS_HEADER size (124) and DDS_PIXELFORMAT size (32) and rejects others; test added. Input validation only, no execution or I/O changes."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

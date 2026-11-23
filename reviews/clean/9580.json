@@ -1,0 +1,13 @@
+{
+  "pr": 9580,
+  "head_sha": "9a0a1a2d5fe4e7f0786cf0d34564249f1fede278",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs (none)",
+  "verdict": "clean",
+  "findings": [
+    "Two files (scripts/shader_stats.py and its test): number() parses counters with float and, for integral values, Decimal to keep exact digits beyond 2**53; test added. Pure parsing logic."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

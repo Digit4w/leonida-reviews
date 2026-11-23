@@ -1,0 +1,13 @@
+{
+  "pr": 9571,
+  "head_sha": "ca0bc863c6ac433a0575066c831616d0a133b065",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs (none)",
+  "verdict": "clean",
+  "findings": [
+    "Two files (tools/tex_export.py and its test): main() now refuses, with exit 2 and an error, when the export_log.json path is the same as the input index (same_report_path from the existing tools/report_paths helper, confirmed present upstream); test added. Safety guard, no new I/O sinks."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
