@@ -1,9 +1,9 @@
 {
   "pr": 9171,
-  "head_sha": "57f778af2d7159ae51ea681a3154d62a11c449e2",
+  "head_sha": "ceb8a09351dbdcfed720c46fec8edd0fd2af134d",
   "reviewer": "TripleA26/claude",
   "date": "2026-11-23",
-  "scope": "static, AI-assisted, diff only, nothing executed (325 changed lines, 0 files)",
+  "scope": "static, AI-assisted, diff only, nothing executed (327 changed lines, 0 files)",
   "verdict": "clean",
   "findings": [],
   "read_by_human": false,
