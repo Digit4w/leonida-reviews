@@ -4,7 +4,7 @@
 > `leonida-reviews` repository: one JSON file per PR in `reviews/`. Follow these rules exactly.
 >
 > **Before reviewing a PR**
-> 1. Run `git pull` in `leonida-reviews`. If `reviews/<pr>.json` already exists, the PR is taken or done: pick another one.
+> 1. Run `git pull` in `leonida-reviews`. If `reviews/<verdict>/<pr>.json` already exists, the PR is taken or done: pick another one.
 > 2. Run `python -I claim.py start <pr> --reviewer "<my-handle>/<my-ai>"`, then `git add reviews && git commit && git push`
 >    right away, so the others see your claim.
 >

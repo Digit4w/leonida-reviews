@@ -43,12 +43,14 @@ def main():
     ap.add_argument("--commented", action="store_true", help="a comment was posted on the PR")
     ap.add_argument("--human-read", action="store_true", help="a human read the diff, not only the AI's summary")
     args = ap.parse_args()
-    path = ROOT / "reviews" / ("%d.json" % args.pr)
     today = datetime.date.today().isoformat()
+    existing = sorted((ROOT / "reviews").glob("*/%d.json" % args.pr)) + sorted((ROOT / "reviews").glob("%d.json" % args.pr))
+    path = existing[0] if existing else ROOT / "reviews" / "in-progress" / ("%d.json" % args.pr)
 
     if args.action == "start":
-        if path.exists():
-            sys.exit("reviews/%d.json already exists: already claimed or reviewed. Pick another PR." % args.pr)
+        if existing:
+            sys.exit("%s already exists: already claimed or reviewed. Pick another PR." % existing[0].relative_to(ROOT))
+        path.parent.mkdir(parents=True, exist_ok=True)
         if not args.reviewer:
             sys.exit("--reviewer is required")
         write(path, {"pr": args.pr, "head_sha": head_sha(args.pr), "reviewer": args.reviewer, "date": today,
@@ -57,7 +59,7 @@ def main():
         print("claimed #%d. Now: git add reviews && git commit && git push" % args.pr)
         return 0
 
-    if not path.exists():
+    if not existing:
         sys.exit("no claim for #%d: run `start` first" % args.pr)
     data = json.loads(path.read_text(encoding="utf-8"))
     if args.reviewer and args.reviewer != data["reviewer"]:
@@ -67,7 +69,11 @@ def main():
     data.update({"verdict": args.verdict, "scope": args.scope, "findings": args.finding, "date": today,
                  "head_sha": head_sha(args.pr), "commented_on_github": args.commented,
                  "read_by_human": args.human_read})
-    write(path, data)
+    final = ROOT / "reviews" / args.verdict / ("%d.json" % args.pr)
+    final.parent.mkdir(parents=True, exist_ok=True)
+    write(final, data)
+    if path != final and path.exists():
+        path.unlink()   # the claim moves to its verdict folder
     print("finished #%d as %s. Now: python -I build_table.py --check, then commit and push." % (args.pr, args.verdict))
     return 0
 

@@ -7,8 +7,9 @@ GitHub API, as data.
 
 A PR is merged automatically only when ALL of these hold:
   * it is open, not a draft, and targets main;
-  * it changes at most MAX_FILES files and every one is reviews/<number>.json, added or modified, never removed or
-    renamed, each at most MAX_BYTES;
+  * it changes at most MAX_FILES files and every one is reviews/<verdict>/<number>.json (the folder is the verdict):
+    added, modified, moved between verdict folders by the same reviewer, or removed only as the author's own
+    reviews/in-progress/ claim; each at most MAX_BYTES;
   * each file is valid by the same rules build_table.py uses, its name matches its "pr" field, and its "reviewer"
     starts with the PR author's login (so nobody can file a review in someone else's name);
   * the text fields hold no link, HTML, markdown link, control or invisible characters, and stay short;
@@ -38,7 +39,8 @@ MAX_FILES = 100
 MAX_BYTES = 20 * 1024
 MAX_TEXT = 400
 MAX_FINDINGS = 20
-NAME = re.compile(r"^reviews/([0-9]{1,6})\.json$")
+FOLDERS = ("in-progress", "clean", "notes", "do-not-merge", "scan-only", "not-reviewed")
+NAME = re.compile(r"^reviews/(in-progress|clean|notes|do-not-merge|scan-only|not-reviewed)/([0-9]{1,6})\.json$")
 SHA = re.compile(r"^(unknown|[0-9a-f]{7,40})$")
 TRUSTED = {"OWNER", "MEMBER", "COLLABORATOR"}
 BAD_TEXT = re.compile(r"https?://|ftp://|javascript:|data:|<[a-zA-Z/!]|\]\(|!\[|`{3}", re.I)
@@ -68,7 +70,7 @@ def clean_text(value, label, problems):
             break
 
 
-def check_review(path, number, data, author):
+def check_review(path, number, data, author, folder=None):
     """Return a list of reasons this file cannot be merged automatically (empty = fine)."""
     problems = []
     if not isinstance(data, dict):
@@ -97,6 +99,8 @@ def check_review(path, number, data, author):
     else:
         for i, finding in enumerate(data["findings"]):
             clean_text(finding, "%s finding %d" % (path, i + 1), problems)
+    if folder is not None and data["verdict"] != folder:
+        problems.append("%s: the folder is %s but the verdict is %s" % (path, folder, data["verdict"]))
     reviewer = data["reviewer"] if isinstance(data["reviewer"], str) else ""
     if reviewer.split("/", 1)[0].lower() != author.lower():
         problems.append("%s: reviewer must start with the PR author's login (%s)" % (path, author))
@@ -104,8 +108,15 @@ def check_review(path, number, data, author):
 
 
 def evaluate(pr, files, read_head, read_main, trusted_author):
-    """pr: dict(number, author, draft, state, base). files: list of dict(filename, status, size).
-    read_head(path) / read_main(path) return parsed JSON or None. Returns a list of reasons; empty means mergeable."""
+    """pr: dict(number, author, draft, state, base). files: list of dict(filename, status, previous_filename?).
+    read_head(path) / read_main(path) return parsed JSON or None. Returns a list of reasons; empty means mergeable.
+
+    Layout: reviews/<verdict>/<number>.json, the folder is the verdict. Allowed changes:
+      added     a new review (or the finished version of a claim, together with the removal/rename of the claim);
+      modified  the same file, same reviewer;
+      renamed   the same PR number moving between verdict folders, same reviewer on both sides;
+      removed   only the author's own reviews/in-progress/ claim.
+    A review for a PR number that already has one on main in another folder is refused unless this PR moves it."""
     reasons = []
     if pr["state"] != "open" or pr["draft"] or pr["base"] != "main":
         reasons.append("the PR must be open, not a draft, and target main")
@@ -114,26 +125,59 @@ def evaluate(pr, files, read_head, read_main, trusted_author):
     if len(files) > MAX_FILES:
         reasons.append("more than %d files" % MAX_FILES)
         return reasons
+    author = pr["author"].lower()
+
+    def owner_ok(old):
+        return isinstance(old, dict) and str(old.get("reviewer", "")).split("/", 1)[0].lower() == author
+
+    def on_main(number):
+        return [f for f in FOLDERS if read_main("reviews/%s/%d.json" % (f, number)) is not None]
+
+    freed = set()   # PR numbers whose existing file this PR removes or renames
     for f in files:
         m = NAME.match(f["filename"])
+        if f["status"] == "removed" and m:
+            freed.add(int(m.group(2)))
+        if f["status"] == "renamed":
+            old = NAME.match(f.get("previous_filename", ""))
+            if old:
+                freed.add(int(old.group(2)))
+    for f in files:
+        name, status = f["filename"], f["status"]
+        m = NAME.match(name)
         if not m:
-            reasons.append("%s is not a review file (only reviews/<number>.json can be merged automatically)" % f["filename"])
+            reasons.append("%s is not a review file (only reviews/<verdict>/<number>.json can be merged automatically)" % name)
             continue
-        if f["status"] not in ("added", "modified"):
-            reasons.append("%s is %s: removals and renames need a human" % (f["filename"], f["status"]))
+        folder, number = m.group(1), int(m.group(2))
+        if status == "removed":
+            old = read_main(name)
+            if folder != "in-progress" or not owner_ok(old):
+                reasons.append("%s: only your own reviews/in-progress/ claim can be removed" % name)
             continue
-        if f.get("size", 0) > MAX_BYTES:
-            reasons.append("%s is larger than %d bytes" % (f["filename"], MAX_BYTES))
+        if status not in ("added", "modified", "renamed"):
+            reasons.append("%s is %s: copies need a human" % (name, status))
             continue
-        data = read_head(f["filename"])
+        data = read_head(name)
         if data is None:
-            reasons.append("%s could not be read as JSON" % f["filename"])
+            reasons.append("%s could not be read as JSON (or is larger than %d bytes)" % (name, MAX_BYTES))
             continue
-        reasons += check_review(f["filename"], int(m.group(1)), data, pr["author"])
-        if f["status"] == "modified":
-            old = read_main(f["filename"])
+        reasons += check_review(name, number, data, pr["author"], folder)
+        if status == "modified":
+            old = read_main(name)
             if not isinstance(old, dict) or str(old.get("reviewer", "")).lower() != str(data.get("reviewer", "")).lower():
-                reasons.append("%s: a modification must keep the reviewer of the existing file" % f["filename"])
+                reasons.append("%s: a modification must keep the reviewer of the existing file" % name)
+        elif status == "renamed":
+            prev = f.get("previous_filename", "")
+            pm = NAME.match(prev)
+            old = read_main(prev) if pm else None
+            if not pm or int(pm.group(2)) != number:
+                reasons.append("%s: a rename must keep the PR number" % name)
+            elif not isinstance(old, dict) or str(old.get("reviewer", "")).lower() != str(data.get("reviewer", "")).lower():
+                reasons.append("%s: a move must keep the reviewer of the existing file" % name)
+        elif status == "added":
+            elsewhere = on_main(number)
+            if elsewhere and number not in freed:
+                reasons.append("%s: PR #%d already has a review in %s" % (name, number, ", ".join(elsewhere)))
     if not trusted_author:
         reasons.append("first contribution by %s: a human merges the first one" % pr["author"])
     return reasons
@@ -164,7 +208,7 @@ def main():
     page1 = json.loads(gh("api", "repos/%s/pulls/%d/files?per_page=100&page=1" % (repo, args.pr)))
     page2 = json.loads(gh("api", "repos/%s/pulls/%d/files?per_page=100&page=2" % (repo, args.pr))) if len(page1) == 100 else []
     # More than 100 files is over MAX_FILES anyway; the size of each file is checked when its content is read.
-    files = [{"filename": f["filename"], "status": f["status"]} for f in page1 + page2]
+    files = [{"filename": f["filename"], "status": f["status"], "previous_filename": f.get("previous_filename", "")} for f in page1 + page2]
 
     def read_ref(repo_name, path, ref):
         raw = gh("api", "-H", "Accept: application/vnd.github.raw", "repos/%s/contents/%s?ref=%s" % (repo_name, path, ref),
