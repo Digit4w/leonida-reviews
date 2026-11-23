@@ -7,18 +7,8 @@
   "created_at": "2026-11-23T20:53:29.135856+00:00",
   "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
   "verdict": "notes",
-  "findings": [
-    "#tools/shader_ir.py:19 - Dynamic code execution - INVALID_WORD_COUNT = re.compile(r\",\\s*(\\d+) invalid words\\s*$\")"
-  ],
-  "detailed_findings": [
-    {
-      "file": "tools/shader_ir.py",
-      "line": 19,
-      "pattern": "Dynamic code execution",
-      "match": "INVALID_WORD_COUNT = re.compile(r\",\\s*(\\d+) invalid words\\s*$\")",
-      "severity": "medium"
-    }
-  ],
+  "findings": [],
+  "detailed_findings": [],
   "read_by_human": false,
   "commented_on_github": true,
   "review_submitted": true,
@@ -31,5 +21,7 @@
   "additions": 57,
   "patch_fingerprint": "162cd5495e3095ae2deadf3ced91bc678c547f60366f9da26d43e3841143bd74",
   "github_review_event": "COMMENT",
-  "public_disclosure_reviewed": true
+  "public_disclosure_reviewed": true,
+  "false_positive_corrected": true,
+  "correction_note": "False positive: Python re.compile() was mistaken for dynamic code execution; the detector was narrowed and a regression test added."
 }

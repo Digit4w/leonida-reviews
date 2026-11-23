@@ -1,0 +1,59 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9403,
+  "head_sha": "0e35442283a6f8b0c7e449db170eeef3f4940d9c",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T21:00:55.074765+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#make_game.py:1391 - Unfinished-work marker - todo = []",
+    "#make_game.py:1402 - Unfinished-work marker - todo.append(entry)",
+    "#make_game.py:1403 - Unfinished-work marker - if not todo:",
+    "#make_game.py:1407 - Unfinished-work marker - write_index(todo)"
+  ],
+  "detailed_findings": [
+    {
+      "file": "make_game.py",
+      "line": 1391,
+      "pattern": "Unfinished-work marker",
+      "match": "todo = []",
+      "severity": "low"
+    },
+    {
+      "file": "make_game.py",
+      "line": 1402,
+      "pattern": "Unfinished-work marker",
+      "match": "todo.append(entry)",
+      "severity": "low"
+    },
+    {
+      "file": "make_game.py",
+      "line": 1403,
+      "pattern": "Unfinished-work marker",
+      "match": "if not todo:",
+      "severity": "low"
+    },
+    {
+      "file": "make_game.py",
+      "line": 1407,
+      "pattern": "Unfinished-work marker",
+      "match": "write_index(todo)",
+      "severity": "low"
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": true,
+  "review_submitted": true,
+  "publication_status": "published",
+  "pr_title": "runtime: capture the shader containers the layer cannot translate, and translate them in the shaders stage",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9403",
+  "author": "0xmp3",
+  "base_branch": "main",
+  "head_branch": "a44-capture-unresolved",
+  "additions": 485,
+  "patch_fingerprint": "6b07bf98f1820d127d6265aefbf0934f576c8809f1eb21310c114125f84b39aa",
+  "github_review_event": "COMMENT",
+  "public_disclosure_reviewed": true
+}
