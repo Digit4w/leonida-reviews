@@ -22,3 +22,7 @@ actually done), `verdict`, `findings`, `read_by_human` (a human read the diff, n
 `commented_on_github`.
 
 This repository is public. Do not put anything here that has not already been posted on the PR, or that you would not post there: a finding that describes a real weakness in an open PR should go to the maintainer first.
+
+## Credits
+
+Thanks to everyone who reviews pull requests here and shares the table. See [AUTHORS.md](AUTHORS.md).
