@@ -10,6 +10,6 @@
     "hardening: the handles are raw C++ pointers, and XApuDisconnect/XDspDisconnect delete whatever the title passes without checking it is a live connection, so a double disconnect or a stale handle is a double free; XApuEnqueueCommand/XApuDequeueResult also trust the handle",
     "earlier entry (scan-only, ezbyDev/claude): two pattern hits, benign: tests call the XApuConnect shim (audio APU queue), no socket or network API"
   ],
-  "read_by_human": false,
+  "read_by_human": true,
   "commented_on_github": false
 }
