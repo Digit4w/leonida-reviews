@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-23T21:44:59.356966+00:00",
-  "status": "running",
+  "updated_at": "2026-11-23T21:45:13.400393+00:00",
+  "status": "waiting_for_next_batch",
   "run_id": "45272420969",
   "run_url": "https://github.com/rideinstead/leonida-monitor/actions/runs/45272420969",
-  "current_pr": 1304,
+  "current_pr": null,
   "current_range": "1000-3000",
-  "completed": 288,
+  "completed": 300,
   "total": 6770,
-  "remaining": 6482,
+  "remaining": 6470,
   "in_progress_window": 100,
-  "scanned": 288,
+  "scanned": 300,
   "high_alert_prs": 1,
   "medium_signal_prs": 11,
   "ranges": [
@@ -21,7 +21,7 @@
       "active_claims": 0,
       "queued": 1926,
       "missing_head": 0,
-      "scanned": 288,
+      "scanned": 300,
       "high_alerts": 1,
       "medium_signal_prs": 11
     },
@@ -49,90 +49,6 @@
     }
   ],
   "in_progress_prs": [
-    {
-      "pr": 1304,
-      "head": "b565407a",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1305,
-      "head": "9395ea9f",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1306,
-      "head": "e6f8478e",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1307,
-      "head": "854239a3",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1308,
-      "head": "78b11199",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1309,
-      "head": "a9ab50e5",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1310,
-      "head": "7c0bb5e1",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1311,
-      "head": "3e8191d2",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1312,
-      "head": "84b1f3fd",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1313,
-      "head": "51c40202",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1314,
-      "head": "675e35b2",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
-    {
-      "pr": 1315,
-      "head": "b9893db9",
-      "range": "1000-3000",
-      "title": "",
-      "author": ""
-    },
     {
       "pr": 1316,
       "head": "ace75cfb",
@@ -745,6 +661,90 @@
     {
       "pr": 1406,
       "head": "302f925c",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1407,
+      "head": "1681f3dc",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1408,
+      "head": "5f9640d5",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1409,
+      "head": "3b3a43b4",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1410,
+      "head": "e8562e38",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1411,
+      "head": "90d7ebd5",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1413,
+      "head": "d33d16b2",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1414,
+      "head": "736f9d6e",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1415,
+      "head": "342ba8cd",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1416,
+      "head": "7e741561",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1417,
+      "head": "a3e207d1",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1418,
+      "head": "6be13498",
+      "range": "1000-3000",
+      "title": "",
+      "author": ""
+    },
+    {
+      "pr": 1419,
+      "head": "f3977cac",
       "range": "1000-3000",
       "title": "",
       "author": ""
