@@ -1,0 +1,14 @@
+{
+  "pr": 9024,
+  "head_sha": "360602108eb5339d5d90333be6bae361c90cc740",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "first_light.translate() now reads the translator index through load_json with a dict check and reports a non-object shader entry with a clear SystemExit message instead of a traceback; tests added.",
+    "Read the full diff; error handling only. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

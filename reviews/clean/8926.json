@@ -1,0 +1,14 @@
+{
+  "pr": 8926,
+  "head_sha": "8abbbe5f0701128568e7df47b2ed78744bc145c5",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "vk_compute_test (test harness) now dumps and checks the first dispatch after queue idle before VKC_BENCH repetitions; run_gpu_tests.py sets VKC_BENCH=1 by default for the workgroup_yz case.",
+    "Read the C++ and Python diff; test-only code under runtime/test and scripts, env dict built from os.environ, no shell. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8678,
+  "head_sha": "b6ade6e700141034f1f3e7405552cd79711be23b",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "viewer/serve.py: _is_reserved_segment now also refuses path segments ending in a dot or space (Win32 strips them), closing a gap on Python 3.12/POSIX; 2 production lines, 27 test lines.",
+    "Tightens the local viewer server's path checks (hardening). No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

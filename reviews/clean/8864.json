@@ -1,0 +1,14 @@
+{
+  "pr": 8864,
+  "head_sha": "ac31634745df0d7204cfd03ff531fc9fe5b58787",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bvh_geometry_check: non-finite leaf or scene bounds are now counted as outside and gap becomes inf, instead of NaN being silently discarded; test added.",
+    "Read the full diff; pure Python math checks in an offline analysis tool. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

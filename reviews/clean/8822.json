@@ -1,0 +1,14 @@
+{
+  "pr": 8822,
+  "head_sha": "cf87f8db266225e98fb5399f77a14da8ba85829f",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "scripts/run_gpu_tests.py reads spirv/index.json with utf-8-sig through a small helper (BOM tolerance); 6 production lines plus a test.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

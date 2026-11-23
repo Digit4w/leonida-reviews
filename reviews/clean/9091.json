@@ -1,0 +1,14 @@
+{
+  "pr": 9091,
+  "head_sha": "5173c608eea811404ffd29e08bb65692539590c3",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "d3d12_xs_device.cpp slot 67: catches std::bad_alloc from fspx_payload_from_parts and returns E_OUTOFMEMORY instead of letting a C++ exception cross the thunk. 7 prod lines with a mock test.",
+    "Read the C++ diff: no pointer or size changes. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

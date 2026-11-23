@@ -1,0 +1,14 @@
+{
+  "pr": 9219,
+  "head_sha": "7bcc5b34ef842696defdddec58b674704f2d2b40",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "xcl_compare.py --out now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Same staged-write pattern as #8967, #8905, #8856 (same author) and #8909 (save_keys, different author, same title shape); different tool files, not line duplicates. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 9027,
+  "head_sha": "8b406dc8cdbae460db2aba9a4b76c3dd83cc1c78",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "file_system shim: DeleteFileW and MoveFileExW now take the same copy-up mutex (promoted to a namespace-scope g_copy_mutex) so they wait for an in-progress copy-up of the same package file; 126-line test added.",
+    "Read the C++ diff (15 lines); locks are scoped lock_guards, no new parsing. Applies cleanly.",
+    "Body says textual conflict with #7957, which replaces the same function-local s_copy_mutex with an SRWLOCK; whichever lands second must share one lock across write_target, delete_file_w and move_file_ex_w."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

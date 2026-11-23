@@ -1,0 +1,14 @@
+{
+  "pr": 8708,
+  "head_sha": "d1a40fe32afbb9c8ffff65278b333a7389c6bb5b",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "user_sgpr_census.py: --json is staged through a temp file in the destination folder and replaced via replace_retry so a failed write keeps the previous report; test mocks a failed replace. Code read, no exploit pattern.",
+    "Same author and same change applied to many tools: related PRs #8667, #9080, #9098, #9104, #9196, #9203 (heap_index_census, vertex_types, sampler_source_census, rootsig_census, skin_streams, psin_psch). Not the same lines, but a series of parallel micro-PRs with a copy of the same helper; a shared helper might be preferable. Body discloses AI assistance."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9361,
+  "head_sha": "f8cf98cf9163fd6dd09ca9df370a7ce9d1b55d25",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "run_wine_tests.py: the --wine default is now os.environ.get('WINE') or 'wine' so an empty WINE falls back to wine instead of a usage error. Two prod lines and 22 test lines.",
+    "No overlaps, applies cleanly. Same author (SkippySteve) as #9048, an unrelated run_wine_tests fix."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

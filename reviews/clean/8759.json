@@ -1,0 +1,14 @@
+{
+  "pr": 8759,
+  "head_sha": "4786960d6d29ce71aa144b4f069055954d1136f0",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "scripts/run_wine_tests.py keeps per-index results so repeated CTest names cannot hide a failure; pure dict/report logic with a test.",
+    "No tripwire, no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

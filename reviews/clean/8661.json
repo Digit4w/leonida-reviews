@@ -1,0 +1,14 @@
+{
+  "pr": 8661,
+  "head_sha": "9f91c7de34392b9b5f65e0b348a765f2a7645688",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "exe_checklist.py: note parsing starts the body at the end of the matched marker, so text like 'the file mode:' before an internal colon is no longer dropped, in both code comments and Markdown.",
+    "Regex/parsing change with two regression tests. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

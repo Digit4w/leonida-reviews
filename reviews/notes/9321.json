@@ -1,0 +1,14 @@
+{
+  "pr": 9321,
+  "head_sha": "7bd200a8206706f89308199684fc8ed7d934e0af",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "d3d12_com.cpp parameter(): a root argument set before any root signature is bound is now ignored with a one-time note instead of making Close return E_INVALIDARG, to match the host runtime; doc counts and parity test updated. 9 prod lines.",
+    "Body says Depends on #9071 (docs counts line and the same test table region). Shares 10 lines (53% of this PR, 45% of that PR) with #6068 by another author (Close parity for unbound draws and root args), so the two overlap in intent and may conflict. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

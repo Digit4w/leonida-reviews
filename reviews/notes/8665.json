@@ -1,0 +1,14 @@
+{
+  "pr": 8665,
+  "head_sha": "d9188d17b814b80c86996ecf4f156c0bdfa8e659",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs and a plain-text results file read; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "Adds an RTX 3060 Ti (NVIDIA 610.88, Windows 10) entry to docs/gpu_test_results.md and gpu-test-results/RTX3060Ti.txt with measured build.py/check.py/run_gpu_tests.py counts; data only, no code, no agent-directed text.",
+    "Title is similar to #8485 (RTX 3070 Ti entry) but it is a different GPU and the body names the other GPU PRs as distinct, so not a duplicate; both edit docs/gpu_test_results.md, so a trivial table conflict is likely. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

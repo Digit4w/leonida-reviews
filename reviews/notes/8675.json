@@ -1,0 +1,14 @@
+{
+  "pr": 8675,
+  "head_sha": "31bea663117d55bc0b165fffab77f6788cfec382",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "pc_checker.py: on Linux, lspci -mm -nn numeric IDs are matched against the Vulkan device identity from the project's own vk_subgroup_info.py (run with sys.executable -I, no shell, bounded output parsing) to replace chip codenames with real GPU names; 110 test lines.",
+    "Code read, no exploit pattern. #8636 also edits tools/pc_checker.py (detect_rebar and result_as_text), so a merge conflict is possible between them. No overlaps by content, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9247,
+  "head_sha": "8a59534f9f2cc80ce9b58eb20814dea150b0c20f",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "vinterp_hw_probe.py: oracle.run results of wrong count or rejected (None/str/short) now raise RuntimeError, reported as 'harness error' with exit 2, instead of being skipped. 11 prod lines plus tests.",
+    "Same BUILD-733 contract pattern as same-author #8883 (f64_omod_probe) and other probes: near-identical sibling PRs for different files, not duplicate lines. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

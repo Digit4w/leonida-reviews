@@ -1,0 +1,14 @@
+{
+  "pr": 8883,
+  "head_sha": "53b7ee7f2b55fc958f377f7851b5dec806f60809",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "f64_omod_probe evaluate() now validates oracle.run() results (count, None/str rejections, word count) and reports them as harness errors with exit 2; tests added.",
+    "Read the full Python diff; offline probe tool, no shell/network. Same author has a similar-titled PR #9247 for a different tool (vinterp_hw_probe), not a duplicate. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

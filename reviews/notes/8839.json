@@ -1,0 +1,14 @@
+{
+  "pr": 8839,
+  "head_sha": "42f3d7e2ca7a591e9890036da6227ad8779edd9c",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "tools/pe_shader_containers.py: rejects embedded shader containers whose chunks overlap or are out of order, still permitting alignment padding and requiring the last chunk to end at the container size; tighter bounds, no new reads.",
+    "Probable duplicate: overlap tool lists #7513 'fix: reject overlapping embedded shader chunks' (different author) with a near-identical title; line percentage not reported and #7513's diff is not in my local data, so unconfirmed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

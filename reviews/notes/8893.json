@@ -1,0 +1,15 @@
+{
+  "pr": 8893,
+  "head_sha": "de018e73bdbff021c71f8e909129d803143f1052",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "viewer/index.html: pressing P now shows 'Copy the link from the address bar.' when clipboard write is unavailable or fails, via a status span set with textContent; tests added.",
+    "Read the viewer diff; no unsafe HTML sink in production code. The tripwire hit is an insertAdjacentHTML stub in the test mock (false positive). Applies cleanly.",
+    "Stacked: body says Depends on #4912 (both change the P key handler)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

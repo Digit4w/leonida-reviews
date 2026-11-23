@@ -1,0 +1,14 @@
+{
+  "pr": 8632,
+  "head_sha": "39cbfc2d1172e65cf2fe03f1b424a7c8b6aa1194",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bink_index.py: one _is_rpf_magic predicate accepts both RPF9 and 9FPR tags for CLI validation, empty-archive check and header parsing; legacy ?FPR still handled.",
+    "Parser tweak on magic bytes with synthetic CLI test. Same author as #8593 (RPF9 header validation) but a different tool, so not a duplicate. No tripwires, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8981,
+  "head_sha": "224fc74f5c9d990ca5e7b1a38532b004b2dff694",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "vulkan_backend.h stage_khr_instances: no longer refuses an ARRAY_OF_POINTERS instance whose upload VA wraps below the arena (no Resizable BAR), removing the va > UINT64_MAX - heap_base check; adds a CTest case with LEONIDA_UPLOAD_SYSMEM=1.",
+    "Read the one-line production change; buffer_at() and room checks still validate the address, and the wrap is intentional per the body. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

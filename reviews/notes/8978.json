@@ -1,0 +1,15 @@
+{
+  "pr": 8978,
+  "head_sha": "0c2effa27fea08d4df7c3ab40eef821864d9a1fa",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "IndirectDispatchCounter: allocates through memory_type_order with fallback across compatible types, requires stride >= record size and 4-byte aligned argument/count offsets, and uses a stride floor of 3 words for the index limit; 247-line mock-driven test.",
+    "Read the production diff. Remark: dispatch size changed to (count - 1u) / 64u + 1u, which underflows to a huge group count if count were 0; I could not confirm from the diff that the surrounding code guarantees count > 0 (max_count is checked earlier). Worth a one-line check.",
+    "Other changes are validation tightening; no exploit pattern. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

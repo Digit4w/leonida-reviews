@@ -1,0 +1,15 @@
+{
+  "pr": 8583,
+  "head_sha": "03ba08aa4ab6d8a167dd5116e9b7d2bcacc320fe",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production C++ diff read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Routes CreateHardLinkA/W and GetVolumeNameForVolumeMountPointA/W through the console overlay; host-only calls pass through unchanged.",
+    "Reads: copy-up before linking, cleanup of the copy on link failure, mixed guest/host links rejected; paths go through the existing parse_console check.",
+    "No tripwires, no overlaps, applies cleanly on main; includes tests."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

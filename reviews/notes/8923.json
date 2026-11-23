@@ -1,0 +1,15 @@
+{
+  "pr": 8923,
+  "head_sha": "290f63b328820554320f0788dcce37f0c741aec1",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "world_index writes the primary --out JSON to a private temp file in the destination folder and os.replace()s it, preserving permissions and cleaning up on failure; test added.",
+    "Read the Python diff; no shell, temp file removed on any exception, symlink destination resolved via an existing helper. Applies cleanly.",
+    "Body mentions #1354 (entity JSONL staging) and #6152 (changes when the primary report is requested) as related; #6152 would need to keep the atomic write."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

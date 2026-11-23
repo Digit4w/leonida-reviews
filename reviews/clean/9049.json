@@ -1,0 +1,14 @@
+{
+  "pr": 9049,
+  "head_sha": "aa153f9bd5346b50f3486fc8d2b5766e3387bb46",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "probe_signed_zero.py: missing spirv-as/spirv-val or a bad harness path now gives one error line and exit 2 instead of a traceback, and LEONIDA_SPIRV_TOOLS is honored like build.py. Small dev-script change with tests.",
+    "Read the diff summary and body; subprocess calls remain argument lists and the tool dir comes from an env var the developer already controls. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

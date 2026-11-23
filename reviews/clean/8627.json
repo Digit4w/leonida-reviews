@@ -1,0 +1,14 @@
+{
+  "pr": 8627,
+  "head_sha": "adca561548036c3aedc6260b3f56546b7e5f4bbd",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs-only diff skimmed, searched for agent-directed text, odd links and commands; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "Turkish quickstart sync with README (pc_checker section, parallel stages, --mesh-compute) and i18n index marker bump to 867d922; no links to external hosts added, no agent-directed text found.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

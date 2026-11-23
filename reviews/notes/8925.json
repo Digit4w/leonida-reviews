@@ -1,0 +1,14 @@
+{
+  "pr": 8925,
+  "head_sha": "03591ba18b86f737c23a371ad6c405a4b47f184e",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static docs read only; overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Docs-only: adds an RX 9060 XT (RDNA4, AMD 25.6.1, Windows 10) row and section to docs/gpu_test_results.md, reporting two check.py fixture failures.",
+    "Adds rows in the same table as #8752, #8665, #8485, #8236 and #8194, so merge order requires trivial rebases (body says so). Results are self-reported and cannot be verified from the diff. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

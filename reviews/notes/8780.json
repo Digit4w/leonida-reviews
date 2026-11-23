@@ -1,0 +1,14 @@
+{
+  "pr": 8780,
+  "head_sha": "400fb1c816cb2b64ad0814f8ec4bd5b82be59bbe",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "ped_catalogues --out staged via temp file + replace_retry; same copy-pasted helper as #8742/#8753/#8757/#8773, safe (no shell, temp cleaned in finally).",
+    "Same-author series with near-identical titles, e.g. #8820 (gamedata_blobs) flagged by overlap; each targets a different tool. Body discloses AI assistance. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

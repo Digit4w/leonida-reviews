@@ -1,0 +1,14 @@
+{
+  "pr": 8748,
+  "head_sha": "7cc337c1fd069458f72a510bae0625352f27c653",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds a 573-line test (tests/semantic/test_cmp_f64_gfx1036_hw.py) with recorded hardware words for v_cmp f64 and class f16, plus a docs/design.md update; no production code.",
+    "Test imports only os, sys, unittest and the repo's support module; no subprocess or network. No overlap, applies cleanly. Data table was skimmed, not re-verified against hardware."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

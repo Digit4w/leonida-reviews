@@ -1,0 +1,14 @@
+{
+  "pr": 8610,
+  "head_sha": "1728e9b6f4b21c23598b690bbe01b6b3d72a4783",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "test-only diff (one new test file) read; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "Draft PR adding tests/semantic/test_alu_swaprel_b32.py (v_swaprel_b32 semantic translation test); test-only, no production code.",
+    "Overlap: #8646 (same author, also draft) contains this whole file as its first commit (100% of this PR's added lines, 71% of #8646), so #8646 supersedes it. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

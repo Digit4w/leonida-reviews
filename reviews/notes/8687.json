@@ -1,0 +1,14 @@
+{
+  "pr": 8687,
+  "head_sha": "aac5dc6bde0690e3b7e2716741d0ef6e21dbf793",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "lds_fuzz.py and valu_fuzz.py: raise RuntimeError when rdna2spirv.py exits nonzero instead of accepting a stale index.json; 4 production lines plus a 100-line regression test.",
+    "Body says 'Depends on: #5057' as an integration overlap (its batching replaces the run_gpu test seam), so whichever lands second must adapt the fixtures; not stacked in code. No tripwires, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

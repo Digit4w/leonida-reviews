@@ -1,0 +1,15 @@
+{
+  "pr": 8865,
+  "head_sha": "f0d6bed90acf5f4913f2f543226f2112c7e8389c",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages navmesh_links --out through a temp file plus replace_retry so a failed write keeps the previous report; adds a test.",
+    "Read the Python; same boilerplate as #8856. No exploit pattern, applies cleanly.",
+    "Part of a series of near-identical 'stage --out' PRs by the same author: #8856, #8967, #9063, #9131, #9172 (each a different tool), plus #8909 (save_keys, another author). Not duplicates of this tool, but copy-pasted write_json_report helper repeated per tool; a shared helper might be preferable."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

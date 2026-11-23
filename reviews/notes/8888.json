@@ -1,0 +1,15 @@
+{
+  "pr": 8888,
+  "head_sha": "0519d1560e4b93bd29e0b4621db086abf5cf3ac1",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "fma_mix_literal_probe run_hw() now raises when the oracle returns the wrong number of results or an empty word, and --oracle rejects empty tokens; tests added (+55).",
+    "Read the Python diff; offline probe, no exploit pattern. Applies cleanly.",
+    "Same author's #8921 (fma_mix_probe, title-similar) applies the same guard to a sibling tool; same pattern, not a duplicate."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8918,
+  "head_sha": "9cd467943688e49b2f5c050dd94d40ae9a8adfb6",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages find_hash_lookup --json through a temp file plus replace_retry so a failed write keeps the previous report; adds a test; missing parent folders still error as before.",
+    "Read the Python; same helper pattern, temp file cleaned in finally. Applies cleanly.",
+    "One of a series of near-identical 'stage the output' PRs by the same author for different tools (#9203, #8983 flagged, plus #8905, #8884, #8876 and others). Not duplicates of this tool."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

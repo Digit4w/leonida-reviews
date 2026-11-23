@@ -1,0 +1,14 @@
+{
+  "pr": 8832,
+  "head_sha": "ed12c60ecf07d0f6aade6cc30651faffee193d52",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; docs-only PR: grepped the 135-line Vietnamese translation for commands, URLs and instructions aimed at AI or reviewers, did not verify translation accuracy; tripwire and overlap triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds docs/i18n/vi/quickstart.md and registers it in docs/README.md and docs/i18n/README.md; body discloses AI assistance.",
+    "Links seen point to ordinary tool sites (python.org, dotnet, LunarG, llvm, conda, ffmpeg, xwin) and the repo itself; the only command is a git clone of the repo. No hidden Unicode or instructions to reviewers found. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

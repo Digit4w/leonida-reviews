@@ -1,0 +1,14 @@
+{
+  "pr": 9090,
+  "head_sha": "60122987f6b3a81bdab8ac11c89b55ccb452cd59",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "ttpf_mips.py: float16 volume continuity check now streams adjacent Z slices (detile_volume_slice, struct.iter_unpack) instead of holding the full voxel list; lowers memory use. Python, no I/O change, 55 test lines.",
+    "Read the diff: zip(strict=True) on slices; no subprocess or network. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

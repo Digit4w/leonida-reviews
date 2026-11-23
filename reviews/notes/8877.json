@@ -1,0 +1,15 @@
+{
+  "pr": 8877,
+  "head_sha": "589bee9b84801c70b4e24f15493366911b21a13e",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv: v_fma_mix literal repair now rejects listings whose literal text contradicts the stored bytes (printed 4.0 vs stored 3.0); restore_mix_literal refactored, one test added.",
+    "Read the Python diff; offline translation-tool logic, no shell or file-system risk. Applies cleanly on main.",
+    "Stacked: body lists Depends on #2977, #6808 and #3372 (shared reconciliation call sites), so merge order and rebases are needed."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8842,
+  "head_sha": "74859f4dab3a5245f0ef35d50d4803b008629cb5",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "tools/rdna2spirv.py and tools/lane_masks.py: lowers s_bitreplicate_b64_b32 to EXEC or wave64 VCC (each lane takes bit lane/2); other mask destinations still raise Unsupported. Tripwire exec-dyn (self.set_exec) is the translator's own EXEC helper: false positive.",
+    "Stacked: body says Depends on #8526; overlap shows 60% of its added lines are in #8526 (86% of #8526's), so it legitimately contains that diff; merge #8526 first. Applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

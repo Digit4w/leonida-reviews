@@ -1,0 +1,14 @@
+{
+  "pr": 8989,
+  "head_sha": "018dfa37e60c221e992f6225d78e2cebdef76195",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static docs read; no code in this PR; overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Docs-only: removes merge-spliced duplicate text and stray markup from three rows of docs/design.md (Ray tracing, ds_add_f32, Denormal flush), 3 lines changed.",
+    "The 'small wording edit' slop flag fits, but it fixes real duplicated text. No instructions aimed at AI agents seen, no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9233,
+  "head_sha": "a4656edec67b46b0ef9c82b4e41982a14872aa81",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rdna2spirv.py: one-line change so only v_cvt_f32_ubyte0..3 are matched instead of any ubyte prefix; unknown variants now raise Unsupported. Plus doc line and 5 test lines.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8608,
+  "head_sha": "5f788db34d6f5de693549470a16e64c9a9c4a4b6",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: replaces the SHADER-766 'if local_index == 0' guarded OpStore of %ms_counts with an OpAtomicExchange (Workgroup scope) so mesh alloc requests work when wave 0 skips s_sendmsg; test rewritten to match.",
+    "Python translator code only, no exploit pattern. It reverses an earlier deliberate single-writer guard, so a maintainer should confirm the GPU behaviour (RTX 5080/Arc, issues 8306/8369); I could not verify SPIR-V semantics. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

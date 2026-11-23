@@ -1,0 +1,14 @@
+{
+  "pr": 8716,
+  "head_sha": "6e415f5be4b5bea02546cbfb97197555704f4587",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "d3d12_vulkan_device.cpp: carries the RASTERIZER_DESC2 LineRasterizationMode into the PSO cache key and, when VK_EXT_line_rasterization features are available, into the Vulkan rasterization state (aliased to Bresenham, alpha-antialiased to smooth, quadrilateral to rectangular); alpha-to-coverage disables smooth/Bresenham; falls back otherwise.",
+    "Tripwire 'unsafe-c' is a test OMSetRenderTargets call: false positive. 228+43 test lines. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

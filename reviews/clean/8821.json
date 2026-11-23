@@ -1,0 +1,14 @@
+{
+  "pr": 8821,
+  "head_sha": "7ecb29aad15e4e4ebe3d054b93cec7631b7f63bd",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/saves.py pack_from_dir: adds inside_src() rejecting absolute, drive-qualified, '..' and symlink-escaping index.json file names before reading; a path-traversal hardening with a 98-line test.",
+    "Uses realpath plus commonpath and rejects the source dir itself. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

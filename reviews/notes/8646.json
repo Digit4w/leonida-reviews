@@ -1,0 +1,14 @@
+{
+  "pr": 8646,
+  "head_sha": "684df5776f406bdf356d61d346e470c6d412897f",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "test-only diff read; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "notes",
+  "findings": [
+    "Draft PR with two commits: test_alu_swaprel_b32.py (same as draft #8610, which is fully contained here) and test_image_sample_d.py (structure check of OpImageSampleExplicitLod Grad). Test-only, no production code.",
+    "Stacked/duplicate relationship with #8610 (same author): this PR supersedes #8610. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

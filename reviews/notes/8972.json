@@ -1,0 +1,15 @@
+{
+  "pr": 8972,
+  "head_sha": "ecc7f551889944b40aa92bc958c79d83556283f0",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; read all production Python and the whole 120-line lib.rs, README, Cargo files; tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds an optional zero-dependency Rust cdylib (SSE2) plus a ctypes shim (shader_carve_accel.py) that finds candidate shader entry offsets in the read-only mmap; Python regex still validates, and any failure falls back to the Python search. LEONIDA_SHADER_CARVE_NATIVE=0 disables it.",
+    "Loads a locally built library by absolute path from tools/shader_carve_native/target/release (gitignored, no binary in the PR, Cargo.lock has no external crates). Rust bounds look correct: end=len-18+1, 16-byte loads only while end-cursor>=16, null/len/start validated at the FFI entry.",
+    "Remarks: lib.rs uses std::arch::x86_64 with no cfg guard (would not build on ARM); after the SIMD pass the scalar fallback restarts from start, discarding the returned cursor (performance only); new Rust toolchain dependency for a perf gain. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

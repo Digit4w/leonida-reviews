@@ -1,0 +1,14 @@
+{
+  "pr": 8807,
+  "head_sha": "0ab1f9dc406b82a48ec82052e22422a454d0733a",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "scripts/merge_check.py (maintainer helper): detects merges that main later reverted/reapplied, using read-only git log parsing with regexes on subjects and bodies; 109 added lines plus 130 lines of tests. No network, no writes.",
+    "Body says it conflicts textually with #7468, #7660, #7918, #8564 and #8666 (all touch the same lines of merge_check.py), so expect rebases; it states no code dependency. Applies cleanly on main today. I read the new logic but did not replay edge cases."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

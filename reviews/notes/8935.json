@@ -1,0 +1,15 @@
+{
+  "pr": 8935,
+  "head_sha": "b6f941ae04b9ad4e8f9cc85758a8d7784cc49d14",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "run_semantic_tests: omitted -j now defaults to the CPUs this process may use (os.process_cpu_count or sched_getaffinity) with fallbacks; explicit -j and --help never probe; tests added.",
+    "Read the production diff; no shell or exploit pattern. Applies cleanly on main.",
+    "Body lists Depends on #7766, #6515, #8806, #7147, #7073, #7568, #7624 but states they are textual conflicts, not prerequisites (PR is based on main). Expect rebases when they land."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

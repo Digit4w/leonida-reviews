@@ -1,0 +1,14 @@
+{
+  "pr": 8774,
+  "head_sha": "3db4f3740c97567fa39abb9519999fe6339b7f09",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/tex_headers.py: rejects bool and non-int arguments in decode_etpf_chunk_pages and compact_surface_layout; type-check hardening with tests.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

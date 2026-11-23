@@ -1,0 +1,14 @@
+{
+  "pr": 8794,
+  "head_sha": "27dd4dea1d1e72c319b53dd582f6fca0e98577b2",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/shader_ir.py: malformed '; encoding:' hex no longer raises (enc=None), and reversed register ranges like v[5:2] fall through to raw.",
+    "Pure parser guards with tests; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

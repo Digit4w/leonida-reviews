@@ -1,0 +1,14 @@
+{
+  "pr": 8712,
+  "head_sha": "69f8d9db3850b8f051fb15d44a5c59e58eaa3147",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "viewer/index.html: the resize handler returns early when innerWidth or innerHeight is zero or negative, avoiding NaN camera aspect and a 0x0 renderer; JS test added.",
+    "One-line change, no HTML sinks. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8770,
+  "head_sha": "c1ecb614f71719660f1c266c78837ea7760ab773",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "runtime/shims/file_system.cpp: reports a missing copy source before preparing the overlay destination and honors read-only/hidden/system attributes on package-only destinations; uses GetFileAttributesW and a read probe via CreateFileW with full path strings built by existing helpers.",
+    "Body says Depends on #7947; overlap shows 85% of its added lines are shared with #7947 (98% of #7947's lines are in this PR), so it is stacked on #7947 and legitimately contains its diff; merge #7947 first.",
+    "Applies cleanly on main as stated; Windows-only file API logic, no obvious pointer or size problem."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

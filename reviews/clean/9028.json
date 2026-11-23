@@ -1,0 +1,14 @@
+{
+  "pr": 9028,
+  "head_sha": "41f924a0e3bad9e684f161561036a31d59cd3e53",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static; test-only diff read; overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test-only: d3d12_view_slices now clears every array-view range a second time with a scaled rectangle and checks the readback; 41 lines in one test file.",
+    "No production code, no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

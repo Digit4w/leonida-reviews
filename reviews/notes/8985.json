@@ -1,0 +1,15 @@
+{
+  "pr": 8985,
+  "head_sha": "d2226e33ccf217262ba354888be892f0c06163f2",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "semantic_mutants runs each test file through python -m unittest with the module name (cwd set, abspath for the tools dir) so a file without a __main__ block is no longer all-SURVIVED; exit code 5 is reported as 'no tests ran'; tests added.",
+    "Read the Python diff; subprocess is invoked with an argument list, no shell; the module name comes from a local test path. Applies cleanly.",
+    "Stacked-ish: body says Depends on #8489 (both change run_test; textual conflict, whichever lands second rebases)."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

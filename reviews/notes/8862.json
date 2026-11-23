@@ -1,0 +1,14 @@
+{
+  "pr": 8862,
+  "head_sha": "1e748cc7554057879007a84a84c5141974fe0847",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static docs read; tripwire, overlap and apply-vs-main triage used; no code in this PR",
+  "verdict": "notes",
+  "findings": [
+    "Docs-only (24 added lines in docs/retail_boot_chain.md) recording a measured RT-753 finding about the first UI draw reading its transform through a V# outside the arena.",
+    "Declares 'Depends on #8166': both edit the last sentence of section 4, so whichever lands second must rebase. Currently applies cleanly on main. No instructions aimed at AI agents seen."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8674,
+  "head_sha": "71dff541f9ae93bb5b9756c8087fff924f8d063e",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "spirv_asm.py: CLI reads the source as bytes and decodes with utf-8-sig so a BOM no longer becomes part of the first opcode; invalid UTF-8 still gives one error line.",
+    "Two production lines, 48 test lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

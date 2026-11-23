@@ -1,0 +1,14 @@
+{
+  "pr": 8885,
+  "head_sha": "63c80b32971f5d539f31528039a40ecc6d2389cc",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test harness: vk_harness exits 77 (unsupported/skip) when a shader stage declares subgroup SPIR-V capabilities but the device reports none for that stage (MoltenVK); adds uses_subgroup_operations() with unit tests.",
+    "Read the C++ and Python test-side diff (runtime/test only, no shim or guest-data code). No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

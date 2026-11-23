@@ -1,0 +1,14 @@
+{
+  "pr": 9251,
+  "head_sha": "a99023deff3ff9b20c70672607637ce5b9893724",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "d3d12_vulkan_device.cpp: committed_resource_refusal now also allows D3D12_HEAP_FLAG_ALLOW_WRITE_WATCH on CPU-visible heaps (UPLOAD, READBACK, CUSTOM with CPU page property). 7 prod lines, new test executable of 118 lines.",
+    "Read the diff: a widened allow-list for one flag on specific heap types, nothing else. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

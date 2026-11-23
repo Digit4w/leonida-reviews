@@ -1,0 +1,14 @@
+{
+  "pr": 9013,
+  "head_sha": "28d015cb0db28e3c2e88acba9a2365c44ef78119",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Test-only: builds the M3 frame and M4 compute tests as gta6rt --run guests (tiny_guest_m3, m4, and a three-thread concurrent m34) with a CMake runner script and a negative-control test; registered only with LEONIDA_TEST_GUEST_DRAW.",
+    "Read the CMake additions and run_guest_frame.cmake: execute_process with an argument list, required-path checks, shader build via the repo's own build.py. No downloads, no new binaries. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

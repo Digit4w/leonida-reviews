@@ -1,0 +1,14 @@
+{
+  "pr": 8705,
+  "head_sha": "4e17f20d5530fca0c2e75af18c9f630ce02ad996",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "image_d16_probe.py: first_off example selection now uses the same per-rule X/Y scoring as the agreement counts, so packed two-channel Y-only mismatches are reported; 5 synthetic tests.",
+    "Tool logic only. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

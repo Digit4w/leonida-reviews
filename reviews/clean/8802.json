@@ -1,0 +1,14 @@
+{
+  "pr": 8802,
+  "head_sha": "b9dc657203da1eae05f206601c442a7f528c4b37",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/shader_link_check.py is_shader_stem now rejects Windows reserved device names (CON/PRN/AUX/NUL/CONIN$/CONOUT$, COM1-9 and LPT1-9 incl. superscripts) and trailing dots; read the raw diff to confirm the COM/LPT generator lines.",
+    "Pure string validation, with test cases for good and bad stems. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8871,
+  "head_sha": "4f191f38862dde8783cacbf02b155efdb0dbb46f",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Makes the replay refuse depth/stencil buffer copies on a no-graphics COPY/COMPUTE queue family unless VK_KHR_maintenance10 and the per-format feature bits allow them; adds OffGraphicsCopies table, device-side registration and a 286-line test.",
+    "Read the C++ diff; Vulkan capability queries with fixed-size array (8 slots, bounded add), mutex-guarded map. No exploit pattern. Applies cleanly.",
+    "Overlap: #9039 (same author) shares 270 lines, 100% of this PR and 78% of #9039, so #9039 appears stacked on or a superset of this PR; merge order matters."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8930,
+  "head_sha": "eb069875b3be547fb648802696a496be329ab72d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Clears retail boot stops 7/12/13 in the Xbox D3D12 proxy: swaps this/return-buffer registers for slot 26 when the Xbox convention is detected, adds slot 133 (CreatePlacedResourceX) as a committed-resource fallback, and handles descriptor-heap base overrides (env LEONIDA_DESCRIPTOR_HEAP_BASE / _GPU_BASE or heuristics on extended desc words).",
+    "Robustness notes only: guest descriptor pointers are dereferenced after a VirtualQuery size check, but the guest value in words64[2] can become a CPU descriptor base (heuristic range and size match); slot 133 ignores the VA so placed-resource aliasing is lost; the slot-26 swap is a heuristic. Env buffers are 32 bytes (getenv_s fails closed).",
+    "No exploit pattern. Read the full production diff. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

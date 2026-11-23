@@ -1,0 +1,14 @@
+{
+  "pr": 8625,
+  "head_sha": "5dd8b94866098c3e3bc8cbe6f5353990bc98bc61",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bcpack_history_calib.py: --out guards now use shared report_paths.same_report_path and protect all inputs (inputs, pools, ref-dds, ref-pairs); targets are all checked before any directory creation or write.",
+    "Tripwire 'unsafe-c' is only a test name; false positive. Path-aliasing hardening, 198 test lines added. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

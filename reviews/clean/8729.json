@@ -1,0 +1,14 @@
+{
+  "pr": 8729,
+  "head_sha": "7bc98086dae29d38ba9316d83328fde97dcee3d1",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "gta6rt main.cpp: an explicit --game-dir that is not a directory now exits 2 with 'error: --game-dir is not a folder' (std::filesystem::is_directory with error_code); only an explicitly given path is checked; new CMake script tests.",
+    "Small native CLI change, README updated. Title carries an EGEN-* item label from the coordination issue, not slop. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

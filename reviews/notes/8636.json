@@ -1,0 +1,14 @@
+{
+  "pr": 8636,
+  "head_sha": "acea2a62f954f9c92720d66b88cbe5bdc8ff5e47",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "pc_checker.py: adds detect_rebar (via vk_subgroup_info or nvidia-smi) and an advisory note for 8 GB GPUs with Resizable BAR off, in CLI and JSON reports; nvidia-smi is called with an argument list, no shell, and the tools dir is only prepended to sys.path for the project's own module.",
+    "Body says 'Depends on: #8528', so it is stacked on that PR. Broad except Exception fallbacks are intentional. No tripwires, no overlaps, applies cleanly; 100 test lines."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

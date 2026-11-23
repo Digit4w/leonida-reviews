@@ -1,0 +1,15 @@
+{
+  "pr": 8784,
+  "head_sha": "c9b1d63f9f41df0e33107b442208643ad3204cde",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds LoadPackagedLibrary, AddDllDirectory/RemoveDllDirectory and SetDefaultDllDirectories shims in runtime/shims/library_loader.cpp plus resolve helpers in file_system.cpp. LoadPackagedLibrary rejects absolute paths, drive colons, '..' and any directory separator, then only loads shim or bundled modules (no arbitrary LoadLibrary by path).",
+    "Tripwire LoadLibraryW(version.dll) is in runtime/test/loader_test.cpp (test using a system DLL) and is a false positive.",
+    "Behavior note: AddDllDirectory now registers overlay and bundled game directories into the real process DLL search path, so a DLL placed in the user's overlay folder becomes loadable by the game; this is the intended feature on the user's own machine. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

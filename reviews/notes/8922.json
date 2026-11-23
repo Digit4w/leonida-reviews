@@ -1,0 +1,15 @@
+{
+  "pr": 8922,
+  "head_sha": "48464d25b768956791edfd00af44d5ad4a2d4411",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Stages anim_skel_match --json through a temp file plus replace_retry so a failed write keeps the previous report; adds a test.",
+    "Read the Python; same helper pattern, temp file cleaned in finally. Applies cleanly.",
+    "One of a series of near-identical 'stage the output' PRs by the same author for different tools (#9203, #9196, #8974, #8804, #8798 flagged, plus #8918, #8905, #8884 and others). Not duplicates of this tool; the helper is copy-pasted per tool."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

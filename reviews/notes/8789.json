@@ -1,0 +1,14 @@
+{
+  "pr": 8789,
+  "head_sha": "587d3ba12aa8f55d632855df6d2360ca086030e7",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "gamedata_index --json staged via temp file + replace_retry; same helper as the other Grimkeh PRs, safe (no shell, temp cleaned in finally).",
+    "Same-author series with near-identical titles: #9185, #8833, #8826, #8820, #8804 flagged by overlap (each a different tool); body discloses AI assistance. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

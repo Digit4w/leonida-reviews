@@ -1,0 +1,14 @@
+{
+  "pr": 8758,
+  "head_sha": "c22a07f6f79a3f0a7f806391db902898668937ee",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/rbf0_encode.py: validates vec3 float_special is a list and rejects bool/non-int string byte_length with EncodeError; 9 production lines plus 73 lines of tests.",
+    "Pure input validation, no tripwire, no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

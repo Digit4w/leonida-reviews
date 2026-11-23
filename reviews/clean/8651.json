@@ -1,0 +1,14 @@
+{
+  "pr": 8651,
+  "head_sha": "0b55117da38b676ca41ac9996bc4fa0915d9bda9",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "one-line docs diff read in full; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "docs/testing.md: updates the cs_dpp_ops MoltenVK 1.4.2 'known problems' row to say it is fixed on the translator side by SHADER-529 (#3227, merged), rather than expected to fail.",
+    "Tiny docs-only edit that corrects stale information; no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

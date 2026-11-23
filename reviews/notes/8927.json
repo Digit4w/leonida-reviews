@@ -1,0 +1,15 @@
+{
+  "pr": 8927,
+  "head_sha": "78e3bd010fce9544927bd8be24f1cda9e751602c",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv: 64-bit VALU shifts (lshlrev_b64, lshrrev_b64, ashrrev_i64) now raise Unsupported for non-VGPR destinations, wrong operand widths and DPP/SDWA/abs/neg/sext modifiers; 250-line test.",
+    "Read the 5 production lines; offline translator validation, no exploit pattern.",
+    "Overlap: #9019 (different author, 'Translate 64-bit scalar and vector shifts without Int64...') shares 125 lines, 100% of this PR and 76% of #9019, so this change appears to be contained in #9019 or duplicates part of it. Body has stray backslash escapes, cosmetic."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8591,
+  "head_sha": "ec41c2201c4881d9ee7760a6e6c9e7d02c3cb48f",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Adds header-only find_title_window (EnumWindows over the process, picks the largest visible unowned non-tool window) plus a Windows-only test target in CMake.",
+    "Read the helper and CMake lines: only user32 calls, no guest data parsed. The helper is not wired into PresentX in this PR; body says it is used by an integration stack (#2490) not part of this diff.",
+    "No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

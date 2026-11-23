@@ -1,0 +1,14 @@
+{
+  "pr": 9199,
+  "head_sha": "3f3afcce49fc559b4062bd68804509374d773d80",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "bink_names.py: swaps the legacy same_output_path guard for the shared report_paths.same_report_path for --out checks and adds a parent-is-folder check. 7 prod lines, 180 test lines.",
+    "Read the diff: stricter output-path collision protection, no new I/O. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9095,
+  "head_sha": "d973d9f1a3d5a4ccb1ca11d3c214fe2086bcb1e5",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: adds _validate_int32_arith_bitwise that raises Unsupported on bad operand count, encoding suffix, destination or modifiers for 7 int32 VALU ops. Pure validation in a SPIR-V generator, 317 test lines; no I/O or subprocess.",
+    "One of a same-author series of near-identical validation PRs: #9096, #9205 (and #9454 per #9096's overlaps). Titles and structure match but they edit different ops, not duplicated lines; might touch neighboring code and conflict. Applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

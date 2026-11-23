@@ -1,0 +1,14 @@
+{
+  "pr": 8656,
+  "head_sha": "d28c3da57bfb9be6357040052e7eee0d04820457",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py Gen.mov64: s_mov_b64 to/from vcc now preserves 64-bit data pairs (vcc_hi) when lane_masks provenance says it is data, not a lane mask; mask_src extracts the lane bit for data-valued VCC; 253 test lines, design doc line.",
+    "Translator code only; no exploit pattern. Notes: touches the same file as #8608, #8615 and #8652 so textual conflicts are possible, and the logic change (+68/-27) rests on tests I did not run. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

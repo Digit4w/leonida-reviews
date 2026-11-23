@@ -1,0 +1,14 @@
+{
+  "pr": 9216,
+  "head_sha": "d7dcf80fe0857bc2d3372a524b6bdf59db40e663",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rdna2spirv.py: partial VS param/pos0 exports now preserve prior components instead of writing 0.0, by widening the existing partial-export branch beyond the PS mrt case. 4 prod lines, 44 test lines, one design.md line.",
+    "Read the diff: SPIR-V text generation logic only. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

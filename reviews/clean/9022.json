@@ -1,0 +1,14 @@
+{
+  "pr": 9022,
+  "head_sha": "4c71321cb3c7f1da5ff2f4fd73573a88886462c4",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "run_gpu_tests.py now uses the shared check.py pick_build_dir and CONFIG_DIRS/TEST_PROGRAMS for build-directory selection, so the detailed missing-executable diagnostic is reachable; tests adjusted.",
+    "Read the full diff; path selection and error messages only, no shell. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

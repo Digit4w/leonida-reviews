@@ -1,0 +1,15 @@
+{
+  "pr": 9034,
+  "head_sha": "8572adf4940bf23eada192303969e0362353b2cf",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Fixes spirv_metal_set0 line splitting so CR/CRLF inside quoted SPIR-V strings is preserved; passes bytes to spirv-as/dis with UTF-8 decoding. Python only, no shell=True, tests included.",
+    "Stacked on #8730 (same author): body says Depends on #8730, and 97% of #8730's added lines appear here, so it contains that diff.",
+    "Also shares 34% of #8882 lines (same author, atomic output publish), likely stacked or related. Applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

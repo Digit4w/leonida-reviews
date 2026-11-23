@@ -1,0 +1,14 @@
+{
+  "pr": 8889,
+  "head_sha": "305fad127232ae0f92c192cceb18659795e6705d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Lets the Xbox-mode Vulkan device accept 3D textures with U/V up to 16384 (W stays 2048) via a new VulkanDeviceMode enum passed from d3d12_xs.cpp; adds a test target and docs.",
+    "Read the C++ diff; only a limit selection and a default-argument parameter changed, extents still validated against driver limits per the body. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

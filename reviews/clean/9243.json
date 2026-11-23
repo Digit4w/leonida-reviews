@@ -1,0 +1,14 @@
+{
+  "pr": 9243,
+  "head_sha": "527d9933dc7b1bba1a9421e69ee087adb7c6cccc",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rpf9dump (C#): cold 'xma' export now scans the full audio archive (new ScanAudioBanks, reuse of complete AWC cache) instead of only the 128 MiB head and 16 MiB tail preview; adds HasRpf9Header 4-byte magic check.",
+    "Read the diff: local file reads with stackalloc of 4 bytes and a bounded read; no network, no extraction paths changed. Test added. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

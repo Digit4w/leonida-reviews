@@ -1,0 +1,14 @@
+{
+  "pr": 8913,
+  "head_sha": "1cd5dcb7ac32a70b5e9b64f4bdaa19368cfab1ab",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "xdxr_bvh trace() now pushes a QUAD_PRIM leaf's second triangle (flags 0x80 at leaf+48) as the console does; two constants, 8 production lines, test and doc line added.",
+    "Read the production change; offline tool, no exploit pattern. Body notes overlap with #7151 and #7817 in the same file (different functions), so whichever lands second must rebase. Applies cleanly now."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

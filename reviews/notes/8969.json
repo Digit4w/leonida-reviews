@@ -1,0 +1,15 @@
+{
+  "pr": 8969,
+  "head_sha": "7fc6fa72851362875b7105087030ac651db92b35",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Adds opt-in LEONIDA_COMPAT_DIR: when set, an imported DLL that exists as a file in that folder is loaded by full path with LoadLibraryExW (SEARCH_DLL_LOAD_DIR | SEARCH_SYSTEM32, never the game folder) and its exports serve the import; README and 114-line test added.",
+    "Risky-but-opt-in feature: it executes whatever DLL the user places in the folder named by an environment variable (host code, DllMain runs). Mitigations present: full path, no separators/colon in the key, regular-file check, load failure throws. Tripwire (LoadLibraryExW) confirmed as this intended load, not a bare-name load.",
+    "Read the C++ diff. No overlap, applies cleanly. Maintainer should decide whether executing user-supplied host DLLs is in scope."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

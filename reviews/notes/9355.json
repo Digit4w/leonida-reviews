@@ -1,0 +1,14 @@
+{
+  "pr": 9355,
+  "head_sha": "21faa2bf0714dff4765188da11d361e9c5105387",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used; the end of the VirtualDesktop class (restore path) was truncated in view",
+  "verdict": "notes",
+  "findings": [
+    "run_wine_tests.py: opt-in --virtual-desktop WIDTHxHEIGHT (validated 1 to 16384) writes the Wine prefix registry key HKCU Software Wine Explorer Desktop via wine reg, restarts the wineserver, and restores the previous value afterwards. Tripwire 'persist' is only that registry key name inside a Wine prefix, not Windows persistence.",
+    "Commands are argument lists with timeouts, no shell. Hardening note: if the script is killed between set and restore, the prefix keeps the virtual desktop setting; docs say it is put back afterwards. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

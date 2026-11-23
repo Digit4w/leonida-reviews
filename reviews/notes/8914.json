@@ -1,0 +1,14 @@
+{
+  "pr": 8914,
+  "head_sha": "3614fb8ca391894b31293d0aea8357a032d89491",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static docs read only; overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Docs-only: adds an RTX 4090 (Ada, Windows 11, driver 621.14) GPU test results row and section to docs/gpu_test_results.md.",
+    "Same file and structure as #8752 (RTX 4060), different author; body says whichever lands second rebases. Not a duplicate (different GPU). Results are self-reported and cannot be verified from the diff. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

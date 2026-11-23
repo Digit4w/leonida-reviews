@@ -1,0 +1,14 @@
+{
+  "pr": 8813,
+  "head_sha": "eb6133c30dab461aaae1b89b762de34c93ee6781",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "runtime/shims/file_system.cpp: GetTempPath/GetTempFileName (A and W) shims route console paths (GAME:, G:, T:) to the overlay scratch folder and pass host paths through. Read the buffer-size handling for the W and A variants: sizes are checked before wmemcpy, ANSI conversion is length-queried first, MAX_PATH buffers used locally.",
+    "Body discloses AI assistance and Wine testing. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

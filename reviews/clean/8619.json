@@ -1,0 +1,14 @@
+{
+  "pr": 8619,
+  "head_sha": "edf888e5d4db7e26679bbcba743d7540a02be5b0",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "check_apt_key.py: runs gpg --show-keys with --homedir pointing at a TemporaryDirectory so GnuPG does not create files in the caller's home; command is a list, no shell.",
+    "Small hardening/isolation change with test updates. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

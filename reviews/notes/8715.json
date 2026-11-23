@@ -1,0 +1,14 @@
+{
+  "pr": 8715,
+  "head_sha": "4ab58858fa31df49cd01dca54cc61a3f5e649442",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "dxgi_com.cpp: IDXGIAdapter3 video-memory reservation and budget go through WDDM (D3DKMTOpenAdapterFromLuid, QueryVideoMemoryInfo, ChangeVideoMemoryReservation) on Windows only (skipped under Wine); adapter handle closed in the destructor; new 93-line test.",
+    "Body says 'Depends on: #7497, #7876' (overlapping IDXGIAdapter3 methods, not needed to run this change), so textual conflicts are likely. gdi32 exports are resolved with GetProcAddress and checked for null. No tripwires, no overlaps by content, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

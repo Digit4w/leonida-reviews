@@ -1,0 +1,14 @@
+{
+  "pr": 8786,
+  "head_sha": "2713320f6ea4132982619d6f2fde3d47c3fb6378",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Test-only: compares resolved (realpath) temp paths in tests/test_guest_scene_reference.py and tests/test_make_game_platform.py for macOS /var vs /private/var.",
+    "Overlaps same-author PR #8514 (shared 21 added lines, 81% of this PR's lines, 64% of #8514's), which fixes the same guest_scene_reference comparison; likely partial duplicate. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

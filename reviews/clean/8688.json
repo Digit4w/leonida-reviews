@@ -1,0 +1,14 @@
+{
+  "pr": 8688,
+  "head_sha": "ca96c91fa25ff98764e2490708570d33e2075745",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rdna2spirv.py: the six 32-bit integer min3/max3/med3 ops now reject _dpp/_sdwa forms, any modifiers and non-plain operands (neg/abs/sext, wrong arity) with Unsupported instead of silently ignoring them; 237 test lines.",
+    "Behaviour change is stricter rejection by design. Touches the same translator file as other open PRs (#8608, #8615, #8652, #8656) so a textual conflict is possible. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

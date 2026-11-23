@@ -1,0 +1,15 @@
+{
+  "pr": 9023,
+  "head_sha": "ca69cee5cd7ace7917ff65d24aec8fdfdd8890b8",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Closes #8933: replaces the lazily constructed function-local statics in library_loader.cpp (mutex, deque, maps, set) with a constant-initialized SRWLOCK and lazily allocated globals under a LoaderLock, to avoid a null-this crash when GetProcAddress runs on a guest thread with TLS slot 0.",
+    "Read the full diff; locking is consistent (every access goes through LoaderLock) and no guest data is parsed. Applies cleanly on main.",
+    "Interaction: #8859 adds trace_failed_lookup to the same file using loader_mutex(), which this PR removes, so those two will conflict logically (not flagged textually); whichever lands second must adapt."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

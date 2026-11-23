@@ -1,0 +1,14 @@
+{
+  "pr": 8873,
+  "head_sha": "43bad52bf44c9c9e9fef91bf419846715452332e",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "wave32_pixel_scan --out guard switched to shared report_paths.same_report_path, with tests and a SHARED list entry; read in full, no exploit pattern.",
+    "Possible duplicate of #8413 (different author, identical title): this PR shares 8 added lines, 50% of this PR and 13% of #8413. #8413 likely does the same change plus more; maintainer should pick one."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

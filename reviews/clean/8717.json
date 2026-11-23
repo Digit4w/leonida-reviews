@@ -1,0 +1,14 @@
+{
+  "pr": 8717,
+  "head_sha": "867cd9fff6c1166282529162f9d01ed58a41b758",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rpf9dump Util (C#): atomic temp files stay in the destination directory but use a short dot-prefixed guid .partial name so long model filenames no longer exceed the filesystem component limit; the diagnostic test uses a 224-character name.",
+    "Two production lines; the temp name is generated and the directory comes from the target path, no traversal. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

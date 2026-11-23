@@ -1,0 +1,14 @@
+{
+  "pr": 8857,
+  "head_sha": "cffc281a5ac82f0b39b209ba4c6511e8ef9101e6",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Hardens root_spill_census census() to reject bool/negative SGPR values and non-dict/non-list entries; tests added.",
+    "Read the whole production diff (pure type checks in a report-analysis tool); no exploit pattern, no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

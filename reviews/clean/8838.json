@@ -1,0 +1,14 @@
+{
+  "pr": 8838,
+  "head_sha": "39c3ece362aa3ee5a9da209fa80e8d6b03c7cb67",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/feature_scan.py: treats v_mad_u64_u32, v_mad_i64_i32 as dual-destination and v_swap_b32 as writing two registers when tracking constant registers; two one-line changes with tests.",
+    "No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

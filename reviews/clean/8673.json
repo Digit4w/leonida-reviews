@@ -1,0 +1,14 @@
+{
+  "pr": 8673,
+  "head_sha": "4bcb5a692fe8768b53c96d7424987c5fba8920bd",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "xgameruntime_user.cpp: XUserResolveIssueWithUi (UTF-8 and UTF-16 variants) now complete their async block asynchronously with the existing offline error; null async block rejected; docs and tests updated.",
+    "No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

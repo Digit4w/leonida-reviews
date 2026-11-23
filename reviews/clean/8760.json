@@ -1,0 +1,14 @@
+{
+  "pr": 8760,
+  "head_sha": "dfe6d4000fa55c2f4e0d4ef8775e909da5db5b8d",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "gamedata_graph --json written to a private temp dir beside the destination then replaced; failure keeps the previous file. TemporaryDirectory cleans up; uses repo's published_mode helper.",
+    "No shell, no overlap, applies cleanly, regression test included."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

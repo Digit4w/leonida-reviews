@@ -1,0 +1,14 @@
+{
+  "pr": 9196,
+  "head_sha": "07b559bb3fe12bb3d1d604c7e361db6e9e207c4d",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "skin_streams.py --json now staged via temp sibling and replace_retry, with failed-replace test. Python only, no shell or network.",
+    "Member of a same-author series of near-identical staged-JSON PRs: #9203, #9143, #9104, #9087, #9080 (each a different tool file, no shared lines). Body also cites #9185/#9180. Could use one shared helper. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,15 @@
+{
+  "pr": 8928,
+  "head_sha": "9d8e96796061b045643f63b89c203b1b766a8e57",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "viewer/studio.html: replaces async onerror CDN swaps with parse-time document.write fallbacks for three.js, OrbitControls and GLTFLoader that carry SHA-384 integrity and crossorigin=anonymous; test lines added.",
+    "Security hardening, not a risk: fallback URLs are cdnjs and jsdelivr with pinned versions, static strings. The tripwire hit (document.write) is this pattern. I could not verify the hash values against the packages (no network use); the body says they match the three@0.128.0 npm tarball.",
+    "Stacked: body says Depends on #7681 and the first commit duplicates it (63% of this PR, 71% of #7681 shared). Applies cleanly on main."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8621,
+  "head_sha": "f9c7624359a9332896039e499e54f114726539ab",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "Draft PR. Adds a hand-written wave32 shader test (cs_w32_vcc_hi_compare.asm) and registers it in both GPU test runners (check.py, run_gpu_tests.py); test-only, no exploit pattern.",
+    "Body says 'Depends on: #8448', so it is stacked/depends on that PR. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

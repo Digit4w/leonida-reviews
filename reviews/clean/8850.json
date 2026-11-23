@@ -1,0 +1,14 @@
+{
+  "pr": 8850,
+  "head_sha": "a567c2b741fc7de1fdfa3b7ce8c094964dd7f47e",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "tools/shader_library.py: new --program-sha256-file option reads one SHA-256 per line (ascii, regex validated), hashes kind-6 payloads of selected programs, and extracts only those; refuses missing hashes. Offline tool, no subprocess added by this change.",
+    "45 lines of tests and a doc paragraph; no overlap, applies cleanly. I read the hash-selection code; the final 10 lines of main() wiring were not visible in the viewer."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

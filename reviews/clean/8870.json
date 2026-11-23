@@ -1,0 +1,14 @@
+{
+  "pr": 8870,
+  "head_sha": "69e473e7fb33027bc3d3ffccb147d0040887e4ef",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "vulkan_replay.h: copy queues keep the sync2 CLEAR stage in barrier masks (needed for vkCmdUpdateBuffer/FillBuffer) and can_clear now checks the COMPUTE stage instead; test updated.",
+    "Read the header diff (Vulkan stage-mask constants only, no parsing of guest data). Body says it complements #8187; no overlap flagged, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

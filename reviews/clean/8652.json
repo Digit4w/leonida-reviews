@@ -1,0 +1,14 @@
+{
+  "pr": 8652,
+  "head_sha": "6cf9c8593160525faefc7cb33718c9e39957ae20",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "rdna2spirv.py: v_dot2_f32_f16 accepts the clamp modifier but no longer applies it (RDNA2 hardware ignores it, per the author's hardware test); docs/design.md and a fixture plus hardware-readback test added.",
+    "Translator logic change, 5 production lines. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

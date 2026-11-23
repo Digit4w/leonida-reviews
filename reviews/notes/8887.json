@@ -1,0 +1,14 @@
+{
+  "pr": 8887,
+  "head_sha": "2aa561265b47e109ed31cfcdafba4507456066ef",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "One-line test change in tests/test_awc_manifest.py so the PermissionError path assertion also matches the backslash-escaped Windows form.",
+    "Same author has four more PRs with the same title (#8897, #8785, #8738, #8704), apparently the same fix in different test files: a series of near-identical micro-PRs. Test-only, no production code, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

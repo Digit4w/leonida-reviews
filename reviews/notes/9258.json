@@ -1,0 +1,14 @@
+{
+  "pr": 9258,
+  "head_sha": "f8ac281770629113018973fb7f573121201bfaeb",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "buffer_bounds_probe.py --json now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "One of many near-identical same-author staged-write PRs; overlap list flags #9319, #9286, #9274, #9271 (different probe files, no shared lines). Candidate for one shared helper rather than a series. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

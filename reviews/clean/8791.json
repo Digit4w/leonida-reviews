@@ -1,0 +1,14 @@
+{
+  "pr": 8791,
+  "head_sha": "b9019e215977ece7edf48c62da7157fa2e8fe573",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "viewer/studio.html: texture cards become native buttons, preview opens in a dialog with Escape and focus return. Tripwire xss-sink (card.innerHTML) is a false positive: the new textureCard() runs name, preview URL and format through escapeHtml, which escapes & < > quote and apostrophe (the old code left preview and format unescaped, so this slightly improves it).",
+    "Tests extended (node test). No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

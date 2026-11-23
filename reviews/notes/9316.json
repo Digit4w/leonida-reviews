@@ -1,0 +1,14 @@
+{
+  "pr": 9316,
+  "head_sha": "e7ee82425269e76cc8e1bfb101fddfdbb6492ec8",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "rdna2spirv.py: adds validate_unary_f32 enforcing arity, single-VGPR destination, modifier rules per encoding for 12 unary f32 VOP1/VOP3 ops. Validation only; 351 test lines.",
+    "Part of the same-author rdna2spirv validation series (#9095, #9096, #9204, #9205, #9337, #9454); different ops, no shared lines. Likely to conflict in the same file. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8628,
+  "head_sha": "83c67af860b2ebeb419f07f485be50c7ccf00e12",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs-only diff skimmed, searched for agent-directed text, odd links and commands; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "docs/page_directory.md: relabels the 0DRP directory header field at +0x20 as the 1-based root block index (measured over 9,603 directories) instead of a presumed page count.",
+    "Docs-only, no overlaps, applies cleanly, no agent-directed text found."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

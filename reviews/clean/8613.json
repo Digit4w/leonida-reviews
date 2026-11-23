@@ -1,0 +1,14 @@
+{
+  "pr": 8613,
+  "head_sha": "b2631f88d103d42e4743fd95ec125b9e5d2c4cd4",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "fspx_unpack.py: dxbc_parts now requires total >= 32+4*nparts, rejects part offsets inside the header/offset table and bounds part headers and payloads by the declared total; output writes wrapped in OSError handling (ERROR line, exit 2).",
+    "Tightens parsing of untrusted container data (hardening); no exploit pattern. Tests added. No tripwires, no overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

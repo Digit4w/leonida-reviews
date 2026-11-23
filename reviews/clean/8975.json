@@ -1,0 +1,14 @@
+{
+  "pr": 8975,
+  "head_sha": "30173c3cfade0e297ac48053959f52e7843a7fac",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "run_gpu_tests.py: removes one duplicated results.append line so cs_fmt_d16_xyz is reported once instead of twice.",
+    "Read the single deleted line; the 'whitespace-only' slop flag is wrong, it is a real duplicate-result removal. Body notes #6903 and #6956 carry the removed line as context, so they may need rebases. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 8666,
+  "head_sha": "68a3362fdb1f365b097c6af6f1c4e540c9e20ad8",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "merge_check.py: adds an 'already-on-main' verdict and an on_main_outside_conflicts field using git merge-tree -X ours, to flag stacked PRs squash-merged inside another PR; git is invoked with argument lists.",
+    "Body says it conflicts with #7468, #7660 and #8291 (all edit scripts/merge_check.py nearby), so whichever lands second needs a rebase; also related to #8564 with no textual conflict. Applies cleanly on main today; 53 test lines."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

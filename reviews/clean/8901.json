@@ -1,0 +1,14 @@
+{
+  "pr": 8901,
+  "head_sha": "2a4bcbe750d1355e3d84436f5c78e1baabb7193d",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "runtime/CMakeLists.txt: d3d12_subgroup_test is built only when spirv-as and spirv-val are found, and its shader rules get LEONIDA_SPIRV_TOOLS; also fixes the skip message.",
+    "Read the CMake diff; find_program with SDK hints, env passed via cmake -E env, no download or execute-from-network. The 'small wording edit' slop flag is just the status message. No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

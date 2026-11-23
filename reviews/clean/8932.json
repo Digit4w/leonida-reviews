@@ -1,0 +1,14 @@
+{
+  "pr": 8932,
+  "head_sha": "bc138c16308ae247caf3ef72791a603eeca79e53",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "inline_scan: a compare only marks a write as checked when it involves the cursor register (or a register derived from it by mov/lea); unrelated compares no longer replace the reported limit; tests added.",
+    "Read the full Python diff (regex based disassembly-listing analyzer); no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

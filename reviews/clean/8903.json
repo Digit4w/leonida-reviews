@@ -1,0 +1,14 @@
+{
+  "pr": 8903,
+  "head_sha": "23aead4b75cd0cf193ca79845006736ae065871b",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "glb_writer rejects NaN/Infinity/-Infinity tokens in the GLB JSON chunk via json.loads parse_constant, matching the inspector; test added.",
+    "Read the full 3-line production change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

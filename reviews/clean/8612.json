@@ -1,0 +1,14 @@
+{
+  "pr": 8612,
+  "head_sha": "d7fb826ec635ee5f25bea4fbdbb11411da43c515",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "gameinput.cpp: aggregate device id now keeps all 32 kind bits in bytes 28..31 instead of 16, so gamepad/arcade/flight/wheel aggregates get distinct ids; test creates one per kind and checks FindDeviceFromId.",
+    "Fixed-size loop writes into a 32-byte id; no tripwires, no overlaps, applies cleanly. Body still contains a leftover template HTML comment ('the item ID from the open Coordination...') - cosmetic only."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

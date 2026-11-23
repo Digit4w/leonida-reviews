@@ -1,0 +1,14 @@
+{
+  "pr": 8777,
+  "head_sha": "09a22ded0d6b22666976f70c882e52befd397587",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "runtime/src/vulkan_replay.h prepare_texture_copy: BC footprint copies now reject zero extents, out-of-bounds boxes and non-block-aligned extents not ending at the mip edge. Checked against current main: texture_x is already bounded by mip.width earlier, so the new unsigned subtraction cannot underflow.",
+    "Two new test executables registered in runtime/CMakeLists.txt (standard add_test, no downloads). No overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

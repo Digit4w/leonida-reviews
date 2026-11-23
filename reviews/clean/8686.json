@@ -1,0 +1,14 @@
+{
+  "pr": 8686,
+  "head_sha": "0f1288adf1f9c0131974de619ba3268f663ae23c",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "docs-only diff read in full; tripwire, overlap and apply-vs-main triage used; static, AI-assisted, nothing executed",
+  "verdict": "clean",
+  "findings": [
+    "docs/testing.md: adds glslangValidator to 'What you need' and notes that without it 27 runtime tests are silently not registered in ctest (the author counted the Vulkan_GLSLANG_VALIDATOR_EXECUTABLE blocks).",
+    "Small but informative docs addition, flagged only by the size heuristic. No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

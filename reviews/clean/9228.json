@@ -1,0 +1,14 @@
+{
+  "pr": 9228,
+  "head_sha": "f3173772d1d7f742035fd2feec47caee58a240b8",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "Docs and docstring correction: skinned_glb.py docstring and docs/character_skeleton.md now say the bone-hash array is at grmModel+0x28 with length at +0x14. Adds a 20-line offset-consistency test; no logic change.",
+    "No overlaps, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 9203,
+  "head_sha": "75b71639ee6d524272c6c131b76a72b2f2247367",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "psin_psch.py --json now staged via temp sibling and replace_retry with a failed-replace test. Python only.",
+    "Same-author series of near-identical staged-JSON PRs: #9196, #9165, #9143, #9104, #9087 (different tool files, no shared lines). Candidate for one shared helper. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

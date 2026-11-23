@@ -1,0 +1,17 @@
+{
+  "pr": 8977,
+  "head_sha": "d668a1b9c0426f96d16e2b8d0da980d5caf35d6e",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; 34k-line, 215-file, 100-commit PR NOT read line by line: reviewed the tripwire list, file list, grep for registry/network/process/download patterns, the build_runtime.ps1 diff, the pe_loader LoadLibrary change and the HKLM OEM registry shim; rest skimmed or unread",
+  "verdict": "scan-only",
+  "findings": [
+    "Mega-PR (+33849/-1180, 215 files, 100 commits) bundling many features: audio stub, xcrdapi, window, DirectStorage, D3D12 Xbox device work, loader changes, docs, tests, shader fixtures; title only describes the window milestone.",
+    "Diff does NOT apply cleanly on current main (conflicts). A change this size cannot be reviewed as one unit; it should be split or rebased and reviewed per feature.",
+    "Tripwire hits examined were false positives: 'bypass' wording in docs/comments, existing LoadLibraryExA(SEARCH_SYSTEM32) in pe_loader, LoadLibrary of system DLLs in tests, OMSetRenderTargets in tests. The HKLM OEM key hit is a read-only guest registry shim with tests (RegOpenKey/QueryValue passthrough).",
+    "No .github changes, no new binaries seen, no downloads or process spawning found by grep. scripts/build_runtime.ps1 adds new sources and /STACK:8388608, removes a duplicated BOM. A stray root file audio-stub-notes.md references internal branches.",
+    "Absence of findings is limited to the checks above, not a clean bill for the whole diff."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

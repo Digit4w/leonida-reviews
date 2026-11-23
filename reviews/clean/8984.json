@@ -1,0 +1,14 @@
+{
+  "pr": 8984,
+  "head_sha": "001f0ac51044daadac93474a564684ed527e3928",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "clean",
+  "findings": [
+    "feature_scan counts a stage's uses_code_base flag only when it is the JSON boolean true instead of any truthy value; 41-line test added.",
+    "Read the one-line production change; no overlap, applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

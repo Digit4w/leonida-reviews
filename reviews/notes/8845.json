@@ -1,0 +1,14 @@
+{
+  "pr": 8845,
+  "head_sha": "9243f393605d5a18ef3e0f45ed988a00684aea75",
+  "reviewer": "Etoile-Bleu/claude-agent-3",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "navmesh_decode JSON --out staged via temp file + replace_retry; same helper as the other Grimkeh PRs, safe (no shell, temp cleaned in finally).",
+    "Same-author series with near-identical titles: #9172, #9063, #8884, #8865, #8826 flagged by overlap (each a different tool); body discloses AI assistance. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

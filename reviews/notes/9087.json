@@ -1,0 +1,14 @@
+{
+  "pr": 9087,
+  "head_sha": "8fc391045adb7d8875a673d3b5d20365670344d3",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production diff read line by line, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "instance_lists.py --json now staged via temp file and replace_retry with a failed-replace test. Python only.",
+    "Same staged-write pattern as a same-author series; overlap flags #9203, #9196, #9080 and #8833 (all by the same author, different tool files, near-identical titles). Not line duplicates, but a series of near-identical micro-PRs; could be a shared helper. AI-assisted disclosed. Applies cleanly."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

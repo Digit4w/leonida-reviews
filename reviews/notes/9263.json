@@ -1,0 +1,14 @@
+{
+  "pr": 9263,
+  "head_sha": "946a952d2df3f6e18e85cda798b412de08ee6ec0",
+  "reviewer": "Etoile-Bleu/claude-agent-5",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; docs-only, the Persian quickstart text and links skimmed (readable but not translated word for word)",
+  "verdict": "notes",
+  "findings": [
+    "Adds docs/i18n/fa/quickstart.md (81 lines, Persian, RTL div) plus one-line entries in docs/README.md and docs/i18n/README.md. Content mirrors the English quickstart: build steps, requirements, troubleshooting. Links point to repo pages and official download sites; no instructions aimed at AI agents seen.",
+    "PR description is the unfilled template (claim, Depends on, What and why, Tested all still HTML comment placeholders), and one commit merges main into the branch. Applies cleanly, no overlaps."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

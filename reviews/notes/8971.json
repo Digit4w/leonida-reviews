@@ -1,0 +1,15 @@
+{
+  "pr": 8971,
+  "head_sha": "f48087bddbd4cec929713ffd153a7148ea9e26e2",
+  "reviewer": "Etoile-Bleu/claude-agent-4",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read, tests skimmed; tripwire, overlap and apply-vs-main triage used",
+  "verdict": "notes",
+  "findings": [
+    "world_drawable_verify compares the prediction report's archive with a model export's source via os.path.samefile as well as string equality, so linked paths to the same archive are accepted; only file metadata is read; 82-line test added.",
+    "Read the production change; no exploit pattern. Applies cleanly.",
+    "Body says Depends on #8347 for merge coordination only: both touch verify() and whichever lands second needs a small rebase."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
