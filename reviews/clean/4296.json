@@ -1,0 +1,13 @@
+{
+  "pr": 4296,
+  "head_sha": "276677115206a9b4baf8af83ad8e197107617b44",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "tools/rdna2spirv.py: declares DenormPreserve 16 only for modules that contain half-float operations instead of every module; translator output change only, no I/O, process or network code"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,13 @@
+{
+  "pr": 4825,
+  "head_sha": "6ea29818b7dbd0d293d089f8f2b6d88d72a8fd73",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "viewer/serve.py: help text only (says the viewer serves on 127.0.0.1 and shows the default port); the bind address is not changed"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

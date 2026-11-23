@@ -1,0 +1,13 @@
+{
+  "pr": 8382,
+  "head_sha": "ff164836500cb0080120fe06cb55b16861e18277",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "viewer/serve.py: caches the safe_world_path result for the current request; translate_path uses it only when the path is the request's own and re-checks any other path, so the traversal check still applies"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

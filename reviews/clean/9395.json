@@ -1,0 +1,13 @@
+{
+  "pr": 9395,
+  "head_sha": "c1fd0f7e990c7b26c4afc3935e9660901992f4e8",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "new in-process shims for app-state notifications and WerRegisterFile: registrations are kept in memory only, nothing is written to disk or to the host WER state, and GAME:/G:/T: paths that climb out with .. are refused"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

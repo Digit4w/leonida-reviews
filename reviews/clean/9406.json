@@ -1,0 +1,13 @@
+{
+  "pr": 9406,
+  "head_sha": "a36f4a536c5eb7e794269f83164cfcfc1ee95e78",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "scripts/build_llvm_mc.ps1: cleanup now removes only the build's own src, build, _build.cmd and probe files, then the -Temp folder only if it is empty (non-recursive), instead of deleting the whole -Temp folder; safer for a user-supplied folder"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
