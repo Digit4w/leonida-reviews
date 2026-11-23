@@ -102,10 +102,24 @@ h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-cl
 .search input { flex: 1 1 auto; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 10px 14px; font-size: 15.5px; }
 .search input::placeholder { color: var(--ink-soft); }
 .opts { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 13.5px; color: var(--ink-soft); padding: 0 2px; }
-.opts label { display: flex; align-items: center; gap: 6px; }
-.opts select { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; color: var(--ink); max-width: 100%; }
+.opts { gap: 8px 10px; }
+.opts label.pick { display: flex; align-items: center; gap: 7px; }
+.opts select { -webkit-appearance: none; appearance: none; background-color: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 30px 6px 13px; color: var(--ink); max-width: 100%; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.opts select:hover { border-color: var(--accent); }
+/* toggles: the checkbox stays in the page for keyboards and screen readers, the pill is what you see */
+.chip { position: relative; display: inline-flex; cursor: pointer; }
+.chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px 6px 10px; background: var(--bg); color: var(--ink-soft); white-space: nowrap; }
+.chip span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink-soft); flex: none; }
+.chip:hover span { border-color: var(--accent); color: var(--ink); }
+.chip input:checked + span { background: color-mix(in srgb, var(--accent) 16%, var(--panel)); border-color: var(--accent); color: var(--ink); }
+.chip input:checked + span::before { background: var(--accent); border-color: var(--accent); }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip[hidden] { display: none; }
 .opts .count { margin-left: auto; font-family: var(--mono); font-size: 13px; }
-.opts .clear { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px; color: var(--accent); cursor: pointer; }
+.opts .clear { background: none; border: 0; border-radius: 999px; padding: 6px 8px; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .opts .clear[hidden] { display: none; }
 
 /* list */
@@ -171,7 +185,7 @@ footer p { margin: 0; max-width: 80ch; }
   .tools { position: static; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .say button, .theme, .more, .card { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
+  .say button, .theme, .more, .card, .chip span, .opts select { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
   @media (hover: hover) { .say button:hover { transform: translateY(-2px); } }
 }
 </style>
@@ -200,17 +214,17 @@ footer p { margin: 0; max-width: 80ch; }
       <input type="search" id="q" placeholder="Find a PR: number, title, author or keyword" autocomplete="off">
     </div>
     <div class="opts">
-      <label for="reviewer">Checked by
+      <label class="pick" for="reviewer">Checked by
         <select id="reviewer"><option value="">anyone</option></select>
       </label>
-      <label for="sort">Order
+      <label class="pick" for="sort">Order
         <select id="sort">
           <option value="serious">most serious first</option>
           <option value="newest">newest PR first</option>
         </select>
       </label>
-      <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> Only reviews with remarks</label>
-      <label for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"> Hide automated scans</label>
+      <label class="chip" for="onlyFindings"><input type="checkbox" id="onlyFindings"><span>With remarks only</span></label>
+      <label class="chip" for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"><span>Hide automated scans</span></label>
       <button type="button" class="clear" id="clear" hidden>Clear filters</button>
       <span class="count" id="count"></span>
     </div>
