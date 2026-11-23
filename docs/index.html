@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida PR review ledger</title>
+<meta name="robots" content="noindex">
+<style>
+/* A ledger: verdict counts on top, one filter bar, then one row per reviewed PR.
+   Self-contained on purpose: no script, font or image from another host, and review text is only ever set as text. */
+:root {
+  --paper: #f5f6f9;
+  --panel: #ffffff;
+  --ink: #171b2c;
+  --ink-soft: #565d78;
+  --line: #dde0ea;
+  --accent: #2f3fbf;
+  --accent-soft: #e6e9fb;
+  --stop: #b3261e;      --stop-bg: #fbe9e7;
+  --note: #8a5a00;      --note-bg: #fbf0d6;
+  --clean: #1f6b3a;     --clean-bg: #e2f3e7;
+  --scan: #3d5a80;      --scan-bg: #e3ebf5;
+  --none: #5d6170;      --none-bg: #e9eaee;
+  --display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #10131f; --panel: #181c2c; --ink: #e8eaf4; --ink-soft: #9ba2bd; --line: #2a2f45;
+    --accent: #9aa6ff; --accent-soft: #232a52;
+    --stop: #ff9d94; --stop-bg: #44201d;
+    --note: #f0c56a; --note-bg: #3d3115;
+    --clean: #8fd3a5; --clean-bg: #17361f;
+    --scan: #a7c1e6; --scan-bg: #1f2d42;
+    --none: #b4b8c6; --none-bg: #2a2d38;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #10131f; --panel: #181c2c; --ink: #e8eaf4; --ink-soft: #9ba2bd; --line: #2a2f45;
+  --accent: #9aa6ff; --accent-soft: #232a52;
+  --stop: #ff9d94; --stop-bg: #44201d;
+  --note: #f0c56a; --note-bg: #3d3115;
+  --clean: #8fd3a5; --clean-bg: #17361f;
+  --scan: #a7c1e6; --scan-bg: #1f2d42;
+  --none: #b4b8c6; --none-bg: #2a2d38;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 56px; display: flex; flex-direction: column; gap: 22px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4vw, 38px); line-height: 1.08; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+.lede { color: var(--ink-soft); max-width: 68ch; margin: 0; }
+.lede a, footer a { color: var(--accent); }
+.snap { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
+.snap b { color: var(--ink); font-weight: 500; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px; border-left-width: 5px; }
+.tile:hover { border-color: var(--accent); }
+.tile:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tile[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.tile .n { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 13px; color: var(--ink-soft); }
+.tile.v-do-not-merge { border-left-color: var(--stop); }
+.tile.v-notes { border-left-color: var(--note); }
+.tile.v-clean { border-left-color: var(--clean); }
+.tile.v-scan-only { border-left-color: var(--scan); }
+.tile.v-not-reviewed, .tile.v-in-progress { border-left-color: var(--none); }
+.tile.v-all { border-left-color: var(--accent); }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.bar label { font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.bar input[type="search"], .bar select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 7px; padding: 7px 10px; }
+.bar input[type="search"] { flex: 1 1 240px; min-width: 0; }
+.bar .count { margin-left: auto; font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
+.bar button.reset { font: inherit; font-size: 13px; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 7px; padding: 6px 10px; cursor: pointer; }
+
+.ledger { display: flex; flex-direction: column; gap: 6px; }
+.row { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--none); border-radius: 9px; padding: 10px 14px; display: grid; grid-template-columns: 86px 112px minmax(0, 1fr) 190px; gap: 4px 16px; align-items: start; }
+.row.v-do-not-merge { border-left-color: var(--stop); }
+.row.v-notes { border-left-color: var(--note); }
+.row.v-clean { border-left-color: var(--clean); }
+.row.v-scan-only { border-left-color: var(--scan); }
+.pr { font-family: var(--mono); font-weight: 500; font-size: 15px; color: var(--accent); text-decoration: none; font-variant-numeric: tabular-nums; }
+.pr:hover { text-decoration: underline; }
+.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.pill.v-do-not-merge { color: var(--stop); background: var(--stop-bg); }
+.pill.v-notes { color: var(--note); background: var(--note-bg); }
+.pill.v-clean { color: var(--clean); background: var(--clean-bg); }
+.pill.v-scan-only { color: var(--scan); background: var(--scan-bg); }
+.pill.v-not-reviewed, .pill.v-in-progress { color: var(--none); background: var(--none-bg); }
+.main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.title { font-weight: 500; overflow-wrap: anywhere; }
+.title .by { font-weight: 400; color: var(--ink-soft); }
+.title.untitled { color: var(--ink-soft); font-weight: 400; font-style: italic; }
+ul.findings { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+details.scope { font-size: 13px; color: var(--ink-soft); }
+details.scope summary { cursor: pointer; width: fit-content; }
+details.scope p { margin: 4px 0 0; overflow-wrap: anywhere; }
+.meta { font-size: 12.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.meta .who { color: var(--ink); }
+.meta .sha { font-family: var(--mono); }
+.empty, .error { background: var(--panel); border: 1px dashed var(--line); border-radius: 9px; padding: 22px; color: var(--ink-soft); text-align: center; }
+.more { align-self: center; font: inherit; color: var(--accent); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 9px 16px; cursor: pointer; }
+footer { color: var(--ink-soft); font-size: 13px; max-width: 78ch; display: flex; flex-direction: column; gap: 6px; }
+footer p { margin: 0; }
+@media (max-width: 760px) {
+  .row { grid-template-columns: auto 1fr; }
+  .main, .meta { grid-column: 1 / -1; }
+  .meta { flex-direction: row; flex-wrap: wrap; gap: 4px 12px; }
+  .bar .count { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Leonida PR review ledger</h1>
+    <p class="lede">Every pull request of ItsNotRexed/Leonida that someone here has security-reviewed, with the verdict, who checked it and how. Generated from the <a href="https://github.com/Etoile-Bleu/leonida-reviews">review files of this repository</a>.</p>
+    <p class="snap" id="snap">Loading the reviews.</p>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Reviews by verdict"></section>
+
+  <section class="bar" aria-label="Filters">
+    <input type="search" id="q" placeholder="Search PR number, finding, reviewer or head SHA" aria-label="Search">
+    <label for="reviewer">Reviewer
+      <select id="reviewer"><option value="">Everyone</option></select>
+    </label>
+    <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> With findings only</label>
+    <button type="button" class="reset" id="reset">Clear filters</button>
+    <span class="count" id="count"></span>
+  </section>
+
+  <section class="ledger" id="ledger" aria-live="polite"></section>
+
+  <footer>
+    <p><b>How to read a verdict.</b> "clean" means no malicious pattern was found within the scope written on the row. It is not a guarantee that a PR is safe. "scan-only" means a pattern scan, not a read. "notes" means no malicious code but something a maintainer should look at. "do-not-merge" means a real problem.</p>
+    <p>Every review is a static, AI-assisted reading of a diff. Nothing was executed. Open "How it was checked" on a row to see what was actually done.</p>
+    <p>Reviews by the contributors listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var ORDER = ["do-not-merge", "notes", "scan-only", "not-reviewed", "in-progress", "clean"];
+  var LABEL = { "do-not-merge": "Do not merge", "notes": "Notes", "clean": "Clean", "scan-only": "Scan only", "not-reviewed": "Not reviewed", "in-progress": "In progress" };
+  var PAGE = 150;
+  var all = [], state = { verdict: "", reviewer: "", q: "", onlyFindings: false, shown: PAGE };
+  var $ = function (id) { return document.getElementById(id); };
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  function rank(v) { var i = ORDER.indexOf(v); return i < 0 ? 99 : i; }
+
+  function matches(r) {
+    if (state.verdict && r.verdict !== state.verdict) return false;
+    if (state.reviewer && r.reviewer !== state.reviewer) return false;
+    if (state.onlyFindings && !r.findings.length) return false;
+    if (state.q) {
+      var hay = ("#" + r.pr + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + r.verdict).toLowerCase();
+      var parts = state.q.toLowerCase().split(/\s+/);
+      for (var i = 0; i < parts.length; i++) if (parts[i] && hay.indexOf(parts[i]) < 0) return false;
+    }
+    return true;
+  }
+
+  function drawTiles() {
+    var box = $("tiles"); box.textContent = "";
+    var counts = {};
+    all.forEach(function (r) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; });
+    var mk = function (key, n, label) {
+      var b = el("button", "tile v-" + (key || "all"));
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(state.verdict === key));
+      b.appendChild(el("span", "n", String(n)));
+      b.appendChild(el("span", "l", label));
+      b.addEventListener("click", function () { state.verdict = (state.verdict === key ? "" : key); state.shown = PAGE; draw(); });
+      box.appendChild(b);
+    };
+    mk("", all.length, "All reviews");
+    ORDER.forEach(function (v) { if (counts[v]) mk(v, counts[v], LABEL[v] || v); });
+  }
+
+  function drawRow(r) {
+    var row = el("article", "row v-" + r.verdict);
+    var a = el("a", "pr", "#" + r.pr);
+    a.href = "https://github.com/ItsNotRexed/Leonida/pull/" + r.pr;
+    a.rel = "noopener";
+    row.appendChild(a);
+    var pv = el("div"); pv.appendChild(el("span", "pill v-" + r.verdict, LABEL[r.verdict] || r.verdict)); row.appendChild(pv);
+
+    var main = el("div", "main");
+    if (r.findings.length) {
+      var ul = el("ul", "findings");
+      r.findings.forEach(function (f) { ul.appendChild(el("li", null, f)); });
+      main.appendChild(ul);
+    } else {
+      main.appendChild(el("div", "title untitled", "No finding recorded"));
+    }
+    var d = el("details", "scope");
+    d.appendChild(el("summary", null, "How it was checked"));
+    d.appendChild(el("p", null, r.scope));
+    main.appendChild(d);
+    row.appendChild(main);
+
+    var meta = el("div", "meta");
+    meta.appendChild(el("span", "who", r.reviewer));
+    meta.appendChild(el("span", null, r.date));
+    meta.appendChild(el("span", "sha", "head " + r.head));
+    meta.appendChild(el("span", null, r.human ? "A human read the diff" : "AI read only"));
+    if (r.commented) meta.appendChild(el("span", null, "Commented on the PR"));
+    row.appendChild(meta);
+    return row;
+  }
+
+  function draw() {
+    drawTiles();
+    var list = all.filter(matches);
+    list.sort(function (x, y) { return rank(x.verdict) - rank(y.verdict) || y.pr - x.pr; });
+    var box = $("ledger"); box.textContent = "";
+    $("count").textContent = list.length + " of " + all.length + " reviews";
+    if (!list.length) { box.appendChild(el("div", "empty", "No review matches these filters. Clear a filter to see more.")); return; }
+    var frag = document.createDocumentFragment();
+    list.slice(0, state.shown).forEach(function (r) { frag.appendChild(drawRow(r)); });
+    box.appendChild(frag);
+    if (list.length > state.shown) {
+      var more = el("button", "more", "Show " + Math.min(PAGE, list.length - state.shown) + " more (" + (list.length - state.shown) + " left)");
+      more.type = "button";
+      more.addEventListener("click", function () { state.shown += PAGE; draw(); });
+      box.appendChild(more);
+    }
+  }
+
+  function wire() {
+    var reviewers = {};
+    all.forEach(function (r) { reviewers[r.reviewer] = (reviewers[r.reviewer] || 0) + 1; });
+    Object.keys(reviewers).sort(function (a, b) { return reviewers[b] - reviewers[a]; }).forEach(function (name) {
+      var o = el("option", null, name + " (" + reviewers[name] + ")"); o.value = name; $("reviewer").appendChild(o);
+    });
+    $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); state.shown = PAGE; draw(); });
+    $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; state.shown = PAGE; draw(); });
+    $("onlyFindings").addEventListener("change", function (e) { state.onlyFindings = e.target.checked; state.shown = PAGE; draw(); });
+    $("reset").addEventListener("click", function () {
+      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.shown = PAGE;
+      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; draw();
+    });
+  }
+
+  var stamp = "";
+  fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    var when = new Date(res.headers.get("last-modified") || "");
+    if (!isNaN(when)) stamp = "Table published " + when.toLocaleString() + ". ";
+    return res.json();
+  }).then(function (rows) {
+    $("snap").textContent = stamp + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
+    all = rows.map(function (r) {
+      return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
+               findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented };
+    });
+    wire(); draw();
+  }).catch(function (err) {
+    $("snap").textContent = "";
+    $("ledger").appendChild(el("div", "error", "The review data could not be loaded (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Validate reviews/*.json and write TABLE.md.
+"""Validate reviews/*.json and write TABLE.md and docs/reviews.json (the data of the docs/ web page).
 
-    python -I build_table.py            # validate, then write TABLE.md
+    python -I build_table.py            # validate, then write TABLE.md and docs/reviews.json
     python -I build_table.py --check    # validate only; exit 1 on a bad file (used by CI)
     python -I build_table.py --stale    # also ask `gh` which reviews are for an old head SHA (needs gh)
 
@@ -86,6 +86,17 @@ def render(rows, stale):
     return "\n".join(out) + "\n"
 
 
+def site_data(rows):
+    """The same reviews as one JSON array for docs/index.html, newest PR first, one review per line.
+    No timestamp, so the file only changes when a review does."""
+    rows = sorted(rows, key=lambda r: -r["pr"])
+    lines = [json.dumps({"pr": r["pr"], "verdict": r["verdict"], "reviewer": str(r["reviewer"]), "date": str(r["date"]),
+                         "scope": str(r["scope"]), "findings": [str(f) for f in r["findings"]],
+                         "head": str(r["head_sha"])[:8], "human": r["read_by_human"],
+                         "commented": r["commented_on_github"]}, ensure_ascii=False, sort_keys=True) for r in rows]
+    return "[\n" + ",\n".join(lines) + "\n]\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
@@ -108,6 +119,10 @@ def main():
         return 0
     (ROOT / "TABLE.md").write_text(render(rows, stale), encoding="utf-8", newline="\n")
     print("TABLE.md written (%d reviews)" % len(rows))
+    if not stale:   # the site file is committed by CI: keep it free of what only a --stale run knows
+        (ROOT / "docs").mkdir(exist_ok=True)
+        (ROOT / "docs" / "reviews.json").write_text(site_data(rows), encoding="utf-8", newline="\n")
+        print("docs/reviews.json written")
     return 0
 
 
