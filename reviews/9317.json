@@ -1,0 +1,13 @@
+{
+  "pr": 9317,
+  "head_sha": "16ed2e75baefa65465a1604f88680047291c40f7",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "scripts/build_llvm_mc.ps1 only: resolves the llvmorg-<version> tag with git ls-remote against the hard-coded https://github.com/llvm/llvm-project and fetches that commit; same remote and same sparse paths as before, nothing new is downloaded or executed"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

@@ -1,0 +1,13 @@
+{
+  "pr": 8854,
+  "head_sha": "43c408bc0b52793ffd1d55580ea3c10277e40682",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "scripts/build_runtime.ps1: the cl.exe fallback adds the in-repo src\\crt_timed_wait.cpp to every /MD compile line, plus a test that checks it; no other change"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

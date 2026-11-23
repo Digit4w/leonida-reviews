@@ -1,0 +1,13 @@
+{
+  "pr": 8976,
+  "head_sha": "cae68e5762b0c8135e4b8a1afc31fe51a3ec5e4a",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "clean",
+  "findings": [
+    "adds a pytest-windows job to .github/workflows/ci.yml: actions/checkout and actions/setup-python are pinned to the same SHAs as the rest of ci.yml, and those SHAs match their v7.0.1 / v7.1.0 tags (checked with the GitHub API); no secrets, no permissions change, pip installs tests/requirements.txt"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

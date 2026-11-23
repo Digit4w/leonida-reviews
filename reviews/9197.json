@@ -1,0 +1,14 @@
+{
+  "pr": 9197,
+  "head_sha": "96e289d1127bc8533f0a0dd8d5c875e11582a5e0",
+  "reviewer": "Placebola/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: Claude Code read the whole diff line by line (every file, tests included, no line cap) and scanned it for hidden/bidi Unicode, long base64 runs and binaries",
+  "verdict": "notes",
+  "findings": [
+    "adds an opt-in LEONIDA_AVX2 option (/arch:AVX2 or -mavx2 -mfma -mbmi2), off by default; no download, no new script logic",
+    "also adds shims\\xg_xs.cpp to the cl.exe fallback source list in scripts/build_runtime.ps1, which the PR title does not mention (a build fix, not malicious)"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
