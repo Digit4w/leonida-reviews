@@ -53,6 +53,14 @@ class AutoMergeRules(unittest.TestCase):
         files = [added(100, "clean")]
         self.assertTrue(run(files, {path(100, "clean"): review(verdict="notes")}))
 
+    def test_clean_without_a_finding_is_refused(self):
+        files = [added(100)]
+        self.assertTrue(run(files, {path(100): review(findings=[])}))
+        # notes and scan-only may stay empty: they claim less
+        for folder in ("notes", "scan-only", "not-reviewed"):
+            f2, h2 = one(folder=folder, findings=[])
+            self.assertEqual(run(f2, h2), [], folder)
+
     def test_untrusted_first_contribution_waits_for_a_human(self):
         files, heads = one()
         self.assertTrue(run(files, heads, trusted=False))

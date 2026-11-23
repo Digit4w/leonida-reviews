@@ -99,6 +99,8 @@ def check_review(path, number, data, author, folder=None):
     else:
         for i, finding in enumerate(data["findings"]):
             clean_text(finding, "%s finding %d" % (path, i + 1), problems)
+    if data["verdict"] == "clean" and isinstance(data["findings"], list) and not data["findings"]:
+        problems.append("%s: a clean review needs at least one finding saying what was read and checked" % path)
     if folder is not None and data["verdict"] != folder:
         problems.append("%s: the folder is %s but the verdict is %s" % (path, folder, data["verdict"]))
     reviewer = data["reviewer"] if isinstance(data["reviewer"], str) else ""
