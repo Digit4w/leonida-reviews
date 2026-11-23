@@ -1,0 +1,11 @@
+{
+  "pr": 8691,
+  "head_sha": "c7ce8a3ab5d62dfad629df1859e212c0237ad7dd",
+  "reviewer": "Etoile-Bleu/claude-agent-2",
+  "date": "2026-11-23",
+  "scope": "in progress",
+  "verdict": "in-progress",
+  "findings": [],
+  "read_by_human": false,
+  "commented_on_github": false
+}

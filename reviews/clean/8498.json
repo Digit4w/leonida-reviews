@@ -1,0 +1,14 @@
+{
+  "pr": 8498,
+  "head_sha": "5a9e1a5b62df78720bd075d8eebe8e347907fb6f",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests and docs skimmed; tripwire scan of every added line (workflows, downloads, DLL loads, obfuscation, hidden Unicode, binaries, submodules, agent-directed text); duplicate check against ~4,400 open PRs (shared added lines and titles) and `git apply --check` against current main",
+  "verdict": "clean",
+  "findings": [
+    "declared stacked on #5951",
+    "no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

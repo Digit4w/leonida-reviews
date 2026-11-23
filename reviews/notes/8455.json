@@ -1,0 +1,14 @@
+{
+  "pr": 8455,
+  "head_sha": "553a2450ec69141973628ccf272b00db94988685",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests and docs skimmed; tripwire scan of every added line (workflows, downloads, DLL loads, obfuscation, hidden Unicode, binaries, submodules, agent-directed text); duplicate check against ~4,400 open PRs (shared added lines and titles) and `git apply --check` against current main",
+  "verdict": "notes",
+  "findings": [
+    "draft, +837: declared stacked on #7218 (contains its diff); imports guest-chosen addresses as Vulkan host memory (alignment and size checks present, address validity is the title's); slot-133 work is also in #7218, #8225, #9137, #9320",
+    "no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

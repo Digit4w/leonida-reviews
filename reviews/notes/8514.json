@@ -1,0 +1,15 @@
+{
+  "pr": 8514,
+  "head_sha": "6fa2c8cac0993ed58394092bd3889776651b4258",
+  "reviewer": "Etoile-Bleu/claude",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed; production code read line by line, tests and docs skimmed; tripwire scan of every added line (workflows, downloads, DLL loads, obfuscation, hidden Unicode, binaries, submodules, agent-directed text); duplicate check against ~4,400 open PRs (shared added lines and titles) and `git apply --check` against current main",
+  "verdict": "notes",
+  "findings": [
+    "overlaps #8786 (same author, 64% shared lines): possible duplicate",
+    "test-only change: no production code",
+    "no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
