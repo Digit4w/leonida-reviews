@@ -1,0 +1,13 @@
+{
+  "pr": 9609,
+  "head_sha": "31a0c53756819288e176906c41a00e52a1da8001",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Test-only, one line (tests/test_viewer_streaming.cjs): passes AbortController, setTimeout and clearTimeout into the test's fake window object. No other change."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

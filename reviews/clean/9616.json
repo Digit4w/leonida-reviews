@@ -1,0 +1,13 @@
+{
+  "pr": 9616,
+  "head_sha": "c54d250fa1f1181862e1a25e302c0ebb7b11b3d0",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Two files (scripts/merge_check.py and its test): adds -- separators and reorders arguments to git log, diff and show calls so a checkout path cannot be mistaken for a revision (argument disambiguation, no shell). Tests create files named after revisions in a temp repo."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

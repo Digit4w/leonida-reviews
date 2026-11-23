@@ -1,0 +1,13 @@
+{
+  "pr": 9623,
+  "head_sha": "64248cde43053f359a259548a0654321247bb532",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Test-only (tests/test_shader_checks.py): bumps an expected case count by one and extends the stub harness to handle three ps_table_fetch modes and a cwd argument, writing a 4-byte file named by the test. No external execution."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

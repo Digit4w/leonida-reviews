@@ -1,0 +1,13 @@
+{
+  "pr": 9599,
+  "head_sha": "f9b6bd3503d189a6ec140e0e5d4cf09c9099b7ff",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Two files (tools/import_call_sites.py and its test): import_slots now returns (dll, name) tuples instead of a joined dll!name string so a DLL name containing ! is not re-split; a test builds a synthetic PE in memory. Pure parsing logic."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}

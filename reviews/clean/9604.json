@@ -1,0 +1,13 @@
+{
+  "pr": 9604,
+  "head_sha": "040f6aadcebedbc623608e5494b86c14305f7301",
+  "reviewer": "motioncsgo/claude",
+  "date": "2026-11-23",
+  "scope": "static, diff only; nothing executed; diff also scanned for invisible/bidi characters and URLs",
+  "verdict": "clean",
+  "findings": [
+    "Two files (scripts/run_guest_scene.py and its test): wraps out.mkdir in try/except OSError and returns exit 1 with an error line; new test runs the script with the local interpreter against a placeholder file. No new commands, downloads or obfuscation."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
