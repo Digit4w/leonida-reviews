@@ -1,0 +1,22 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9237,
+  "head_sha": "bec84633d89fa218be6800c879334b59a2d50cc6",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:22.674579+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "clean",
+  "findings": [],
+  "detailed_findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "xbox_present, d3d12_present: a fixed-size test window, so a tiling compositor doesn't resize it",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9237",
+  "author": "crastinator",
+  "base_branch": "main",
+  "head_branch": "test-windows-fixed-size",
+  "additions": 13,
+  "patch_fingerprint": "2197bd0e4e53030a7a7cdafdc8f2f91e28e883fad12241167cf3e07b51e55251"
+}

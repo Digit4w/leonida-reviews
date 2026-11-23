@@ -1,0 +1,120 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9246,
+  "head_sha": "7c379baaebc1aa644a87a8e6a7a5071c666d1b95",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:28.616319+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#scripts/run_semantic_tests.py:50 - OS command execution - sys.exit(subprocess.call(sys.argv[2:]))",
+    "#scripts/run_semantic_tests.py:72 - Native library loading - import ctypes",
+    "#scripts/run_semantic_tests.py:73 - Native library loading - from ctypes import wintypes",
+    "#scripts/run_semantic_tests.py:76 - Native library loading - kernel = ctypes.WinDLL(\"kernel32\", use_last_error=True)",
+    "#scripts/run_semantic_tests.py:87 - Native library loading - raise ctypes.WinError(ctypes.get_last_error())",
+    "#scripts/run_semantic_tests.py:93 - Sensitive terminology - gated = [sys.executable, \"-I\", \"-c\", _WINDOWS_JOB_GATE, name, *cmd]",
+    "#scripts/run_semantic_tests.py:94 - OS command execution - with subprocess.Popen(gated, **kwargs) as proc:",
+    "#scripts/run_semantic_tests.py:100 - Native library loading - raise ctypes.WinError(ctypes.get_last_error())",
+    "#scripts/run_semantic_tests.py:110 - Native library loading - raise ctypes.WinError(ctypes.get_last_error())",
+    "#scripts/run_semantic_tests.py:117 - OS command execution - return subprocess.run(cmd, **kwargs)",
+    "#scripts/run_semantic_tests.py:120 - OS command execution - with subprocess.Popen(cmd, start_new_session=True, **kwargs) as proc:",
+    "#scripts/run_semantic_tests.py:154 - Sensitive terminology - cmd = [sys.executable, \"-m\", \"unittest\", \"discover\", \"-s\", directory, *([\"-v\"] if a.verbose else [])]"
+  ],
+  "detailed_findings": [
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 50,
+      "pattern": "OS command execution",
+      "match": "sys.exit(subprocess.call(sys.argv[2:]))",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 72,
+      "pattern": "Native library loading",
+      "match": "import ctypes",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 73,
+      "pattern": "Native library loading",
+      "match": "from ctypes import wintypes",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 76,
+      "pattern": "Native library loading",
+      "match": "kernel = ctypes.WinDLL(\"kernel32\", use_last_error=True)",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 87,
+      "pattern": "Native library loading",
+      "match": "raise ctypes.WinError(ctypes.get_last_error())",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 93,
+      "pattern": "Sensitive terminology",
+      "match": "gated = [sys.executable, \"-I\", \"-c\", _WINDOWS_JOB_GATE, name, *cmd]",
+      "severity": "low"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 94,
+      "pattern": "OS command execution",
+      "match": "with subprocess.Popen(gated, **kwargs) as proc:",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 100,
+      "pattern": "Native library loading",
+      "match": "raise ctypes.WinError(ctypes.get_last_error())",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 110,
+      "pattern": "Native library loading",
+      "match": "raise ctypes.WinError(ctypes.get_last_error())",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 117,
+      "pattern": "OS command execution",
+      "match": "return subprocess.run(cmd, **kwargs)",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 120,
+      "pattern": "OS command execution",
+      "match": "with subprocess.Popen(cmd, start_new_session=True, **kwargs) as proc:",
+      "severity": "medium"
+    },
+    {
+      "file": "scripts/run_semantic_tests.py",
+      "line": 154,
+      "pattern": "Sensitive terminology",
+      "match": "cmd = [sys.executable, \"-m\", \"unittest\", \"discover\", \"-s\", directory, *([\"-v\"] if a.verbose else [])]",
+      "severity": "low"
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "Semantic runner: terminate descendant processes at the timeout",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9246",
+  "author": "Barbital11111",
+  "base_branch": "main",
+  "head_branch": "fix/semantic-timeout-process-tree",
+  "additions": 186,
+  "patch_fingerprint": "cd6877622648f9b0121187ec8a1ebe3315173b8ac9ceb50cec0db99f7e7f2361"
+}

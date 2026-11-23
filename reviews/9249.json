@@ -1,0 +1,22 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9249,
+  "head_sha": "617f5cd356fdabc916fa5c1fd38580bf249c8960",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:30.463005+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "clean",
+  "findings": [],
+  "detailed_findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "make_game: skip dead network mounts before --find stats them (#8344)",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9249",
+  "author": "evano64",
+  "base_branch": "main",
+  "head_branch": "build/find-skip-network-mounts",
+  "additions": 198,
+  "patch_fingerprint": "043e6322dd8d2bc413acd0f46b95d493de7fe6a00e5288c805798c03d8a57507"
+}

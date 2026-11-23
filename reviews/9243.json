@@ -1,0 +1,22 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9243,
+  "head_sha": "527d9933dc7b1bba1a9421e69ee087adb7c6cccc",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:26.841175+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "clean",
+  "findings": [],
+  "detailed_findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "rpf9dump: scan the full audio archive for cold XMA exports",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9243",
+  "author": "felixpatriciorei",
+  "base_branch": "main",
+  "head_branch": "codex/xma-full-scan",
+  "additions": 56,
+  "patch_fingerprint": "f52997c487d6fb257ad711951b82989771ea2d84de7c3f082e07c51b3748b818"
+}

@@ -1,0 +1,40 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9229,
+  "head_sha": "73a4ff6ed64137e02189f6f6ae6f242e99ef22d3",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:18.965567+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#runtime/shims/d3d12_xs_command_list_iid.h:4 - Sensitive terminology - //   - console c3827890-4024-474c-98cf-645b51dc4874: the riid the 1.0.2.1 executable passes to slot 73 (its only GUID",
+    "#runtime/shims/d3d12_xs_device.cpp:662 - Sensitive terminology - // section below); the first run of the executable confirms which layout."
+  ],
+  "detailed_findings": [
+    {
+      "file": "runtime/shims/d3d12_xs_command_list_iid.h",
+      "line": 4,
+      "pattern": "Sensitive terminology",
+      "match": "//   - console c3827890-4024-474c-98cf-645b51dc4874: the riid the 1.0.2.1 executable passes to slot 73 (its only GUID",
+      "severity": "low"
+    },
+    {
+      "file": "runtime/shims/d3d12_xs_device.cpp",
+      "line": 662,
+      "pattern": "Sensitive terminology",
+      "match": "// section below); the first run of the executable confirms which layout.",
+      "severity": "low"
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "d3d12_xs: the queue's PresentX presenter shares the device's frame-token source (#2490 + #7685)",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9229",
+  "author": "AAyberkU",
+  "base_branch": "main",
+  "head_branch": "present-shared-frame-tokens",
+  "additions": 1611,
+  "patch_fingerprint": "26add28d07db396d27d996d915741e36ccdd92f31082f67ed8684ef975b987b2"
+}

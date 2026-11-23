@@ -1,0 +1,22 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9240,
+  "head_sha": "28f784f7e74057ae23fec44277b28690f5461a1f",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:24.683960+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "clean",
+  "findings": [],
+  "detailed_findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "vulkan_bindless: clean up replacement resources if retirement allocation fails",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9240",
+  "author": "WebIdentity1",
+  "base_branch": "main",
+  "head_branch": "codex/bindless-generation-ownership",
+  "additions": 269,
+  "patch_fingerprint": "ced279eab13fd8e36b3645c0f9ff3c5e0ae798c8b85eb8c570b1a999e0c7a649"
+}

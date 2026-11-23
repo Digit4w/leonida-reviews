@@ -1,0 +1,22 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9227,
+  "head_sha": "18fae29742bbdf1837bdaca94a3036695bfd5d4b",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:17.540954+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "clean",
+  "findings": [],
+  "detailed_findings": [],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "image_fuzz: reject malformed oracle.run() results as harness errors",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9227",
+  "author": "slipperysquid",
+  "base_branch": "main",
+  "head_branch": "fix/image-fuzz-oracle-results",
+  "additions": 61,
+  "patch_fingerprint": "33ae7578c84e62ee6b28076a65460dcb0727e84c6ea5bac1d10f727a233172a9"
+}

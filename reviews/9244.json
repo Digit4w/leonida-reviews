@@ -1,0 +1,32 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9244,
+  "head_sha": "a34371ac28c77c132590a225523d49c7c4084292",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:27.424661+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#make_game.py:1903 - Sensitive terminology - \"\"\"'' when every carved shader is in the merged translation index, else the message the stage fails with."
+  ],
+  "detailed_findings": [
+    {
+      "file": "make_game.py",
+      "line": 1903,
+      "pattern": "Sensitive terminology",
+      "match": "\"\"\"'' when every carved shader is in the merged translation index, else the message the stage fails with.",
+      "severity": "low"
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "make_game: a few shaders failing spirv-val no longer stop the shaders stage before fspx/bvh (A48)",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9244",
+  "author": "dadnotdaddy",
+  "base_branch": "main",
+  "head_branch": "a48-spirv-val-continue-gh",
+  "additions": 75,
+  "patch_fingerprint": "8d2f663b46e6c6bcb3ca55be003278bb371f7ad71cb81b765e4cca6c9f5e45f3"
+}

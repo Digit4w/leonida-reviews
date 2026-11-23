@@ -1,0 +1,49 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9234,
+  "head_sha": "17937be71179c8a6272401616a31b3fa64644f20",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:35:21.450374+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#tools/tex_headers.py:949 - Sensitive terminology - json.dump(payload, f)",
+    "#tools/tex_headers.py:961 - Sensitive terminology - json.dump(payload, staged)",
+    "#:0 - Repeated PR by same author - Similar to PR #9248 (85% title similarity)"
+  ],
+  "detailed_findings": [
+    {
+      "file": "tools/tex_headers.py",
+      "line": 949,
+      "pattern": "Sensitive terminology",
+      "match": "json.dump(payload, f)",
+      "severity": "low"
+    },
+    {
+      "file": "tools/tex_headers.py",
+      "line": 961,
+      "pattern": "Sensitive terminology",
+      "match": "json.dump(payload, staged)",
+      "severity": "low"
+    },
+    {
+      "file": "",
+      "line": 0,
+      "pattern": "Repeated PR by same author",
+      "match": "Similar to PR #9248 (85% title similarity)",
+      "severity": "low",
+      "related_pr": 9248
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": false,
+  "review_submitted": false,
+  "pr_title": "tex_headers: stage --out JSON (preserve previous on write fail)",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9234",
+  "author": "Grimkeh",
+  "base_branch": "main",
+  "head_branch": "fix/tex-headers-preserve-json",
+  "additions": 56,
+  "patch_fingerprint": "959cddfdbf62a717cb0398090607b26a8c913ae39970f86f9d023221f3e5f58c"
+}
