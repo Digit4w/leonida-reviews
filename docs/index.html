@@ -6,7 +6,7 @@
 <title>Leonida PR review ledger</title>
 <meta name="robots" content="noindex">
 <style>
-/* The summary is the hero: live sentences that say how many PRs need attention, each one a filter.
+/* The summary is the hero: one box per verdict with a live count and what it means, each one a filter.
    Below it, one search bar and the reviews grouped from most to least serious.
    Self-contained on purpose: no script, font or image from another host, and review text is only ever set as text. */
 :root {
@@ -17,6 +17,7 @@
   --line: #e2dfee;
   --accent: #b81f66;
   --glow: rgba(255, 122, 92, 0.16);
+  --sunset-ink: linear-gradient(90deg, #d92b63 0%, #d9601a 50%, #7a52e0 100%);
   --sunset: linear-gradient(90deg, #ff5f8f 0%, #ff9a3d 45%, #ffd166 70%, #8f6bff 100%);
   --stop: #b3261e;   --stop-bg: #fde9e6;
   --note: #8a5a00;   --note-bg: #fbf0d2;
@@ -32,6 +33,7 @@
     color-scheme: dark;
     --bg: #120f1f; --panel: #1b172e; --ink: #f3f0fc; --ink-soft: #a59ec2; --line: #2c2745; --accent: #ff7db4;
     --glow: rgba(255, 95, 143, 0.20);
+    --sunset-ink: linear-gradient(90deg, #ff6b98 0%, #ffa24d 50%, #a98bff 100%);
     --stop: #ff9b91; --stop-bg: #46201c;
     --note: #f2c66b; --note-bg: #3e3114;
     --clean: #8ed6a6; --clean-bg: #163620;
@@ -43,6 +45,7 @@
   color-scheme: dark;
   --bg: #120f1f; --panel: #1b172e; --ink: #f3f0fc; --ink-soft: #a59ec2; --line: #2c2745; --accent: #ff7db4;
   --glow: rgba(255, 95, 143, 0.20);
+  --sunset-ink: linear-gradient(90deg, #ff6b98 0%, #ffa24d 50%, #a98bff 100%);
   --stop: #ff9b91; --stop-bg: #46201c;
   --note: #f2c66b; --note-bg: #3e3114;
   --clean: #8ed6a6; --clean-bg: #163620;
@@ -66,23 +69,29 @@ a { color: var(--accent); }
 .theme:hover { border-color: var(--accent); }
 
 /* hero: the summary in sentences */
-.hero { display: flex; flex-direction: column; gap: 12px; padding-top: 6px; }
-.kicker { margin: 0; color: var(--ink-soft); font-size: 15px; }
+.hero { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+.headline { display: flex; flex-direction: column; gap: 4px; }
+h1 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; font-size: clamp(28px, 4.6vw, 44px); text-wrap: balance; }
+h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kicker { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
 .kicker b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.say { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; }
-.say button { background: none; border: 0; padding: 2px 0; margin: 0; cursor: pointer; text-align: left;
-  font-family: var(--display); font-weight: 750; letter-spacing: -0.022em; line-height: 1.12; font-size: clamp(22px, 3.7vw, 35px); color: var(--ink); text-wrap: balance; }
-.say button.lead { font-size: clamp(30px, 5.6vw, 54px); font-weight: 800; line-height: 1.04; margin-bottom: 6px; }
-.say button .n { font-variant-numeric: tabular-nums; }
-.say button.v-do-not-merge .n { color: var(--stop); }
-.say button.v-notes .n { color: var(--note); }
-.say button.v-clean .n { color: var(--clean); }
-.say button.v-scan-only .n { color: var(--scan); }
-.say button.v-not-reviewed .n, .say button.v-in-progress .n { color: var(--none); }
-.say button .t { opacity: 0.78; }
-.say button.lead .t, .say button:hover .t, .say button[aria-pressed="true"] .t { opacity: 1; }
-.say button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--accent); }
-.say.filtered button[aria-pressed="false"] { opacity: 0.4; }
+.say { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .say { grid-template-columns: 1fr 1fr; } .say button:first-child { grid-column: 1 / -1; } }
+.say button { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; padding: 15px 16px 14px; margin: 0; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 4px; color: var(--ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tone) 11%, var(--panel)) 0%, var(--panel) 62%); box-shadow: 0 10px 24px -22px rgba(10, 5, 40, 0.9); }
+.say button::before { content: ""; position: absolute; left: 14px; right: 14px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--tone); }
+.say button .n { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(30px, 4.4vw, 42px); font-variant-numeric: tabular-nums; color: var(--tone); }
+.say button .t { font-size: 13.5px; line-height: 1.3; color: var(--ink-soft); }
+.say button.v-do-not-merge { --tone: var(--stop); --tint: var(--stop-bg); }
+.say button.v-notes { --tone: var(--note); --tint: var(--note-bg); }
+.say button.v-clean { --tone: var(--clean); --tint: var(--clean-bg); }
+.say button.v-scan-only { --tone: var(--scan); --tint: var(--scan-bg); }
+.say button.v-not-reviewed, .say button.v-in-progress { --tone: var(--none); --tint: var(--none-bg); }
+@media (hover: hover) { .say button:hover { border-color: var(--tone); } .say button:hover .t { color: var(--ink); } }
+.say button[aria-pressed="true"] { background: var(--tint); border-color: var(--tone); box-shadow: 0 0 0 1px var(--tone); }
+.say button[aria-pressed="true"] .t { color: var(--ink); }
+.say.filtered button[aria-pressed="false"] { opacity: 0.55; }
 .hint { margin: 0; color: var(--ink-soft); font-size: 13.5px; max-width: 70ch; }
 .hint b { color: var(--ink); }
 
@@ -162,7 +171,8 @@ footer p { margin: 0; max-width: 80ch; }
   .tools { position: static; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .say button, .theme, .more { transition: color 0.15s, border-color 0.15s, opacity 0.15s; }
+  .say button, .theme, .more, .card { transition: color 0.15s, border-color 0.15s, opacity 0.15s, background-color 0.15s, transform 0.15s; }
+  @media (hover: hover) { .say button:hover { transform: translateY(-2px); } }
 }
 </style>
 </head>
@@ -171,14 +181,17 @@ footer p { margin: 0; max-width: 80ch; }
 <div class="sky">
 <div class="wrap">
   <div class="top">
-    <span class="repo">ItsNotRexed/Leonida · security reviews</span>
+    <span class="repo">ItsNotRexed/Leonida · pull requests</span>
     <button type="button" class="theme" id="theme">Switch to dark</button>
   </div>
 
   <section class="hero" aria-label="Summary">
-    <p class="kicker" id="kicker">Loading the reviews.</p>
+    <div class="headline">
+      <h1>Leonida <em>security reviews</em></h1>
+      <p class="kicker" id="kicker">Loading the reviews.</p>
+    </div>
     <div class="say" id="say"></div>
-    <p class="hint">Tap a line to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
+    <p class="hint">Tap a box to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
   </section>
 
   <section class="tools" aria-label="Find and filter">
@@ -285,9 +298,8 @@ footer p { margin: 0; max-width: 80ch; }
       var b = el("button", "v-" + v);
       b.type = "button";
       b.setAttribute("aria-pressed", String(state.verdict === v));
-      if (v === keys[0] && rank(v) < rank("clean")) b.className += " lead";
       b.appendChild(el("span", "n", fmt(counts[v])));
-      b.appendChild(el("span", "t", counts[v] === 1 ? info(v).one : info(v).many));
+      b.appendChild(el("span", "t", (counts[v] === 1 ? info(v).one : info(v).many).replace(/^\s+|\.$/g, "")));
       b.addEventListener("click", function () { state.verdict = (state.verdict === v ? "" : v); reset(); });
       box.appendChild(b);
     });
