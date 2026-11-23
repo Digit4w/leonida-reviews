@@ -27,7 +27,11 @@ ORDER = {v: i for i, v in enumerate(VERDICTS)}
 
 def load():
     rows, errors = [], []
-    for path in sorted(REVIEWS.glob("*.json"), key=lambda p: (len(p.stem), p.stem)):
+    # Layout: reviews/<verdict>/<pr>.json (clean, notes, do-not-merge, scan-only, not-reviewed, in-progress).
+    # A flat reviews/<pr>.json is still read so an old claim is not lost, but the folder must match the verdict.
+    paths = sorted(list(REVIEWS.glob("*.json")) + list(REVIEWS.glob("*/*.json")), key=lambda p: (len(p.stem), p.stem, str(p)))
+    seen = {}
+    for path in paths:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError) as e:
@@ -48,6 +52,12 @@ def load():
             errors.append("%s: file name must be <pr>.json and match the pr field" % path.name)
         if data["verdict"] not in VERDICTS:
             errors.append("%s: verdict must be one of %s" % (path.name, ", ".join(VERDICTS)))
+        folder = path.parent.name if path.parent != REVIEWS else None
+        if folder is not None and data["verdict"] in VERDICTS and folder != data["verdict"]:
+            errors.append("%s/%s: lives in folder %s but its verdict is %s" % (folder, path.name, folder, data["verdict"]))
+        if data["pr"] in seen:
+            errors.append("%s: PR %s already has a review in %s" % (path, data["pr"], seen[data["pr"]]))
+        seen[data["pr"]] = str(path.relative_to(ROOT))
         if not isinstance(data["findings"], list) or not all(isinstance(x, str) for x in data["findings"]):
             errors.append("%s: findings must be a list of strings" % path.name)
         if not isinstance(data["read_by_human"], bool) or not isinstance(data["commented_on_github"], bool):
