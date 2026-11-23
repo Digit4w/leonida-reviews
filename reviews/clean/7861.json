@@ -1,0 +1,13 @@
+{
+  "pr": 7861,
+  "head_sha": "7811492b263a02fc22721f720b92ac80b2fe06e1",
+  "reviewer": "pr-sorter/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, diff only, nothing executed; line-by-line read of the full diff",
+  "verdict": "clean",
+  "findings": [
+    "Read file_system.cpp: FindFirstFile listing skips . and .. at the GAME/scratch drive root only (a continue in the existing loop); test fixture writes under the test's own root. No new path escape, network or process calls; no hidden Unicode."
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
