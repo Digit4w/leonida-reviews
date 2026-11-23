@@ -43,12 +43,16 @@ def load():
                 data.get("verdict") == "in-progress"
                 and data.get("automatic_in_progress") is True
             )
+            auto_scan_only = (
+                data.get("verdict") == "scan-only"
+                and data.get("reviewer") == "leonida-security-monitor/automated"
+            )
             published_comment = (
                 data.get("commented_on_github") is True
                 and data.get("publication_status") == "published"
                 and data.get("github_review_event") == "COMMENT"
             )
-            if not (auto_in_progress or published_comment):
+            if not (auto_in_progress or auto_scan_only or published_comment):
                 continue
         missing = [k for k in REQUIRED if k not in data]
         if missing:
