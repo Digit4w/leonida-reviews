@@ -7,7 +7,8 @@
   "verdict": "notes",
   "findings": [
     "only network call is api.github.com contributors",
-    "ShellExecute on README links limited to http(s)/mailto"
+    "ShellExecute on README links limited to http(s)/mailto",
+    "added by LaugeM/claude+mistral: the Can-I-Run view also loads assttro.github.io in an off-screen WebView2 and fills in this PC's CPU, GPU and RAM (launcher-wpf/src/Leonida.Launcher/Views/CanIRunView.xaml.cs:22, :108, :147); described in the launcher README"
   ],
   "read_by_human": false,
   "commented_on_github": true

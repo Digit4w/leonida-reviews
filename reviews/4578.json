@@ -5,7 +5,9 @@
   "date": "2026-11-23",
   "scope": "gh returned an empty diff",
   "verdict": "not-reviewed",
-  "findings": [],
+  "findings": [
+    "added by LaugeM/claude+mistral: diff read from the fetched head ref (git objects, nothing executed): Rust launcher with bundled OFL fonts and a read-only workflow (contents: read, pull_request, cargo fmt/clippy/test); no harmful change found, but the diff was only partly read (medium confidence)"
+  ],
   "read_by_human": false,
   "commented_on_github": false
 }
