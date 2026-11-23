@@ -131,6 +131,8 @@ h1 { margin: 0; font-family: var(--display); font-weight: 800; letter-spacing: -
 h1 em { font-style: normal; background: var(--sunset-ink); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .kicker { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
 .kicker b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.monitor-status { margin: 7px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+.monitor-status[hidden] { display: none; }
 .say { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 10px; }
 @media (max-width: 520px) { .say { grid-template-columns: 1fr 1fr; } .say button:first-child { grid-column: 1 / -1; } }
 .say button { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; padding: 15px 16px 14px; margin: 0; cursor: pointer; text-align: left;
@@ -270,6 +272,7 @@ footer p { margin: 0; max-width: 80ch; }
       <h1>Leonida <em>security reviews</em></h1>
       <p class="mission">Volunteers read Leonida's pull requests for malicious code, so the maintainers can merge with less risk.</p>
       <p class="kicker" id="kicker">Loading the reviews.</p>
+    <p class="monitor-status" id="monitor-status" role="status" aria-live="polite" hidden></p>
     </div>
     <div class="say" id="say"></div>
     <p class="hint">Tap a box to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
@@ -632,6 +635,50 @@ footer p { margin: 0; max-width: 80ch; }
   function clock(d) { return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
   function setLive(ok, text) { $("live").className = "live" + (ok ? "" : " off"); $("live-text").textContent = text; }
 
+  function loadMonitorStatus() {
+    return fetch("monitor-status.json?t=" + Date.now(), { cache: "no-store" }).then(function (res) {
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    }).then(function (data) {
+      var node = $("monitor-status");
+      if (!data || !data.status) { node.hidden = true; return; }
+
+      var updated = new Date(data.updated_at || "");
+      var ageSeconds = isNaN(updated) ? Infinity : Math.max(0, (Date.now() - updated.getTime()) / 1000);
+      var completed = fmt(Number(data.completed || 0));
+      var total = fmt(Number(data.total || 0));
+      var remaining = fmt(Number(data.remaining || 0));
+      var active = Number(data.current_pr || 0);
+      var range = data.current_range ? " · range " + data.current_range : "";
+      var text;
+
+      if (data.status === "running") {
+        text = "Automated monitor is scanning" + (active ? " PR #" + active : " the queued PRs") +
+          range + " · " + completed + "/" + total + " processed (" + remaining + " remaining).";
+      } else if (data.status === "queued") {
+        text = "Automated historical scan queued · " + total + " PRs across the requested ranges.";
+      } else if (data.status === "waiting_for_next_batch") {
+        text = "Automated scan paused between batches · " + completed + "/" + total +
+          " processed · " + remaining + " remaining.";
+      } else if (data.status === "completed") {
+        text = "Automated historical scan complete · " + completed + "/" + total + " PRs processed.";
+      } else {
+        text = "Automated scan status: " + String(data.status) + " · " + completed + "/" + total + " processed.";
+      }
+
+      if (Number(data.in_progress_window || 0) > 0 && data.status !== "completed") {
+        text += " " + fmt(Number(data.in_progress_window)) + " PRs are currently listed as in progress.";
+      }
+      if (ageSeconds > 180 && data.status === "running") {
+        text += " Last progress update is " + Math.round(ageSeconds / 60) + " minutes old; the run may be delayed.";
+      }
+      if (!isNaN(updated)) text += " Updated " + clock(updated) + ".";
+      node.textContent = text;
+      node.hidden = false;
+    });
+  }
+
   function load() {
     return fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
@@ -662,7 +709,16 @@ footer p { margin: 0; max-width: 80ch; }
     if (document.hidden) return;                  // do not poll from a background tab
     load().catch(function () { setLive(false, "offline, retrying"); });
   }, EVERY);
-  document.addEventListener("visibilitychange", function () { if (!document.hidden && wired) load().catch(function () { setLive(false, "offline, retrying"); }); });
+  loadMonitorStatus().catch(function () {});
+  setInterval(function () {
+    if (!document.hidden) loadMonitorStatus().catch(function () {});
+  }, 15000);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) {
+      if (wired) load().catch(function () { setLive(false, "offline, retrying"); });
+      loadMonitorStatus().catch(function () {});
+    }
+  });
 })();
 </script>
 </body>
