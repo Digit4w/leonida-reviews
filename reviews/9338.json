@@ -1,0 +1,35 @@
+{
+  "source": "leonida-security-monitor",
+  "pr": 9338,
+  "head_sha": "575e7a0f50ae6c29899df66d967df67ed1db96d6",
+  "reviewer": "leonida-security-monitor/automated",
+  "date": "2026-11-23",
+  "created_at": "2026-11-23T20:52:20.516199+00:00",
+  "scope": "heuristic static analysis of added diff lines and open-PR metadata; no code executed",
+  "verdict": "notes",
+  "findings": [
+    "#runtime/shims/d3d12_xs_device.cpp:1478 - Sensitive terminology - // Valid PC texture state masks (0x10 DEPTH_WRITE, 0x20 DEPTH_READ, 0x40/0x80/0xC0 shader reads, etc.) and all"
+  ],
+  "detailed_findings": [
+    {
+      "file": "runtime/shims/d3d12_xs_device.cpp",
+      "line": 1478,
+      "pattern": "Sensitive terminology",
+      "match": "// Valid PC texture state masks (0x10 DEPTH_WRITE, 0x20 DEPTH_READ, 0x40/0x80/0xC0 shader reads, etc.) and all",
+      "severity": "low"
+    }
+  ],
+  "read_by_human": false,
+  "commented_on_github": true,
+  "review_submitted": true,
+  "publication_status": "published",
+  "pr_title": "d3d12_xs: map console texture D3D12_BARRIER_LAYOUT initial states on committed and placed resources",
+  "pr_url": "https://github.com/ItsNotRexed/Leonida/pull/9338",
+  "author": "TheAirborneCoder",
+  "base_branch": "main",
+  "head_branch": "d3d12-xs-texture-barrier-layouts",
+  "additions": 538,
+  "patch_fingerprint": "d942bc27451a74150017a66aeb9ae2a73a2e970bc38b3973df4b3bb3697f9230",
+  "github_review_event": "COMMENT",
+  "public_disclosure_reviewed": true
+}
