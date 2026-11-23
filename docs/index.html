@@ -6,246 +6,365 @@
 <title>Leonida PR review ledger</title>
 <meta name="robots" content="noindex">
 <style>
-/* A ledger: verdict counts on top, one filter bar, then one row per reviewed PR.
+/* The summary is the hero: live sentences that say how many PRs need attention, each one a filter.
+   Below it, one search bar and the reviews grouped from most to least serious.
    Self-contained on purpose: no script, font or image from another host, and review text is only ever set as text. */
 :root {
-  --paper: #f5f6f9;
+  --bg: #f6f5fa;
   --panel: #ffffff;
-  --ink: #171b2c;
-  --ink-soft: #565d78;
-  --line: #dde0ea;
-  --accent: #2f3fbf;
-  --accent-soft: #e6e9fb;
-  --stop: #b3261e;      --stop-bg: #fbe9e7;
-  --note: #8a5a00;      --note-bg: #fbf0d6;
-  --clean: #1f6b3a;     --clean-bg: #e2f3e7;
-  --scan: #3d5a80;      --scan-bg: #e3ebf5;
-  --none: #5d6170;      --none-bg: #e9eaee;
-  --display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ink: #1b1630;
+  --ink-soft: #615b7a;
+  --line: #e2dfee;
+  --accent: #b81f66;
+  --sunset: linear-gradient(90deg, #ff5f8f 0%, #ff9a3d 45%, #ffd166 70%, #8f6bff 100%);
+  --stop: #b3261e;   --stop-bg: #fde9e6;
+  --note: #8a5a00;   --note-bg: #fbf0d2;
+  --clean: #1d6a3a;  --clean-bg: #e1f3e6;
+  --scan: #345b8c;   --scan-bg: #e2ebf7;
+  --none: #5d5a6e;   --none-bg: #eae8f0;
+  --display: "Segoe UI Variable Display", "SF Pro Display", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #10131f; --panel: #181c2c; --ink: #e8eaf4; --ink-soft: #9ba2bd; --line: #2a2f45;
-    --accent: #9aa6ff; --accent-soft: #232a52;
-    --stop: #ff9d94; --stop-bg: #44201d;
-    --note: #f0c56a; --note-bg: #3d3115;
-    --clean: #8fd3a5; --clean-bg: #17361f;
-    --scan: #a7c1e6; --scan-bg: #1f2d42;
-    --none: #b4b8c6; --none-bg: #2a2d38;
+    --bg: #120f1f; --panel: #1c1830; --ink: #f1eefb; --ink-soft: #a8a1c4; --line: #2e2947; --accent: #ff7db4;
+    --stop: #ff9b91; --stop-bg: #46201c;
+    --note: #f2c66b; --note-bg: #3e3114;
+    --clean: #8ed6a6; --clean-bg: #163620;
+    --scan: #a9c4ec; --scan-bg: #1d2c44;
+    --none: #b7b3c9; --none-bg: #2b283a;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #10131f; --panel: #181c2c; --ink: #e8eaf4; --ink-soft: #9ba2bd; --line: #2a2f45;
-  --accent: #9aa6ff; --accent-soft: #232a52;
-  --stop: #ff9d94; --stop-bg: #44201d;
-  --note: #f0c56a; --note-bg: #3d3115;
-  --clean: #8fd3a5; --clean-bg: #17361f;
-  --scan: #a7c1e6; --scan-bg: #1f2d42;
-  --none: #b4b8c6; --none-bg: #2a2d38;
+  --bg: #120f1f; --panel: #1c1830; --ink: #f1eefb; --ink-soft: #a8a1c4; --line: #2e2947; --accent: #ff7db4;
+  --stop: #ff9b91; --stop-bg: #46201c;
+  --note: #f2c66b; --note-bg: #3e3114;
+  --clean: #8ed6a6; --clean-bg: #163620;
+  --scan: #a9c4ec; --scan-bg: #1d2c44;
+  --none: #b7b3c9; --none-bg: #2b283a;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 56px; display: flex; flex-direction: column; gap: 22px; }
-header { display: flex; flex-direction: column; gap: 6px; }
-h1 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4vw, 38px); line-height: 1.08; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
-.lede { color: var(--ink-soft); max-width: 68ch; margin: 0; }
-.lede a, footer a { color: var(--accent); }
-.snap { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
-.snap b { color: var(--ink); font-weight: 500; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15.5px; line-height: 1.5; }
+.band { height: 6px; background: var(--sunset); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 26px 20px 64px; display: flex; flex-direction: column; gap: 26px; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+a { color: var(--accent); }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px; border-left-width: 5px; }
-.tile:hover { border-color: var(--accent); }
-.tile:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.tile[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
-.tile .n { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
-.tile .l { font-size: 13px; color: var(--ink-soft); }
-.tile.v-do-not-merge { border-left-color: var(--stop); }
-.tile.v-notes { border-left-color: var(--note); }
-.tile.v-clean { border-left-color: var(--clean); }
-.tile.v-scan-only { border-left-color: var(--scan); }
-.tile.v-not-reviewed, .tile.v-in-progress { border-left-color: var(--none); }
-.tile.v-all { border-left-color: var(--accent); }
+/* header */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.repo { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+.theme { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; }
+.theme:hover { border-color: var(--accent); }
 
-.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
-.bar label { font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
-.bar input[type="search"], .bar select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 7px; padding: 7px 10px; }
-.bar input[type="search"] { flex: 1 1 240px; min-width: 0; }
-.bar .count { margin-left: auto; font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
-.bar button.reset { font: inherit; font-size: 13px; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 7px; padding: 6px 10px; cursor: pointer; }
+/* hero: the summary in sentences */
+.hero { display: flex; flex-direction: column; gap: 14px; }
+.kicker { margin: 0; color: var(--ink-soft); font-size: 16px; }
+.kicker b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.say { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; }
+.say button { background: none; border: 0; padding: 2px 0; margin: 0; cursor: pointer; text-align: left;
+  font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; font-size: clamp(27px, 5.2vw, 50px); color: var(--ink-soft); text-wrap: balance; }
+.say button .n { font-variant-numeric: tabular-nums; }
+.say button.v-do-not-merge .n { color: var(--stop); }
+.say button.v-notes .n { color: var(--note); }
+.say button.v-clean .n { color: var(--clean); }
+.say button.v-scan-only .n { color: var(--scan); }
+.say button.v-not-reviewed .n, .say button.v-in-progress .n { color: var(--none); }
+.say button:hover, .say button[aria-pressed="true"] { color: var(--ink); }
+.say button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 7px; text-decoration-color: var(--accent); }
+.say.filtered button[aria-pressed="false"] { opacity: 0.45; }
+.hint { margin: 0; color: var(--ink-soft); font-size: 14px; max-width: 70ch; }
+.hint b { color: var(--ink); }
 
-.ledger { display: flex; flex-direction: column; gap: 6px; }
-.row { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--none); border-radius: 9px; padding: 10px 14px; display: grid; grid-template-columns: 86px 112px minmax(0, 1fr) 190px; gap: 4px 16px; align-items: start; }
-.row.v-do-not-merge { border-left-color: var(--stop); }
-.row.v-notes { border-left-color: var(--note); }
-.row.v-clean { border-left-color: var(--clean); }
-.row.v-scan-only { border-left-color: var(--scan); }
-.pr { font-family: var(--mono); font-weight: 500; font-size: 15px; color: var(--accent); text-decoration: none; font-variant-numeric: tabular-nums; }
+/* toolbar */
+.tools { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 8px; z-index: 2; box-shadow: 0 6px 22px -18px rgba(20, 10, 60, 0.6); }
+.search { display: flex; gap: 10px; align-items: center; }
+.search label { font-weight: 600; white-space: nowrap; }
+.search input { flex: 1 1 auto; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; font-size: 16px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--ink-soft); }
+.opts label { display: flex; align-items: center; gap: 6px; }
+.opts select { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; color: var(--ink); max-width: 100%; }
+.opts .count { margin-left: auto; font-family: var(--mono); font-size: 13px; }
+.opts .clear { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px; color: var(--accent); cursor: pointer; }
+.opts .clear[hidden] { display: none; }
+
+/* list */
+.list { display: flex; flex-direction: column; gap: 8px; }
+.group { margin: 16px 0 2px; display: flex; flex-direction: column; gap: 2px; }
+.group:first-child { margin-top: 0; }
+.group h2 { margin: 0; font-family: var(--display); font-weight: 800; font-size: 21px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+.group p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+.mark { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 800; flex: none; font-family: var(--body); }
+.v-do-not-merge .mark, .mark.v-do-not-merge { color: var(--stop); background: var(--stop-bg); }
+.v-notes .mark, .mark.v-notes { color: var(--note); background: var(--note-bg); }
+.v-clean .mark, .mark.v-clean { color: var(--clean); background: var(--clean-bg); }
+.v-scan-only .mark, .mark.v-scan-only { color: var(--scan); background: var(--scan-bg); }
+.v-not-reviewed .mark, .v-in-progress .mark, .mark.v-not-reviewed, .mark.v-in-progress { color: var(--none); background: var(--none-bg); }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--none); border-radius: 12px; padding: 13px 16px; display: flex; flex-direction: column; gap: 7px; }
+.card.v-do-not-merge { border-left-color: var(--stop); }
+.card.v-notes { border-left-color: var(--note); }
+.card.v-clean { border-left-color: var(--clean); }
+.card.v-scan-only { border-left-color: var(--scan); }
+.head { display: flex; gap: 6px 12px; align-items: baseline; flex-wrap: wrap; }
+.pr { font-family: var(--mono); font-weight: 600; font-size: 16px; text-decoration: none; font-variant-numeric: tabular-nums; }
 .pr:hover { text-decoration: underline; }
-.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.title { font-weight: 600; overflow-wrap: anywhere; flex: 1 1 260px; min-width: 0; }
+.title .by { font-weight: 400; color: var(--ink-soft); }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 700; padding: 2px 10px 2px 3px; border-radius: 999px; white-space: nowrap; }
+.pill .mark { width: 18px; height: 18px; font-size: 11px; background: transparent; }
 .pill.v-do-not-merge { color: var(--stop); background: var(--stop-bg); }
 .pill.v-notes { color: var(--note); background: var(--note-bg); }
 .pill.v-clean { color: var(--clean); background: var(--clean-bg); }
 .pill.v-scan-only { color: var(--scan); background: var(--scan-bg); }
 .pill.v-not-reviewed, .pill.v-in-progress { color: var(--none); background: var(--none-bg); }
-.tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 5px; color: var(--none); background: var(--none-bg); margin-top: 5px; white-space: nowrap; }
-.main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.title { font-weight: 500; overflow-wrap: anywhere; }
-.title .by { font-weight: 400; color: var(--ink-soft); }
-.title.untitled { color: var(--ink-soft); font-weight: 400; font-style: italic; }
-ul.findings { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
-details.scope { font-size: 13px; color: var(--ink-soft); }
-details.scope summary { cursor: pointer; width: fit-content; }
-details.scope p { margin: 4px 0 0; overflow-wrap: anywhere; }
-.meta { font-size: 12.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
-.meta .who { color: var(--ink); }
+.tag { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; color: var(--none); background: var(--none-bg); white-space: nowrap; }
+ul.why { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 3px; overflow-wrap: anywhere; }
+details { font-size: 13.5px; color: var(--ink-soft); }
+details summary { cursor: pointer; width: fit-content; }
+details p { margin: 5px 0 0; overflow-wrap: anywhere; }
+details ul.why { margin-top: 6px; color: var(--ink); font-size: 14px; }
+.meta { display: flex; flex-wrap: wrap; gap: 3px 14px; font-size: 13px; color: var(--ink-soft); overflow-wrap: anywhere; }
 .meta .sha { font-family: var(--mono); }
-.empty, .error { background: var(--panel); border: 1px dashed var(--line); border-radius: 9px; padding: 22px; color: var(--ink-soft); text-align: center; }
-.more { align-self: center; font: inherit; color: var(--accent); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 9px 16px; cursor: pointer; }
-footer { color: var(--ink-soft); font-size: 13px; max-width: 78ch; display: flex; flex-direction: column; gap: 6px; }
-footer p { margin: 0; }
-@media (max-width: 760px) {
-  .row { grid-template-columns: auto 1fr; }
-  .main, .meta { grid-column: 1 / -1; }
-  .meta { flex-direction: row; flex-wrap: wrap; gap: 4px 12px; }
-  .bar .count { margin-left: 0; width: 100%; }
+.state { background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; padding: 26px; color: var(--ink-soft); text-align: center; }
+.more { align-self: center; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 18px; color: var(--accent); cursor: pointer; font-weight: 600; }
+.more:hover { border-color: var(--accent); }
+
+footer { color: var(--ink-soft); font-size: 13.5px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 20px; }
+footer h2 { margin: 0; font-size: 15px; color: var(--ink); }
+dl.legend { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 22px; }
+dl.legend div { display: flex; gap: 9px; align-items: flex-start; }
+dl.legend dt { font-weight: 700; color: var(--ink); }
+dl.legend dd { margin: 0; }
+footer p { margin: 0; max-width: 80ch; }
+@media (max-width: 620px) {
+  .search { flex-direction: column; align-items: stretch; gap: 6px; }
+  .pills { margin-left: 0; }
+  .opts .count { margin-left: 0; width: 100%; }
+  .tools { position: static; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .say button, .theme, .more { transition: color 0.15s, border-color 0.15s, opacity 0.15s; }
 }
 </style>
 </head>
 <body>
+<div class="band"></div>
 <div class="wrap">
-  <header>
-    <h1>Leonida PR review ledger</h1>
-    <p class="lede">Every pull request of ItsNotRexed/Leonida that someone here has security-reviewed, with the verdict, who checked it and how. Generated from the <a href="https://github.com/Etoile-Bleu/leonida-reviews">review files of this repository</a>.</p>
-    <p class="snap" id="snap">Loading the reviews.</p>
-  </header>
+  <div class="top">
+    <span class="repo">ItsNotRexed/Leonida · security reviews</span>
+    <button type="button" class="theme" id="theme">Switch to dark</button>
+  </div>
 
-  <section class="tiles" id="tiles" aria-label="Reviews by verdict"></section>
-
-  <section class="bar" aria-label="Filters">
-    <input type="search" id="q" placeholder="Search PR number, title, author, finding or head SHA" aria-label="Search">
-    <label for="reviewer">Reviewer
-      <select id="reviewer"><option value="">Everyone</option></select>
-    </label>
-    <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> With findings only</label>
-    <label for="hideAuto"><input type="checkbox" id="hideAuto"> Hide automated scans</label>
-    <button type="button" class="reset" id="reset">Clear filters</button>
-    <span class="count" id="count"></span>
+  <section class="hero" aria-label="Summary">
+    <p class="kicker" id="kicker">Loading the reviews.</p>
+    <div class="say" id="say"></div>
+    <p class="hint">Tap a line to see those pull requests. <b>Clean</b> means nothing malicious was found in what was checked. It is not a promise that a PR is safe.</p>
   </section>
 
-  <section class="ledger" id="ledger" aria-live="polite"></section>
+  <section class="tools" aria-label="Find and filter">
+    <div class="search">
+      <label for="q">Find a PR</label>
+      <input type="search" id="q" placeholder="PR number, title, author or keyword" autocomplete="off">
+    </div>
+    <div class="opts">
+      <label for="reviewer">Checked by
+        <select id="reviewer"><option value="">anyone</option></select>
+      </label>
+      <label for="sort">Order
+        <select id="sort">
+          <option value="serious">most serious first</option>
+          <option value="newest">newest PR first</option>
+        </select>
+      </label>
+      <label for="onlyFindings"><input type="checkbox" id="onlyFindings"> Only reviews with remarks</label>
+      <label for="hideAuto" id="hideAutoWrap"><input type="checkbox" id="hideAuto"> Hide automated scans</label>
+      <button type="button" class="clear" id="clear" hidden>Clear filters</button>
+      <span class="count" id="count"></span>
+    </div>
+  </section>
+
+  <section class="list" id="list" aria-live="polite"></section>
 
   <footer>
-    <p><b>How to read a verdict.</b> "clean" means no malicious pattern was found within the scope written on the row. It is not a guarantee that a PR is safe. "scan-only" means a pattern scan, not a read. "notes" means no malicious code but something a maintainer should look at. "do-not-merge" means a real problem.</p>
-    <p>Every review is a static, AI-assisted reading of a diff. Nothing was executed. Open "How it was checked" on a row to see what was actually done.</p>
-    <p>Rows tagged "Automated" come from a monitor that matches patterns in added lines. Its findings are leads to look at, not conclusions. "Hide automated scans" leaves only the reviews an agent wrote up.</p>
-    <p>Reviews by the contributors listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
+    <h2>What the labels mean</h2>
+    <dl class="legend">
+      <div><span class="mark v-do-not-merge">×</span><span><dt>Do not merge</dt><dd>A real problem was found. The row says what.</dd></span></div>
+      <div><span class="mark v-notes">!</span><span><dt>Needs a look</dt><dd>No malicious code found, but a maintainer should read the remark.</dd></span></div>
+      <div><span class="mark v-scan-only">~</span><span><dt>Quick scan only</dt><dd>A pattern scan ran. Nobody read the change.</dd></span></div>
+      <div><span class="mark v-clean">✓</span><span><dt>Clean</dt><dd>Nothing malicious found in what was checked. Not a guarantee.</dd></span></div>
+    </dl>
+    <p>Every review here is a static, AI-assisted reading of a pull request's diff. Nothing was run. "How it was checked" on each row says what was actually done, and by whom. Rows tagged "Automated scan" come from a monitor that matches patterns in added lines: its hits are leads to look at, not conclusions.</p>
+    <p id="stamp"></p>
+    <p>Data: the review files of <a href="https://github.com/Etoile-Bleu/leonida-reviews">Etoile-Bleu/leonida-reviews</a>. Reviews by the people listed in <a href="https://github.com/Etoile-Bleu/leonida-reviews/blob/main/AUTHORS.md">AUTHORS.md</a>. This page loads nothing from other sites.</p>
   </footer>
 </div>
 
 <script>
 (function () {
   var ORDER = ["do-not-merge", "notes", "scan-only", "not-reviewed", "in-progress", "clean"];
-  var LABEL = { "do-not-merge": "Do not merge", "notes": "Notes", "clean": "Clean", "scan-only": "Scan only", "not-reviewed": "Not reviewed", "in-progress": "In progress" };
-  var PAGE = 150;
-  var all = [], state = { verdict: "", reviewer: "", q: "", onlyFindings: false, hideAuto: false, shown: PAGE };
+  var V = {
+    "do-not-merge": { label: "Do not merge", mark: "×", one: " should not be merged.", many: " should not be merged.", help: "A real problem was found. Read why before touching these." },
+    "notes":        { label: "Needs a look", mark: "!", one: " needs a second look.", many: " need a second look.", help: "No malicious code found, but there is a remark a maintainer should read." },
+    "scan-only":    { label: "Quick scan only", mark: "~", one: " only got a quick scan.", many: " only got a quick scan.", help: "A pattern scan ran on these. Nobody read the change." },
+    "not-reviewed": { label: "Not reviewed", mark: "–", one: " could not be reviewed.", many: " could not be reviewed.", help: "The review could not be done, for the reason given on the row." },
+    "in-progress":  { label: "In progress", mark: "…", one: " is being reviewed.", many: " are being reviewed.", help: "Someone has claimed these and is working on them." },
+    "clean":        { label: "Clean", mark: "✓", one: " came back clean.", many: " came back clean.", help: "Nothing malicious found in what was checked. Not a guarantee." }
+  };
+  var PAGE = 100;
+  var all = [];
+  var state = { verdict: "", reviewer: "", q: "", onlyFindings: false, hideAuto: false, sort: "serious", shown: PAGE };
   var $ = function (id) { return document.getElementById(id); };
-  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
-
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function info(v) { return V[v] || { label: v, mark: "?", one: " other.", many: " other.", help: "" }; }
   function rank(v) { var i = ORDER.indexOf(v); return i < 0 ? 99 : i; }
+  function fmt(n) { return n.toLocaleString("en-US"); }
 
-  function inScope(r) {   // the filters the verdict counts follow
+  // theme: follow the system unless the visitor chose
+  var root = document.documentElement;
+  function isDark() { var t = root.getAttribute("data-theme"); if (t) return t === "dark"; return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches); }
+  function paintTheme() { $("theme").textContent = isDark() ? "Switch to light" : "Switch to dark"; }
+  try { var saved = localStorage.getItem("ledger-theme"); if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved); } catch (e) {}
+  paintTheme();
+  $("theme").addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("ledger-theme", next); } catch (e) {}
+    paintTheme();
+  });
+
+  function inScope(r) {   // what the summary sentences count
     if (state.reviewer && r.reviewer !== state.reviewer) return false;
     if (state.hideAuto && r.automated) return false;
     return true;
   }
-
   function matches(r) {
     if (!inScope(r)) return false;
     if (state.verdict && r.verdict !== state.verdict) return false;
     if (state.onlyFindings && !r.findings.length) return false;
     if (state.q) {
-      var hay = ("#" + r.pr + " " + r.title + " " + r.author + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + r.verdict).toLowerCase();
+      var hay = ("#" + r.pr + " " + r.title + " " + r.author + " " + r.findings.join(" ") + " " + r.reviewer + " " + r.head + " " + info(r.verdict).label).toLowerCase();
       var parts = state.q.toLowerCase().split(/\s+/);
       for (var i = 0; i < parts.length; i++) if (parts[i] && hay.indexOf(parts[i]) < 0) return false;
     }
     return true;
   }
+  function reset() { state.shown = PAGE; draw(); }
 
-  function drawTiles() {
-    var box = $("tiles"); box.textContent = "";
+  function drawSummary() {
     var counts = {}, total = 0;
     all.forEach(function (r) { if (inScope(r)) { counts[r.verdict] = (counts[r.verdict] || 0) + 1; total++; } });
-    var mk = function (key, n, label) {
-      var b = el("button", "tile v-" + (key || "all"));
+    var k = $("kicker"); k.textContent = "";
+    k.appendChild(el("b", null, fmt(total)));
+    k.appendChild(document.createTextNode(" Leonida pull request" + (total === 1 ? " has" : "s have") + " been security-checked so far."));
+    var box = $("say"); box.textContent = "";
+    box.className = "say" + (state.verdict ? " filtered" : "");
+    var keys = ORDER.filter(function (v) { return counts[v]; });
+    Object.keys(counts).forEach(function (v) { if (keys.indexOf(v) < 0) keys.push(v); });
+    keys.forEach(function (v) {
+      var b = el("button", "v-" + v);
       b.type = "button";
-      b.setAttribute("aria-pressed", String(state.verdict === key));
-      b.appendChild(el("span", "n", String(n)));
-      b.appendChild(el("span", "l", label));
-      b.addEventListener("click", function () { state.verdict = (state.verdict === key ? "" : key); state.shown = PAGE; draw(); });
+      b.setAttribute("aria-pressed", String(state.verdict === v));
+      b.appendChild(el("span", "n", fmt(counts[v])));
+      b.appendChild(document.createTextNode(counts[v] === 1 ? info(v).one : info(v).many));
+      b.addEventListener("click", function () { state.verdict = (state.verdict === v ? "" : v); reset(); });
       box.appendChild(b);
-    };
-    mk("", total, "All reviews");
-    ORDER.forEach(function (v) { if (counts[v]) mk(v, counts[v], LABEL[v] || v); });
+    });
   }
 
-  function drawRow(r) {
-    var row = el("article", "row v-" + r.verdict);
+  function pill(v) {
+    var p = el("span", "pill v-" + v);
+    p.appendChild(el("span", "mark", info(v).mark));
+    p.appendChild(document.createTextNode(info(v).label));
+    return p;
+  }
+  function whyList(items) {
+    var ul = el("ul", "why");
+    items.forEach(function (f) { ul.appendChild(el("li", null, f)); });
+    return ul;
+  }
+
+  function card(r) {
+    var c = el("article", "card v-" + r.verdict);
+    var head = el("div", "head");
     var a = el("a", "pr", "#" + r.pr);
     a.href = "https://github.com/ItsNotRexed/Leonida/pull/" + r.pr;
     a.rel = "noopener";
-    row.appendChild(a);
-    var pv = el("div"); pv.appendChild(el("span", "pill v-" + r.verdict, LABEL[r.verdict] || r.verdict));
-    if (r.automated) { pv.appendChild(el("br")); pv.appendChild(el("span", "tag", "Automated")); }
-    row.appendChild(pv);
-
-    var main = el("div", "main");
+    a.title = "Open pull request #" + r.pr + " on GitHub";
+    head.appendChild(a);
     if (r.title) {
-      var t = el("div", "title", r.title);
+      var t = el("span", "title", r.title);
       if (r.author) t.appendChild(el("span", "by", "  by " + r.author));
-      main.appendChild(t);
+      head.appendChild(t);
     }
+    var pills = el("span", "pills");
+    pills.appendChild(pill(r.verdict));
+    if (r.automated) pills.appendChild(el("span", "tag", "Automated scan"));
+    head.appendChild(pills);
+    c.appendChild(head);
+
     if (r.findings.length) {
-      var ul = el("ul", "findings");
-      r.findings.forEach(function (f) { ul.appendChild(el("li", null, f)); });
-      main.appendChild(ul);
-    } else if (!r.title) {
-      main.appendChild(el("div", "title untitled", "No finding recorded"));
+      if (r.automated) {
+        var d = el("details");
+        d.appendChild(el("summary", null, r.findings.length + (r.findings.length === 1 ? " pattern hit" : " pattern hits") + " to look at (leads, not conclusions)"));
+        d.appendChild(whyList(r.findings));
+        c.appendChild(d);
+      } else {
+        c.appendChild(whyList(r.findings));
+      }
     }
-    var d = el("details", "scope");
-    d.appendChild(el("summary", null, "How it was checked"));
-    d.appendChild(el("p", null, r.scope));
-    main.appendChild(d);
-    row.appendChild(main);
 
     var meta = el("div", "meta");
-    meta.appendChild(el("span", "who", r.reviewer));
-    meta.appendChild(el("span", null, r.date));
-    meta.appendChild(el("span", "sha", "head " + r.head));
-    meta.appendChild(el("span", null, r.human ? "A human read the diff" : "AI read only"));
-    if (r.commented) meta.appendChild(el("span", null, "Commented on the PR"));
-    row.appendChild(meta);
-    return row;
+    meta.appendChild(el("span", null, "Checked by " + r.reviewer));
+    if (r.date) meta.appendChild(el("span", null, r.date));
+    if (r.head) meta.appendChild(el("span", "sha", "commit " + r.head));
+    meta.appendChild(el("span", null, r.human ? "A human read the diff" : "Read by AI only"));
+    if (r.commented) meta.appendChild(el("span", null, "Remark posted on the PR"));
+    c.appendChild(meta);
+
+    var how = el("details");
+    how.appendChild(el("summary", null, "How it was checked"));
+    how.appendChild(el("p", null, r.scope || "Not stated."));
+    c.appendChild(how);
+    return c;
   }
 
   function draw() {
-    drawTiles();
+    drawSummary();
     var list = all.filter(matches);
-    list.sort(function (x, y) { return rank(x.verdict) - rank(y.verdict) || y.pr - x.pr; });
-    var box = $("ledger"); box.textContent = "";
-    $("count").textContent = list.length + " of " + all.length + " reviews";
-    $("hideAuto").parentNode.hidden = !all.some(function (r) { return r.automated; });
-    if (!list.length) { box.appendChild(el("div", "empty", "No review matches these filters. Clear a filter to see more.")); return; }
-    var frag = document.createDocumentFragment();
-    list.slice(0, state.shown).forEach(function (r) { frag.appendChild(drawRow(r)); });
+    if (state.sort === "newest") list.sort(function (x, y) { return y.pr - x.pr; });
+    else list.sort(function (x, y) { return rank(x.verdict) - rank(y.verdict) || y.pr - x.pr; });
+
+    var filtered = !!(state.verdict || state.reviewer || state.q || state.onlyFindings || state.hideAuto);
+    $("clear").hidden = !filtered;
+    $("count").textContent = filtered ? fmt(list.length) + " of " + fmt(all.length) + " shown" : fmt(all.length) + " reviews";
+
+    var box = $("list"); box.textContent = "";
+    if (!list.length) { box.appendChild(el("div", "state", "No review matches. Clear a filter or try another PR number.")); return; }
+    var frag = document.createDocumentFragment(), last = null;
+    list.slice(0, state.shown).forEach(function (r) {
+      if (state.sort === "serious" && r.verdict !== last) {
+        last = r.verdict;
+        var n = list.filter(function (x) { return x.verdict === r.verdict; }).length;
+        var g = el("div", "group v-" + r.verdict);
+        var h = el("h2");
+        h.appendChild(el("span", "mark", info(r.verdict).mark));
+        h.appendChild(document.createTextNode(info(r.verdict).label + " · " + fmt(n)));
+        g.appendChild(h);
+        if (info(r.verdict).help) g.appendChild(el("p", null, info(r.verdict).help));
+        frag.appendChild(g);
+      }
+      frag.appendChild(card(r));
+    });
     box.appendChild(frag);
     if (list.length > state.shown) {
-      var more = el("button", "more", "Show " + Math.min(PAGE, list.length - state.shown) + " more (" + (list.length - state.shown) + " left)");
+      var left = list.length - state.shown;
+      var more = el("button", "more", "Show " + fmt(Math.min(PAGE, left)) + " more (" + fmt(left) + " left)");
       more.type = "button";
       more.addEventListener("click", function () { state.shown += PAGE; draw(); });
       box.appendChild(more);
@@ -253,29 +372,30 @@ footer p { margin: 0; }
   }
 
   function wire() {
-    var reviewers = {};
-    all.forEach(function (r) { reviewers[r.reviewer] = (reviewers[r.reviewer] || 0) + 1; });
-    Object.keys(reviewers).sort(function (a, b) { return reviewers[b] - reviewers[a]; }).forEach(function (name) {
-      var o = el("option", null, name + " (" + reviewers[name] + ")"); o.value = name; $("reviewer").appendChild(o);
+    var by = {};
+    all.forEach(function (r) { by[r.reviewer] = (by[r.reviewer] || 0) + 1; });
+    Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).forEach(function (name) {
+      var o = el("option", null, name + " (" + fmt(by[name]) + ")"); o.value = name; $("reviewer").appendChild(o);
     });
-    $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); state.shown = PAGE; draw(); });
-    $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; state.shown = PAGE; draw(); });
-    $("onlyFindings").addEventListener("change", function (e) { state.onlyFindings = e.target.checked; state.shown = PAGE; draw(); });
-    $("hideAuto").addEventListener("change", function (e) { state.hideAuto = e.target.checked; state.shown = PAGE; draw(); });
-    $("reset").addEventListener("click", function () {
-      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.hideAuto = false; state.shown = PAGE;
-      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; $("hideAuto").checked = false; draw();
+    $("hideAutoWrap").hidden = !all.some(function (r) { return r.automated; });
+    $("q").addEventListener("input", function (e) { state.q = e.target.value.trim(); reset(); });
+    $("reviewer").addEventListener("change", function (e) { state.reviewer = e.target.value; reset(); });
+    $("sort").addEventListener("change", function (e) { state.sort = e.target.value; reset(); });
+    $("onlyFindings").addEventListener("change", function (e) { state.onlyFindings = e.target.checked; reset(); });
+    $("hideAuto").addEventListener("change", function (e) { state.hideAuto = e.target.checked; reset(); });
+    $("clear").addEventListener("click", function () {
+      state.verdict = ""; state.reviewer = ""; state.q = ""; state.onlyFindings = false; state.hideAuto = false;
+      $("q").value = ""; $("reviewer").value = ""; $("onlyFindings").checked = false; $("hideAuto").checked = false;
+      reset();
     });
   }
 
-  var stamp = "";
   fetch("reviews.json", { cache: "no-cache" }).then(function (res) {
     if (!res.ok) throw new Error("HTTP " + res.status);
     var when = new Date(res.headers.get("last-modified") || "");
-    if (!isNaN(when)) stamp = "Table published " + when.toLocaleString() + ". ";
+    $("stamp").textContent = (isNaN(when) ? "" : "Table last published " + when.toLocaleString() + ". ") + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
     return res.json();
   }).then(function (rows) {
-    $("snap").textContent = stamp + "It is rebuilt when review files change, so the newest reviews can take a few minutes to show.";
     all = rows.map(function (r) {
       return { pr: Number(r.pr), verdict: String(r.verdict || ""), reviewer: String(r.reviewer || ""), date: String(r.date || ""), scope: String(r.scope || ""),
                findings: Array.isArray(r.findings) ? r.findings.map(String) : [], head: String(r.head || ""), human: !!r.human, commented: !!r.commented,
@@ -283,8 +403,8 @@ footer p { margin: 0; }
     });
     wire(); draw();
   }).catch(function (err) {
-    $("snap").textContent = "";
-    $("ledger").appendChild(el("div", "error", "The review data could not be loaded (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
+    $("kicker").textContent = "The reviews could not be loaded.";
+    $("list").appendChild(el("div", "state", "The review data did not load (" + err.message + "). Reload the page. If it keeps failing, docs/reviews.json has not been generated yet."));
   });
 })();
 </script>
