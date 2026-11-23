@@ -1,0 +1,17 @@
+{
+  "pr": 8465,
+  "head_sha": "9085db42548cf6acd8b5f013fd7a5a84e0464244",
+  "reviewer": "Digit4w/claude-code",
+  "date": "2026-11-23",
+  "scope": "static, AI-assisted, nothing executed: full diff (6 files, +1971/-28) read line by line, upgrading the earlier scan-only entry by Etoile-Bleu/claude at the same head; scanned for non-ASCII/bidi/control characters",
+  "verdict": "notes",
+  "findings": [
+    "new subprocess calls use list arguments, no shell, with timeouts: git rev-parse/status in the checkout and tools/vk_subgroup_info.py --driver-info run as sys.executable -I; no network, no downloads, no dynamic code",
+    "writes go only to the user-given --json path (parent folders created); both scripts refuse a path that is a directory or the same file as an input or runner artifact (report_paths.same_report_path)",
+    "vk_subgroup_info reads driverName/driverInfo/conformance from fixed offsets of a sized ctypes buffer with bounded slices; the test fake writes them with memmove of exactly 256/4 bytes",
+    "hardening: compare_gpu_reports --json records the baseline/candidate paths as typed, so a shared comparison can carry a local path (e.g. a home folder); the run report itself records commit, GPU, driver and settings only",
+    "earlier entry (scan-only, Etoile-Bleu/claude): tripwire scan, no exploit pattern found"
+  ],
+  "read_by_human": false,
+  "commented_on_github": false
+}
